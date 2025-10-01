@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anushka Das - Software & ML Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #818cf8; /* Indigo 400 */
+            --secondary-color: #a78bfa; /* Violet 400 */
+            --background-dark: #111827;
+            --background-light: #1F2937;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .glassmorphism {
+            background: rgba(31, 41, 55, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--background-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--secondary-color); }
+        
+        /* Fade-in Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Typing effect */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: var(--secondary-color);
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glassmorphism shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white tracking-wider flex items-center">
+                <svg class="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="var(--primary-color)" />
+                            <stop offset="100%" stop-color="var(--secondary-color)" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M12 2L1 21h4.38l1.62-3h10l1.62 3H23L12 2zm-1.12 13L12 9.12 13.12 15h-2.24z" fill="url(#logoGradient)"/>
+                </svg>
+                <span>Anushka Das</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-white transition-colors duration-300">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
+                <a href="#certifications" class="text-gray-300 hover:text-white transition-colors duration-300">Certifications</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block text-gray-300 hover:text-white transition-colors duration-300">About</a>
+            <a href="#experience" class="block text-gray-300 hover:text-white transition-colors duration-300">Experience</a>
+            <a href="#projects" class="block text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+            <a href="#skills" class="block text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
+            <a href="#certifications" class="block text-gray-300 hover:text-white transition-colors duration-300">Certifications</a>
+            <a href="#contact" class="block text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+            <div class="container mx-auto px-6 text-center z-10">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 tracking-tight">Anushka Das</h1>
+                <h2 class="text-2xl md:text-4xl font-semibold text-gradient mb-8 tracking-wide h-12 md:h-16"><span id="typing-effect"></span><span class="typing-cursor"></span></h2>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-6">
+                    A B.Tech student seeking opportunities in <strong>Software Engineering</strong> and <strong>Machine Learning</strong>, with a passion for problem-solving through <strong>Data Structures & Algorithms (DSA)</strong> and exploring how intelligent systems can be applied to real-world challenges.
+                </p>
+                <p class="text-sm text-gray-500 mb-10">Kolkata, West Bengal, India</p>
+                <div class="flex justify-center items-center">
+                    <a href="https://github.com/anushkadas-coder/resume/raw/main/ANUSHKA's%20Resume.pdf" target="_blank" class="px-6 py-3 bg-gradient-to-r from-violet-400 to-indigo-500 text-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300"> View Resume </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="pt-12 pb-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-gradient tracking-wide">About Me</h2>
+                <div class="text-center text-lg italic text-gray-300 font-semibold tracking-wider mb-12">A brief introduction to my journey.</div>
+                <div class="max-w-4xl mx-auto text-center text-gray-400 text-lg leading-relaxed">
+                    <p>I am a dedicated <strong>B.Tech student in Information Technology</strong> at <strong>Techno Main Salt Lake (2023-2027)</strong>, driven by a strong passion for Artificial Intelligence and Machine Learning. My journey in tech is fueled by a curiosity to understand and build systems that can learn, adapt, and solve complex problems.</p>
+                    <p class="mt-4">From developing end-to-end ML models to contributing to open-source software and building responsive web applications, I have a diverse skill set that bridges theory and hands-on application. I enjoy the challenge of competitive programming and am always eager to learn new technologies and methodologies.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 bg-[var(--background-light)] fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-gradient tracking-wide">Professional Experience</h2>
+                <div class="text-center text-lg italic text-gray-300 font-semibold tracking-wider mb-12">My internships and contributions.</div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative border-l-2 border-[var(--primary-color)] pl-8 space-y-12">
+                        <div class="timeline-item">
+                            <div class="absolute w-4 h-4 bg-[var(--primary-color)] rounded-full -left-2.5 mt-1.5 border-4 border-[var(--background-light)]"></div>
+                            <h3 class="text-xl font-bold text-violet-400">Artificial Intelligence Intern</h3>
+                            <p class="text-gray-300 font-semibold">Pinnacle Labs | Sep 2025</p>
+                            <p class="text-gray-400 mt-2">Gained practical experience in end-to-end ML solutions, from data preprocessing to model training and evaluation on real-world challenges.</p>
+                        </div>
+                        <div class="timeline-item">
+                           <div class="absolute w-4 h-4 bg-[var(--primary-color)] rounded-full -left-2.5 mt-1.5 border-4 border-[var(--background-light)]"></div>
+                            <h3 class="text-xl font-bold text-violet-400">Open-Source Contributor</h3>
+                            <p class="text-gray-300 font-semibold">GSSoc '25 | Jul 2025 - Sep 2025</p>
+                            <p class="text-gray-400 mt-2">Contributed to 4 open-source repositories by fixing bugs and adding new feature modules, collaborating with the community on GitHub.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="absolute w-4 h-4 bg-[var(--primary-color)] rounded-full -left-2.5 mt-1.5 border-4 border-[var(--background-light)]"></div>
+                            <h3 class="text-xl font-bold text-violet-400">Web Development Intern</h3>
+                            <p class="text-gray-300 font-semibold">CodSoft | Aug 2025</p>
+                            <p class="text-gray-400 mt-2">Built and enhanced over 6 responsive and accessible web pages using HTML, CSS, and JavaScript, improving overall UI/UX.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-gradient tracking-wide">My Projects</h2>
+                <div class="text-center text-lg italic text-gray-300 font-semibold tracking-wider mb-12">A selection of my recent work.</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glassmorphism rounded-lg p-6 flex flex-col group transition-all duration-300 hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-500/10 hover:-translate-y-2">
+                        <h3 class="text-xl font-bold text-white mb-2">Customer Churn Prediction</h3>
+                        <p class="text-gray-400 flex-grow mb-4">An end-to-end ML model deployed as a Streamlit web app to predict customer churn, achieving a 67% recall rate and an AUC score of 0.82.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">Python</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">XGBoost</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">Streamlit</span>
+                        </div>
+                        <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" class="font-semibold text-violet-400 hover:underline flex items-center">Live Demo <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-6 flex flex-col group transition-all duration-300 hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-500/10 hover:-translate-y-2">
+                        <h3 class="text-xl font-bold text-white mb-2">Mouse Behavior Recognition</h3>
+                        <p class="text-gray-400 flex-grow mb-4">ML pipeline for a Kaggle competition to classify 30+ mouse social behaviors from pose-estimation data.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">Python</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">LightGBM</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">Kaggle</span>
+                        </div>
+                        <a href="https://github.com/anushkadas-coder/MABE-Mouse-Behavior-Recognition" target="_blank" class="font-semibold text-violet-400 hover:underline flex items-center">View on GitHub <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-6 flex flex-col group transition-all duration-300 hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-500/10 hover:-translate-y-2">
+                        <h3 class="text-xl font-bold text-white mb-2">CineHorizon Movie App</h3>
+                        <p class="text-gray-400 flex-grow mb-4">A responsive movie discovery web app using the TMDB API to dynamically fetch and display real-time movie data.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">JavaScript</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">REST API</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">HTML/CSS</span>
+                        </div>
+                        <a href="https://anushkadas-coder.github.io/CineHorizon/" target="_blank" class="font-semibold text-violet-400 hover:underline flex items-center">Live Demo <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-6 flex flex-col group transition-all duration-300 hover:border-violet-500 hover:shadow-2xl hover:shadow-violet-500/10 hover:-translate-y-2">
+                        <h3 class="text-xl font-bold text-white mb-2">GlowFit Fitness Website</h3>
+                        <p class="text-gray-400 flex-grow mb-4">A modern and responsive multi-page fitness website template with a clean UI and high-quality visuals.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">React.js</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">HTML/CSS</span><span class="bg-gray-700 text-xs font-semibold px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                        <a href="https://anushkadas-coder.github.io/GlowFit/" target="_blank" class="font-semibold text-violet-400 hover:underline flex items-center">Live Demo <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24 bg-[var(--background-light)] fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-gradient tracking-wide">Technical Skills</h2>
+                 <div class="text-center text-lg italic text-gray-300 font-semibold tracking-wider mb-12">My technical toolbox.</div>
+                <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 text-center">
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="Python Icon" /><p class="mt-2 text-gray-400">Python</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="Java Icon" /><p class="mt-2 text-gray-400">Java</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="C++ Icon" /><p class="mt-2 text-gray-400">C++</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="MySQL Icon" /><p class="mt-2 text-gray-400">SQL</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="JavaScript Icon" /><p class="mt-2 text-gray-400">JavaScript</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="React Icon" /><p class="mt-2 text-gray-400">React.js</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="Flask Icon" /><p class="mt-2 text-gray-400">Flask</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="Pandas Icon" /><p class="mt-2 text-gray-400">Pandas</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="NumPy Icon" /><p class="mt-2 text-gray-400">NumPy</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2 p-2 bg-white rounded" alt="Scikit-learn Icon" /><p class="mt-2 text-gray-400">Scikit-learn</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="Git Icon" /><p class="mt-2 text-gray-400">Git</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2 p-2 bg-white rounded" alt="AWS Icon" /><p class="mt-2 text-gray-400">AWS</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="VS Code Icon" /><p class="mt-2 text-gray-400">VS Code</p></div>
+                    <div class="flex flex-col items-center group"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg" class="h-16 w-16 transition-transform group-hover:-translate-y-2" alt="Jupyter Icon" /><p class="mt-2 text-gray-400">Jupyter</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certifications" class="py-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-gradient tracking-wide">Certifications</h2>
+                <div class="text-center text-lg italic text-gray-300 font-semibold tracking-wider mb-12">My credentials and qualifications.</div>
+                <div class="max-w-4xl mx-auto text-center text-gray-400 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <p>Train and manage a machine learning model with Azure Machine Learning - <strong>Microsoft</strong></p>
+                    <p>Understand data science for Machine Learning - <strong>Microsoft</strong></p>
+                    <p>Oracle Cloud Infrastructure 2025 Generative AI Professional - <strong>Oracle</strong></p>
+                    <p>Python for Data Science - <strong>IBM</strong></p>
+                    <p>Tata GenAI Powered Data Analytics Job Simulation - <strong>Forage</strong></p>
+                    <p>Software Engineer Intern - <strong>United Latino Students Association United</strong></p>
+                    <p>SQL (Basic) - <strong>United Latino Students Association United</p>
+                    <p>Google Play Academy Store Listing Certificate - <strong>Google Play Academy</strong></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="honors" class="py-24 bg-[var(--background-light)] fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-gradient tracking-wide">Honors & Awards</h2>
+                <div class="text-center text-lg italic text-gray-300 font-semibold tracking-wider mb-12">My achievements and recognitions.</div>
+                <div class="max-w-4xl mx-auto text-center text-gray-400 space-y-4">
+                    <p><strong>Gold Level (5 Star)</strong> in Python on HackerRank</p>
+                    <p><strong>Silver Level (3 Star)</strong> in Java on HackerRank</p>
+                    <p>Solved <strong>150+ problems</strong> on LeetCode and HackerRank, improving algorithmic thinking and coding efficiency.</p>
+                    <p>Active member of Samaritans social club, contributing to community initiatives and collaborative events.</p>
+                </div>
+            </div>
+        </section>
+
+         <section id="contact" class="py-24 fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-gradient tracking-wide">Get In Touch</h2>
+                 <div class="text-center text-lg italic text-gray-300 font-semibold tracking-wider mb-12">I'm open to new opportunities and collaborations.</div>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+                    Whether you have a question, a project idea, or just want to say hello, my inbox is always open!
+                </p>
+                <a href="mailto:anushkadas05das@gmail.com" class="text-xl font-semibold text-violet-400 hover:underline">anushkadas05das@gmail.com</a>
+                 <div class="flex justify-center space-x-6 mt-12">
+                    <a href="https://github.com/anushkadas-coder" target="_blank" class="text-gray-400 hover:text-violet-400 transition-all duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" class="text-gray-400 hover:text-violet-400 transition-all duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                    </a>
+                     <a href="https://www.kaggle.com/anushkadas2313002100" target="_blank" class="text-gray-400 hover:text-violet-400 transition-all duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.068.028L7.23 8.39l-4.238.256.002.003c-1.636.196-1.523 2.518.15 3.332l3.35 1.63L3.15 22.4l5.35-4.256 3.568 5.828.002.003c.8 1.303 2.734 1.303 3.535 0l.002-.003 3.568-5.828 5.35 4.256-3.342-8.789 3.35-1.63.003-.002c1.672-.814 1.785-3.136.15-3.332l.002-.003-4.238-.256-4.838-8.362-.002-.003c-.803-1.332-2.74-1.332-3.542 0l-.002.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[var(--background-light)] py-6">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 Anushka Das. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <a href="#" id="to-top-button" class="fixed bottom-8 right-8 bg-[var(--primary-color)] text-white p-3 rounded-full shadow-lg hover:bg-[var(--secondary-color)] transition-all duration-300 opacity-0 pointer-events-none">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for nav links and close mobile menu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if(targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Scroll-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+        // Back to top button
+        const toTopButton = document.getElementById('to-top-button');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                toTopButton.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                toTopButton.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        // Typing effect script
+        const words = ["Aspiring ML/DL Engineer", "Software Engineering", "Web Developer", "Data Science", "DSA Problem Solver"];
+        let i = 0;
+        let j = 0;
+        let currentWord = "";
+        let isDeleting = false;
+        const typingEffect = document.getElementById('typing-effect');
+
+        function type() {
+            currentWord = words[i];
+            if (isDeleting) {
+                typingEffect.textContent = currentWord.substring(0, j - 1);
+                j--;
+                if (j == 0) {
+                    isDeleting = false;
+                    i++;
+                    if (i == words.length) {
+                        i = 0;
+                    }
+                }
+            } else {
+                typingEffect.textContent = currentWord.substring(0, j + 1);
+                j++;
+                if (j == currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(() => type(), 2000); // Wait 2s before deleting
+                    return;
+                }
+            }
+            setTimeout(type, isDeleting ? 100 : 200);
+        }
+        type();
+    </script>
+</body>
+</html>
