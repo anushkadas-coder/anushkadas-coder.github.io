@@ -22,38 +22,98 @@
         }
         
         body {
-            font-family: 'Nunito', sans-serif; /* Cuter, rounded font */
+            font-family: 'Nunito', sans-serif;
             background-color: var(--background-dark);
             color: var(--text-primary);
-            /* Cute polka dot background */
             background-image: radial-gradient(var(--border-color) 2px, transparent 2px);
             background-size: 30px 30px;
+            position: relative;
+            overflow-x: hidden;
         }
 
+        /* Ambient Background Glows for UI Depth */
+        .bg-glow-1 {
+            position: fixed;
+            top: -15%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(203,166,247,0.15) 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(60px);
+        }
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -15%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(245,194,231,0.1) 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(60px);
+        }
+
+        /* Upgraded Glass Cards */
         .glass-card {
-            background: rgba(49, 50, 68, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 2px solid transparent;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+            background: rgba(49, 50, 68, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(203, 166, 247, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            pointer-events: none;
         }
         
         .glass-card:hover {
             border-color: var(--primary-color);
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(203, 166, 247, 0.1);
+            background: rgba(49, 50, 68, 0.7);
         }
         
-        /* Solid Highlighted Headers - Cute Pop Aesthetic, NO GLOW, NO TILT */
+        /* Solid Highlighted Headers - Floating */
         .highlighted-header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: #1e1e2e;
-            padding: 0.5rem 2rem;
-            border-radius: 9999px; /* Full pill shape */
+            padding: 0.6rem 2.5rem;
+            border-radius: 9999px;
             display: inline-block;
-            box-shadow: 4px 4px 0px var(--secondary-color); /* Solid shadow, not glowing */
+            box-shadow: 4px 4px 0px rgba(245, 194, 231, 0.8); 
             border: 2px solid #1e1e2e;
-            animation: float-header 4s ease-in-out infinite; /* Floating animation */
+            animation: float-header 4s ease-in-out infinite;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+        }
+
+        /* Nav Link Underline Animation */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Custom Cute Scrollbar */
@@ -62,26 +122,22 @@
         ::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; border: 2px solid var(--background-dark); }
         ::-webkit-scrollbar-thumb:hover { background: var(--secondary-color); }
 
-        /* Floating Animation for GIF */
+        /* Floating Animations */
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
         }
-        .float-anim {
-            animation: float 4s ease-in-out infinite;
-        }
+        .float-anim { animation: float 5s ease-in-out infinite; }
 
-        /* Floating Animation specifically for Headers (No Tilt) */
         @keyframes float-header {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
-        /* Fade-in Animation */
+        /* Smooth Fade-in */
         .fade-in-section {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(25px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .fade-in-section.is-visible {
@@ -101,62 +157,72 @@
             margin-left: 6px;
         }
         @keyframes blink { 50% { opacity: 0; } }
+
+        /* Text Gradient Utility */
+        .text-gradient {
+            background: linear-gradient(to right, #cdd6f4, #f5c2e7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-pink-300 selection:text-slate-900">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#1e1e2e]/80 backdrop-blur-md shadow-sm border-b border-[#cba6f7]/20">
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#1e1e2e]/70 backdrop-blur-xl shadow-sm border-b border-[#cba6f7]/20 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black text-[#cba6f7] tracking-tight flex items-center gap-2 hover:scale-105 transition-transform">
-                <span class="bg-[#cba6f7] text-[#1e1e2e] px-2 rounded-lg">AD</span>
-                <span class="text-white">Anushka Das</span>
+            <a href="#" class="text-2xl font-black tracking-tight flex items-center gap-3 hover:scale-105 transition-transform duration-300">
+                <span class="bg-gradient-to-br from-[#cba6f7] to-[#f5c2e7] text-[#1e1e2e] px-2.5 py-0.5 rounded-lg shadow-md">AD</span>
+                <span class="text-white hover:text-[#cba6f7] transition-colors">Anushka Das</span>
             </a>
-            <nav class="hidden md:flex space-x-6 font-bold text-sm">
-                <a href="#about" class="text-[#a6adc8] hover:text-[#f5c2e7] hover:-translate-y-1 transition-all">About Me</a>
-                <a href="#skills" class="text-[#a6adc8] hover:text-[#f5c2e7] hover:-translate-y-1 transition-all">Technical Skills</a>
-                <a href="#experience" class="text-[#a6adc8] hover:text-[#f5c2e7] hover:-translate-y-1 transition-all">Experience</a>
-                <a href="#projects" class="text-[#a6adc8] hover:text-[#f5c2e7] hover:-translate-y-1 transition-all">Projects</a>
-                <a href="#certifications" class="text-[#a6adc8] hover:text-[#f5c2e7] hover:-translate-y-1 transition-all">Certifications</a>
-                <a href="#honors" class="text-[#a6adc8] hover:text-[#f5c2e7] hover:-translate-y-1 transition-all">Awards</a>
+            <nav class="hidden md:flex space-x-8 font-bold text-sm">
+                <a href="#about" class="nav-link text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">About Me</a>
+                <a href="#skills" class="nav-link text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Technical Skills</a>
+                <a href="#experience" class="nav-link text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Experience</a>
+                <a href="#projects" class="nav-link text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Projects</a>
+                <a href="#certifications" class="nav-link text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Certifications</a>
+                <a href="#honors" class="nav-link text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Awards</a>
             </nav>
-            <button id="mobile-menu-button" class="md:hidden text-[#cba6f7] hover:text-[#f5c2e7]">
+            <button id="mobile-menu-button" class="md:hidden text-[#cba6f7] hover:text-[#f5c2e7] transition-colors">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-3 bg-[#1e1e2e] font-bold">
-            <a href="#about" class="block text-[#a6adc8] hover:text-[#f5c2e7]">About Me</a>
-            <a href="#skills" class="block text-[#a6adc8] hover:text-[#f5c2e7]">Technical Skills</a>
-            <a href="#experience" class="block text-[#a6adc8] hover:text-[#f5c2e7]">Professional Experience</a>
-            <a href="#projects" class="block text-[#a6adc8] hover:text-[#f5c2e7]">My Projects</a>
-            <a href="#certifications" class="block text-[#a6adc8] hover:text-[#f5c2e7]">Certifications</a>
-            <a href="#honors" class="block text-[#a6adc8] hover:text-[#f5c2e7]">Honors & Awards</a>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-6 space-y-4 bg-[#1e1e2e]/95 backdrop-blur-xl border-b border-[#cba6f7]/20 font-bold shadow-2xl">
+            <a href="#about" class="block text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">About Me</a>
+            <a href="#skills" class="block text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Technical Skills</a>
+            <a href="#experience" class="block text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Professional Experience</a>
+            <a href="#projects" class="block text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">My Projects</a>
+            <a href="#certifications" class="block text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Certifications</a>
+            <a href="#honors" class="block text-[#a6adc8] hover:text-[#f5c2e7] transition-colors">Honors & Awards</a>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+        <section id="hero" class="relative min-h-screen flex items-center pt-24 pb-12">
             <div class="container mx-auto px-6 text-center z-10">
                 
-                <div class="flex justify-center mb-8 mt-8 float-anim">
-                    <div class="p-2 bg-[#313244] rounded-[2rem] shadow-xl border-4 border-[#cba6f7]">
-                        <img src="https://i.pinimg.com/originals/f0/f0/d9/f0f0d932d6e39c7af5aa305cbd8da735.gif" alt="Aesthetic Coder" class="rounded-[1.5rem] max-w-[240px]">
+                <div class="flex justify-center mb-10 mt-8 float-anim">
+                    <div class="p-2.5 bg-[#313244]/80 backdrop-blur-sm rounded-[2.5rem] shadow-2xl border-4 border-[#cba6f7] transition-transform duration-500 hover:scale-105">
+                        <img src="https://i.pinimg.com/originals/f0/f0/d9/f0f0d932d6e39c7af5aa305cbd8da735.gif" alt="Aesthetic Coder" class="rounded-[2rem] max-w-[240px]">
                     </div>
                 </div>
 
-                <h1 class="text-3xl md:text-5xl font-black text-white leading-tight mb-4 tracking-tight">Anushka Das</h1>
+                <h1 class="text-4xl md:text-6xl font-black text-gradient leading-tight mb-4 tracking-tight">Anushka Das</h1>
                 
-                <h2 class="text-xl md:text-2xl font-extrabold text-[#f5c2e7] mb-6 tracking-wide h-8"><span id="typing-text"></span><span class="typing-cursor"></span></h2>
+                <h2 class="text-xl md:text-2xl font-extrabold text-[#f5c2e7] mb-8 tracking-wide h-8"><span id="typing-text"></span><span class="typing-cursor"></span></h2>
                 
-                <p class="text-lg text-[#a6adc8] max-w-2xl mx-auto mb-10 leading-relaxed font-semibold bg-[#313244]/40 p-6 rounded-3xl border border-[#cba6f7]/20">
-                    A B.Tech student seeking opportunities in <strong class="text-[#cba6f7]">Software Engineering</strong> & <strong class="text-[#cba6f7]">Machine Learning</strong> and also <strong class="text-[#cba6f7]">Web Development</strong>, with a passion for problem-solving through <strong class="text-[#89b4fa]">DSA</strong> and exploring how intelligent systems can be applied to real-world challenges.
+                <p class="text-lg text-[#a6adc8] max-w-2xl mx-auto mb-12 leading-relaxed font-medium bg-[#313244]/30 backdrop-blur-md p-8 rounded-[2rem] border border-[#cba6f7]/20 shadow-lg">
+                    A B.Tech student seeking opportunities in <strong class="text-[#cba6f7] font-bold">Software Engineering</strong> & <strong class="text-[#cba6f7] font-bold">Machine Learning</strong> and also <strong class="text-[#cba6f7] font-bold">Web Development</strong>, with a passion for problem-solving through <strong class="text-[#89b4fa] font-bold">DSA</strong> and exploring how intelligent systems can be applied to real-world challenges.
                 </p>
 
-                <div class="flex flex-wrap justify-center gap-4 mb-10">
-                    <a href="mailto:anushkadas05das@gmail.com" class="hover:-translate-y-2 transition-transform duration-300"><img src="https://img.shields.io/badge/Gmail-D14836.svg?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" class="rounded-xl shadow-md"></a>
-                    <a href="https://linkedin.com/in/anushka-das-467437316" class="hover:-translate-y-2 transition-transform duration-300"><img src="https://img.shields.io/badge/LinkedIn-0A66C2.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" class="rounded-xl shadow-md"></a>
-                    <a href="https://g.dev/anushkadas-coder" class="hover:-translate-y-2 transition-transform duration-300"><img src="https://img.shields.io/badge/Google_Dev-4285F4?style=for-the-badge&logo=google-developers&logoColor=white" alt="Google Developers" class="rounded-xl shadow-md"></a>
-                    <a href="https://www.kaggle.com/anushkadas2313002101" class="hover:-translate-y-2 transition-transform duration-300"><img src="https://img.shields.io/badge/Kaggle-20BEFF.svg?style=for-the-badge&logo=kaggle&logoColor=white" alt="Kaggle" class="rounded-xl shadow-md"></a>
-                    <a href="https://www.hackerrank.com/profile/anushkadas05das" class="hover:-translate-y-2 transition-transform duration-300"><img src="https://img.shields.io/badge/HackerRank-2EC866.svg?style=for-the-badge&logo=hackerrank&logoColor=white" alt="HackerRank" class="rounded-xl shadow-md"></a>
+                <div class="flex flex-wrap justify-center gap-5 mb-10">
+                    <a href="mailto:anushkadas05das@gmail.com" class="hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(209,72,54,0.3)] transition-all duration-300 rounded-xl"><img src="https://img.shields.io/badge/Gmail-D14836.svg?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" class="rounded-xl"></a>
+                    <a href="https://linkedin.com/in/anushka-das-467437316" class="hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(10,102,194,0.3)] transition-all duration-300 rounded-xl"><img src="https://img.shields.io/badge/LinkedIn-0A66C2.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" class="rounded-xl"></a>
+                    <a href="https://g.dev/anushkadas-coder" class="hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(66,133,244,0.3)] transition-all duration-300 rounded-xl"><img src="https://img.shields.io/badge/Google_Dev-4285F4?style=for-the-badge&logo=google-developers&logoColor=white" alt="Google Developers" class="rounded-xl"></a>
+                    <a href="https://www.kaggle.com/anushkadas2313002101" class="hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(32,190,255,0.3)] transition-all duration-300 rounded-xl"><img src="https://img.shields.io/badge/Kaggle-20BEFF.svg?style=for-the-badge&logo=kaggle&logoColor=white" alt="Kaggle" class="rounded-xl"></a>
+                    <a href="https://www.hackerrank.com/profile/anushkadas05das" class="hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(46,200,102,0.3)] transition-all duration-300 rounded-xl"><img src="https://img.shields.io/badge/HackerRank-2EC866.svg?style=for-the-badge&logo=hackerrank&logoColor=white" alt="HackerRank" class="rounded-xl"></a>
                 </div>
             </div>
         </section>
@@ -166,18 +232,19 @@
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-black tracking-wide"><span class="highlighted-header">About Me</span></h2>
                 </div>
-                <div class="max-w-4xl mx-auto text-center text-[#a6adc8] text-lg font-semibold leading-relaxed space-y-6">
-                    <p>I am a dedicated <strong class="text-white">B.Tech student in Information Technology</strong> at <strong class="text-white">Techno Main Salt Lake (2023-2027)</strong>, driven by a strong passion for Artificial Intelligence and Machine Learning. My journey in tech is fueled by a curiosity to understand and build systems that can learn, adapt, and solve complex problems.</p>
+                <div class="max-w-4xl mx-auto text-center text-[#a6adc8] text-lg font-medium leading-relaxed space-y-6">
+                    <p>I am a dedicated <strong class="text-white font-bold">B.Tech student in Information Technology</strong> at <strong class="text-white font-bold">Techno Main Salt Lake (2023-2027)</strong>, driven by a strong passion for Artificial Intelligence and Machine Learning. My journey in tech is fueled by a curiosity to understand and build systems that can learn, adapt, and solve complex problems.</p>
                     <p>From developing end-to-end ML models to contributing to open-source software and building responsive web applications, I have a diverse skill set that bridges theory and hands-on application. I enjoy the challenge of competitive programming and am always eager to learn new technologies and methodologies.</p>
                     
-                    <div class="mt-10 bg-[#313244] border-4 border-[#f5c2e7] text-[#cdd6f4] p-6 rounded-3xl shadow-[4px_4px_0px_#f5c2e7]">
-                        <p class="italic">Currently seeking opportunities in Software Engineering and Machine Learning, where I can build impactful, data-driven solutions.</p>
+                    <div class="mt-12 bg-[#313244]/50 border-2 border-dashed border-[#f5c2e7] text-[#cdd6f4] p-8 rounded-[2rem] shadow-lg relative overflow-hidden group hover:border-solid hover:bg-[#313244]/80 transition-all duration-300">
+                        <div class="absolute -right-4 -top-4 text-6xl text-[#f5c2e7] opacity-10 group-hover:opacity-20 transition-opacity">✦</div>
+                        <p class="italic text-xl font-semibold">"Currently seeking opportunities in Software Engineering and Machine Learning, where I can build impactful, data-driven solutions."</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="py-24 fade-in-section bg-[#313244]/30 rounded-[3rem] mx-4 md:mx-10 my-10 border border-[#cba6f7]/20">
+        <section id="skills" class="py-24 fade-in-section bg-[#313244]/20 rounded-[3rem] mx-4 md:mx-10 my-10 border border-[#cba6f7]/20 shadow-xl backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-black tracking-wide"><span class="highlighted-header">Technical Skills</span></h2>
@@ -187,35 +254,35 @@
                     <div class="glass-card p-8 rounded-[2rem]">
                         <h3 class="text-2xl font-black text-[#f5c2e7] mb-6 text-center tracking-wide">Languages</h3>
                         <div class="flex flex-wrap justify-center gap-3">
-                            <img src="https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white" class="rounded-lg" alt="Python"/>
-                            <img src="https://img.shields.io/badge/Java-ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" class="rounded-lg" alt="Java"/>
-                            <img src="https://img.shields.io/badge/C++-00599C.svg?style=for-the-badge&logo=cplusplus&logoColor=white" class="rounded-lg" alt="C++"/>
-                            <img src="https://img.shields.io/badge/SQL-4479A1.svg?style=for-the-badge&logo=sql&logoColor=white" class="rounded-lg" alt="SQL"/>
-                            <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" class="rounded-lg" alt="JavaScript"/>
+                            <img src="https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Python"/>
+                            <img src="https://img.shields.io/badge/Java-ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Java"/>
+                            <img src="https://img.shields.io/badge/C++-00599C.svg?style=for-the-badge&logo=cplusplus&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="C++"/>
+                            <img src="https://img.shields.io/badge/SQL-4479A1.svg?style=for-the-badge&logo=sql&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="SQL"/>
+                            <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="JavaScript"/>
                         </div>
                     </div>
 
                     <div class="glass-card p-8 rounded-[2rem]">
                         <h3 class="text-2xl font-black text-[#cba6f7] mb-6 text-center tracking-wide">Libraries</h3>
                         <div class="flex flex-wrap justify-center gap-3">
-                            <img src="https://img.shields.io/badge/Scikit--learn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white" class="rounded-lg" alt="Scikit-learn"/>
-                            <img src="https://img.shields.io/badge/Pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white" class="rounded-lg" alt="Pandas"/>
-                            <img src="https://img.shields.io/badge/NumPy-013243.svg?style=for-the-badge&logo=numpy&logoColor=white" class="rounded-lg" alt="NumPy"/>
-                            <img src="https://img.shields.io/badge/XGBoost-006600.svg?style=for-the-badge&logo=xgboost&logoColor=white" class="rounded-lg" alt="XGBoost"/>
-                            <img src="https://img.shields.io/badge/Flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white" class="rounded-lg" alt="Flask"/>
-                            <img src="https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black" class="rounded-lg" alt="React"/>
-                            <img src="https://img.shields.io/badge/OpenAI-412991.svg?style=for-the-badge&logo=openai&logoColor=white" class="rounded-lg" alt="OpenAI"/>
+                            <img src="https://img.shields.io/badge/Scikit--learn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Scikit-learn"/>
+                            <img src="https://img.shields.io/badge/Pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Pandas"/>
+                            <img src="https://img.shields.io/badge/NumPy-013243.svg?style=for-the-badge&logo=numpy&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="NumPy"/>
+                            <img src="https://img.shields.io/badge/XGBoost-006600.svg?style=for-the-badge&logo=xgboost&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="XGBoost"/>
+                            <img src="https://img.shields.io/badge/Flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Flask"/>
+                            <img src="https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="React"/>
+                            <img src="https://img.shields.io/badge/OpenAI-412991.svg?style=for-the-badge&logo=openai&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="OpenAI"/>
                         </div>
                     </div>
 
                     <div class="glass-card p-8 rounded-[2rem]">
                         <h3 class="text-2xl font-black text-[#89b4fa] mb-6 text-center tracking-wide">Tools</h3>
                         <div class="flex flex-wrap justify-center gap-3">
-                            <img src="https://img.shields.io/badge/Amazon_AWS-232F3E.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" class="rounded-lg" alt="AWS"/>
-                            <img src="https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white" class="rounded-lg" alt="Streamlit"/>
-                            <img src="https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=git&logoColor=white" class="rounded-lg" alt="Git"/>
-                            <img src="https://img.shields.io/badge/Jupyter-F37626.svg?style=for-the-badge&logo=jupyter&logoColor=white" class="rounded-lg" alt="Jupyter"/>
-                            <img src="https://img.shields.io/badge/VS_Code-007ACC.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" class="rounded-lg" alt="VS Code"/>
+                            <img src="https://img.shields.io/badge/Amazon_AWS-232F3E.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="AWS"/>
+                            <img src="https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Streamlit"/>
+                            <img src="https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=git&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Git"/>
+                            <img src="https://img.shields.io/badge/Jupyter-F37626.svg?style=for-the-badge&logo=jupyter&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="Jupyter"/>
+                            <img src="https://img.shields.io/badge/VS_Code-007ACC.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" class="rounded-lg shadow-sm hover:scale-105 transition-transform" alt="VS Code"/>
                         </div>
                     </div>
                 </div>
@@ -228,53 +295,53 @@
                     <h2 class="text-3xl md:text-5xl font-black tracking-wide"><span class="highlighted-header">Professional Experience</span></h2>
                 </div>
                 <div class="max-w-4xl mx-auto">
-                    <div class="relative border-l-4 border-[#cba6f7] pl-8 space-y-12 ml-4">
+                    <div class="relative border-l-4 border-[#cba6f7]/50 pl-8 space-y-12 ml-4">
                         
-                        <div class="relative">
-                            <div class="absolute w-6 h-6 bg-[#f5c2e7] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_#cba6f7]"></div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h3 class="text-xl font-black text-[#cba6f7]">Member of Google's Women Techmakers</h3>
-                                <p class="text-[#f5c2e7] font-bold text-sm mb-3">Google | Jan 2025 - Present</p>
-                                <p class="text-[#a6adc8] font-medium">Engage in a global community supporting women in tech through events, learning resources, and networking.</p>
+                        <div class="relative group">
+                            <div class="absolute w-6 h-6 bg-[#f5c2e7] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_rgba(203,166,247,0.5)] group-hover:shadow-[0_0_0_4px_#cba6f7] transition-all duration-300"></div>
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="text-xl font-black text-[#cdd6f4] group-hover:text-[#cba6f7] transition-colors">Member of Google's Women Techmakers</h3>
+                                <p class="text-[#f5c2e7] font-bold text-sm mb-4 tracking-wide uppercase mt-1">Google | Jan 2025 - Present</p>
+                                <p class="text-[#a6adc8] font-medium leading-relaxed">Engage in a global community supporting women in tech through events, learning resources, and networking.</p>
                             </div>
                         </div>
 
-                        <div class="relative">
-                            <div class="absolute w-6 h-6 bg-[#89b4fa] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_#cba6f7]"></div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h3 class="text-xl font-black text-[#cba6f7]">Google Cloud Innovator</h3>
-                                <p class="text-[#f5c2e7] font-bold text-sm mb-3">Google for Developers | Dec 2025 - Present</p>
-                                <p class="text-[#a6adc8] font-medium">Stay connected with Google Cloud updates, expert sessions, and community insights to strengthen cloud skills.</p>
+                        <div class="relative group">
+                            <div class="absolute w-6 h-6 bg-[#89b4fa] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_rgba(203,166,247,0.5)] group-hover:shadow-[0_0_0_4px_#cba6f7] transition-all duration-300"></div>
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="text-xl font-black text-[#cdd6f4] group-hover:text-[#cba6f7] transition-colors">Google Cloud Innovator</h3>
+                                <p class="text-[#89b4fa] font-bold text-sm mb-4 tracking-wide uppercase mt-1">Google for Developers | Dec 2025 - Present</p>
+                                <p class="text-[#a6adc8] font-medium leading-relaxed">Stay connected with Google Cloud updates, expert sessions, and community insights to strengthen cloud skills.</p>
                             </div>
                         </div>
 
-                        <div class="relative">
-                            <div class="absolute w-6 h-6 bg-[#f5c2e7] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_#cba6f7]"></div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h3 class="text-xl font-black text-[#cba6f7]">Blockchain Risk Developer</h3>
-                                <p class="text-[#f5c2e7] font-bold text-sm mb-3">Zetheta Algorithms Private Limited | Jan 2026</p>
-                                <ul class="list-disc list-outside ml-5 text-[#a6adc8] font-medium space-y-1">
+                        <div class="relative group">
+                            <div class="absolute w-6 h-6 bg-[#f5c2e7] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_rgba(203,166,247,0.5)] group-hover:shadow-[0_0_0_4px_#cba6f7] transition-all duration-300"></div>
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="text-xl font-black text-[#cdd6f4] group-hover:text-[#cba6f7] transition-colors">Blockchain Risk Developer</h3>
+                                <p class="text-[#f5c2e7] font-bold text-sm mb-4 tracking-wide uppercase mt-1">Zetheta Algorithms Private Limited | Jan 2026</p>
+                                <ul class="list-disc list-outside ml-5 text-[#a6adc8] font-medium space-y-2 leading-relaxed">
                                     <li>Engineered a vulnerability scanner for Solidity contracts to detect critical flaws like Reentrancy and Access Control.</li>
                                     <li>Developed an algorithmic market-making engine using the Avellaneda-Stoikov model to optimize bid-ask spreads.</li>
                                 </ul>
                             </div>
                         </div>
                         
-                        <div class="relative">
-                            <div class="absolute w-6 h-6 bg-[#89b4fa] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_#cba6f7]"></div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h3 class="text-xl font-black text-[#cba6f7]">Open-Source Contributor</h3>
-                                <p class="text-[#f5c2e7] font-bold text-sm mb-3">GSSoc '25 | July 2025 - Sept 2025</p>
-                                <p class="text-[#a6adc8] font-medium">Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</p>
+                        <div class="relative group">
+                            <div class="absolute w-6 h-6 bg-[#89b4fa] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_rgba(203,166,247,0.5)] group-hover:shadow-[0_0_0_4px_#cba6f7] transition-all duration-300"></div>
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="text-xl font-black text-[#cdd6f4] group-hover:text-[#cba6f7] transition-colors">Open-Source Contributor</h3>
+                                <p class="text-[#89b4fa] font-bold text-sm mb-4 tracking-wide uppercase mt-1">GSSoc '25 | July 2025 - Sept 2025</p>
+                                <p class="text-[#a6adc8] font-medium leading-relaxed">Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</p>
                             </div>
                         </div>
 
-                        <div class="relative">
-                            <div class="absolute w-6 h-6 bg-[#f5c2e7] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_#cba6f7]"></div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h3 class="text-xl font-black text-[#cba6f7]">Web Development Intern</h3>
-                                <p class="text-[#f5c2e7] font-bold text-sm mb-3">CodSoft | Aug 2025</p>
-                                <p class="text-[#a6adc8] font-medium">Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</p>
+                        <div class="relative group">
+                            <div class="absolute w-6 h-6 bg-[#f5c2e7] rounded-full -left-[45px] top-1 border-4 border-[#1e1e2e] shadow-[0_0_0_3px_rgba(203,166,247,0.5)] group-hover:shadow-[0_0_0_4px_#cba6f7] transition-all duration-300"></div>
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="text-xl font-black text-[#cdd6f4] group-hover:text-[#cba6f7] transition-colors">Web Development Intern</h3>
+                                <p class="text-[#f5c2e7] font-bold text-sm mb-4 tracking-wide uppercase mt-1">CodSoft | Aug 2025</p>
+                                <p class="text-[#a6adc8] font-medium leading-relaxed">Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</p>
                             </div>
                         </div>
 
@@ -283,111 +350,111 @@
             </div>
         </section>
 
-        <section id="projects" class="py-24 fade-in-section bg-[#313244]/30 rounded-[3rem] mx-4 md:mx-10 my-10 border border-[#cba6f7]/20">
+        <section id="projects" class="py-24 fade-in-section bg-[#313244]/20 rounded-[3rem] mx-4 md:mx-10 my-10 border border-[#cba6f7]/20 shadow-xl backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-black tracking-wide"><span class="highlighted-header">My Projects</span></h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     
-                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#cba6f7]">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-black text-white">DeepfakeDetector</h3>
+                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#cba6f7] group">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-black text-white group-hover:text-[#cba6f7] transition-colors">DeepfakeDetector</h3>
                             <div class="flex gap-2">
-                                <a href="https://deepfake-detection-engine.vercel.app" target="_blank" class="text-xs font-bold bg-[#cba6f7] hover:bg-[#b48ead] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-wide transition-colors">Live Demo</a>
-                                <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" class="text-xs font-bold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-wide border border-[#cba6f7]/30 transition-colors">GitHub</a>
+                                <a href="https://deepfake-detection-engine.vercel.app" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#cba6f7] hover:bg-[#b48ead] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-widest hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(203,166,247,0.4)] transition-all duration-300">Demo</a>
+                                <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-widest border border-[#cba6f7]/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">GitHub</a>
                             </div>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-[#f5c2e7]/20 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">React</span>
-                            <span class="bg-[#89b4fa]/20 text-[#89b4fa] text-xs font-bold px-3 py-1 rounded-full">FastAPI</span>
-                            <span class="bg-[#cba6f7]/20 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">PyTorch</span>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-[#cba6f7]/10 border border-[#cba6f7]/30 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">React</span>
+                            <span class="bg-[#cba6f7]/10 border border-[#cba6f7]/30 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">FastAPI</span>
+                            <span class="bg-[#cba6f7]/10 border border-[#cba6f7]/30 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">PyTorch</span>
                         </div>
-                        <ul class="text-[#a6adc8] font-medium list-disc ml-4 space-y-2 text-sm flex-grow">
+                        <ul class="text-[#a6adc8] font-medium list-disc ml-5 space-y-3 text-sm flex-grow leading-relaxed">
                             <li>Engineered a frequency-domain AI engine using 2D FFT and ResNet-18 (~11.1M params) to identify synthetic fingerprints.</li>
                             <li>Achieved <1.8s end-to-end inference latency via distributed React/FastAPI/Docker stack.</li>
                         </ul>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#f5c2e7]">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-black text-white">Deweathering Engine</h3>
+                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#f5c2e7] group">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-black text-white group-hover:text-[#f5c2e7] transition-colors">Deweathering Engine</h3>
                             <div class="flex gap-2">
-                                <a href="https://deweathering-engine.vercel.app" target="_blank" class="text-xs font-bold bg-[#f5c2e7] hover:bg-[#e4adc8] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-wide transition-colors">Live Demo</a>
-                                <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" class="text-xs font-bold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-wide border border-[#f5c2e7]/30 transition-colors">GitHub</a>
+                                <a href="https://deweathering-engine.vercel.app" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#f5c2e7] hover:bg-[#e4adc8] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-widest hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(245,194,231,0.4)] transition-all duration-300">Demo</a>
+                                <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-widest border border-[#f5c2e7]/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">GitHub</a>
                             </div>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-[#89b4fa]/20 text-[#89b4fa] text-xs font-bold px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-[#cba6f7]/20 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">OpenCV</span>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-[#f5c2e7]/10 border border-[#f5c2e7]/30 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-[#f5c2e7]/10 border border-[#f5c2e7]/30 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">OpenCV</span>
                         </div>
-                        <ul class="text-[#a6adc8] font-medium list-disc ml-4 space-y-2 text-sm flex-grow">
+                        <ul class="text-[#a6adc8] font-medium list-disc ml-5 space-y-3 text-sm flex-grow leading-relaxed">
                             <li>Engineered a 2-tier full-stack app using Robust Principal Component Analysis (RPCA) to extract clean text from degraded documents.</li>
                             <li>Achieved full document restoration in under 2.5 seconds via optimized OpenCV operations.</li>
                         </ul>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#89b4fa]">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-black text-white">Customer Churn</h3>
+                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#89b4fa] group">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-black text-white group-hover:text-[#89b4fa] transition-colors">Customer Churn</h3>
                             <div class="flex gap-2">
-                                <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" class="text-xs font-bold bg-[#cba6f7] hover:bg-[#b48ead] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-wide transition-colors">Live Demo</a>
-                                <a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" class="text-xs font-bold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-wide border border-[#cba6f7]/30 transition-colors">GitHub</a>
+                                <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#89b4fa] hover:bg-[#7498d6] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-widest hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(137,180,250,0.4)] transition-all duration-300">Demo</a>
+                                <a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-widest border border-[#89b4fa]/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">GitHub</a>
                             </div>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-[#89b4fa]/20 text-[#89b4fa] text-xs font-bold px-3 py-1 rounded-full">Scikit-learn</span>
-                            <span class="bg-[#f5c2e7]/20 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">Streamlit</span>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-[#89b4fa]/10 border border-[#89b4fa]/30 text-[#89b4fa] text-xs font-bold px-3 py-1 rounded-full">Scikit-learn</span>
+                            <span class="bg-[#89b4fa]/10 border border-[#89b4fa]/30 text-[#89b4fa] text-xs font-bold px-3 py-1 rounded-full">Streamlit</span>
                         </div>
-                        <ul class="text-[#a6adc8] font-medium list-disc ml-4 space-y-2 text-sm flex-grow">
+                        <ul class="text-[#a6adc8] font-medium list-disc ml-5 space-y-3 text-sm flex-grow leading-relaxed">
                             <li>Developed an end-to-end machine learning model to predict customer churn, achieving a 67% recall rate and an AUC score of 0.82.</li>
                             <li>Built and deployed an interactive web application using Streamlit for real-time predictions.</li>
                         </ul>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#cba6f7]">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-black text-white">Digi-Pramaan</h3>
+                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#cba6f7] group">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-black text-white group-hover:text-[#cba6f7] transition-colors">Digi-Pramaan</h3>
                             <div class="flex gap-2">
-                                <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" class="text-xs font-bold bg-[#89b4fa] hover:bg-[#7498d6] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-wide transition-colors">Slides</a>
-                                <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" class="text-xs font-bold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-wide border border-[#89b4fa]/30 transition-colors">GitHub</a>
+                                <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#cba6f7] hover:bg-[#b48ead] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-widest hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(203,166,247,0.4)] transition-all duration-300">Slides</a>
+                                <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#313244] hover:bg-[#45475a] text-white py-2 px-4 rounded-full uppercase tracking-widest border border-[#cba6f7]/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">GitHub</a>
                             </div>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-[#f5c2e7]/20 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">Blockchain</span>
-                            <span class="bg-[#cba6f7]/20 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">MetaMask</span>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-[#cba6f7]/10 border border-[#cba6f7]/30 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">Blockchain</span>
+                            <span class="bg-[#cba6f7]/10 border border-[#cba6f7]/30 text-[#cba6f7] text-xs font-bold px-3 py-1 rounded-full">MetaMask</span>
                         </div>
-                        <ul class="text-[#a6adc8] font-medium list-disc ml-4 space-y-2 text-sm flex-grow">
+                        <ul class="text-[#a6adc8] font-medium list-disc ml-5 space-y-3 text-sm flex-grow leading-relaxed">
                             <li><strong class="text-white">SIH 2025 Semi-Finalist:</strong> A decentralized platform addressing academic fraud.</li>
                             <li>Combines OCR & Al for automated data extraction with the Ethereum Blockchain for immutable record-keeping.</li>
                         </ul>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#f5c2e7]">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-black text-white">CineHorizon</h3>
+                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#f5c2e7] group">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-black text-white group-hover:text-[#f5c2e7] transition-colors">CineHorizon</h3>
                             <div class="flex gap-2">
-                                <a href="https://anushkadas-coder.github.io/CineHorizon/" target="_blank" class="text-xs font-bold bg-[#cba6f7] hover:bg-[#b48ead] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-wide transition-colors">Live Demo</a>
+                                <a href="https://anushkadas-coder.github.io/CineHorizon/" target="_blank" class="text-[10px] sm:text-xs font-extrabold bg-[#f5c2e7] hover:bg-[#e4adc8] text-[#1e1e2e] py-2 px-4 rounded-full uppercase tracking-widest hover:-translate-y-1 hover:shadow-[0_4px_12px_rgba(245,194,231,0.4)] transition-all duration-300">Demo</a>
                             </div>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-[#89b4fa]/20 text-[#89b4fa] text-xs font-bold px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-[#f5c2e7]/20 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">REST API</span>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-[#f5c2e7]/10 border border-[#f5c2e7]/30 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-[#f5c2e7]/10 border border-[#f5c2e7]/30 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">REST API</span>
                         </div>
-                        <ul class="text-[#a6adc8] font-medium list-disc ml-4 space-y-2 text-sm flex-grow">
+                        <ul class="text-[#a6adc8] font-medium list-disc ml-5 space-y-3 text-sm flex-grow leading-relaxed">
                             <li>Developed a fully responsive movie discovery web application using vanilla JavaScript to create an intuitive UI.</li>
                             <li>Integrated the TMDB REST API to dynamically fetch and display real-time movie data.</li>
                         </ul>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#89b4fa]">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-black text-white">MABE Kaggle</h3>
+                    <div class="glass-card p-8 rounded-[2rem] flex flex-col border-b-4 border-[#89b4fa] group">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-black text-white group-hover:text-[#89b4fa] transition-colors">MABE Kaggle</h3>
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-[#f5c2e7]/20 text-[#f5c2e7] text-xs font-bold px-3 py-1 rounded-full">Machine Learning</span>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-[#89b4fa]/10 border border-[#89b4fa]/30 text-[#89b4fa] text-xs font-bold px-3 py-1 rounded-full">Machine Learning</span>
                         </div>
-                        <ul class="text-[#a6adc8] font-medium list-disc ml-4 space-y-2 text-sm flex-grow">
+                        <ul class="text-[#a6adc8] font-medium list-disc ml-5 space-y-3 text-sm flex-grow leading-relaxed">
                             <li>Developed advanced classification models for Social Action Recognition in Mice, utilizing predictive modeling and data science techniques.</li>
                         </ul>
                     </div>
@@ -401,45 +468,58 @@
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-black tracking-wide"><span class="highlighted-header">Certifications</span></h2>
                 </div>
-                <div class="max-w-4xl mx-auto glass-card p-10 rounded-[3rem] border-4 border-[#313244]">
-                    <ul class="space-y-5 text-center md:text-left grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 font-bold text-[#cdd6f4]">
-                        <li class="flex items-center gap-3"><span class="text-[#f5c2e7] text-xl">✦</span> Data Analytics Job Simulation - <span class="text-[#a6adc8] ml-1">Deloitte</span></li>
-                        <li class="flex items-center gap-3"><span class="text-[#cba6f7] text-xl">✦</span> Software Engineering Job Sim - <span class="text-[#a6adc8] ml-1">JPMorgan</span></li>
-                        <li class="flex items-center gap-3"><span class="text-[#89b4fa] text-xl">✦</span> Manage ML model with Azure - <span class="text-[#a6adc8] ml-1">Microsoft</span></li>
-                        <li class="flex items-center gap-3"><span class="text-[#f5c2e7] text-xl">✦</span> Data Science for ML - <span class="text-[#a6adc8] ml-1">Microsoft</span></li>
-                        <li class="flex items-center gap-3"><span class="text-[#cba6f7] text-xl">✦</span> Python for Data Science - <span class="text-[#a6adc8] ml-1">IBM</span></li>
-                        <li class="flex items-center gap-3"><span class="text-[#89b4fa] text-xl">✦</span> GenAI Data Analytics Job Sim - <span class="text-[#a6adc8] ml-1">Tata</span></li>
-                        <li class="flex items-center gap-3"><span class="text-[#f5c2e7] text-xl">✦</span> OCI 2025 Gen AI - <span class="text-[#a6adc8] ml-1">Oracle</span></li>
+                <div class="max-w-4xl mx-auto glass-card p-12 rounded-[3rem] shadow-2xl relative overflow-hidden border-2 border-[rgba(255,255,255,0.05)]">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-[#cba6f7] rounded-full mix-blend-multiply filter blur-[80px] opacity-20 -z-10"></div>
+                    <ul class="space-y-6 text-center md:text-left grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2 font-bold text-[#cdd6f4] text-lg">
+                        <li class="flex items-center gap-3 hover:text-white transition-colors"><span class="text-[#f5c2e7] text-2xl">✦</span> Data Analytics Sim - <span class="text-[#a6adc8] ml-1 font-semibold">Deloitte</span></li>
+                        <li class="flex items-center gap-3 hover:text-white transition-colors"><span class="text-[#cba6f7] text-2xl">✦</span> Software Eng Sim - <span class="text-[#a6adc8] ml-1 font-semibold">JPMorgan</span></li>
+                        <li class="flex items-center gap-3 hover:text-white transition-colors"><span class="text-[#89b4fa] text-2xl">✦</span> Manage ML w/ Azure - <span class="text-[#a6adc8] ml-1 font-semibold">Microsoft</span></li>
+                        <li class="flex items-center gap-3 hover:text-white transition-colors"><span class="text-[#f5c2e7] text-2xl">✦</span> Data Science for ML - <span class="text-[#a6adc8] ml-1 font-semibold">Microsoft</span></li>
+                        <li class="flex items-center gap-3 hover:text-white transition-colors"><span class="text-[#cba6f7] text-2xl">✦</span> Python for Data Sci - <span class="text-[#a6adc8] ml-1 font-semibold">IBM</span></li>
+                        <li class="flex items-center gap-3 hover:text-white transition-colors"><span class="text-[#89b4fa] text-2xl">✦</span> GenAI Data Analytics Sim - <span class="text-[#a6adc8] ml-1 font-semibold">Tata</span></li>
+                        <li class="flex items-center gap-3 hover:text-white transition-colors"><span class="text-[#f5c2e7] text-2xl">✦</span> OCI 2025 Gen AI - <span class="text-[#a6adc8] ml-1 font-semibold">Oracle</span></li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="honors" class="py-24 fade-in-section bg-[#313244]/30 rounded-[3rem] mx-4 md:mx-10 my-10 border border-[#cba6f7]/20 mb-20">
+        <section id="honors" class="py-24 fade-in-section bg-[#313244]/20 rounded-[3rem] mx-4 md:mx-10 my-10 border border-[#cba6f7]/20 mb-20 shadow-xl backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-black tracking-wide"><span class="highlighted-header">Honors & Awards</span></h2>
                 </div>
                 <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    <div class="glass-card p-8 rounded-[2rem] border-t-4 border-[#f5c2e7]">
-                        <h3 class="text-xl font-black text-white mb-3">HackerRank Achievements</h3>
-                        <p class="text-[#a6adc8] font-medium text-sm leading-relaxed">Gold Level (5 Star) in Python, Silver Level (3 Star) in Java.</p>
+                    <div class="glass-card p-10 rounded-[2rem] border-t-4 border-[#f5c2e7] group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="bg-[#f5c2e7]/20 text-[#f5c2e7] p-3 rounded-2xl group-hover:scale-110 transition-transform">✦</span>
+                            <h3 class="text-xl font-black text-white group-hover:text-[#f5c2e7] transition-colors">HackerRank Achievements</h3>
+                        </div>
+                        <p class="text-[#a6adc8] font-medium text-[15px] leading-relaxed ml-2">Gold Level (5 Star) in Python, Silver Level (3 Star) in Java.</p>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] border-t-4 border-[#cba6f7]">
-                        <h3 class="text-xl font-black text-white mb-3">SIH '25 Semi-Finalist</h3>
-                        <p class="text-[#a6adc8] font-medium text-sm leading-relaxed">Top Finalist out of 250+ competing teams in the college internal round for the Smart India Hackathon (SIH) 2025 with 'Digi-Pramaan'.</p>
+                    <div class="glass-card p-10 rounded-[2rem] border-t-4 border-[#cba6f7] group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="bg-[#cba6f7]/20 text-[#cba6f7] p-3 rounded-2xl group-hover:scale-110 transition-transform">✦</span>
+                            <h3 class="text-xl font-black text-white group-hover:text-[#cba6f7] transition-colors">SIH '25 Semi-Finalist</h3>
+                        </div>
+                        <p class="text-[#a6adc8] font-medium text-[15px] leading-relaxed ml-2">Top Finalist out of 250+ competing teams in the college internal round for the Smart India Hackathon (SIH) 2025 with 'Digi-Pramaan'.</p>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] border-t-4 border-[#89b4fa]">
-                        <h3 class="text-xl font-black text-white mb-3">Problem Solving Expert</h3>
-                        <p class="text-[#a6adc8] font-medium text-sm leading-relaxed">Solved 350+ problems on LeetCode and HackerRank, significantly improving algorithmic thinking and coding efficiency.</p>
+                    <div class="glass-card p-10 rounded-[2rem] border-t-4 border-[#89b4fa] group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="bg-[#89b4fa]/20 text-[#89b4fa] p-3 rounded-2xl group-hover:scale-110 transition-transform">✦</span>
+                            <h3 class="text-xl font-black text-white group-hover:text-[#89b4fa] transition-colors">Problem Solving Expert</h3>
+                        </div>
+                        <p class="text-[#a6adc8] font-medium text-[15px] leading-relaxed ml-2">Solved 350+ problems on LeetCode and HackerRank, significantly improving algorithmic thinking and coding efficiency.</p>
                     </div>
 
-                    <div class="glass-card p-8 rounded-[2rem] border-t-4 border-[#f5c2e7]">
-                        <h3 class="text-xl font-black text-white mb-3">Extracurricular Leadership</h3>
-                        <p class="text-[#a6adc8] font-medium text-sm leading-relaxed">Active member of Samaritans social club contributing to community initiatives. Regular participant in debate and quiz competitions.</p>
+                    <div class="glass-card p-10 rounded-[2rem] border-t-4 border-[#f5c2e7] group">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="bg-[#f5c2e7]/20 text-[#f5c2e7] p-3 rounded-2xl group-hover:scale-110 transition-transform">✦</span>
+                            <h3 class="text-xl font-black text-white group-hover:text-[#f5c2e7] transition-colors">Extracurricular Leadership</h3>
+                        </div>
+                        <p class="text-[#a6adc8] font-medium text-[15px] leading-relaxed ml-2">Active member of Samaritans social club contributing to community initiatives. Regular participant in debate and quiz competitions.</p>
                     </div>
 
                 </div>
@@ -448,8 +528,8 @@
 
     </main>
 
-    <footer class="bg-[#1e1e2e] py-10 border-t-4 border-[#313244] text-center">
-        <p class="text-[#a6adc8] font-bold text-sm">© 2026 Anushka Das. Designed with 🤍.</p>
+    <footer class="bg-[#1e1e2e]/80 backdrop-blur-md py-10 border-t border-[#cba6f7]/20 text-center">
+        <p class="text-[#a6adc8] font-bold text-sm tracking-wide">© 2026 Anushka Das. Designed with 🤍.</p>
     </footer>
 
     <script>
