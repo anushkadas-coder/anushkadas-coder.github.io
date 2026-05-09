@@ -290,29 +290,61 @@
                 <img src="https://api.iconify.design/pixelarticons/article.svg?color=%2310b981" class="w-8 h-8"> Research & Publications
             </h2>
             
-            <div class="border rounded-xl p-8 bouncy-hover flex flex-col h-full group">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
-                    <div class="flex gap-3 shrink-0 ml-4">
-                        <a href="Deepfake_FFT_Submission.pdf" target="_blank" class="text-[var(--text-muted)] transition-all hover:scale-110" title="Read Paper">
-                            <img src="https://api.iconify.design/pixelarticons/external-link.svg?color=%2310b981" class="w-6 h-6">
-                        </a>
-                    </div>
-                </div>
-                <div class="font-mono text-[11px] text-[var(--text-main)] flex flex-wrap gap-x-3 gap-y-2 uppercase tracking-wider mb-5">
-                    <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">2D FFT</span>
-                    <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">ResNet-18</span>
-                    <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">PyTorch</span>
-                    <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">Deepfake Detection</span>
-                </div>
-                <p class="text-sm text-[var(--text-muted)] font-light mb-4 leading-relaxed">
-                    A novel, lightweight deepfake detection engine that isolates synthetic fingerprints in the frequency domain. Employs a micro-blur preprocessing pipeline to suppress superficial high-frequency spatial noise, followed by a 2D Fast Fourier Transform (FFT) to extract underlying spectral magnitude maps.
-                </p>
-                <ul class="list-none space-y-3 text-sm text-[var(--text-muted)] font-light flex-grow">
-                    <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5"> <span>Achieved an accuracy of <strong class="text-[var(--text-main)] font-medium">99.12%</strong> on FaceForensics++ and <strong class="text-[var(--text-main)] font-medium">98.45%</strong> on Celeb-DF v2.</span></li>
-                    <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5"> <span>Outperforms comparable spatial baselines while maintaining real-time inference speeds of 45 FPS on edge devices.</span></li>
-                </ul>
+            <section id="research" class="fade-in mb-32">
+    <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
+        <img src="https://api.iconify.design/pixelarticons/article.svg?color=%2310b981" class="w-8 h-8"> Research & Publications
+    </h2>
+    
+    <!-- New Research Paper: Sovereign AI (First) -->
+    <div class="border rounded-xl p-8 bouncy-hover flex flex-col h-full group">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models</h3>
+            <div class="flex gap-3 shrink-0 ml-4">
+                <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" class="text-[var(--text-muted)] transition-all hover:scale-110" title="Read Paper">
+                    <img src="https://api.iconify.design/pixelarticons/external-link.svg?color=%2310b981" class="w-6 h-6">
+                </a>
             </div>
+        </div>
+        <div class="font-mono text-[11px] text-[var(--text-main)] flex flex-wrap gap-x-3 gap-y-2 uppercase tracking-wider mb-5">
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">QLoRA</span>
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">BitNet 1.58-bit</span>
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">Sovereign AI</span>
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">PEFT</span>
+        </div>
+        <p class="text-sm text-[var(--text-muted)] font-light mb-4 leading-relaxed">
+            A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NormalFloat (NF4) quantization, native 1.58-bit ternary architectures, and Low-Rank Adaptation (LoRA) for specialized domains.
+        </p>
+        <ul class="list-none space-y-3 text-sm text-[var(--text-muted)] font-light flex-grow">
+            <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5"> <span>Achieved a <strong class="text-[var(--text-main)] font-medium">93% reduction</strong> in inference OpEx for 7B–14B parameter models.</span></li>
+            <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5"> <span>Demonstrated a Total Cost of Ownership (TCO) break-even point at <strong class="text-[var(--text-main)] font-medium">450 million tokens</strong> processed compared to proprietary APIs.</span></li>
+        </ul>
+    </div>
+
+    <!-- Previous Research Paper: Deepfake FFT (Second) -->
+    <div class="border rounded-xl p-8 bouncy-hover flex flex-col h-full group mt-6">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
+            <div class="flex gap-3 shrink-0 ml-4">
+                <a href="Deepfake_FFT_Submission.pdf" target="_blank" class="text-[var(--text-muted)] transition-all hover:scale-110" title="Read Paper">
+                    <img src="https://api.iconify.design/pixelarticons/external-link.svg?color=%2310b981" class="w-6 h-6">
+                </a>
+            </div>
+        </div>
+        <div class="font-mono text-[11px] text-[var(--text-main)] flex flex-wrap gap-x-3 gap-y-2 uppercase tracking-wider mb-5">
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">2D FFT</span>
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">ResNet-18</span>
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">PyTorch</span>
+            <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded">Deepfake Detection</span>
+        </div>
+        <p class="text-sm text-[var(--text-muted)] font-light mb-4 leading-relaxed">
+            A novel, lightweight deepfake detection engine that isolates synthetic fingerprints in the frequency domain. Employs a micro-blur preprocessing pipeline to suppress superficial high-frequency spatial noise, followed by a 2D Fast Fourier Transform (FFT) to extract underlying spectral magnitude maps.
+        </p>
+        <ul class="list-none space-y-3 text-sm text-[var(--text-muted)] font-light flex-grow">
+            <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5"> <span>Achieved an accuracy of <strong class="text-[var(--text-main)] font-medium">99.12%</strong> on FaceForensics++ and <strong class="text-[var(--text-main)] font-medium">98.45%</strong> on Celeb-DF v2.</span></li>
+            <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5"> <span>Outperforms comparable spatial baselines while maintaining real-time inference speeds of 45 FPS on edge devices.</span></li>
+        </ul>
+    </div>
+</section>
         </section>
 
         <section class="fade-in flex justify-center mb-16 relative z-10">
