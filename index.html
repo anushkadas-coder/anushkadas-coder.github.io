@@ -1206,17 +1206,22 @@
                             speechBubble.style.opacity = '1';
                             speechBubble.style.transform = 'translateY(0)';
                             
-                            // AUTO-HIDE the bubble after 4.5 seconds so it doesn't block the screen
+                            // AUTO-HIDE the bubble after 5 seconds
                             bubbleTimeout = setTimeout(() => {
                                 speechBubble.style.opacity = '0';
                                 speechBubble.style.transform = 'translateY(10px)';
-                            }, 4500);
+                            }, 5000);
 
                         }, 300);
                     }
                 }
             });
-        }, { threshold: 0.01 }); 
+        }, { 
+            /* THE MAGIC FIX FOR MOBILE: 
+               This ignores how tall the section is, and simply triggers 
+               exactly when the section hits the middle of your screen! */
+            rootMargin: "-40% 0px -40% 0px" 
+        });
 
         // Attach observer to all main sections
         document.querySelectorAll('section[id]').forEach(section => aiObserver.observe(section));
