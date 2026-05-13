@@ -1216,7 +1216,7 @@
                     }
                 }
             });
-        }, { threshold: 0.15 }); // <--- CHANGED FROM 0.5 TO 0.15 FOR MOBILE
+        }, { threshold: 0.01 }); 
 
         // Attach observer to all main sections
         document.querySelectorAll('section[id]').forEach(section => aiObserver.observe(section));
