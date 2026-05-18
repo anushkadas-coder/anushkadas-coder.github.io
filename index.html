@@ -281,16 +281,13 @@
     <div class="tech-bg-elements"></div>
     <div class="ambient-glow"></div>
 
- <!-- AI Assistant Character -->
-    <div id="ai-assistant-container" class="fixed top-24 left-2 z-[60] flex flex-col items-start pointer-events-none group md:left-6">
+ <div id="ai-assistant-container" class="fixed top-24 left-2 z-[60] flex flex-col items-start pointer-events-none group md:left-6">
         
-        <!-- Speech Bubble -->
-        <div id="ai-speech" class="bg-[var(--bg-card)] border border-[var(--accent)] text-[var(--text-main)] p-2 md:p-3 rounded-2xl rounded-bl-none shadow-[0_0_15px_var(--accent-dim)] mb-2 max-w-[180px] md:max-w-[250px] text-[10px] md:text-xs font-mono opacity-0 translate-y-2 transition-all duration-300 pointer-events-auto leading-relaxed">
+        <div id="ai-speech" class="bg-[var(--bg-card)] border border-[var(--accent)] text-[var(--text-main)] p-2 md:p-3 rounded-2xl rounded-tl-none shadow-[0_0_15px_var(--accent-dim)] mb-2 max-w-[180px] md:max-w-[250px] text-[10px] md:text-xs font-mono opacity-0 translate-y-2 transition-all duration-300 pointer-events-auto leading-relaxed">
             Hi! I'm Anushka.
         </div>
         
-        <!-- THE IMAGE TAG -->
-        <img id="ai-character-img" src="https://media.tenor.com/_5-dHn2YWycAAAAi/cool-verycute.gif" alt="" class="w-20 h-20 md:w-32 md:h-40 lg:w-40 lg:h-40 object-contain drop-shadow-[0_0_10px_var(--accent-dim)] pointer-events-auto cursor-pointer hover:scale-110 transition-transform">
+        <img id="ai-character-img" src="https://media.tenor.com/_5-dHn2YWycAAAAi/cool-verycute.gif" alt="" class="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain drop-shadow-[0_0_10px_var(--accent-dim)] pointer-events-auto cursor-pointer hover:scale-110 transition-transform">
         
     </div>
 
@@ -310,11 +307,12 @@
         <div class="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse shrink-0 shadow-[0_0_8px_var(--accent)]"></div>
         <a href="#about" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">About</a>
         <a href="#research" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Research</a>
+        <a href="#projects" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Projects</a>
+        <a href="#experience" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Experience</a>
+        <a href="#skills" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Skills</a>
         <a href="#memberships" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Memberships</a>
         <a href="#education" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Education</a>
-        <a href="#skills" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Skills</a>
-        <a href="#experience" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Experience</a>
-        <a href="#projects" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Projects</a>
+        <a href="#achievements" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Achievements</a>
         <a href="#resume" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Resume</a>
         <a href="#contact" class="hover:text-[var(--text-main)] hover:scale-110 transition-all">Contact</a>
     </nav>
@@ -322,11 +320,12 @@
     <div id="mobile-menu" class="hidden md:hidden fixed top-[70px] left-0 right-0 z-40 px-6 pt-2 pb-6 space-y-4 bg-[#050505] border-b border-[#262626] font-bold text-xs uppercase tracking-widest text-[var(--text-muted)]">
         <a href="#about" class="block hover:text-white">About</a>
         <a href="#research" class="block hover:text-white">Research</a>
+        <a href="#projects" class="block hover:text-white">Projects</a>
+        <a href="#experience" class="block hover:text-white">Experience</a>
+        <a href="#skills" class="block hover:text-white">Skills</a>
         <a href="#memberships" class="block hover:text-white">Memberships</a>
         <a href="#education" class="block hover:text-white">Education</a>
-        <a href="#skills" class="block hover:text-white">Skills</a>
-        <a href="#experience" class="block hover:text-white">Experience</a>
-        <a href="#projects" class="block hover:text-white">Projects</a>
+        <a href="#achievements" class="block hover:text-white">Achievements</a>
         <a href="#resume" class="block hover:text-white">Resume</a>
         <a href="#contact" class="block hover:text-white">Contact</a>
     </div>
@@ -434,184 +433,6 @@
             </div>
         </section>
         
-        <section id="memberships" class="fade-in mb-32">
-            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
-                <img src="https://api.iconify.design/pixelarticons/users.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Memberships & Affiliations
-            </h2>
-
-            <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" class="block bouncy-hover border rounded-xl p-8 flex flex-col md:flex-row gap-6 items-center group cursor-pointer relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none"></div>
-                
-                <div class="w-16 h-16 rounded-full bg-[var(--accent-dim)] border border-[var(--accent)] flex items-center justify-center shrink-0 shadow-[0_0_15px_var(--accent-dim)] group-hover:scale-110 transition-transform z-10">
-                    <img src="https://api.iconify.design/pixelarticons/users.svg?color=%2310b981" class="w-8 h-8">
-                </div>
-                
-                <div class="text-center md:text-left w-full z-10">
-                    <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif mb-2">IEEE Robotics and Automation Technical Committee on Machine Learning for Automation</h3>
-                    <div class="font-mono text-[12px] text-[var(--accent)] uppercase tracking-wider mb-2">
-                        Member
-                    </div>
-                </div>
-            </a>
-        </section>
-        
-        <section id="education" class="fade-in mb-32">
-            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
-                <img src="https://api.iconify.design/pixelarticons/book-open.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Education
-            </h2>
-            
-            <div class="bouncy-hover rounded-xl p-8 border cursor-default">
-                <div class="flex flex-col md:flex-row gap-4 group">
-                    <div class="md:w-1/4 shrink-0 mt-1">
-                        <span class="text-sm font-mono text-[var(--text-muted)] font-bold">2023 - 2027</span>
-                    </div>
-                    <div class="md:w-3/4">
-                        <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Techno Main Saltlake</h3>
-                        <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Bachelor of Technology</p>
-                        <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
-                            <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Computer Sciences and Information Technologies</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="skills" class="fade-in mb-32">
-            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
-                <img src="https://api.iconify.design/pixelarticons/sliders.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Technical Arsenal
-            </h2>
-            
-            <div class="bouncy-hover rounded-xl p-8 border cursor-default">
-                
-                <div class="mb-8">
-                    <h3 class="text-sm text-[var(--accent)] font-mono mb-4 uppercase tracking-widest font-bold text-shadow-[0_0_5px_var(--accent-dim)]">Languages</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Python</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Java</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">C++</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">SQL</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">JavaScript</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">HTML5</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">CSS3</span>
-                    </div>
-                </div>
-
-                <div class="mb-8">
-                    <h3 class="text-sm text-[var(--accent)] font-mono mb-4 uppercase tracking-widest font-bold text-shadow-[0_0_5px_var(--accent-dim)]">Libraries & Frameworks</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Scikit-learn</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Pandas</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">NumPy</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">XGBoost</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Flask</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">React</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">OpenAI</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-sm text-[var(--accent)] font-mono mb-4 uppercase tracking-widest font-bold text-shadow-[0_0_5px_var(--accent-dim)]">Tools & Platforms</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Amazon AWS</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Streamlit</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Git</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Jupyter</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Power BI</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Windows</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">VS Code</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Google Docs</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Excel</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Tally</span>
-                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">VHDL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="fade-in mb-32">
-            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
-                <img src="https://api.iconify.design/pixelarticons/briefcase.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Experience
-            </h2>
-            
-            <div class="space-y-6">
-                <div class="bouncy-hover rounded-xl p-8 border">
-                    <div class="flex flex-col md:flex-row gap-4 group">
-                        <div class="md:w-1/4 shrink-0 mt-1">
-                            <span class="text-sm font-mono text-[var(--text-muted)]">Jan 2025 - Present</span>
-                        </div>
-                        <div class="md:w-3/4">
-                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Member of Google's Women Techmakers</h3>
-                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Google | Remote</p>
-                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
-                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Engage in global community supporting women in tech through events, learning resources, and networking.</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bouncy-hover rounded-xl p-8 border">
-                    <div class="flex flex-col md:flex-row gap-4 group">
-                        <div class="md:w-1/4 shrink-0 mt-1">
-                            <span class="text-sm font-mono text-[var(--text-muted)]">Dec 2025 - Present</span>
-                        </div>
-                        <div class="md:w-3/4">
-                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Google Cloud Innovator</h3>
-                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Google for Developers | Remote</p>
-                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
-                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Stay connected with Google Cloud updates, expert sessions, and community insights to strengthen cloud skills.</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bouncy-hover rounded-xl p-8 border">
-                    <div class="flex flex-col md:flex-row gap-4 group">
-                        <div class="md:w-1/4 shrink-0 mt-1">
-                            <span class="text-sm font-mono text-[var(--text-muted)]">Jan 2026 - 1 month</span>
-                        </div>
-                        <div class="md:w-3/4">
-                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Blockchain Risk Developer</h3>
-                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Zetheta Algorithms Private Limited | Remote</p>
-                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
-                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Engineered a vulnerability scanner for Solidity contracts to detect critical flaws like Reentrancy and Access Control.</span></li>
-                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Developed an algorithmic market-making engine using the Avellaneda-Stoikov model to optimize bid-ask spreads and manage inventory risk.</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bouncy-hover rounded-xl p-8 border">
-                    <div class="flex flex-col md:flex-row gap-4 group">
-                        <div class="md:w-1/4 shrink-0 mt-1">
-                            <span class="text-sm font-mono text-[var(--text-muted)]">July 2025 - Sept 2025</span>
-                        </div>
-                        <div class="md:w-3/4">
-                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Open-Source Contributor</h3>
-                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">GSSoc '25 | Remote</p>
-                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
-                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bouncy-hover rounded-xl p-8 border">
-                    <div class="flex flex-col md:flex-row gap-4 group">
-                        <div class="md:w-1/4 shrink-0 mt-1">
-                            <span class="text-sm font-mono text-[var(--text-muted)]">Aug 2025 - 1 month</span>
-                        </div>
-                        <div class="md:w-3/4">
-                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Web Development Intern</h3>
-                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">CodSoft | Remote</p>
-                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
-                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="projects" class="fade-in mb-32">
             <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
                 <img src="https://api.iconify.design/pixelarticons/folder.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Some of My Projects
@@ -879,51 +700,6 @@
 
                 <div class="border rounded-xl p-8 bouncy-hover flex flex-col h-full group">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif">Autonomous Plant Maintenance Agent</h3>
-                        <div class="flex gap-3">
-                            <a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="text-[var(--text-muted)] transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_var(--accent)]" title="GitHub Repo">
-                                <img src="https://api.iconify.design/pixelarticons/code.svg?color=%2310b981" class="w-6 h-6">
-                            </a>
-                            <a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="text-[var(--text-muted)] transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_var(--accent)]" title="Live Demo">
-                                <img src="https://api.iconify.design/pixelarticons/external-link.svg?color=%2310b981" class="w-6 h-6">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="font-mono text-[11px] text-[var(--text-main)] flex flex-wrap gap-x-3 gap-y-2 uppercase tracking-wider mb-5">
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">LangChain</span>
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">FastAPI</span>
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">React</span>
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">Full-Stack AI</span>
-                    </div>
-                    <ul class="list-none space-y-3 text-sm text-[var(--text-muted)] font-light flex-grow">
-                        <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Architected a full-stack AI application connecting a React frontend with a highly concurrent FastAPI backend to manage and monitor autonomous tasks.</span></li>
-                        <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Engineered agentic logic using LangChain, allowing the underlying Large Language Model to make autonomous decisions based on environmental data.</span></li>
-                    </ul>
-                </div>
-
-                <div class="border rounded-xl p-8 bouncy-hover flex flex-col h-full group">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif">Cloud-Native GPU Deployment Engine</h3>
-                        <div class="flex gap-3">
-                            <a href="https://github.com/anushkadas-coder/modal_test" target="_blank" class="text-[var(--text-muted)] transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_var(--accent)]" title="GitHub Repo">
-                                <img src="https://api.iconify.design/pixelarticons/code.svg?color=%2310b981" class="w-6 h-6">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="font-mono text-[11px] text-[var(--text-main)] flex flex-wrap gap-x-3 gap-y-2 uppercase tracking-wider mb-5">
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">Python</span>
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">Modal</span>
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">Hugging Face</span>
-                        <span class="bg-[var(--accent-dim)] border border-[var(--accent)] px-2 py-1 rounded transition-colors group-hover:border-[var(--accent)]">MLOps</span>
-                    </div>
-                    <ul class="list-none space-y-3 text-sm text-[var(--text-muted)] font-light flex-grow">
-                        <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Developed a scalable, cloud-native data filtering pipeline utilizing Modal for on-demand, serverless GPU execution.</span></li>
-                        <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Implemented large-scale batch inference via Hugging Face models to automatically process and classify captions across the 600-million image LAION-COCO dataset.</span></li>
-                    </ul>
-                </div>
-
-                <div class="border rounded-xl p-8 bouncy-hover flex flex-col h-full group">
-                    <div class="flex justify-between items-start mb-4">
                         <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif">Peonia: Generative 3D Animation</h3>
                         <div class="flex gap-3">
                             <a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" class="text-[var(--text-muted)] transition-all hover:scale-110 hover:drop-shadow-[0_0_8px_var(--accent)]" title="GitHub Repo">
@@ -975,7 +751,7 @@
             </div>
         </section>
 
-             <section class="fade-in flex justify-center mb-16 relative z-10">
+        <section class="fade-in flex justify-center mb-16 relative z-10">
             <div class="float-anim">
                 <div class="relative overflow-hidden rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] p-2 shadow-2xl bouncy-hover cursor-default">
                     <img src="https://cdnb.artstation.com/p/assets/images/images/036/125/405/original/igor-freitas-mesa.gif?1616779562" width="300px" alt="Coder" class="rounded-lg opacity-90" />
@@ -983,6 +759,183 @@
             </div>
         </section>
 
+        <section id="experience" class="fade-in mb-32">
+            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
+                <img src="https://api.iconify.design/pixelarticons/briefcase.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Experience
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bouncy-hover rounded-xl p-8 border">
+                    <div class="flex flex-col md:flex-row gap-4 group">
+                        <div class="md:w-1/4 shrink-0 mt-1">
+                            <span class="text-sm font-mono text-[var(--text-muted)]">Jan 2025 - Present</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Member of Google's Women Techmakers</h3>
+                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Google | Remote</p>
+                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
+                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Engage in global community supporting women in tech through events, learning resources, and networking.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bouncy-hover rounded-xl p-8 border">
+                    <div class="flex flex-col md:flex-row gap-4 group">
+                        <div class="md:w-1/4 shrink-0 mt-1">
+                            <span class="text-sm font-mono text-[var(--text-muted)]">Dec 2025 - Present</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Google Cloud Innovator</h3>
+                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Google for Developers | Remote</p>
+                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
+                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Stay connected with Google Cloud updates, expert sessions, and community insights to strengthen cloud skills.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bouncy-hover rounded-xl p-8 border">
+                    <div class="flex flex-col md:flex-row gap-4 group">
+                        <div class="md:w-1/4 shrink-0 mt-1">
+                            <span class="text-sm font-mono text-[var(--text-muted)]">Jan 2026 - 1 month</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Blockchain Risk Developer</h3>
+                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Zetheta Algorithms Private Limited | Remote</p>
+                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
+                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Engineered a vulnerability scanner for Solidity contracts to detect critical flaws like Reentrancy and Access Control.</span></li>
+                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Developed an algorithmic market-making engine using the Avellaneda-Stoikov model to optimize bid-ask spreads and manage inventory risk.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bouncy-hover rounded-xl p-8 border">
+                    <div class="flex flex-col md:flex-row gap-4 group">
+                        <div class="md:w-1/4 shrink-0 mt-1">
+                            <span class="text-sm font-mono text-[var(--text-muted)]">July 2025 - Sept 2025</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Open-Source Contributor</h3>
+                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">GSSoc '25 | Remote</p>
+                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
+                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bouncy-hover rounded-xl p-8 border">
+                    <div class="flex flex-col md:flex-row gap-4 group">
+                        <div class="md:w-1/4 shrink-0 mt-1">
+                            <span class="text-sm font-mono text-[var(--text-muted)]">Aug 2025 - 1 month</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Web Development Intern</h3>
+                            <p class="text-sm text-[var(--text-muted)] font-medium mb-3">CodSoft | Remote</p>
+                            <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
+                                <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="fade-in mb-32">
+            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
+                <img src="https://api.iconify.design/pixelarticons/sliders.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Technical Arsenal
+            </h2>
+            
+            <div class="bouncy-hover rounded-xl p-8 border cursor-default">
+                
+                <div class="mb-8">
+                    <h3 class="text-sm text-[var(--accent)] font-mono mb-4 uppercase tracking-widest font-bold text-shadow-[0_0_5px_var(--accent-dim)]">Languages</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Python</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Java</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">C++</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">SQL</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">JavaScript</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">HTML5</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">CSS3</span>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-sm text-[var(--accent)] font-mono mb-4 uppercase tracking-widest font-bold text-shadow-[0_0_5px_var(--accent-dim)]">Libraries & Frameworks</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Scikit-learn</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Pandas</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">NumPy</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">XGBoost</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Flask</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">React</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">OpenAI</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm text-[var(--accent)] font-mono mb-4 uppercase tracking-widest font-bold text-shadow-[0_0_5px_var(--accent-dim)]">Tools & Platforms</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Amazon AWS</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Streamlit</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Git</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Jupyter</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Power BI</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Windows</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">VS Code</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Google Docs</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Excel</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">Tally</span>
+                        <span class="px-4 py-2 rounded border border-[var(--border-color)] bg-[var(--bg-surface)] text-sm hover:border-[var(--accent)] hover:shadow-[0_0_10px_var(--accent-dim)] transition-all">VHDL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="memberships" class="fade-in mb-32">
+            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
+                <img src="https://api.iconify.design/pixelarticons/users.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Memberships & Affiliations
+            </h2>
+
+            <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" class="block bouncy-hover border rounded-xl p-8 flex flex-col md:flex-row gap-6 items-center group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[60px] opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none"></div>
+                
+                <div class="w-16 h-16 rounded-full bg-[var(--accent-dim)] border border-[var(--accent)] flex items-center justify-center shrink-0 shadow-[0_0_15px_var(--accent-dim)] group-hover:scale-110 transition-transform z-10">
+                    <img src="https://api.iconify.design/pixelarticons/users.svg?color=%2310b981" class="w-8 h-8">
+                </div>
+                
+                <div class="text-center md:text-left w-full z-10">
+                    <h3 class="text-[var(--text-main)] font-bold text-xl group-hover:text-[var(--accent)] transition-colors font-serif mb-2">IEEE Robotics and Automation Technical Committee on Machine Learning for Automation</h3>
+                    <div class="font-mono text-[12px] text-[var(--accent)] uppercase tracking-wider mb-2">
+                        Member
+                    </div>
+                </div>
+            </a>
+        </section>
+        
+        <section id="education" class="fade-in mb-32">
+            <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
+                <img src="https://api.iconify.design/pixelarticons/book-open.svg?color=%2310b981" class="w-8 h-8 drop-shadow-[0_0_5px_var(--accent)]"> Education
+            </h2>
+            
+            <div class="bouncy-hover rounded-xl p-8 border cursor-default">
+                <div class="flex flex-col md:flex-row gap-4 group">
+                    <div class="md:w-1/4 shrink-0 mt-1">
+                        <span class="text-sm font-mono text-[var(--text-muted)] font-bold">2023 - 2027</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-lg font-bold text-[var(--text-main)] group-hover:text-[var(--accent)] transition-colors font-serif">Techno Main Saltlake</h3>
+                        <p class="text-sm text-[var(--text-muted)] font-medium mb-3">Bachelor of Technology</p>
+                        <ul class="list-none space-y-2 text-sm text-[var(--text-muted)] font-light">
+                            <li class="flex items-start gap-2"><img src="https://api.iconify.design/pixelarticons/chevron-right.svg?color=%2310b981" class="w-5 h-5 shrink-0 mt-0.5 drop-shadow-[0_0_3px_var(--accent)]"> <span>Computer Sciences and Information Technologies</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="achievements" class="fade-in mb-32">
             <h2 class="text-2xl font-serif font-bold text-[var(--text-main)] mb-10 section-title flex items-center gap-3">
@@ -1129,7 +1082,7 @@
                     entry.target.classList.add('is-visible');
                 }
             });
-        }, { threshold: 0.01 }); // Triggers when 10% of the element is visible
+        }, { threshold: 0.01 }); // Triggers when 1% of the element is visible
         sections.forEach(section => observer.observe(section));
 
         // --- 3. Terminal Typing Effect Engine (Used in the Hero section) ---
@@ -1222,13 +1175,13 @@
         let bubbleTimeout; // Timer variable
         
         const assistantMessages = {
-            'about': "Hi! I’m Anushka, a member of Google's women techmakers and IEEE RAS MLA, passionate about AIML with research interests in intelligent systems, along with experience in ML/DL and Web Dev.",
+            'about': "Hi! I’m Anushka, an IT undergrad and member of Google women techmakers and IEEE RAS MLA, passionate about AIML with research interests in intelligent systems, along with experience in ML/DL and Web Dev.",
             'research': "My 2 research papers focus on Sovereign AI paradigms and Deepfake Detection using frequency-domain analysis.",
+            'projects': "Check out my projects! I've built AI inference engines, 3D simulations, and decentralized stuff.",
+            'experience': "I've worked as a Blockchain Risk Developer and an Open-Source Contributor for GSSoc '25, and a Web Developer.",
+            'skills': "I love building things using Python, React, FastAPI, and Machine Learning frameworks and AIML stuff.",
             'memberships': "I'm a member of Google's Women Techmakers and the IEEE Robotics & Automation Committee.",
             'education': "I'm an IT undergrad student at Techno Main Saltlake(2023-2027).",
-            'skills': "I love building things using Python, React, FastAPI, and Machine Learning frameworks and AIML stuff.",
-            'experience': "I've worked as a Blockchain Risk Developer and an Open-Source Contributor for GSSoc '25, and a Web Developer.",
-            'projects': "Check out my projects! I've built AI inference engines, 3D simulations, and decentralized stuff.",
             'achievements': "I'm a 5-Star coder on HackerRank and a Smart India Hackathon '25 Semi-Finalist!",
             'resume': "Want the full details? Feel free to download my complete resume here.",
             'contact': "Let's connect! I'm always open to discussing ML research and new opportunities."
@@ -1264,7 +1217,7 @@
         }, { 
             /* THE MAGIC FIX FOR MOBILE: 
                This ignores how tall the section is, and simply triggers 
-               exactly when the section hits the middle of your screen! */
+               exactly when the section hits the top 20% of your screen! */
             rootMargin: "-10% 0px -80% 0px"
         });
 
@@ -1292,16 +1245,16 @@
 
         // <--- ADDED MOBILE TAP EVENT --->
         // Phones don't have "hover", so we trigger the text when tapped
-        aiCharacter.addEventListener('touchstart', (e) => {
+        aiCharacter.addEventListener('click', (e) => {
             e.preventDefault(); // Prevents touch from acting weirdly
             showBubble();
             
-            // Automatically hide it again after 4 seconds
+            // Automatically hide it again after 5 seconds
             setTimeout(() => {
                 speechBubble.style.opacity = '0';
                 speechBubble.style.transform = 'translateY(10px)';
-            }, 10000);
-        }, { passive: false });
+            }, 5000);
+        });
 
     </script>
 </body>
