@@ -1,4 +1,3 @@
-cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -34,7 +33,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
             --gold: #D4AF37;
             --gold-dim: rgba(212,175,55,0.15);
             --gold-border: rgba(212,175,55,0.4);
-            --panel-bg: rgba(16,16,16,0.98);
             --text-body: #d8d8d8;
             --text-muted: #9a9a9a;
         }
@@ -88,7 +86,7 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.86);
+            background: rgba(0,0,0,0.9);
             z-index: 0;
         }
 
@@ -103,20 +101,16 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
         #resume      { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); }
         #contact     { background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop'); }
 
-        /* ===== PANELS ===== */h
+        /* ===== PANELS ===== */
         .content-panel {
             position: relative;
             z-index: 10;
-            background: var(--panel-bg);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+            background: transparent; /* No background */
+            border: none;            /* No border/outline */
+            transition: transform 0.3s ease;
         }
         .content-panel:hover {
-            border-color: var(--gold-border);
-            transform: translateY(-5px);
-            box-shadow: 0 16px 48px rgba(0,0,0,0.85), 0 0 0 1px rgba(212,175,55,0.1);
+            transform: translateY(-5px); /* Keeps the neat float effect */
         }
 
         /* ===== SECTION HEADING ===== */
@@ -200,7 +194,7 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
             border-radius: 4px; padding: 4px 9px; background: #1c1c1c;
         }
 
-        /* ===== FADE IN ===== */
+        /* ===== FADE IN (Basic Upward Reveal) ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(24px);
@@ -208,29 +202,42 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
         }
         .fade-in.is-visible { opacity: 1; transform: translateY(0); }
 
-        /* Stagger children inside a grid */
-        .stagger-grid > * { transition-delay: 0s; }
-        .stagger-grid.is-visible > *:nth-child(1)  { transition-delay: 0.05s; }
-        .stagger-grid.is-visible > *:nth-child(2)  { transition-delay: 0.10s; }
-        .stagger-grid.is-visible > *:nth-child(3)  { transition-delay: 0.15s; }
-        .stagger-grid.is-visible > *:nth-child(4)  { transition-delay: 0.20s; }
-        .stagger-grid.is-visible > *:nth-child(5)  { transition-delay: 0.25s; }
-        .stagger-grid.is-visible > *:nth-child(6)  { transition-delay: 0.30s; }
-        .stagger-grid.is-visible > *:nth-child(7)  { transition-delay: 0.35s; }
-        .stagger-grid.is-visible > *:nth-child(8)  { transition-delay: 0.40s; }
-        .stagger-grid.is-visible > *:nth-child(9)  { transition-delay: 0.45s; }
-        .stagger-grid.is-visible > *:nth-child(10) { transition-delay: 0.50s; }
-        .stagger-grid.is-visible > *:nth-child(11) { transition-delay: 0.55s; }
-        .stagger-grid.is-visible > *:nth-child(12) { transition-delay: 0.60s; }
-        .stagger-grid.is-visible > *:nth-child(13) { transition-delay: 0.65s; }
-
-        /* Each card in a stagger grid starts hidden and reveals */
-        .stagger-grid > * {
+        /* ===== SLIDE IN FROM SIDES (Assembly Animation) ===== */
+        .slide-in-container > * {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94);
         }
-        .stagger-grid.is-visible > * { opacity: 1; transform: translateY(0); }
+        
+        /* Odd children slide from Left */
+        .slide-in-container > *:nth-child(odd) {
+            transform: translate(-80px, 15px);
+        }
+        /* Even children slide from Right */
+        .slide-in-container > *:nth-child(even) {
+            transform: translate(80px, 15px);
+        }
+        
+        /* Triggered Visible State */
+        .slide-in-container.is-visible > * {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* Stagger Delays */
+        .slide-in-container > * { transition-delay: 0s; }
+        .slide-in-container.is-visible > *:nth-child(1)  { transition-delay: 0.05s; }
+        .slide-in-container.is-visible > *:nth-child(2)  { transition-delay: 0.10s; }
+        .slide-in-container.is-visible > *:nth-child(3)  { transition-delay: 0.15s; }
+        .slide-in-container.is-visible > *:nth-child(4)  { transition-delay: 0.20s; }
+        .slide-in-container.is-visible > *:nth-child(5)  { transition-delay: 0.25s; }
+        .slide-in-container.is-visible > *:nth-child(6)  { transition-delay: 0.30s; }
+        .slide-in-container.is-visible > *:nth-child(7)  { transition-delay: 0.35s; }
+        .slide-in-container.is-visible > *:nth-child(8)  { transition-delay: 0.40s; }
+        .slide-in-container.is-visible > *:nth-child(9)  { transition-delay: 0.45s; }
+        .slide-in-container.is-visible > *:nth-child(10) { transition-delay: 0.50s; }
+        .slide-in-container.is-visible > *:nth-child(11) { transition-delay: 0.55s; }
+        .slide-in-container.is-visible > *:nth-child(12) { transition-delay: 0.60s; }
+        .slide-in-container.is-visible > *:nth-child(13) { transition-delay: 0.65s; }
 
         /* ===== TYPING CURSOR ===== */
         .typing-cursor {
@@ -321,7 +328,7 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
         #back-to-top:hover { background: #e8c84a; transform: translateY(-3px); }
         #back-to-top svg { width: 18px; height: 18px; fill: #000; }
 
-        /* ===== BUTTON STATES (CSS-only — no inline onmouseover) ===== */
+        /* ===== BUTTON STATES ===== */
         .btn-gold {
             display: inline-flex; align-items: center; gap: 0.75rem;
             background: var(--gold); color: #000;
@@ -372,7 +379,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 </head>
 <body class="antialiased">
 
-<!-- ==================== HEADER ==================== -->
 <header id="site-header" class="fixed top-0 left-0 w-full z-50 border-b border-white/8 transition-all duration-300" style="background:rgba(5,5,5,0.97); backdrop-filter: blur(16px);">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
         <div class="flex items-center justify-between h-16">
@@ -380,7 +386,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                 ANUSHKA <span style="color:var(--gold)" class="font-semibold">DAS</span>
             </a>
 
-            <!-- Desktop Nav -->
             <nav id="desktop-nav" class="hidden md:flex gap-5 text-[10px] font-semibold tracking-widest text-gray-400 items-center h-full ml-4">
                 <a href="#about"        class="nav-link" data-section="about">ABOUT</a>
                 <a href="#research"     class="nav-link" data-section="research">RESEARCH</a>
@@ -394,7 +399,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                 <a href="#contact"      class="nav-link" data-section="contact">CONTACT</a>
             </nav>
 
-            <!-- Hamburger (mobile) -->
             <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 z-50" aria-label="Toggle menu">
                 <span class="ham-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
                 <span class="ham-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
@@ -404,7 +408,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     </div>
 </header>
 
-<!-- Mobile Menu -->
 <div id="mobile-menu">
     <a href="#about"        onclick="closeMobileMenu()">ABOUT</a>
     <a href="#research"     onclick="closeMobileMenu()">RESEARCH</a>
@@ -418,14 +421,12 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     <a href="#contact"      onclick="closeMobileMenu()">CONTACT</a>
 </div>
 
-<!-- Back to Top -->
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
     <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
 </button>
 
 <main>
 
-<!-- ==================== ABOUT ==================== -->
 <section id="about" class="cinematic-section">
     <div class="z-10 flex flex-col items-center text-center w-full max-w-4xl mx-auto mt-10 fade-in">
 
@@ -433,7 +434,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
             <span id="typing-text"></span><span class="typing-cursor"></span>
         </h1>
 
-        <!-- Social Icons -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
             <a href="mailto:anushkadas05das@gmail.com" title="Email" class="social-btn w-12 h-12 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all">
                 <img src="https://api.iconify.design/ri/mail-send-line.svg?color=white" class="w-5 h-5" alt="Email">
@@ -468,7 +468,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     </div>
 </section>
 
-<!-- ==================== RESEARCH ==================== -->
 <section id="research" class="cinematic-section auto-height-section">
     <h2 class="section-heading">Research & Publications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Advancing Intelligent Systems</span></div>
@@ -491,7 +490,7 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     <span class="tech-tag-lg">PEFT</span>
                 </div>
                 <p class="body-text text-sm mb-6">A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NormalFloat (NF4) quantization, native 1.58-bit ternary architectures, and Low-Rank Adaptation (LoRA) for specialized domains.</p>
-                <ul class="space-y-3 mt-auto">
+                <ul class="space-y-3">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Achieved a <strong class="text-white">93% reduction</strong> in inference OpEx for 7B–14B parameter models.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Demonstrated a TCO break-even at <strong class="text-white">450 million tokens</strong> vs. proprietary APIs.</span></li>
                 </ul>
@@ -511,7 +510,7 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     <span class="tech-tag-lg">DEEPFAKE DETECTION</span>
                 </div>
                 <p class="body-text text-sm mb-6">A novel, lightweight deepfake detection engine that isolates synthetic fingerprints in the frequency domain. Employs a micro-blur preprocessing pipeline to suppress superficial high-frequency spatial noise, followed by a 2D FFT to extract underlying spectral magnitude maps.</p>
-                <ul class="space-y-3 mt-auto">
+                <ul class="space-y-3">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Achieved <strong class="text-white">99.12%</strong> accuracy on FaceForensics++ and <strong class="text-white">98.45%</strong> on Celeb-DF v2.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Outperforms spatial baselines at <strong class="text-white">45 FPS</strong> real-time inference on edge devices.</span></li>
                 </ul>
@@ -521,16 +520,14 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     </div>
 </section>
 
-<!-- ==================== PROJECTS ==================== -->
 <section id="projects" class="cinematic-section">
     <h2 class="section-heading mt-10">Some of My Projects</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Deployed Engineering Solutions</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-grid fade-in">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 slide-in-container">
 
-            <!-- 1 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DeepfakeDetector: Frequency-Based AI Inference Engine</h3>
@@ -540,14 +537,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">REACT</span><span class="tech-tag">FASTAPI</span><span class="tech-tag">PYTORCH</span><span class="tech-tag">2D FFT</span><span class="tech-tag">RESNET-18</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Frequency-domain AI engine using 2D FFT and ResNet-18 to identify synthetic fingerprints invisible to standard spatial-only CNNs.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Achieved &lt;1.8s end-to-end inference latency via distributed React/FastAPI/Docker stack.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Integrated 3×3 Gaussian Micro-blur filter to neutralize sensor noise.</span></li>
                 </ul>
             </div>
 
-            <!-- 2 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Federated Fresh: Hybrid AI Orchestration Terminal</h3>
@@ -557,14 +553,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">FASTAPI</span><span class="tech-tag">GEMINI 2.5</span><span class="tech-tag">CHROMADB</span><span class="tech-tag">DUCKDUCKGO API</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Hybrid AI routing engine orchestrating local ChromaDB retrieval, live web-search, and direct LLM inference.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Reduced local memory overhead by <strong class="text-white">75%</strong> by offloading embeddings to the cloud.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Asynchronous RAG pipeline using FastAPI BackgroundTasks for zero-lag UI.</span></li>
                 </ul>
             </div>
 
-            <!-- 3 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Deep RL Double Q-Network for Atari</h3>
@@ -573,13 +568,12 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">DEEP RL</span><span class="tech-tag">CNN</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>DDQN agent mastering Atari Space Invaders directly from raw pixel input.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>CNN pipeline extracting complex spatial features from raw emulator frames.</span></li>
                 </ul>
             </div>
 
-            <!-- 4 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">iNaturalist Clumper: Geospatial Data Engineering</h3>
@@ -588,14 +582,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">DATA ENGINEERING</span><span class="tech-tag">SPATIAL ALGORITHMS</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Python CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Incremental sync engine tracking state via timestamps, reducing API latency.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Dynamic cluster merging logic for overlapping observation windows.</span></li>
                 </ul>
             </div>
 
-            <!-- 5 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Deweathering Engine</h3>
@@ -605,14 +598,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">REACT</span><span class="tech-tag">FASTAPI</span><span class="tech-tag">OPENCV</span><span class="tech-tag">RPCA</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Full-stack React + FastAPI app using Robust PCA to extract clean text from degraded documents.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span><strong class="text-white">95%</strong> automated parameter tuning via custom Adaptive Regularization heuristic.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Full document restoration in under <strong class="text-white">2.5 seconds</strong>.</span></li>
                 </ul>
             </div>
 
-            <!-- 6 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DCO6: Polyphonic VST3 Synthesizer</h3>
@@ -621,14 +613,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">C++</span><span class="tech-tag">JUCE FRAMEWORK</span><span class="tech-tag">AUDIO DSP</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>6-voice polyphonic VST3 synthesizer built from scratch in C++ with the JUCE framework.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>4-pole Moog-style ladder filter, BBD stereo chorus, and independent ADSR envelopes.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Real-time FFT spectrum analyzer with custom UI components.</span></li>
                 </ul>
             </div>
 
-            <!-- 7 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Customer Churn Prediction</h3>
@@ -638,13 +629,12 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">XGBOOST</span><span class="tech-tag">STREAMLIT</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>End-to-end ML model predicting customer churn — <strong class="text-white">67% recall rate</strong> and <strong class="text-white">AUC 0.82</strong>.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Interactive Streamlit web app for real-time predictions deployed publicly.</span></li>
                 </ul>
             </div>
 
-            <!-- 8 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Psilocybe Cubensis: 3D Simulation</h3>
@@ -654,14 +644,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">JAVASCRIPT</span><span class="tech-tag">THREE.JS</span><span class="tech-tag">WEBGL</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Real-time procedural 3D mushroom lifecycle simulation using Three.js.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Space Colonization Algorithm with 3D Spatial Hash Grid handling <strong class="text-white">40,000 mycelial nodes</strong>.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Cinematic post-processing: Unreal Bloom, procedural geometry generation.</span></li>
                 </ul>
             </div>
 
-            <!-- 9 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Automated Image Rotation & Angle Detection</h3>
@@ -670,13 +659,12 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">COMPUTER VISION</span><span class="tech-tag">REMOTE SENSING</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Computer vision tool to algorithmically detect and calculate rotational skew of images.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Tested on satellite datasets where geo-referencing introduces rotational artifacts.</span></li>
                 </ul>
             </div>
 
-            <!-- 10 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">OpenCV Tie-Point Matching Pipeline</h3>
@@ -685,13 +673,12 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">OPENCV</span><span class="tech-tag">FEATURE EXTRACTION</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Automated image registration using OpenCV to identify and map spatial keypoints across image pairs.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Vector-distance keypoint matching for mathematically accurate coordinate mappings.</span></li>
                 </ul>
             </div>
 
-            <!-- 11 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">NLP Smart Search for Satellite Data</h3>
@@ -700,13 +687,12 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">NLP</span><span class="tech-tag">MACHINE LEARNING</span><span class="tech-tag">ISRO</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Text and voice-based intelligent search system for satellite data ordering.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>NLP parsing of satellite-specific terminology to interface with databases.</span></li>
                 </ul>
             </div>
 
-            <!-- 12 -->
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Peonia: Generative 3D Animation</h3>
@@ -716,14 +702,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">JAVASCRIPT</span><span class="tech-tag">P5.JS</span><span class="tech-tag">GENERATIVE ART</span><span class="tech-tag">3D MATH</span></div>
-                <ul class="space-y-2 mt-auto">
+                <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>In-browser 3D peony flower with continuous procedural blooming/wilting lifecycle.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Custom 3D pipeline using rotation matrices and Painter's Algorithm — no WebGL.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Multi-modal post-processing: solid pixels → particle dots → real-time ASCII mapping.</span></li>
                 </ul>
             </div>
 
-            <!-- 13 — Digi-Pramaan WIDE -->
             <div class="content-panel p-6 md:p-8 flex flex-col h-full md:col-span-2 lg:col-span-3">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-lg md:text-xl leading-snug">
@@ -737,24 +722,22 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                 <div class="flex flex-wrap gap-2 mb-5">
                     <span class="tech-tag-lg">BLOCKCHAIN</span><span class="tech-tag-lg">OCR</span><span class="tech-tag-lg">METAMASK WALLET</span><span class="tech-tag-lg">CRYPTOGRAPHY</span><span class="tech-tag-lg">GIT</span>
                 </div>
-                <ul class="space-y-2.5 mt-auto">
+                <ul class="space-y-2.5">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Decentralized academic authenticity platform combining OCR & AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>MetaMask wallet integration for authenticated and tamper-proof certificate issuance. Top finalist out of 250+ teams in SIH 2025 internal round.</span></li>
                 </ul>
             </div>
 
-        </div><!-- /stagger-grid -->
-    </div>
+        </div></div>
 </section>
 
-<!-- ==================== EXPERIENCE ==================== -->
 <section id="experience" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Experience</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Professional Journey</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
-    <div class="z-10 w-full max-w-4xl mx-auto fade-in">
-        <div class="timeline-wrap space-y-6">
+    <div class="z-10 w-full max-w-4xl mx-auto">
+        <div class="timeline-wrap space-y-6 slide-in-container">
 
             <div class="content-panel p-6 md:p-8 relative">
                 <div class="timeline-dot"></div>
@@ -795,7 +778,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     </div>
 </section>
 
-<!-- ==================== SKILLS ==================== -->
 <section id="skills" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Technical Arsenal</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Core Competencies</span></div>
@@ -829,7 +811,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     </div>
 </section>
 
-<!-- ==================== MEMBERSHIPS ==================== -->
 <section id="memberships" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Memberships & Affiliations</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Global Communities</span></div>
@@ -851,36 +832,36 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     </div>
 </section>
 
-<!-- ==================== EDUCATION ==================== -->
 <section id="education" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Education</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Academic Foundation</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
-    <div class="z-10 w-full max-w-4xl mx-auto fade-in">
-        <div class="content-panel p-8 md:p-12">
-            <div class="flex flex-col md:flex-row gap-6">
-                <div class="md:w-1/4 shrink-0 mt-1">
-                    <span class="text-sm font-bold tracking-widest" style="color:var(--gold); border-bottom:1px solid var(--gold-border); padding-bottom:4px;">2023 – 2027</span>
-                </div>
-                <div class="md:w-3/4">
-                    <h3 class="text-2xl font-bold text-white mb-1">Techno Main Saltlake</h3>
-                    <p class="text-xs font-bold mb-5 uppercase tracking-widest" style="color:var(--text-muted)">Bachelor of Technology</p>
-                    <div class="bullet-item"><span class="bullet-dot">▹</span><span>Computer Sciences and Information Technologies</span></div>
+    <div class="z-10 w-full max-w-4xl mx-auto">
+        <div class="timeline-wrap space-y-6 slide-in-container education-container">
+            <div class="content-panel p-8 md:p-12">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/4 shrink-0 mt-1">
+                        <span class="text-sm font-bold tracking-widest" style="color:var(--gold); border-bottom:1px solid var(--gold-border); padding-bottom:4px;">2023 – 2027</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold text-white mb-1">Techno Main Saltlake</h3>
+                        <p class="text-xs font-bold mb-5 uppercase tracking-widest" style="color:var(--text-muted)">Bachelor of Technology</p>
+                        <div class="bullet-item"><span class="bullet-dot">▹</span><span>Computer Sciences and Information Technologies</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ==================== ACHIEVEMENTS ==================== -->
 <section id="achievements" class="cinematic-section py-20">
     <h2 class="section-heading mt-10">Achievements & Certifications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Milestones & Continuous Learning</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
-    <div class="z-10 w-full max-w-5xl mx-auto fade-in">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="z-10 w-full max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 slide-in-container">
 
             <div class="content-panel p-8">
                 <div class="flex items-center gap-4 mb-4">
@@ -914,28 +895,26 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
                 <p class="body-text text-sm">Active member of Samaritans social club since first year — community initiatives, collaborative events, debates, and quiz competitions.</p>
             </div>
 
-        </div>
-
-        <!-- Certifications -->
-        <div class="content-panel p-8 md:p-12">
-            <div class="flex items-center gap-4 mb-8 border-b pb-4" style="border-color:rgba(255,255,255,0.08)">
-                <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Certs"></div>
-                <h4 class="text-white font-bold text-2xl">Certifications</h4>
+            <div class="content-panel p-8 md:p-12 md:col-span-2 mt-2">
+                <div class="flex items-center gap-4 mb-8 border-b pb-4" style="border-color:rgba(255,255,255,0.08)">
+                    <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Certs"></div>
+                    <h4 class="text-white font-bold text-2xl">Certifications</h4>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-10">
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Data Analytics Job Simulation — <strong class="text-white">Deloitte Australia</strong></span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Software Engineering Job Simulation — <strong class="text-white">JPMorgan Chase & Co.</strong></span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Introduction to Agent Skills — <strong class="text-white">Anthropic Academy</strong></span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Train & Manage ML Model with Azure — <strong class="text-white">Microsoft</strong></span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Understand Data Science for ML — <strong class="text-white">Microsoft</strong></span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Python for Data Science — <strong class="text-white">IBM</strong></span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>GenAI Powered Data Analytics Simulation — <strong class="text-white">Tata</strong></span></li>
+                </ul>
             </div>
-            <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-10">
-                <li class="bullet-item"><span class="bullet-dot">▹</span><span>Data Analytics Job Simulation — <strong class="text-white">Deloitte Australia</strong></span></li>
-                <li class="bullet-item"><span class="bullet-dot">▹</span><span>Software Engineering Job Simulation — <strong class="text-white">JPMorgan Chase & Co.</strong></span></li>
-                <li class="bullet-item"><span class="bullet-dot">▹</span><span>Introduction to Agent Skills — <strong class="text-white">Anthropic Academy</strong></span></li>
-                <li class="bullet-item"><span class="bullet-dot">▹</span><span>Train & Manage ML Model with Azure — <strong class="text-white">Microsoft</strong></span></li>
-                <li class="bullet-item"><span class="bullet-dot">▹</span><span>Understand Data Science for ML — <strong class="text-white">Microsoft</strong></span></li>
-                <li class="bullet-item"><span class="bullet-dot">▹</span><span>Python for Data Science — <strong class="text-white">IBM</strong></span></li>
-                <li class="bullet-item"><span class="bullet-dot">▹</span><span>GenAI Powered Data Analytics Simulation — <strong class="text-white">Tata</strong></span></li>
-            </ul>
+
         </div>
     </div>
 </section>
 
-<!-- ==================== RESUME ==================== -->
 <section id="resume" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Resume</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Complete Technical Profile</span></div>
@@ -954,7 +933,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     </div>
 </section>
 
-<!-- ==================== CONTACT ==================== -->
 <section id="contact" class="cinematic-section auto-height-section text-center">
     <div class="z-10 w-full max-w-2xl mx-auto fade-in mt-10 flex flex-col items-center">
         <h2 class="text-4xl md:text-6xl font-serif font-semibold text-white mb-4">Initialize Connection</h2>
@@ -967,7 +945,6 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
             PING ME
         </a>
 
-        <!-- Contact social row -->
         <div class="contact-social flex gap-3 mb-14">
             <a href="mailto:anushkadas05das@gmail.com" title="Email"><img src="https://api.iconify.design/ri/mail-send-line.svg?color=white" alt="Email"></a>
             <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" title="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" alt="LinkedIn"></a>
@@ -998,11 +975,13 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
     }
     window.addEventListener('load', type);
 
-    /* ===== INTERSECTION OBSERVER — fade + stagger ===== */
+    /* ===== INTERSECTION OBSERVER — fade + staggered slide in ===== */
     const io = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
     }, { threshold: 0.07 });
-    document.querySelectorAll('.fade-in, .stagger-grid').forEach(el => io.observe(el));
+    
+    // Observe basic fade-in and the new slide-in containers
+    document.querySelectorAll('.fade-in, .slide-in-container').forEach(el => io.observe(el));
 
     /* ===== ACTIVE NAV HIGHLIGHT ===== */
     const sections = document.querySelectorAll('section[id]');
