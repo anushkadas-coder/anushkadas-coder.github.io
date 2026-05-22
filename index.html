@@ -105,12 +105,12 @@
         .content-panel {
             position: relative;
             z-index: 10;
-            background: transparent; /* No background */
-            border: none;            /* No border/outline */
+            background: transparent;
+            border: none;
             transition: transform 0.3s ease;
         }
         .content-panel:hover {
-            transform: translateY(-5px); /* Keeps the neat float effect */
+            transform: translateY(-5px);
         }
 
         /* ===== SECTION HEADING ===== */
@@ -208,22 +208,11 @@
             transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94);
         }
         
-        /* Odd children slide from Left */
-        .slide-in-container > *:nth-child(odd) {
-            transform: translate(-80px, 15px);
-        }
-        /* Even children slide from Right */
-        .slide-in-container > *:nth-child(even) {
-            transform: translate(80px, 15px);
-        }
+        .slide-in-container > *:nth-child(odd) { transform: translate(-80px, 15px); }
+        .slide-in-container > *:nth-child(even) { transform: translate(80px, 15px); }
         
-        /* Triggered Visible State */
-        .slide-in-container.is-visible > * {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
+        .slide-in-container.is-visible > * { opacity: 1; transform: translate(0, 0); }
 
-        /* Stagger Delays */
         .slide-in-container > * { transition-delay: 0s; }
         .slide-in-container.is-visible > *:nth-child(1)  { transition-delay: 0.05s; }
         .slide-in-container.is-visible > *:nth-child(2)  { transition-delay: 0.10s; }
@@ -284,29 +273,55 @@
         .nav-link.active::after,
         .nav-link:hover::after { transform: scaleX(1); }
 
-        /* ===== MOBILE NAV ===== */
-        #mobile-menu {
-            display: none;
+        /* ===== MOBILE NAV (SIDEBAR) ===== */
+        #mobile-overlay {
             position: fixed;
-            top: 64px; left: 0; right: 0;
+            top: 64px; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 48;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #mobile-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #mobile-menu {
+            position: fixed;
+            top: 64px; 
+            right: -100%; /* Hidden off-screen to the right initially */
+            bottom: 0;
+            width: 260px;
+            max-width: 80vw;
             background: rgba(5,5,5,0.98);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-left: 1px solid rgba(255,255,255,0.08);
             z-index: 49;
             padding: 1.5rem 1.5rem 2rem;
-            backdrop-filter: blur(12px);
+            transition: right 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
         }
-        #mobile-menu.open { display: block; }
+        #mobile-menu.open { 
+            right: 0; /* Slides into view */
+        }
         #mobile-menu a {
             display: block;
-            padding: 0.65rem 0;
+            padding: 0.85rem 0;
             font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             color: #ccc;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: color 0.2s;
+            transition: color 0.2s, transform 0.2s;
         }
-        #mobile-menu a:hover { color: var(--gold); }
+        #mobile-menu a:hover { 
+            color: var(--gold); 
+            transform: translateX(5px);
+        }
         #mobile-menu a:last-child { border-bottom: none; }
 
         /* ===== BACK TO TOP ===== */
@@ -353,13 +368,29 @@
 
         /* ===== SKILLS PILL ===== */
         .skill-pill {
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem;
             font-size: 0.85rem; font-weight: 600;
             border: 1px solid rgba(255,255,255,0.18);
             background: #1a1a1a; padding: 0.5rem 1rem;
             border-radius: 6px; color: #f0f0f0;
             transition: border-color 0.2s, background 0.2s, color 0.2s;
         }
-        .skill-pill:hover { border-color: var(--gold); background: rgba(212,175,55,0.08); color: var(--gold); }
+        .skill-pill img {
+            width: 16px; 
+            height: 16px;
+            filter: brightness(0) invert(1);
+            transition: filter 0.2s;
+        }
+        .skill-pill:hover { 
+            border-color: var(--gold); 
+            background: rgba(212,175,55,0.08); 
+            color: var(--gold); 
+        }
+        .skill-pill:hover img { 
+            filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%); 
+        }
 
         /* ===== CONTACT SOCIAL ICONS ===== */
         .contact-social a {
@@ -407,6 +438,9 @@
         </div>
     </div>
 </header>
+
+<!-- Mobile Dimming Overlay -->
+<div id="mobile-overlay" onclick="closeMobileMenu()"></div>
 
 <div id="mobile-menu">
     <a href="#about"        onclick="closeMobileMenu()">ABOUT</a>
@@ -786,24 +820,51 @@
     <div class="z-10 w-full max-w-4xl mx-auto fade-in">
         <div class="content-panel p-8 md:p-12">
 
+            <!-- Languages -->
             <div class="mb-10">
                 <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Languages</h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill">Python</span><span class="skill-pill">Java</span><span class="skill-pill">C++</span><span class="skill-pill">SQL</span><span class="skill-pill">JavaScript</span><span class="skill-pill">HTML5</span><span class="skill-pill">CSS3</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/python.svg" alt="Python">Python</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/fa6-brands/java.svg" alt="Java">Java</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/cplusplus.svg" alt="C++">C++</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/tabler/sql.svg" alt="SQL">SQL</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/javascript.svg" alt="JavaScript">JavaScript</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/html5.svg" alt="HTML5">HTML5</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/css3.svg" alt="CSS3">CSS3</span>
                 </div>
             </div>
 
+            <!-- Libraries & Frameworks -->
             <div class="mb-10">
                 <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Libraries & Frameworks</h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill">Scikit-learn</span><span class="skill-pill">PyTorch</span><span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">XGBoost</span><span class="skill-pill">Flask</span><span class="skill-pill">FastAPI</span><span class="skill-pill">React</span><span class="skill-pill">OpenAI</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/scikitlearn.svg" alt="Scikit-learn">Scikit-learn</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/pytorch.svg" alt="PyTorch">PyTorch</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/pandas.svg" alt="Pandas">Pandas</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/numpy.svg" alt="NumPy">NumPy</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/carbon/machine-learning-model.svg" alt="XGBoost">XGBoost</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/flask.svg" alt="Flask">Flask</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/fastapi.svg" alt="FastAPI">FastAPI</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/react.svg" alt="React">React</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/openai.svg" alt="OpenAI">OpenAI</span>
                 </div>
             </div>
 
+            <!-- Tools & Platforms -->
             <div>
                 <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Tools & Platforms</h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill">Amazon AWS</span><span class="skill-pill">Streamlit</span><span class="skill-pill">Git</span><span class="skill-pill">Jupyter</span><span class="skill-pill">Power BI</span><span class="skill-pill">Docker</span><span class="skill-pill">VS Code</span><span class="skill-pill">Google Docs</span><span class="skill-pill">Excel</span><span class="skill-pill">Tally</span><span class="skill-pill">VHDL</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/amazonaws.svg" alt="Amazon AWS">Amazon AWS</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/streamlit.svg" alt="Streamlit">Streamlit</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/git.svg" alt="Git">Git</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/jupyter.svg" alt="Jupyter">Jupyter</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/powerbi.svg" alt="Power BI">Power BI</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/docker.svg" alt="Docker">Docker</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/visualstudiocode.svg" alt="VS Code">VS Code</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/googledocs.svg" alt="Google Docs">Google Docs</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/microsoftexcel.svg" alt="Excel">Excel</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/mdi/calculator-variant-outline.svg" alt="Tally">Tally</span>
+                    <span class="skill-pill"><img src="https://api.iconify.design/mdi/chip.svg" alt="VHDL">VHDL</span>
                 </div>
             </div>
 
@@ -997,11 +1058,14 @@
     }, { threshold: 0.35 });
     sections.forEach(s => navObserver.observe(s));
 
-    /* ===== HAMBURGER MENU ===== */
+    /* ===== HAMBURGER MENU (Updated for Sidebar) ===== */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+
     hamburger.addEventListener('click', () => {
         mobileMenu.classList.toggle('open');
+        mobileOverlay.classList.toggle('open');
         const lines = hamburger.querySelectorAll('.ham-line');
         if (mobileMenu.classList.contains('open')) {
             lines[0].style.transform = 'translateY(7px) rotate(45deg)';
@@ -1012,8 +1076,10 @@
             lines[0].style.transform = ''; lines[1].style.opacity = ''; lines[2].style.transform = ''; lines[2].style.width = '';
         }
     });
+
     function closeMobileMenu() {
         mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('open');
         const lines = hamburger.querySelectorAll('.ham-line');
         lines[0].style.transform = ''; lines[1].style.opacity = ''; lines[2].style.transform = ''; lines[2].style.width = '';
     }
