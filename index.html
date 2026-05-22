@@ -1,4 +1,3 @@
-cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -80,6 +79,7 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
             justify-content: center;
             padding: 8rem 1.5rem 6rem;
             min-height: 100vh;
+            min-height: 100dvh;       /* Fixes mobile address bar height jumping */
             background-color: #050505; /* fallback while video loads */
         }
         .auto-height-section { min-height: auto; padding: 6rem 1.5rem; }
@@ -100,7 +100,10 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center; /* Ensures the video/poster stays centered when cropped on narrow screens */
             pointer-events: none;
+            -webkit-transform: translateZ(0); /* Forces hardware acceleration on iOS to prevent visual glitches */
+            transform: translateZ(0);
             /* No z-index = auto/0 — sits below the ::before overlay (z-index: 1) */
         }
 
@@ -1131,8 +1134,3 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 </script>
 </body>
 </html>
-
-
-
-
-    
