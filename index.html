@@ -1,3 +1,4 @@
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -54,7 +55,7 @@
         ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-        /* ===== NOISE GRAIN OVERLAY (hero depth) ===== */
+        /* ===== NOISE GRAIN OVERLAY ===== */
         body::after {
             content: '';
             position: fixed;
@@ -65,9 +66,13 @@
             opacity: 0.35;
         }
 
-        /* ===== SECTIONS ===== */
+        /* ===== SECTIONS =====
+           z-index: 0 makes each section a proper stacking context
+           so the video(0), overlay(1), content(10) ordering works correctly
+        ===== */
         .cinematic-section {
             position: relative;
+            z-index: 0;               /* ← establishes stacking context */
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -75,42 +80,40 @@
             justify-content: center;
             padding: 8rem 1.5rem 6rem;
             min-height: 100vh;
-            background-color: #050505;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #050505; /* fallback while video loads */
         }
         .auto-height-section { min-height: auto; padding: 6rem 1.5rem; }
 
+        /* Dark overlay — z-index 1 so it sits ON TOP of the video */
         .cinematic-section::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 0;
+            background: rgba(0,0,0,0.82);
+            z-index: 1;               /* ← above video (0), below content (10) */
         }
 
-        #about       { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop'); }
-        #research    { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop'); }
-        #projects    { background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); }
-        #experience  { background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069&auto=format&fit=crop'); }
-        #skills      { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'); }
-        #memberships { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop'); }
-        #education   { background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop'); }
-        #achievements{ background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop'); }
-        #resume      { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); }
-        #contact     { background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop'); }
+        /* ===== VIDEO BACKGROUND ===== */
+        .video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            /* No z-index = auto/0 — sits below the ::before overlay (z-index: 1) */
+        }
 
         /* ===== PANELS ===== */
         .content-panel {
             position: relative;
             z-index: 10;
-            background: transparent; /* No background */
-            border: none;            /* No border/outline */
+            background: transparent;
+            border: none;
             transition: transform 0.3s ease;
         }
         .content-panel:hover {
-            transform: translateY(-5px); /* Keeps the neat float effect */
+            transform: translateY(-5px);
         }
 
         /* ===== SECTION HEADING ===== */
@@ -194,7 +197,7 @@
             border-radius: 4px; padding: 4px 9px; background: #1c1c1c;
         }
 
-        /* ===== FADE IN (Basic Upward Reveal) ===== */
+        /* ===== FADE IN ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(24px);
@@ -202,28 +205,15 @@
         }
         .fade-in.is-visible { opacity: 1; transform: translateY(0); }
 
-        /* ===== SLIDE IN FROM SIDES (Assembly Animation) ===== */
+        /* ===== SLIDE IN FROM SIDES ===== */
         .slide-in-container > * {
             opacity: 0;
             transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94);
         }
-        
-        /* Odd children slide from Left */
-        .slide-in-container > *:nth-child(odd) {
-            transform: translate(-80px, 15px);
-        }
-        /* Even children slide from Right */
-        .slide-in-container > *:nth-child(even) {
-            transform: translate(80px, 15px);
-        }
-        
-        /* Triggered Visible State */
-        .slide-in-container.is-visible > * {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
+        .slide-in-container > *:nth-child(odd)  { transform: translate(-80px, 15px); }
+        .slide-in-container > *:nth-child(even) { transform: translate(80px, 15px); }
+        .slide-in-container.is-visible > * { opacity: 1; transform: translate(0, 0); }
 
-        /* Stagger Delays */
         .slide-in-container > * { transition-delay: 0s; }
         .slide-in-container.is-visible > *:nth-child(1)  { transition-delay: 0.05s; }
         .slide-in-container.is-visible > *:nth-child(2)  { transition-delay: 0.10s; }
@@ -427,7 +417,15 @@
 
 <main>
 
+<!-- ==================== ABOUT ====================
+     Video: Developer coding at night / dark ambient workspace
+     Pexels 3194277 — person working on laptop in dark room
+================================================================ -->
 <section id="about" class="cinematic-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/3194277/download/" type="video/mp4">
+    </video>
     <div class="z-10 flex flex-col items-center text-center w-full max-w-4xl mx-auto mt-10 fade-in">
 
         <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-semibold text-white mb-8 tracking-wide" style="min-height: 4.5rem;">
@@ -468,7 +466,15 @@
     </div>
 </section>
 
+<!-- ==================== RESEARCH ====================
+     Video: Neural network / AI data visualization — abstract blue tech
+     Pexels 7693760 — AI/ML abstract digital visualization
+================================================================ -->
 <section id="research" class="cinematic-section auto-height-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/7693760/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading">Research & Publications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Advancing Intelligent Systems</span></div>
     <div class="section-subheading" style="margin-bottom:3.5rem;"></div>
@@ -520,7 +526,15 @@
     </div>
 </section>
 
+<!-- ==================== PROJECTS ====================
+     Video: Code on multiple screens / dark terminal / dev work
+     Pexels 4061451 — code scrolling on screen in dark environment
+================================================================ -->
 <section id="projects" class="cinematic-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/4061451/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading mt-10">Some of My Projects</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Deployed Engineering Solutions</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
@@ -728,10 +742,19 @@
                 </ul>
             </div>
 
-        </div></div>
+        </div>
+    </div>
 </section>
 
+<!-- ==================== EXPERIENCE ====================
+     Video: Professional at glowing workstation / server room lights
+     Pexels 3629578 — tech professional / dark office environment
+================================================================ -->
 <section id="experience" class="cinematic-section auto-height-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/3629578/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading mt-10">Experience</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Professional Journey</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
@@ -778,7 +801,15 @@
     </div>
 </section>
 
+<!-- ==================== SKILLS ====================
+     Video: Circuit board close-up / glowing electronics / blue tech
+     Pexels 3129671 — glowing digital circuit / blue abstract tech
+================================================================ -->
 <section id="skills" class="cinematic-section auto-height-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/3129671/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading mt-10">Technical Arsenal</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Core Competencies</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
@@ -811,7 +842,15 @@
     </div>
 </section>
 
+<!-- ==================== MEMBERSHIPS ====================
+     Video: Global network / digital earth / data flowing connections
+     Pexels 5532769 — glowing global network connections
+================================================================ -->
 <section id="memberships" class="cinematic-section auto-height-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/5532769/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading mt-10">Memberships & Affiliations</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Global Communities</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
@@ -832,7 +871,15 @@
     </div>
 </section>
 
+<!-- ==================== EDUCATION ====================
+     Video: University / futuristic campus / students / learning environment
+     Pexels 3195440 — modern university / academic setting
+================================================================ -->
 <section id="education" class="cinematic-section auto-height-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/3195440/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading mt-10">Education</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Academic Foundation</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
@@ -855,7 +902,15 @@
     </div>
 </section>
 
+<!-- ==================== ACHIEVEMENTS ====================
+     Video: Award ceremony lights / glowing particles / celebration
+     Pexels 1667914 — golden particles / star burst / achievement glow
+================================================================ -->
 <section id="achievements" class="cinematic-section py-20">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/1667914/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading mt-10">Achievements & Certifications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Milestones & Continuous Learning</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
@@ -915,7 +970,15 @@
     </div>
 </section>
 
+<!-- ==================== RESUME ====================
+     Video: Abstract luxury / minimal elegant motion / gold light streaks
+     Pexels 3910141 — gold/light abstract elegant motion
+================================================================ -->
 <section id="resume" class="cinematic-section auto-height-section">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/3910141/download/" type="video/mp4">
+    </video>
     <h2 class="section-heading mt-10">Resume</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Complete Technical Profile</span></div>
     <div class="section-subheading" style="margin-bottom:3rem;"></div>
@@ -933,7 +996,15 @@
     </div>
 </section>
 
+<!-- ==================== CONTACT ====================
+     Video: Fiber optic / data transmission / digital network pulses
+     Pexels 5532776 — fiber optic light trails / digital communication
+================================================================ -->
 <section id="contact" class="cinematic-section auto-height-section text-center">
+    <video class="video-bg" autoplay muted loop playsinline preload="none"
+           poster="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop">
+        <source src="https://www.pexels.com/video/5532776/download/" type="video/mp4">
+    </video>
     <div class="z-10 w-full max-w-2xl mx-auto fade-in mt-10 flex flex-col items-center">
         <h2 class="text-4xl md:text-6xl font-serif font-semibold text-white mb-4">Initialize Connection</h2>
         <p class="body-text text-base md:text-lg mb-10 max-w-lg">
@@ -975,12 +1046,34 @@
     }
     window.addEventListener('load', type);
 
+    /* ===== LAZY-LOAD VIDEOS AS SECTIONS ENTER VIEWPORT =====
+       Videos use preload="none" for performance. When a section
+       is about to enter view, we kick off loading so the video
+       is ready by the time the user sees it.
+    ===== */
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const video = entry.target.querySelector('.video-bg');
+                if (video) {
+                    // Swap preload to auto and start loading
+                    video.preload = 'auto';
+                    video.load();
+                    video.play().catch(() => {}); // autoplay policy guard
+                }
+                videoObserver.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '200px' }); // start loading 200px before section enters view
+
+    document.querySelectorAll('.cinematic-section').forEach(section => {
+        videoObserver.observe(section);
+    });
+
     /* ===== INTERSECTION OBSERVER — fade + staggered slide in ===== */
     const io = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
     }, { threshold: 0.07 });
-    
-    // Observe basic fade-in and the new slide-in containers
     document.querySelectorAll('.fade-in, .slide-in-container').forEach(el => io.observe(el));
 
     /* ===== ACTIVE NAV HIGHLIGHT ===== */
@@ -1038,3 +1131,8 @@
 </script>
 </body>
 </html>
+
+
+
+
+    
