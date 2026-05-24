@@ -90,16 +90,16 @@
             z-index: 0;
         }
 
-        #about       { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop'); }
-        #research    { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop'); }
-        #projects    { background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); }
-        #experience  { background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069&auto=format&fit=crop'); }
-        #skills      { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'); }
-        #memberships { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop'); }
-        #education   { background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop'); }
-        #achievements{ background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop'); }
-        #resume      { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); }
-        #contact     { background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop'); }
+        #about        { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop'); }
+        #research     { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop'); }
+        #projects     { background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); }
+        #experience   { background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069&auto=format&fit=crop'); }
+        #skills       { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'); }
+        #memberships  { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop'); }
+        #education    { background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop'); }
+        #achievements { background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop'); }
+        #resume       { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); }
+        #contact      { background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop'); }
 
         /* ===== PANELS ===== */
         .content-panel {
@@ -292,7 +292,7 @@
         #mobile-menu {
             position: fixed;
             top: 64px; 
-            right: -100%; /* Hidden off-screen to the right initially */
+            right: -100%;
             bottom: 0;
             width: 260px;
             max-width: 80vw;
@@ -306,7 +306,7 @@
             overflow-y: auto;
         }
         #mobile-menu.open { 
-            right: 0; /* Slides into view */
+            right: 0;
         }
         #mobile-menu a {
             display: block;
@@ -439,7 +439,6 @@
     </div>
 </header>
 
-<!-- Mobile Dimming Overlay -->
 <div id="mobile-overlay" onclick="closeMobileMenu()"></div>
 
 <div id="mobile-menu">
@@ -461,53 +460,55 @@
 
 <main>
 
-<section id="about" class="cinematic-section">
-    <div class="z-10 flex flex-col items-center text-center w-full max-w-4xl mx-auto mt-10 fade-in">
-        
-        <div class="relative mb-8">
-            <div class="absolute inset-0 rounded-full blur-md opacity-50" style="background: var(--gold); transform: scale(1.05);"></div>
-            <img 
-                src="portfolio_profile.jpeg" 
-                alt="Anushka Das" 
-                class="relative w-36 h-36 md:w-44 md:h-44 rounded-full object-cover border-4 transition-transform hover:scale-105 duration-300 z-10"
-                style="border-color: var(--gold); box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);"
-            >
-        </div>
-
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-serif font-semibold text-white mb-8 tracking-wide" style="min-height: 4.5rem;">
-            <span id="typing-text"></span><span class="typing-cursor"></span>
-        </h1>
-
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <a href="mailto:anushkadas05das@gmail.com" title="Email" class="social-btn w-12 h-12 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all">
-                <img src="https://api.iconify.design/ri/mail-send-line.svg?color=white" class="w-5 h-5" alt="Email">
-            </a>
-            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" title="LinkedIn" class="social-btn w-12 h-12 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all">
-                <img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn">
-            </a>
-            <a href="https://github.com/anushkadas-coder" target="_blank" title="GitHub" class="social-btn w-12 h-12 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all">
-                <img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub">
-            </a>
-            <a href="https://x.com/neuralbuild" target="_blank" title="X / Twitter" class="social-btn w-12 h-12 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all">
-                <img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X">
-            </a>
-            <a href="https://g.dev/anushkadas-coder" target="_blank" title="Google Dev" class="social-btn w-12 h-12 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all">
-                <img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev">
-            </a>
-        </div>
-
-        <div class="content-panel p-8 md:p-12 w-full text-left">
-            <p class="body-text text-sm md:text-base mb-6">
-                An IT undergrad (B.Tech) student from Kolkata, India and a member of <strong class="text-white font-bold">Google's Women Techmakers</strong> and <strong class="text-white font-bold">IEEE Robotics and Automation Technical Committee on Machine Learning for Automation.</strong>
-            </p>
-            <p class="body-text text-sm md:text-base mb-8">
-                I'm an aspiring ML/DL Engineer with strong research interests in Artificial Intelligence and Machine Learning, exploring how intelligent systems can be applied to real-world challenges. Alongside my passion for AIML, I have hands-on experience in Web Development and enjoy problem-solving through Data Structures and Algorithms.
-            </p>
-            <div class="border-l-4 pl-5 py-2 rounded-r-lg" style="border-color:var(--gold); background:var(--gold-dim);">
-                <p class="font-serif italic font-medium text-lg md:text-xl leading-relaxed" style="color:var(--gold);">
-                    "Currently seeking opportunities in Software Engineering and Machine Learning, and additionally in Data Science, where I can build impactful, data-driven solutions."
+<section id="about" class="cinematic-section" style="padding-top: 10rem;">
+    <div class="z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[75vh]">
+            
+            <div class="fade-in text-left">
+                <p class="text-[10px] font-bold tracking-[0.2em] mb-5 uppercase" style="color: var(--text-muted);">
+                    AIML Researcher &nbsp;<span style="color:var(--gold)">•</span>&nbsp; Software Developer
                 </p>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                    Hi, I'm<br><span style="color: var(--gold);">Anushka!</span>
+                </h1>
+                
+                <p class="font-mono text-sm tracking-widest mb-8 uppercase" style="color: var(--gold);">
+                    // <span id="typing-text"></span><span class="typing-cursor"></span>
+                </p>
+                
+                <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build systems that see, understand, and reason, exploring how intelligent systems solve real-world challenges.
+                </p>
+                
+                <p class="body-text text-sm md:text-base mb-6 max-w-lg leading-relaxed text-gray-400">
+                    Proud member of <strong class="text-white">Google's Women Techmakers</strong> and <strong class="text-white">IEEE Robotics & Automation</strong>. Alongside my passion for AI/ML, I have hands-on experience in Web Development and DSA.
+                </p>
+
+                <div class="border-l-2 pl-4 py-1 mb-10" style="border-color:var(--gold);">
+                    <p class="font-serif italic font-medium text-sm md:text-base" style="color:var(--gold);">
+                        "Currently seeking opportunities in Software Engineering, Machine Learning, and Data Science to build impactful, data-driven solutions."
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="mailto:anushkadas05das@gmail.com" class="btn-gold">
+                        <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" class="w-5 h-5 mr-1" alt="Email">
+                        SAY HI!
+                    </a>
+                    
+                    <div class="flex gap-3">
+                        <a href="https://github.com/anushkadas-coder" target="_blank" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
+                        <a href="https://x.com/neuralbuild" target="_blank" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
+                        <a href="https://g.dev/anushkadas-coder" target="_blank" title="Google Dev" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev"></a>
+                    </div>
+                </div>
             </div>
+
+            <div class="fade-in relative flex justify-center items-center h-[450px] lg:h-[700px] w-full mt-10 lg:mt-0">
+                <canvas id="ascii-canvas" class="absolute inset-0 w-full h-full z-10" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.4));"></canvas>
+            </div>
+            
         </div>
     </div>
 </section>
@@ -830,7 +831,6 @@
     <div class="z-10 w-full max-w-4xl mx-auto fade-in">
         <div class="content-panel p-8 md:p-12">
 
-            <!-- Languages -->
             <div class="mb-10">
                 <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Languages</h3>
                 <div class="flex flex-wrap gap-3">
@@ -844,7 +844,6 @@
                 </div>
             </div>
 
-            <!-- Libraries & Frameworks -->
             <div class="mb-10">
                 <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Libraries & Frameworks</h3>
                 <div class="flex flex-wrap gap-3">
@@ -860,7 +859,6 @@
                 </div>
             </div>
 
-            <!-- Tools & Platforms -->
             <div>
                 <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Tools & Platforms</h3>
                 <div class="flex flex-wrap gap-3">
@@ -1040,10 +1038,11 @@
 
 <script>
     /* ===== TYPING EFFECT ===== */
-    const texts = ["Hi! Anushka here!", "Aspiring ML/DL Engineer", "AIML Researcher & Developer", "Problem Solver"];
+    const texts = ["AI · ML · Researcher · Developer · Full-Stack", "Data Science · Web Dev · Problem Solver"];
     let count = 0, idx = 0, currentText = "", isDeleting = false;
     const typeTarget = document.getElementById('typing-text');
     function type() {
+        if (!typeTarget) return;
         if (count === texts.length) count = 0;
         currentText = texts[count];
         typeTarget.textContent = isDeleting ? currentText.slice(0, --idx) : currentText.slice(0, ++idx);
@@ -1058,8 +1057,6 @@
     const io = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
     }, { threshold: 0.07 });
-    
-    // Observe basic fade-in and the new slide-in containers
     document.querySelectorAll('.fade-in, .slide-in-container').forEach(el => io.observe(el));
 
     /* ===== ACTIVE NAV HIGHLIGHT ===== */
@@ -1076,7 +1073,7 @@
     }, { threshold: 0.35 });
     sections.forEach(s => navObserver.observe(s));
 
-    /* ===== HAMBURGER MENU (Updated for Sidebar) ===== */
+    /* ===== HAMBURGER MENU ===== */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileOverlay = document.getElementById('mobile-overlay');
@@ -1118,6 +1115,195 @@
                 window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
             }
         });
+    });
+
+    /* ===== GENERATIVE ASCII PARTICLE ASSEMBLY EFFECT ===== */
+    window.addEventListener('load', () => {
+        const canvas = document.getElementById('ascii-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+        const img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.src = 'portfolio_profile.jpeg';
+
+        img.onload = () => {
+            // Mobile-aware resolution
+            const isMobile = window.innerWidth < 768;
+            const resolution = isMobile ? 12 : 9;
+            const chars = ["*", "+", "=", "-", ".", " "];
+
+            let particles = [];
+            let animFrame = null;
+            let assembled = false;
+
+            function buildParticles() {
+                particles = [];
+                assembled = false;
+
+                const container = canvas.parentElement;
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = container.clientWidth * dpr;
+                canvas.height = container.clientHeight * dpr;
+                ctx.scale(dpr, dpr);
+
+                const W = container.clientWidth;
+                const H = container.clientHeight;
+
+                const offscreen = document.createElement('canvas');
+                const offCtx = offscreen.getContext('2d');
+
+                const drawWidth = Math.floor(W / resolution);
+                const drawHeight = Math.floor((W / img.width) * img.height / resolution);
+
+                offscreen.width = drawWidth;
+                offscreen.height = drawHeight;
+
+                offCtx.drawImage(img, 0, 0, drawWidth, drawHeight);
+                const imageData = offCtx.getImageData(0, 0, drawWidth, drawHeight);
+                const data = imageData.data;
+
+                const yOffset = (H / resolution - drawHeight) / 2;
+
+                for (let y = 0; y < drawHeight; y++) {
+                    for (let x = 0; x < drawWidth; x++) {
+                        const index = (y * drawWidth + x) * 4;
+                        const r = data[index];
+                        const g = data[index + 1];
+                        const b = data[index + 2];
+                        const brightness = (r + g + b) / 3;
+
+                        if (brightness < 210) {
+                            let charIndex = Math.floor((brightness / 255) * chars.length);
+                            if (charIndex >= chars.length) charIndex = chars.length - 1;
+                            const char = chars[chars.length - 1 - charIndex];
+                            const opacity = 1 - (brightness / 255) + 0.2;
+
+                            // Target position (final assembled position)
+                            const targetX = x * resolution;
+                            const targetY = (y + yOffset) * resolution;
+
+                            // Random spawn position — scatter from edges or random screen positions
+                            const edge = Math.floor(Math.random() * 4);
+                            let startX, startY;
+                            if (edge === 0) { startX = Math.random() * W; startY = -20; }
+                            else if (edge === 1) { startX = W + 20; startY = Math.random() * H; }
+                            else if (edge === 2) { startX = Math.random() * W; startY = H + 20; }
+                            else { startX = -20; startY = Math.random() * H; }
+
+                            // Staggered delay: particles closer to centre arrive first
+                            const distFromCenter = Math.sqrt(Math.pow(targetX - W/2, 2) + Math.pow(targetY - H/2, 2));
+                            const maxDist = Math.sqrt(W*W + H*H) / 2;
+                            const delay = (distFromCenter / maxDist) * 900 + Math.random() * 300;
+
+                            particles.push({
+                                char,
+                                opacity,
+                                targetX,
+                                targetY,
+                                x: startX,
+                                y: startY,
+                                startX,
+                                startY,
+                                delay,         // ms before this particle starts moving
+                                duration: 800 + Math.random() * 400, // ms to travel
+                                startTime: null
+                            });
+                        }
+                    }
+                }
+            }
+
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+
+            function animate(timestamp) {
+                const container = canvas.parentElement;
+                const W = container.clientWidth;
+                const H = container.clientHeight;
+
+                ctx.clearRect(0, 0, W, H);
+
+                const fontSize = isMobile ? resolution * 1.1 : resolution * 1.2;
+                ctx.font = `bold ${fontSize}px "Montserrat", monospace`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                let allDone = true;
+
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+
+                    // Initialise startTime on first render
+                    if (p.startTime === null) p.startTime = timestamp;
+
+                    const elapsed = timestamp - p.startTime;
+
+                    if (elapsed < p.delay) {
+                        // Still waiting — draw at spawn position faintly
+                        ctx.fillStyle = `rgba(212,175,55,0.08)`;
+                        ctx.fillText(p.char, p.startX, p.startY);
+                        allDone = false;
+                        continue;
+                    }
+
+                    const t = Math.min((elapsed - p.delay) / p.duration, 1);
+                    const easedT = easeOutCubic(t);
+
+                    p.x = p.startX + (p.targetX - p.startX) * easedT;
+                    p.y = p.startY + (p.targetY - p.startY) * easedT;
+
+                    // Fade in as it arrives
+                    const alpha = p.opacity * easedT;
+                    ctx.fillStyle = `rgba(212,175,55,${alpha})`;
+                    ctx.fillText(p.char, p.x, p.y);
+
+                    if (t < 1) allDone = false;
+                }
+
+                if (!allDone) {
+                    animFrame = requestAnimationFrame(animate);
+                } else {
+                    assembled = true;
+                    // Draw final static frame cleanly
+                    ctx.clearRect(0, 0, W, H);
+                    for (let i = 0; i < particles.length; i++) {
+                        const p = particles[i];
+                        ctx.fillStyle = `rgba(212,175,55,${p.opacity})`;
+                        ctx.fillText(p.char, p.targetX, p.targetY);
+                    }
+                }
+            }
+
+            function startAnimation() {
+                if (animFrame) cancelAnimationFrame(animFrame);
+                buildParticles();
+                animFrame = requestAnimationFrame(animate);
+            }
+
+            startAnimation();
+
+            // Re-run on resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    startAnimation();
+                }, 200);
+            });
+        };
+
+        img.onerror = () => {
+            // Fallback: draw placeholder text if image fails
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            ctx.font = 'bold 14px Montserrat, monospace';
+            ctx.fillStyle = 'rgba(212,175,55,0.4)';
+            ctx.textAlign = 'center';
+            ctx.fillText('[ portfolio_profile.jpeg ]', container.clientWidth / 2, container.clientHeight / 2);
+        };
     });
 </script>
 </body>
