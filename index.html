@@ -477,7 +477,8 @@
                     // <span id="typing-text"></span><span class="typing-cursor"></span>
                 </p>
                 
-                <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build systems that see, understand, and reason, exploring how intelligent systems solve real-world challenges.
+                <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">
+                   An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason, exploring how systems that see, understand, and reason, exploring how intelligent agents solve real-world challenges.
                 </p>
                 
                 <p class="body-text text-sm md:text-base mb-6 max-w-lg leading-relaxed text-gray-400">
@@ -1038,7 +1039,7 @@
 
 <script>
     /* ===== TYPING EFFECT ===== */
-    const texts = ["AI · ML · Researcher · Developer · Full-Stack", "Data Science · Web Dev · Problem Solver"];
+    const texts = ["AI · Machine Learning · Full-Stack", "Data Science · Web Dev", "Problem Solver"];
     let count = 0, idx = 0, currentText = "", isDeleting = false;
     const typeTarget = document.getElementById('typing-text');
     function type() {
@@ -1128,42 +1129,57 @@
         img.src = 'portfolio_profile.jpeg';
 
         img.onload = () => {
-            // Mobile-aware resolution
-            const isMobile = window.innerWidth < 768;
-            const resolution = isMobile ? 12 : 9;
             const chars = ["*", "+", "=", "-", ".", " "];
-
             let particles = [];
             let animFrame = null;
-            let assembled = false;
+            let currentIsMobile = window.innerWidth < 768;
 
             function buildParticles() {
                 particles = [];
-                assembled = false;
+                currentIsMobile = window.innerWidth < 768;
+                const resolution = currentIsMobile ? 11 : 9;
 
                 const container = canvas.parentElement;
                 const dpr = window.devicePixelRatio || 1;
-                canvas.width = container.clientWidth * dpr;
-                canvas.height = container.clientHeight * dpr;
-                ctx.scale(dpr, dpr);
-
                 const W = container.clientWidth;
                 const H = container.clientHeight;
 
+                canvas.width = W * dpr;
+                canvas.height = H * dpr;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.scale(dpr, dpr);
+
+                // --- Fit image into canvas using cover-style crop centred on top ---
+                // This ensures the face fills the canvas regardless of aspect ratio
+                const imgAspect = img.width / img.height;
+                const canvasAspect = W / H;
+
+                let srcX, srcY, srcW, srcH;
+                if (imgAspect > canvasAspect) {
+                    // Image is wider than canvas — crop sides
+                    srcH = img.height;
+                    srcW = img.height * canvasAspect;
+                    srcX = (img.width - srcW) / 2;
+                    srcY = 0;
+                } else {
+                    // Image is taller than canvas — crop bottom (keep face at top)
+                    srcW = img.width;
+                    srcH = img.width / canvasAspect;
+                    srcX = 0;
+                    srcY = 0; // anchor to top so face stays visible
+                }
+
+                // Draw cropped image to offscreen at ASCII grid resolution
                 const offscreen = document.createElement('canvas');
                 const offCtx = offscreen.getContext('2d');
-
                 const drawWidth = Math.floor(W / resolution);
-                const drawHeight = Math.floor((W / img.width) * img.height / resolution);
-
+                const drawHeight = Math.floor(H / resolution);
                 offscreen.width = drawWidth;
                 offscreen.height = drawHeight;
 
-                offCtx.drawImage(img, 0, 0, drawWidth, drawHeight);
+                offCtx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, drawWidth, drawHeight);
                 const imageData = offCtx.getImageData(0, 0, drawWidth, drawHeight);
                 const data = imageData.data;
-
-                const yOffset = (H / resolution - drawHeight) / 2;
 
                 for (let y = 0; y < drawHeight; y++) {
                     for (let x = 0; x < drawWidth; x++) {
@@ -1179,34 +1195,28 @@
                             const char = chars[chars.length - 1 - charIndex];
                             const opacity = 1 - (brightness / 255) + 0.2;
 
-                            // Target position (final assembled position)
-                            const targetX = x * resolution;
-                            const targetY = (y + yOffset) * resolution;
+                            const targetX = x * resolution + resolution / 2;
+                            const targetY = y * resolution + resolution / 2;
 
-                            // Random spawn position — scatter from edges or random screen positions
+                            // Spawn from random edge
                             const edge = Math.floor(Math.random() * 4);
                             let startX, startY;
-                            if (edge === 0) { startX = Math.random() * W; startY = -20; }
+                            if (edge === 0)      { startX = Math.random() * W; startY = -20; }
                             else if (edge === 1) { startX = W + 20; startY = Math.random() * H; }
                             else if (edge === 2) { startX = Math.random() * W; startY = H + 20; }
-                            else { startX = -20; startY = Math.random() * H; }
+                            else                 { startX = -20; startY = Math.random() * H; }
 
-                            // Staggered delay: particles closer to centre arrive first
                             const distFromCenter = Math.sqrt(Math.pow(targetX - W/2, 2) + Math.pow(targetY - H/2, 2));
                             const maxDist = Math.sqrt(W*W + H*H) / 2;
                             const delay = (distFromCenter / maxDist) * 900 + Math.random() * 300;
 
                             particles.push({
-                                char,
-                                opacity,
-                                targetX,
-                                targetY,
-                                x: startX,
-                                y: startY,
-                                startX,
-                                startY,
-                                delay,         // ms before this particle starts moving
-                                duration: 800 + Math.random() * 400, // ms to travel
+                                char, opacity, resolution,
+                                targetX, targetY,
+                                x: startX, y: startY,
+                                startX, startY,
+                                delay,
+                                duration: 800 + Math.random() * 400,
                                 startTime: null
                             });
                         }
@@ -1214,35 +1224,26 @@
                 }
             }
 
-            function easeOutCubic(t) {
-                return 1 - Math.pow(1 - t, 3);
-            }
+            function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
             function animate(timestamp) {
-                const container = canvas.parentElement;
-                const W = container.clientWidth;
-                const H = container.clientHeight;
-
+                const W = canvas.width / (window.devicePixelRatio || 1);
+                const H = canvas.height / (window.devicePixelRatio || 1);
                 ctx.clearRect(0, 0, W, H);
-
-                const fontSize = isMobile ? resolution * 1.1 : resolution * 1.2;
-                ctx.font = `bold ${fontSize}px "Montserrat", monospace`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
 
                 let allDone = true;
 
                 for (let i = 0; i < particles.length; i++) {
                     const p = particles[i];
-
-                    // Initialise startTime on first render
                     if (p.startTime === null) p.startTime = timestamp;
-
                     const elapsed = timestamp - p.startTime;
+                    const fontSize = p.resolution * 1.15;
+                    ctx.font = `bold ${fontSize}px "Montserrat", monospace`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
 
                     if (elapsed < p.delay) {
-                        // Still waiting — draw at spawn position faintly
-                        ctx.fillStyle = `rgba(212,175,55,0.08)`;
+                        ctx.fillStyle = `rgba(212,175,55,0.06)`;
                         ctx.fillText(p.char, p.startX, p.startY);
                         allDone = false;
                         continue;
@@ -1250,26 +1251,25 @@
 
                     const t = Math.min((elapsed - p.delay) / p.duration, 1);
                     const easedT = easeOutCubic(t);
-
                     p.x = p.startX + (p.targetX - p.startX) * easedT;
                     p.y = p.startY + (p.targetY - p.startY) * easedT;
 
-                    // Fade in as it arrives
-                    const alpha = p.opacity * easedT;
-                    ctx.fillStyle = `rgba(212,175,55,${alpha})`;
+                    ctx.fillStyle = `rgba(212,175,55,${p.opacity * easedT})`;
                     ctx.fillText(p.char, p.x, p.y);
-
                     if (t < 1) allDone = false;
                 }
 
                 if (!allDone) {
                     animFrame = requestAnimationFrame(animate);
                 } else {
-                    assembled = true;
                     // Draw final static frame cleanly
                     ctx.clearRect(0, 0, W, H);
                     for (let i = 0; i < particles.length; i++) {
                         const p = particles[i];
+                        const fontSize = p.resolution * 1.15;
+                        ctx.font = `bold ${fontSize}px "Montserrat", monospace`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
                         ctx.fillStyle = `rgba(212,175,55,${p.opacity})`;
                         ctx.fillText(p.char, p.targetX, p.targetY);
                     }
@@ -1284,18 +1284,14 @@
 
             startAnimation();
 
-            // Re-run on resize
             let resizeTimer;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    startAnimation();
-                }, 200);
+                resizeTimer = setTimeout(startAnimation, 200);
             });
         };
 
         img.onerror = () => {
-            // Fallback: draw placeholder text if image fails
             const container = canvas.parentElement;
             canvas.width = container.clientWidth;
             canvas.height = container.clientHeight;
