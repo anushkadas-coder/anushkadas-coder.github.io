@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anushka Das | Software & ML Engineer</title>
-    <meta name="description" content="Anushka Das — Aspiring ML/DL Engineer, AIML Researcher, and Software Developer from Kolkata, India. IEEE Member, Google Women Techmakers. Explore research, projects, and more.">
+    <meta name="description" content="Anushka Das — Aspiring ML/DL Engineer, AIML Researcher, and Software Developer from Kolkata, India. IEEE Member, Google Women Techmakers. Explore research, projects, and achievements.">
     <meta property="og:title" content="Anushka Das | ML & Software Engineer">
     <meta property="og:description" content="Aspiring ML/DL Engineer with research in Sovereign AI, Deepfake Detection, and more.">
     <meta property="og:type" content="website">
@@ -59,7 +59,7 @@
             content: '';
             position: fixed;
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='50'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 9999;
             opacity: 0.35;
@@ -406,6 +406,36 @@
             background: rgba(212,175,55,0.1);
         }
         .contact-social img { filter: brightness(0) invert(1); width: 18px; height: 18px; }
+
+        /* ===== ASCII CANVAS MOBILE RESPONSIVE FIX ===== */
+        .ascii-canvas-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .ascii-canvas-wrapper {
+                max-width: 500px;
+                aspect-ratio: auto;
+                height: 600px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .ascii-canvas-wrapper {
+                max-width: none;
+                height: 700px;
+            }
+        }
+
+        #ascii-canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -477,8 +507,7 @@
                     // <span id="typing-text"></span><span class="typing-cursor"></span>
                 </p>
                 
-                <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build systems that see, understand, and reason, exploring how intelligent systems solve real-world challenges.
-                </p>
+                <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason, exploring how systems that see, understand, and reason, exploring how intelligent agents solve real-world challenges.</p>
                 
                 <p class="body-text text-sm md:text-base mb-6 max-w-lg leading-relaxed text-gray-400">
                     Proud member of <strong class="text-white">Google's Women Techmakers</strong> and <strong class="text-white">IEEE Robotics & Automation</strong>. Alongside my passion for AI/ML, I have hands-on experience in Web Development and DSA.
@@ -497,16 +526,24 @@
                     </a>
                     
                     <div class="flex gap-3">
-                        <a href="https://github.com/anushkadas-coder" target="_blank" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
-                        <a href="https://x.com/neuralbuild" target="_blank" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
-                        <a href="https://g.dev/anushkadas-coder" target="_blank" title="Google Dev" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev"></a>
+                        <a href="https://github.com/anushkadas-coder" target="_blank" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/10 hover:border-yellow-500 transition-colors">
+                            <img src="https://api.iconify.design/mdi/github.svg" alt="GitHub">
+                        </a>
+                        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/10 hover:border-yellow-500 transition-colors">
+                            <img src="https://api.iconify.design/mdi/linkedin.svg" alt="LinkedIn">
+                        </a>
+                        <a href="https://x.com/neuralbuild" target="_blank" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/10 hover:border-yellow-500 transition-colors">
+                            <img src="https://api.iconify.design/mdi/twitter.svg" alt="Twitter">
+                        </a>
+                        <a href="https://g.dev/anushkadas-coder" target="_blank" title="Google Dev" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/10 hover:border-yellow-500 transition-colors">
+                            <img src="https://api.iconify.design/mdi/google.svg" alt="Google">
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="fade-in relative flex justify-center items-center h-[450px] lg:h-[700px] w-full mt-10 lg:mt-0">
-                <canvas id="ascii-canvas" class="absolute inset-0 w-full h-full z-10" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.4));"></canvas>
+            <div class="fade-in ascii-canvas-wrapper">
+                <canvas id="ascii-canvas" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.4));"></canvas>
             </div>
             
         </div>
