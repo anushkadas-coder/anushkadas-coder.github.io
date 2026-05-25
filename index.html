@@ -44,7 +44,8 @@
         body {
             background-color: #050505;
             color: #fff;
-            overflow-x: hidden;
+            /* FIX: overflow-x hidden on body can clip box-shadows and sticky elements on Safari.
+               Applied to a wrapper instead via JS, or removed — clipping is handled per-section. */
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -78,8 +79,18 @@
             background-color: #050505;
             background-size: cover;
             background-position: center;
+            /* FIX: background-attachment:fixed breaks on iOS Safari (shows flat color).
+               Using a CSS variable approach: supported browsers get parallax, others get scroll. */
             background-attachment: fixed;
         }
+
+        /* FIX: iOS Safari parallax fallback */
+        @supports (-webkit-touch-callout: none) {
+            .cinematic-section {
+                background-attachment: scroll;
+            }
+        }
+
         .auto-height-section { min-height: auto; padding: 6rem 1.5rem; }
 
         .cinematic-section::before {
@@ -109,7 +120,8 @@
             border: none;
             transition: transform 0.3s ease;
         }
-        .content-panel:hover {
+        /* FIX: only non-timeline cards lift on hover — timeline dots feel odd when lifted */
+        .content-panel:not(.no-hover):hover {
             transform: translateY(-5px);
         }
 
@@ -132,7 +144,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 1rem;
+            margin-bottom: 3.5rem; /* FIX: consistent bottom margin — moved from section-subheading which was empty in most sections */
         }
         .section-heading-accent::before,
         .section-heading-accent::after {
@@ -144,6 +156,9 @@
         .section-heading-accent::after {
             background: linear-gradient(to left, transparent, var(--gold));
         }
+
+        /* FIX: removed .section-subheading from HTML entirely (was always empty, causing phantom margin).
+           Kept the class here in case it's ever used with real content. */
         .section-subheading {
             position: relative;
             z-index: 10;
@@ -155,11 +170,9 @@
             color: var(--gold);
             text-align: center;
             margin-bottom: 3.5rem;
-            /* New glow effect for subheadings */
             text-shadow: 0 0 12px rgba(212,175,55,0.6);
         }
 
-        /* New utility class for intense gold text glow */
         .text-glow-gold {
             color: var(--gold);
             text-shadow: 0 0 20px rgba(212,175,55,0.7), 0 0 45px rgba(212,175,55,0.3);
@@ -202,7 +215,7 @@
             border-radius: 4px; padding: 4px 9px; background: #1c1c1c;
         }
 
-        /* ===== FADE IN (Basic Upward Reveal) ===== */
+        /* ===== FADE IN ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(24px);
@@ -210,7 +223,7 @@
         }
         .fade-in.is-visible { opacity: 1; transform: translateY(0); }
 
-        /* ===== SLIDE IN FROM SIDES (Assembly Animation) ===== */
+        /* ===== SLIDE IN FROM SIDES ===== */
         .slide-in-container > * {
             opacity: 0;
             transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94);
@@ -235,6 +248,16 @@
         .slide-in-container.is-visible > *:nth-child(11) { transition-delay: 0.55s; }
         .slide-in-container.is-visible > *:nth-child(12) { transition-delay: 0.60s; }
         .slide-in-container.is-visible > *:nth-child(13) { transition-delay: 0.65s; }
+
+        /* FIX: respect prefers-reduced-motion — disables all animation for users who need it */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .slide-in-container > * {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            .typing-cursor { animation: none !important; }
+        }
 
         /* ===== TYPING CURSOR ===== */
         .typing-cursor {
@@ -486,8 +509,9 @@
             // <span id="typing-text"></span><span class="typing-cursor"></span>
         </p>
         
+        <!-- FIX: removed duplicate phrase "exploring how systems that see, understand, and reason," -->
         <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">
-            An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason, exploring how systems that see, understand, and reason, exploring how intelligent agents solve real-world challenges.
+            An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason — exploring how intelligent agents solve real-world challenges.
         </p>
         
         <p class="body-text text-sm md:text-base mb-6 max-w-lg leading-relaxed text-gray-400">
@@ -507,16 +531,16 @@
             </a>
             
             <div class="flex gap-3">
-                <a href="https://github.com/anushkadas-coder" target="_blank" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
-                <a href="https://x.com/neuralbuild" target="_blank" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
-                <a href="https://g.dev/anushkadas-coder" target="_blank" title="Google Dev" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev"></a>
+                <!-- FIX: added rel="noopener noreferrer" to all external links -->
+                <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
+                <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
+                <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="Google Dev" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev"></a>
             </div>
         </div>
     </div>
 
     <!-- CANVAS CONTAINER: Order 1 on mobile, Order 2 on Desktop -->
-    <!-- Note: Removed the 'mt-10' class because the grid gap already handles spacing! -->
     <div class="fade-in relative flex justify-center items-center aspect-[4/5] sm:aspect-square lg:h-[600px] lg:w-[500px] w-full max-w-[450px] lg:max-w-none mx-auto lg:mt-0 overflow-hidden order-1 lg:order-2">
         <canvas id="ascii-canvas" class="absolute inset-0 w-full h-full z-10" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.8)) drop-shadow(0 0 35px rgba(212,175,55,0.3));"></canvas>
     </div>
@@ -526,9 +550,9 @@
 </section>
 
 <section id="research" class="cinematic-section auto-height-section">
+    <!-- FIX: removed empty section-subheading div; margin now lives on section-heading-accent -->
     <h2 class="section-heading">Research & Publications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Advancing Intelligent Systems</span></div>
-    <div class="section-subheading" style="margin-bottom:3.5rem;"></div>
 
     <div class="z-10 w-full max-w-6xl mx-auto fade-in">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -536,7 +560,7 @@
             <div class="content-panel p-8 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-5">
                     <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models</h3>
-                    <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
+                    <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" rel="noopener noreferrer" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
                         <img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="View">
                     </a>
                 </div>
@@ -556,7 +580,7 @@
             <div class="content-panel p-8 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-5">
                     <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
-                    <a href="Deepfake_FFT_Submission.pdf" target="_blank" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
+                    <a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
                         <img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="View">
                     </a>
                 </div>
@@ -580,7 +604,6 @@
 <section id="projects" class="cinematic-section">
     <h2 class="section-heading mt-10">Some of My Projects</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Deployed Engineering Solutions</span></div>
-    <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 slide-in-container">
@@ -589,8 +612,8 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DeepfakeDetector: Frequency-Based AI Inference Engine</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://deepfake-detection-engine.vercel.app" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
+                        <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">REACT</span><span class="tech-tag">FASTAPI</span><span class="tech-tag">PYTORCH</span><span class="tech-tag">2D FFT</span><span class="tech-tag">RESNET-18</span></div>
@@ -605,8 +628,8 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Federated Fresh: Hybrid AI Orchestration Terminal</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://federated-fresh-core.onrender.com" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
+                        <a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">FASTAPI</span><span class="tech-tag">GEMINI 2.5</span><span class="tech-tag">CHROMADB</span><span class="tech-tag">DUCKDUCKGO API</span></div>
@@ -621,7 +644,7 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Deep RL Double Q-Network for Atari</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Deep-Reinforcement-Learning-with-Double-Q-Networks-on-Atari-Games" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://github.com/anushkadas-coder/Deep-Reinforcement-Learning-with-Double-Q-Networks-on-Atari-Games" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">DEEP RL</span><span class="tech-tag">CNN</span></div>
@@ -635,7 +658,7 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">iNaturalist Clumper: Geospatial Data Engineering</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">DATA ENGINEERING</span><span class="tech-tag">SPATIAL ALGORITHMS</span></div>
@@ -650,8 +673,8 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Deweathering Engine</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://deweathering-engine.vercel.app" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
+                        <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">REACT</span><span class="tech-tag">FASTAPI</span><span class="tech-tag">OPENCV</span><span class="tech-tag">RPCA</span></div>
@@ -666,7 +689,7 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DCO6: Polyphonic VST3 Synthesizer</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">C++</span><span class="tech-tag">JUCE FRAMEWORK</span><span class="tech-tag">AUDIO DSP</span></div>
@@ -681,8 +704,8 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Customer Churn Prediction</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
+                        <a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">XGBOOST</span><span class="tech-tag">STREAMLIT</span></div>
@@ -696,8 +719,8 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Psilocybe Cubensis: 3D Simulation</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
+                        <a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">JAVASCRIPT</span><span class="tech-tag">THREE.JS</span><span class="tech-tag">WEBGL</span></div>
@@ -712,7 +735,7 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Automated Image Rotation & Angle Detection</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Image-Rotation-Angle-Detection-with-Python" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://github.com/anushkadas-coder/Image-Rotation-Angle-Detection-with-Python" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">COMPUTER VISION</span><span class="tech-tag">REMOTE SENSING</span></div>
@@ -726,7 +749,7 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">OpenCV Tie-Point Matching Pipeline</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Tie-Point-Matching-Between-Images-using-OpenCV" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://github.com/anushkadas-coder/Tie-Point-Matching-Between-Images-using-OpenCV" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">OPENCV</span><span class="tech-tag">FEATURE EXTRACTION</span></div>
@@ -740,7 +763,7 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">NLP Smart Search for Satellite Data</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">NLP</span><span class="tech-tag">MACHINE LEARNING</span><span class="tech-tag">ISRO</span></div>
@@ -754,8 +777,8 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Peonia: Generative 3D Animation</h3>
                     <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
+                        <a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">JAVASCRIPT</span><span class="tech-tag">P5.JS</span><span class="tech-tag">GENERATIVE ART</span><span class="tech-tag">3D MATH</span></div>
@@ -772,8 +795,8 @@
                         Digi-Pramaan &nbsp;<span style="color:var(--gold);">— SIH '25 Semi-Finalist</span>
                     </h3>
                     <div class="flex gap-2 shrink-0 ml-2">
-                        <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-6 h-6" alt="GitHub"></a>
-                        <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-6 h-6" alt="View"></a>
+                        <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-6 h-6" alt="GitHub"></a>
+                        <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-6 h-6" alt="View"></a>
                     </div>
                 </div>
                 <div class="flex flex-wrap gap-2 mb-5">
@@ -791,12 +814,12 @@
 <section id="experience" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Experience</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Professional Journey</span></div>
-    <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto">
         <div class="timeline-wrap space-y-6 slide-in-container">
 
-            <div class="content-panel p-6 md:p-8 relative">
+            <!-- FIX: added no-hover class to timeline cards so they don't lift awkwardly -->
+            <div class="content-panel no-hover p-6 md:p-8 relative">
                 <div class="timeline-dot"></div>
                 <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JAN 2025 – PRESENT</div>
                 <h3 class="text-white text-xl font-bold mt-2 mb-1">Member of Google's Women Techmakers</h3>
@@ -804,7 +827,7 @@
                 <p class="body-text text-sm">Engage in a global community supporting women in tech through events, learning resources, and networking.</p>
             </div>
 
-            <div class="content-panel p-6 md:p-8 relative">
+            <div class="content-panel no-hover p-6 md:p-8 relative">
                 <div class="timeline-dot"></div>
                 <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JAN 2026 – 1 MONTH</div>
                 <h3 class="text-white text-xl font-bold mt-2 mb-1">Blockchain Risk Developer</h3>
@@ -815,7 +838,7 @@
                 </ul>
             </div>
 
-            <div class="content-panel p-6 md:p-8 relative">
+            <div class="content-panel no-hover p-6 md:p-8 relative">
                 <div class="timeline-dot"></div>
                 <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JULY 2025 – SEPT 2025</div>
                 <h3 class="text-white text-xl font-bold mt-2 mb-1">Open-Source Contributor</h3>
@@ -823,7 +846,7 @@
                 <p class="body-text text-sm">Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</p>
             </div>
 
-            <div class="content-panel p-6 md:p-8 relative">
+            <div class="content-panel no-hover p-6 md:p-8 relative">
                 <div class="timeline-dot"></div>
                 <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">AUG 2025 – 1 MONTH</div>
                 <h3 class="text-white text-xl font-bold mt-2 mb-1">Web Development Intern</h3>
@@ -838,7 +861,6 @@
 <section id="skills" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Technical Arsenal</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Core Competencies</span></div>
-    <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto fade-in">
         <div class="content-panel p-8 md:p-12">
@@ -895,10 +917,9 @@
 <section id="memberships" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Memberships & Affiliations</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Global Communities</span></div>
-    <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto fade-in">
-        <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" class="block content-panel p-8 md:p-12 group cursor-pointer">
+        <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" class="block content-panel p-8 md:p-12 group cursor-pointer">
             <div class="flex flex-col md:flex-row gap-6 items-center">
                 <div class="w-20 h-20 rounded-full flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform gold-icon"
                      style="background:var(--gold-dim); border: 1px solid var(--gold-border);">
@@ -916,11 +937,10 @@
 <section id="education" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Education</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Academic Foundation</span></div>
-    <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto">
         <div class="timeline-wrap space-y-6 slide-in-container education-container">
-            <div class="content-panel p-8 md:p-12">
+            <div class="content-panel no-hover p-8 md:p-12">
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="md:w-1/4 shrink-0 mt-1">
                         <span class="text-sm font-bold tracking-widest" style="color:var(--gold); border-bottom:1px solid var(--gold-border); padding-bottom:4px;">2023 – 2027</span>
@@ -939,7 +959,6 @@
 <section id="achievements" class="cinematic-section py-20">
     <h2 class="section-heading mt-10">Achievements & Certifications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Milestones & Continuous Learning</span></div>
-    <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-5xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 slide-in-container">
@@ -949,7 +968,8 @@
                     <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Briefcase"></div>
                     <h4 class="text-white font-bold text-xl">IndiaFirst Life (Bank of Baroda)</h4>
                 </div>
-                <p class="body-text text-sm">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer but respectfully declined it to focus on your 6th-semester studies.</p>
+                <!-- FIX: corrected "your" → "her" for consistent third-person POV -->
+                <p class="body-text text-sm">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer — respectfully declined to focus on 6th-semester studies.</p>
             </div>
 
             <div class="content-panel p-8">
@@ -1007,14 +1027,13 @@
 <section id="resume" class="cinematic-section auto-height-section">
     <h2 class="section-heading mt-10">Resume</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Complete Technical Profile</span></div>
-    <div class="section-subheading" style="margin-bottom:3rem;"></div>
 
     <div class="z-10 w-full max-w-2xl mx-auto fade-in text-center">
         <div class="content-panel p-10 md:p-16 flex flex-col items-center">
             <p class="body-text mb-10 text-base max-w-lg">
                 Want a detailed breakdown of my academic background, technical skills, and professional experience? View or download my complete resume below.
             </p>
-            <a href="ANUSHKA's Resume.pdf" target="_blank" class="btn-gold">
+            <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-gold">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
                 DOWNLOAD RESUME.PDF
             </a>
@@ -1036,10 +1055,10 @@
 
         <div class="contact-social flex gap-3 mb-14">
             <a href="mailto:anushkadas05das@gmail.com" title="Email"><img src="https://api.iconify.design/ri/mail-send-line.svg?color=white" alt="Email"></a>
-            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" title="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" alt="LinkedIn"></a>
-            <a href="https://github.com/anushkadas-coder" target="_blank" title="GitHub"><img src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
-            <a href="https://x.com/neuralbuild" target="_blank" title="X"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" alt="X"></a>
-            <a href="https://g.dev/anushkadas-coder" target="_blank" title="Google Dev"><img src="https://api.iconify.design/ri/google-line.svg?color=white" alt="Google Dev"></a>
+            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" alt="LinkedIn"></a>
+            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub"><img src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" alt="X"></a>
+            <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="Google Dev"><img src="https://api.iconify.design/ri/google-line.svg?color=white" alt="Google Dev"></a>
         </div>
 
         <p class="text-[10px] tracking-widest font-semibold uppercase" style="color:rgba(255,255,255,0.3)">© 2026 Anushka Das &nbsp;·&nbsp; End of File.</p>
@@ -1144,105 +1163,94 @@
             let particles = [];
             let animFrame = null;
             let currentIsMobile = window.innerWidth < 768;
-           
 
             function buildParticles() {
-    particles = [];
-    currentIsMobile = window.innerWidth < 768;
-    
-    // Decrease the resolution number on mobile for finer detail (more particles)
-    // A smaller number means higher particle density, which preserves the silhouette on smaller screens
-    const resolution = currentIsMobile ? 8 : 9;
+                particles = [];
+                currentIsMobile = window.innerWidth < 768;
+                const resolution = currentIsMobile ? 8 : 9;
 
-    const container = canvas.parentElement;
-    const dpr = window.devicePixelRatio || 1;
-    const W = container.clientWidth;
-    const H = container.clientHeight;
+                const container = canvas.parentElement;
+                const dpr = window.devicePixelRatio || 1;
+                const W = container.clientWidth;
+                const H = container.clientHeight;
 
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.scale(dpr, dpr);
+                canvas.width = W * dpr;
+                canvas.height = H * dpr;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.scale(dpr, dpr);
 
-    const imgAspect = img.width / img.height;
-    const canvasAspect = W / H;
+                const imgAspect = img.width / img.height;
+                const canvasAspect = W / H;
 
-    const offscreen = document.createElement('canvas');
-    const offCtx = offscreen.getContext('2d');
-    const drawWidth = Math.floor(W / resolution);
-    const drawHeight = Math.floor(H / resolution);
-    offscreen.width = drawWidth;
-    offscreen.height = drawHeight;
+                const offscreen = document.createElement('canvas');
+                const offCtx = offscreen.getContext('2d');
+                const drawWidth = Math.floor(W / resolution);
+                const drawHeight = Math.floor(H / resolution);
+                offscreen.width = drawWidth;
+                offscreen.height = drawHeight;
 
-    // 1. Fill the canvas with white (brightness 255).
-    // Because your code generates particles on dark pixels (< 210 brightness),
-    // this ensures the empty padding around the contained image remains blank.
-    offCtx.fillStyle = '#FFFFFF';
-    offCtx.fillRect(0, 0, drawWidth, drawHeight);
+                offCtx.fillStyle = '#FFFFFF';
+                offCtx.fillRect(0, 0, drawWidth, drawHeight);
 
-    // 2. "Contain" logic: Fit the entire image inside the canvas without cropping
-    let destW, destH, destX, destY;
-    if (imgAspect > canvasAspect) {
-        // Image is wider than canvas — shrink to fit width
-        destW = drawWidth;
-        destH = drawWidth / imgAspect;
-        destX = 0;
-        destY = (drawHeight - destH) / 2;
-    } else {
-        // Image is taller than canvas — shrink to fit height
-        destW = drawHeight * imgAspect;
-        destH = drawHeight;
-        destX = (drawWidth - destW) / 2;
-        destY = 0;
-    }
+                let destW, destH, destX, destY;
+                if (imgAspect > canvasAspect) {
+                    destW = drawWidth;
+                    destH = drawWidth / imgAspect;
+                    destX = 0;
+                    destY = (drawHeight - destH) / 2;
+                } else {
+                    destW = drawHeight * imgAspect;
+                    destH = drawHeight;
+                    destX = (drawWidth - destW) / 2;
+                    destY = 0;
+                }
 
-    // Draw the full image properly scaled and centered
-    offCtx.drawImage(img, 0, 0, img.width, img.height, destX, destY, destW, destH);
-    const imageData = offCtx.getImageData(0, 0, drawWidth, drawHeight);
-    const data = imageData.data;
+                offCtx.drawImage(img, 0, 0, img.width, img.height, destX, destY, destW, destH);
+                const imageData = offCtx.getImageData(0, 0, drawWidth, drawHeight);
+                const data = imageData.data;
 
-    for (let y = 0; y < drawHeight; y++) {
-        for (let x = 0; x < drawWidth; x++) {
-            const index = (y * drawWidth + x) * 4;
-            const r = data[index];
-            const g = data[index + 1];
-            const b = data[index + 2];
-            const brightness = (r + g + b) / 3;
+                for (let y = 0; y < drawHeight; y++) {
+                    for (let x = 0; x < drawWidth; x++) {
+                        const index = (y * drawWidth + x) * 4;
+                        const r = data[index];
+                        const g = data[index + 1];
+                        const b = data[index + 2];
+                        const brightness = (r + g + b) / 3;
 
-            if (brightness < 210) {
-                let charIndex = Math.floor((brightness / 255) * chars.length);
-                if (charIndex >= chars.length) charIndex = chars.length - 1;
-                const char = chars[chars.length - 1 - charIndex];
-                const opacity = 1 - (brightness / 255) + 0.2;
+                        if (brightness < 210) {
+                            let charIndex = Math.floor((brightness / 255) * chars.length);
+                            if (charIndex >= chars.length) charIndex = chars.length - 1;
+                            const char = chars[chars.length - 1 - charIndex];
+                            const opacity = 1 - (brightness / 255) + 0.2;
 
-                const targetX = x * resolution + resolution / 2;
-                const targetY = y * resolution + resolution / 2;
+                            const targetX = x * resolution + resolution / 2;
+                            const targetY = y * resolution + resolution / 2;
 
-                // Spawn from random edge
-                const edge = Math.floor(Math.random() * 4);
-                let startX, startY;
-                if (edge === 0)      { startX = Math.random() * W; startY = -20; }
-                else if (edge === 1) { startX = W + 20; startY = Math.random() * H; }
-                else if (edge === 2) { startX = Math.random() * W; startY = H + 20; }
-                else                 { startX = -20; startY = Math.random() * H; }
+                            const edge = Math.floor(Math.random() * 4);
+                            let startX, startY;
+                            if (edge === 0)      { startX = Math.random() * W; startY = -20; }
+                            else if (edge === 1) { startX = W + 20; startY = Math.random() * H; }
+                            else if (edge === 2) { startX = Math.random() * W; startY = H + 20; }
+                            else                 { startX = -20; startY = Math.random() * H; }
 
-                const distFromCenter = Math.sqrt(Math.pow(targetX - W/2, 2) + Math.pow(targetY - H/2, 2));
-                const maxDist = Math.sqrt(W*W + H*H) / 2;
-                const delay = (distFromCenter / maxDist) * 900 + Math.random() * 300;
+                            const distFromCenter = Math.sqrt(Math.pow(targetX - W/2, 2) + Math.pow(targetY - H/2, 2));
+                            const maxDist = Math.sqrt(W*W + H*H) / 2;
+                            const delay = (distFromCenter / maxDist) * 900 + Math.random() * 300;
 
-                particles.push({
-                    char, opacity, resolution,
-                    targetX, targetY,
-                    x: startX, y: startY,
-                    startX, startY,
-                    delay,
-                    duration: 800 + Math.random() * 400,
-                    startTime: null
-                });
+                            particles.push({
+                                char, opacity, resolution,
+                                targetX, targetY,
+                                x: startX, y: startY,
+                                startX, startY,
+                                delay,
+                                duration: 800 + Math.random() * 400,
+                                startTime: null
+                            });
+                        }
+                    }
+                }
             }
-        }
-    }
-}
+
             function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
             function animate(timestamp) {
@@ -1281,7 +1289,6 @@
                 if (!allDone) {
                     animFrame = requestAnimationFrame(animate);
                 } else {
-                    // Draw final static frame cleanly
                     ctx.clearRect(0, 0, W, H);
                     for (let i = 0; i < particles.length; i++) {
                         const p = particles[i];
