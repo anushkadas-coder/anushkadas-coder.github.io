@@ -44,8 +44,6 @@
         body {
             background-color: #050505;
             color: #fff;
-            /* FIX: overflow-x hidden on body can clip box-shadows and sticky elements on Safari.
-               Applied to a wrapper instead via JS, or removed — clipping is handled per-section. */
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -55,7 +53,7 @@
         ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-        /* ===== NOISE GRAIN OVERLAY (hero depth) ===== */
+        /* ===== NOISE GRAIN OVERLAY ===== */
         body::after {
             content: '';
             position: fixed;
@@ -63,7 +61,7 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.35;
+            opacity: 0.1; /* Reduced for brighter videos */
         }
 
         /* ===== SECTIONS ===== */
@@ -77,59 +75,65 @@
             padding: 8rem 1.5rem 6rem;
             min-height: 100vh;
             background-color: #050505;
-            background-size: cover;
-            background-position: center;
-            /* FIX: background-attachment:fixed breaks on iOS Safari (shows flat color).
-               Using a CSS variable approach: supported browsers get parallax, others get scroll. */
-            background-attachment: fixed;
-        }
-
-        /* FIX: iOS Safari parallax fallback */
-        @supports (-webkit-touch-callout: none) {
-            .cinematic-section {
-                background-attachment: scroll;
-            }
+            overflow: hidden; 
         }
 
         .auto-height-section { min-height: auto; padding: 6rem 1.5rem; }
 
+        /* ===== BACKGROUND VIDEO ===== */
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center; /* Ensures it stays centered on mobile */
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===== CINEMATIC OVERLAY ===== */
         .cinematic-section::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 0;
+            background: rgba(0,0,0,0.1); /* Brightened significantly */
+            z-index: 1; 
         }
 
-/* Lighter overlay for mobile screens only */
-@media (max-width: 768px) {
-    .cinematic-section::before {
-        background: rgba(0,0,0,0.75); /* Lower number = brighter background */
-    }
-}
+        @media (max-width: 768px) {
+            .cinematic-section::before {
+                background: rgba(0,0,0,0.4); /* Slightly darker on mobile for text contrast */
+            }
+        }
 
-        #about        { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop'); }
-        #research     { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop'); }
-        #projects     { background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); }
-        #experience   { background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069&auto=format&fit=crop'); }
-        #skills       { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'); }
-        #memberships  { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop'); }
-        #education    { background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop'); }
-        #achievements { background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop'); }
-        #resume       { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); }
-        #contact      { background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop'); }
-
-        /* ===== PANELS ===== */
+        /* ===== PANELS (Added Glassmorphism for Readability over Bright Videos) ===== */
         .content-panel {
             position: relative;
             z-index: 10;
-            background: transparent;
-            border: none;
-            transition: transform 0.3s ease;
+            background: rgba(10, 10, 10, 0.6); /* Dark glass */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For iOS Safari */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        /* FIX: only non-timeline cards lift on hover — timeline dots feel odd when lifted */
         .content-panel:not(.no-hover):hover {
             transform: translateY(-5px);
+            border-color: rgba(212,175,55,0.4);
+        }
+
+        /* Hero Text Container for readability */
+        .hero-text-box {
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* ===== SECTION HEADING ===== */
@@ -143,6 +147,7 @@
             text-align: center;
             margin-bottom: 0.4rem;
             letter-spacing: -0.01em;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.8); /* Ensures heading pops */
         }
         .section-heading-accent {
             position: relative;
@@ -151,7 +156,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 3.5rem; /* FIX: consistent bottom margin — moved from section-subheading which was empty in most sections */
+            margin-bottom: 3.5rem;
         }
         .section-heading-accent::before,
         .section-heading-accent::after {
@@ -162,27 +167,6 @@
         }
         .section-heading-accent::after {
             background: linear-gradient(to left, transparent, var(--gold));
-        }
-
-        /* FIX: removed .section-subheading from HTML entirely (was always empty, causing phantom margin).
-           Kept the class here in case it's ever used with real content. */
-        .section-subheading {
-            position: relative;
-            z-index: 10;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 3.5rem;
-            text-shadow: 0 0 12px rgba(212,175,55,0.6);
-        }
-
-        .text-glow-gold {
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(212,175,55,0.7), 0 0 45px rgba(212,175,55,0.3);
         }
 
         /* ===== ICONS ===== */
@@ -214,12 +198,12 @@
         .tech-tag {
             font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
             color: var(--gold); border: 1px solid rgba(212,175,55,0.3);
-            border-radius: 3px; padding: 2px 7px; background: #1c1c1c;
+            border-radius: 3px; padding: 2px 7px; background: rgba(0,0,0,0.6);
         }
         .tech-tag-lg {
             font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
             color: var(--gold); border: 1px solid rgba(212,175,55,0.35);
-            border-radius: 4px; padding: 4px 9px; background: #1c1c1c;
+            border-radius: 4px; padding: 4px 9px; background: rgba(0,0,0,0.6);
         }
 
         /* ===== FADE IN ===== */
@@ -250,13 +234,7 @@
         .slide-in-container.is-visible > *:nth-child(6)  { transition-delay: 0.30s; }
         .slide-in-container.is-visible > *:nth-child(7)  { transition-delay: 0.35s; }
         .slide-in-container.is-visible > *:nth-child(8)  { transition-delay: 0.40s; }
-        .slide-in-container.is-visible > *:nth-child(9)  { transition-delay: 0.45s; }
-        .slide-in-container.is-visible > *:nth-child(10) { transition-delay: 0.50s; }
-        .slide-in-container.is-visible > *:nth-child(11) { transition-delay: 0.55s; }
-        .slide-in-container.is-visible > *:nth-child(12) { transition-delay: 0.60s; }
-        .slide-in-container.is-visible > *:nth-child(13) { transition-delay: 0.65s; }
 
-        /* FIX: respect prefers-reduced-motion — disables all animation for users who need it */
         @media (prefers-reduced-motion: reduce) {
             .fade-in, .slide-in-container > * {
                 opacity: 1 !important;
@@ -297,7 +275,7 @@
         }
 
         /* ===== NAV ACTIVE LINK ===== */
-        .nav-link { transition: color 0.2s; position: relative; }
+        .nav-link { transition: color 0.2s; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
         .nav-link.active { color: var(--gold); }
         .nav-link::after {
             content: '';
@@ -322,44 +300,27 @@
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
-        #mobile-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        #mobile-overlay.open { opacity: 1; pointer-events: auto; }
 
         #mobile-menu {
             position: fixed;
-            top: 64px; 
-            right: -100%;
-            bottom: 0;
-            width: 260px;
-            max-width: 80vw;
+            top: 64px; right: -100%; bottom: 0;
+            width: 260px; max-width: 80vw;
             background: rgba(5,5,5,0.98);
             border-left: 1px solid rgba(255,255,255,0.08);
             z-index: 49;
             padding: 1.5rem 1.5rem 2rem;
             transition: right 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+            display: flex; flex-direction: column; overflow-y: auto;
         }
-        #mobile-menu.open { 
-            right: 0;
-        }
+        #mobile-menu.open { right: 0; }
         #mobile-menu a {
-            display: block;
-            padding: 0.85rem 0;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            color: #ccc;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: block; padding: 0.85rem 0;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+            color: #ccc; border-bottom: 1px solid rgba(255,255,255,0.05);
             transition: color 0.2s, transform 0.2s;
         }
-        #mobile-menu a:hover { 
-            color: var(--gold); 
-            transform: translateX(5px);
-        }
+        #mobile-menu a:hover { color: var(--gold); transform: translateX(5px); }
         #mobile-menu a:last-child { border-bottom: none; }
 
         /* ===== BACK TO TOP ===== */
@@ -395,7 +356,8 @@
 
         .btn-outline-gold {
             display: inline-flex; align-items: center; gap: 0.75rem;
-            background: transparent; color: var(--gold);
+            background: rgba(0,0,0,0.5); color: var(--gold);
+            backdrop-filter: blur(4px);
             font-weight: 700; letter-spacing: 0.15em; font-size: 0.75rem;
             padding: 1.1rem 3rem; border-radius: 6px;
             border: 2px solid var(--gold);
@@ -406,52 +368,35 @@
 
         /* ===== SKILLS PILL ===== */
         .skill-pill {
-            display: inline-flex; 
-            align-items: center; 
-            gap: 0.5rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
             font-size: 0.85rem; font-weight: 600;
             border: 1px solid rgba(255,255,255,0.18);
-            background: #1a1a1a; padding: 0.5rem 1rem;
+            background: rgba(26,26,26,0.8); padding: 0.5rem 1rem;
             border-radius: 6px; color: #f0f0f0;
             transition: border-color 0.2s, background 0.2s, color 0.2s;
         }
-        .skill-pill img {
-            width: 16px; 
-            height: 16px;
-            filter: brightness(0) invert(1);
-            transition: filter 0.2s;
-        }
-        .skill-pill:hover { 
-            border-color: var(--gold); 
-            background: rgba(212,175,55,0.08); 
-            color: var(--gold); 
-        }
-        .skill-pill:hover img { 
-            filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%); 
-        }
+        .skill-pill img { width: 16px; height: 16px; filter: brightness(0) invert(1); transition: filter 0.2s; }
+        .skill-pill:hover { border-color: var(--gold); background: rgba(212,175,55,0.15); color: var(--gold); }
+        .skill-pill:hover img { filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%); }
 
         /* ===== CONTACT SOCIAL ICONS ===== */
         .contact-social a {
             display: inline-flex; align-items: center; justify-content: center;
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.15);
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
             transition: border-color 0.2s, background 0.2s;
         }
-        .contact-social a:hover {
-            border-color: var(--gold);
-            background: rgba(212,175,55,0.1);
-        }
+        .contact-social a:hover { border-color: var(--gold); background: rgba(212,175,55,0.2); }
         .contact-social img { filter: brightness(0) invert(1); width: 18px; height: 18px; }
     </style>
 </head>
 <body class="antialiased">
 
-<header id="site-header" class="fixed top-0 left-0 w-full z-50 border-b border-white/8 transition-all duration-300" style="background:rgba(5,5,5,0.97); backdrop-filter: blur(16px);">
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 border-b border-white/8 transition-all duration-300" style="background:rgba(5,5,5,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
         <div class="flex items-center justify-between h-16">
-            <a href="#about" class="text-lg md:text-xl font-sans font-light tracking-widest text-white shrink-0">
+            <a href="#about" class="text-lg md:text-xl font-sans font-light tracking-widest text-white shrink-0" style="text-shadow: 0 2px 8px rgba(0,0,0,0.8);">
                 ANUSHKA <span style="color:var(--gold)" class="font-semibold">DAS</span>
             </a>
 
@@ -499,97 +444,97 @@
 <main>
 
 <section id="about" class="cinematic-section" style="padding-top: 10rem;">
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="about.mp4" type="video/mp4">
+    </video>
+
     <div class="z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[75vh]">
             
-    <!-- TEXT CONTAINER: Order 2 on mobile, Order 1 on Desktop -->
-    <div class="fade-in text-left order-2 lg:order-1">
-        <p class="text-[10px] font-bold tracking-[0.2em] mb-5 uppercase" style="color: var(--text-muted);">
-            AIML Researcher &nbsp;<span style="color:var(--gold)">•</span>&nbsp; Software Developer
-        </p>
-        
-        <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-bold text-white mb-6 leading-[1.1] tracking-tight">
-           Hi, I'm<br><span style="color: var(--gold);">Anushka!</span>
-        </h1>
-        
-        <p class="font-mono text-sm tracking-widest mb-8 uppercase" style="color: var(--gold);">
-            // <span id="typing-text"></span><span class="typing-cursor"></span>
-        </p>
-        
-        <!-- FIX: removed duplicate phrase "exploring how systems that see, understand, and reason," -->
-        <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">
-            An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason — exploring how intelligent agents solve real-world challenges.
-        </p>
-        
-        <p class="body-text text-sm md:text-base mb-6 max-w-lg leading-relaxed text-gray-400">
-            Proud member of <strong class="text-white">Google's Women Techmakers</strong> and <strong class="text-white">IEEE Robotics & Automation</strong>. Alongside my passion for AI/ML, I have hands-on experience in Web Development and DSA.
-        </p>
+            <div class="fade-in text-left order-2 lg:order-1 hero-text-box">
+                <p class="text-[10px] font-bold tracking-[0.2em] mb-5 uppercase" style="color: var(--text-muted);">
+                    AIML Researcher &nbsp;<span style="color:var(--gold)">•</span>&nbsp; Software Developer
+                </p>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                    Hi, I'm<br><span style="color: var(--gold);">Anushka!</span>
+                </h1>
+                
+                <p class="font-mono text-sm tracking-widest mb-8 uppercase" style="color: var(--gold);">
+                    // <span id="typing-text"></span><span class="typing-cursor"></span>
+                </p>
+                
+                <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">
+                    An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason — exploring how intelligent agents solve real-world challenges.
+                </p>
+                
+                <p class="body-text text-sm md:text-base mb-6 max-w-lg leading-relaxed text-gray-400">
+                    Proud member of <strong class="text-white">Google's Women Techmakers</strong> and <strong class="text-white">IEEE Robotics & Automation</strong>. Alongside my passion for AI/ML, I have hands-on experience in Web Development and DSA.
+                </p>
 
-        <div class="flex flex-wrap gap-3 mb-8">
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">500+</span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Problems Solved</span>
-    </div>
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">25+</span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Projects Built</span>
-    </div>
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">2</span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Research Papers</span>
-    </div>
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none flex items-center gap-1">
-            5<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[--gold] fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">HackerRank</span>
-    </div>
-</div>
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/80 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
+                        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">500+</span>
+                        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Problems Solved</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/80 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
+                        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">25+</span>
+                        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Projects Built</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/80 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
+                        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">2</span>
+                        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Research Papers</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/80 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
+                        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none flex items-center gap-1">
+                            5<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[--gold] fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </span>
+                        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">HackerRank</span>
+                    </div>
+                </div>
 
-        
-
-        <div class="border-l-2 pl-4 py-1 mb-10" style="border-color:var(--gold);">
-            <p class="font-serif italic font-medium text-sm md:text-base" style="color:var(--gold);">
-                "Currently seeking opportunities in Software Engineering, Machine Learning, and Data Science to build impactful, data-driven solutions."
-            </p>
-        </div>
-        
-        <div class="flex flex-wrap items-center gap-6">
-            <a href="mailto:anushkadas05das@gmail.com" class="btn-gold">
-                <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" class="w-5 h-5 mr-1" alt="Email">
-                SAY HI!
-            </a>
-            
-            <div class="flex gap-3">
-                <!-- FIX: added rel="noopener noreferrer" to all external links -->
-                <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
-                <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
-                <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="Google Dev" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev"></a>
+                <div class="border-l-2 pl-4 py-1 mb-10" style="border-color:var(--gold);">
+                    <p class="font-serif italic font-medium text-sm md:text-base" style="color:var(--gold);">
+                        "Currently seeking opportunities in Software Engineering, Machine Learning, and Data Science to build impactful, data-driven solutions."
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="mailto:anushkadas05das@gmail.com" class="btn-gold">
+                        <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" class="w-5 h-5 mr-1" alt="Email">
+                        SAY HI!
+                    </a>
+                    
+                    <div class="flex gap-3">
+                        <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub" class="contact-social"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="contact-social"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
+                        <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X / Twitter" class="contact-social"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
+                        <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="Google Dev" class="contact-social"><img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev"></a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- CANVAS CONTAINER: Order 1 on mobile, Order 2 on Desktop -->
-    <div class="fade-in relative flex justify-center items-center aspect-[4/5] sm:aspect-square lg:h-[600px] lg:w-[500px] w-full max-w-[450px] lg:max-w-none mx-auto lg:mt-0 overflow-hidden order-1 lg:order-2">
-        <canvas id="ascii-canvas" class="absolute inset-0 w-full h-full z-10" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.8)) drop-shadow(0 0 35px rgba(212,175,55,0.3));"></canvas>
-    </div>
-    
-</div>
+            <div class="fade-in relative flex justify-center items-center aspect-[4/5] sm:aspect-square lg:h-[600px] lg:w-[500px] w-full max-w-[450px] lg:max-w-none mx-auto lg:mt-0 overflow-hidden order-1 lg:order-2">
+                <canvas id="ascii-canvas" class="absolute inset-0 w-full h-full z-10" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.8)) drop-shadow(0 0 35px rgba(212,175,55,0.3));"></canvas>
+            </div>
+            
+        </div>
     </div>
 </section>
 
 <section id="research" class="cinematic-section auto-height-section">
-    <!-- FIX: removed empty section-subheading div; margin now lives on section-heading-accent -->
-    <h2 class="section-heading">Research & Publications</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="research.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10">Research & Publications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Advancing Intelligent Systems</span></div>
 
     <div class="z-10 w-full max-w-6xl mx-auto fade-in">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
             <div class="content-panel p-8 flex flex-col h-full">
                 <div class="flex justify-between items-start mb-5">
-                    <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models (Officially lived on SSRN)</h3>
+                    <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models</h3>
                     <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" rel="noopener noreferrer" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
                         <img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="View">
                     </a>
@@ -626,13 +571,16 @@
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Outperforms spatial baselines at <strong class="text-white">45 FPS</strong> real-time inference on edge devices.</span></li>
                 </ul>
             </div>
-
         </div>
     </div>
 </section>
 
 <section id="projects" class="cinematic-section">
-    <h2 class="section-heading mt-10">Some of My Projects</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="projects.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10 mt-10">Some of My Projects</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Deployed Engineering Solutions</span></div>
 
     <div class="z-10 w-full max-w-7xl mx-auto">
@@ -842,13 +790,16 @@
 </section>
 
 <section id="experience" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Experience</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="experience.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10 mt-10">Experience</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Professional Journey</span></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto">
         <div class="timeline-wrap space-y-6 slide-in-container">
 
-            <!-- FIX: added no-hover class to timeline cards so they don't lift awkwardly -->
             <div class="content-panel no-hover p-6 md:p-8 relative">
                 <div class="timeline-dot"></div>
                 <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JAN 2025 – PRESENT</div>
@@ -889,7 +840,11 @@
 </section>
 
 <section id="skills" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Technical Arsenal</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="skills.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10 mt-10">Technical Arsenal</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Core Competencies</span></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto fade-in">
@@ -945,7 +900,11 @@
 </section>
 
 <section id="memberships" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Memberships & Affiliations</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="memberships.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10 mt-10">Memberships & Affiliations</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Global Communities</span></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto fade-in">
@@ -965,7 +924,11 @@
 </section>
 
 <section id="education" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Education</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="education.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10 mt-10">Education</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Academic Foundation</span></div>
 
     <div class="z-10 w-full max-w-4xl mx-auto">
@@ -987,7 +950,11 @@
 </section>
 
 <section id="achievements" class="cinematic-section py-20">
-    <h2 class="section-heading mt-10">Achievements & Certifications</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="achievements.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10 mt-10">Achievements & Certifications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Milestones & Continuous Learning</span></div>
 
     <div class="z-10 w-full max-w-5xl mx-auto">
@@ -998,7 +965,6 @@
                     <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Briefcase"></div>
                     <h4 class="text-white font-bold text-xl">IndiaFirst Life (Bank of Baroda)</h4>
                 </div>
-                <!-- FIX: corrected "your" → "her" for consistent third-person POV -->
                 <p class="body-text text-sm">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer — respectfully declined to focus on 6th-semester studies.</p>
             </div>
 
@@ -1055,7 +1021,11 @@
 </section>
 
 <section id="resume" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Resume</h2>
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="resume.mp4" type="video/mp4">
+    </video>
+
+    <h2 class="section-heading z-10 mt-10">Resume</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Complete Technical Profile</span></div>
 
     <div class="z-10 w-full max-w-2xl mx-auto fade-in text-center">
@@ -1072,6 +1042,10 @@
 </section>
 
 <section id="contact" class="cinematic-section auto-height-section text-center">
+    <video autoplay loop muted playsinline class="bg-video">
+        <source src="contact.mp4" type="video/mp4">
+    </video>
+
     <div class="z-10 w-full max-w-2xl mx-auto fade-in mt-10 flex flex-col items-center">
         <h2 class="text-4xl md:text-6xl font-serif font-semibold text-white mb-4">Initialize Connection</h2>
         <p class="body-text text-base md:text-lg mb-10 max-w-lg">
