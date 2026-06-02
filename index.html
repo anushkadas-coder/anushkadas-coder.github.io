@@ -44,9 +44,8 @@
         body {
             background-color: #050505;
             color: #fff;
-            /* FIX: overflow-x hidden on body can clip box-shadows and sticky elements on Safari.
-               Applied to a wrapper instead via JS, or removed — clipping is handled per-section. */
             font-family: 'Montserrat', sans-serif;
+            position: relative;
         }
 
         /* ===== SCROLLBAR ===== */
@@ -79,12 +78,10 @@
             background-color: #050505;
             background-size: cover;
             background-position: center;
-            /* FIX: background-attachment:fixed breaks on iOS Safari (shows flat color).
-               Using a CSS variable approach: supported browsers get parallax, others get scroll. */
             background-attachment: fixed;
         }
 
-        /* FIX: iOS Safari parallax fallback */
+        /* Fallback for iOS Safari Parallax issues */
         @supports (-webkit-touch-callout: none) {
             .cinematic-section {
                 background-attachment: scroll;
@@ -101,12 +98,12 @@
             z-index: 0;
         }
 
-/* Lighter overlay for mobile screens only */
-@media (max-width: 768px) {
-    .cinematic-section::before {
-        background: rgba(0,0,0,0.75); /* Lower number = brighter background */
-    }
-}
+        /* Lighter overlay for mobile screens only */
+        @media (max-width: 768px) {
+            .cinematic-section::before {
+                background: rgba(0,0,0,0.75); 
+            }
+        }
 
         #about        { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop'); }
         #research     { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop'); }
@@ -127,7 +124,6 @@
             border: none;
             transition: transform 0.3s ease;
         }
-        /* FIX: only non-timeline cards lift on hover — timeline dots feel odd when lifted */
         .content-panel:not(.no-hover):hover {
             transform: translateY(-5px);
         }
@@ -151,7 +147,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 3.5rem; /* FIX: consistent bottom margin — moved from section-subheading which was empty in most sections */
+            margin-bottom: 3.5rem; 
         }
         .section-heading-accent::before,
         .section-heading-accent::after {
@@ -162,22 +158,6 @@
         }
         .section-heading-accent::after {
             background: linear-gradient(to left, transparent, var(--gold));
-        }
-
-        /* FIX: removed .section-subheading from HTML entirely (was always empty, causing phantom margin).
-           Kept the class here in case it's ever used with real content. */
-        .section-subheading {
-            position: relative;
-            z-index: 10;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 3.5rem;
-            text-shadow: 0 0 12px rgba(212,175,55,0.6);
         }
 
         .text-glow-gold {
@@ -256,7 +236,6 @@
         .slide-in-container.is-visible > *:nth-child(12) { transition-delay: 0.60s; }
         .slide-in-container.is-visible > *:nth-child(13) { transition-delay: 0.65s; }
 
-        /* FIX: respect prefers-reduced-motion — disables all animation for users who need it */
         @media (prefers-reduced-motion: reduce) {
             .fade-in, .slide-in-container > * {
                 opacity: 1 !important;
@@ -496,27 +475,25 @@
     <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
 </button>
 
-<main>
+<main class="overflow-x-hidden w-full">
 
 <section id="about" class="cinematic-section" style="padding-top: 10rem;">
     <div class="z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[75vh]">
             
-    <!-- TEXT CONTAINER: Order 2 on mobile, Order 1 on Desktop -->
     <div class="fade-in text-left order-2 lg:order-1">
         <p class="text-[10px] font-bold tracking-[0.2em] mb-5 uppercase" style="color: var(--text-muted);">
             AIML Researcher &nbsp;<span style="color:var(--gold)">•</span>&nbsp; Software Developer
         </p>
         
         <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-bold text-white mb-6 leading-[1.1] tracking-tight">
-           Hi, I'm<br><span style="color: var(--gold);">Anushka!</span>
+            Hi, I'm<br><span style="color: var(--gold);">Anushka!</span>
         </h1>
         
         <p class="font-mono text-sm tracking-widest mb-8 uppercase" style="color: var(--gold);">
             // <span id="typing-text"></span><span class="typing-cursor"></span>
         </p>
         
-        <!-- FIX: removed duplicate phrase "exploring how systems that see, understand, and reason," -->
         <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">
             An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason — exploring how intelligent agents solve real-world challenges.
         </p>
@@ -561,7 +538,6 @@
             </a>
             
             <div class="flex gap-3">
-                <!-- FIX: added rel="noopener noreferrer" to all external links -->
                 <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
                 <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
                 <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
@@ -570,7 +546,6 @@
         </div>
     </div>
 
-    <!-- CANVAS CONTAINER: Order 1 on mobile, Order 2 on Desktop -->
     <div class="fade-in relative flex justify-center items-center aspect-[4/5] sm:aspect-square lg:h-[600px] lg:w-[500px] w-full max-w-[450px] lg:max-w-none mx-auto lg:mt-0 overflow-hidden order-1 lg:order-2">
         <canvas id="ascii-canvas" class="absolute inset-0 w-full h-full z-10" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.8)) drop-shadow(0 0 35px rgba(212,175,55,0.3));"></canvas>
     </div>
@@ -580,7 +555,6 @@
 </section>
 
 <section id="research" class="cinematic-section auto-height-section">
-    <!-- FIX: removed empty section-subheading div; margin now lives on section-heading-accent -->
     <h2 class="section-heading">Research & Publications</h2>
     <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Advancing Intelligent Systems</span></div>
 
@@ -588,6 +562,10 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
             <div class="content-panel p-8 flex flex-col h-full">
+                <div class="w-full h-48 md:h-56 mb-6 overflow-hidden rounded-lg border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="research-sovereign-ai.jpeg" alt="Architectural Paradigms for Sovereign AI" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-5">
                     <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models (Officially lived on SSRN)</h3>
                     <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" rel="noopener noreferrer" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
@@ -608,6 +586,10 @@
             </div>
 
             <div class="content-panel p-8 flex flex-col h-full">
+                <div class="w-full h-48 md:h-56 mb-6 overflow-hidden rounded-lg border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="research-deepfake-fft.jpeg" alt="Isolating Synthetic Fingerprints" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-5">
                     <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
                     <a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
@@ -639,6 +621,10 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 slide-in-container">
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DeepfakeDetector: Frequency-Based AI Inference Engine</h3>
                     <div class="flex gap-2 shrink-0">
@@ -655,6 +641,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-federated-fresh.jpeg" alt="Federated Fresh" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Federated Fresh: Hybrid AI Orchestration Terminal</h3>
                     <div class="flex gap-2 shrink-0">
@@ -671,20 +661,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Deep RL Double Q-Network for Atari</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Deep-Reinforcement-Learning-with-Double-Q-Networks-on-Atari-Games" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                    </div>
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
                 </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">DEEP RL</span><span class="tech-tag">CNN</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>DDQN agent mastering Atari Space Invaders directly from raw pixel input.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>CNN pipeline extracting complex spatial features from raw emulator frames.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">iNaturalist Clumper: Geospatial Data Engineering</h3>
                     <div class="flex gap-2 shrink-0">
@@ -700,6 +680,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-deweathering.jpeg" alt="Deweathering Engine" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Deweathering Engine</h3>
                     <div class="flex gap-2 shrink-0">
@@ -716,6 +700,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DCO6: Polyphonic VST3 Synthesizer</h3>
                     <div class="flex gap-2 shrink-0">
@@ -731,6 +719,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-churn-prediction.jpeg" alt="Customer Churn Prediction" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Customer Churn Prediction</h3>
                     <div class="flex gap-2 shrink-0">
@@ -746,6 +738,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis 3D Simulation" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Psilocybe Cubensis: 3D Simulation</h3>
                     <div class="flex gap-2 shrink-0">
@@ -762,34 +758,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Automated Image Rotation & Angle Detection</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Image-Rotation-Angle-Detection-with-Python" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                    </div>
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-nlp-satellite.jpeg" alt="NLP Smart Search for Satellite Data" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
                 </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">COMPUTER VISION</span><span class="tech-tag">REMOTE SENSING</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Computer vision tool to algorithmically detect and calculate rotational skew of images.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Tested on satellite datasets where geo-referencing introduces rotational artifacts.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">OpenCV Tie-Point Matching Pipeline</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Tie-Point-Matching-Between-Images-using-OpenCV" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">OPENCV</span><span class="tech-tag">FEATURE EXTRACTION</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Automated image registration using OpenCV to identify and map spatial keypoints across image pairs.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Vector-distance keypoint matching for mathematically accurate coordinate mappings.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">NLP Smart Search for Satellite Data</h3>
                     <div class="flex gap-2 shrink-0">
@@ -804,6 +776,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-7 flex flex-col h-full">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-peonia.jpeg" alt="Peonia Generative 3D Animation" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Peonia: Generative 3D Animation</h3>
                     <div class="flex gap-2 shrink-0">
@@ -820,6 +796,10 @@
             </div>
 
             <div class="content-panel p-6 md:p-8 flex flex-col h-full md:col-span-2 lg:col-span-3">
+                <div class="w-full h-56 md:h-72 mb-6 overflow-hidden rounded-lg border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
+                    <img src="project-digipramaan.png" alt="Digi-Pramaan Hackathon Project" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">
+                </div>
+                
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-white font-bold text-lg md:text-xl leading-snug">
                         Digi-Pramaan &nbsp;<span style="color:var(--gold);">— SIH '25 Semi-Finalist</span>
@@ -838,6 +818,21 @@
                 </ul>
             </div>
 
+            <div class="z-10 w-full max-w-7xl mx-auto mt-10 flex flex-col items-center fade-in">
+    <div class="flex items-center gap-3 mb-5">
+        <div class="h-px w-16" style="background: linear-gradient(to right, transparent, var(--gold));"></div>
+        <span style="color:var(--text-muted); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">There's more</span>
+        <div class="h-px w-16" style="background: linear-gradient(to left, transparent, var(--gold));"></div>
+    </div>
+    <p class="body-text text-sm text-center mb-6 max-w-md" style="color:var(--text-muted);">
+        These are just some highlights. Explore all my repositories, experiments, and works-in-progress on GitHub.
+    </p>
+    <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-outline-gold">
+        <img src="https://api.iconify.design/ri/github-line.svg?color=%23D4AF37" class="w-5 h-5" alt="GitHub">
+        VIEW ALL PROJECTS ON GITHUB
+    </a>
+</div>
+
         </div></div>
 </section>
 
@@ -848,7 +843,6 @@
     <div class="z-10 w-full max-w-4xl mx-auto">
         <div class="timeline-wrap space-y-6 slide-in-container">
 
-            <!-- FIX: added no-hover class to timeline cards so they don't lift awkwardly -->
             <div class="content-panel no-hover p-6 md:p-8 relative">
                 <div class="timeline-dot"></div>
                 <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JAN 2025 – PRESENT</div>
@@ -998,7 +992,6 @@
                     <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Briefcase"></div>
                     <h4 class="text-white font-bold text-xl">IndiaFirst Life (Bank of Baroda)</h4>
                 </div>
-                <!-- FIX: corrected "your" → "her" for consistent third-person POV -->
                 <p class="body-text text-sm">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer — respectfully declined to focus on 6th-semester studies.</p>
             </div>
 
@@ -1340,8 +1333,15 @@
 
             startAnimation();
 
+            // WRAPPER FIX: Only trigger resize if the actual screen width changes
+            // This prevents massive lag on mobile caused by the address bar hiding/showing when you scroll
             let resizeTimer;
+            let lastWidth = window.innerWidth;
+            
             window.addEventListener('resize', () => {
+                if (window.innerWidth === lastWidth) return; 
+                lastWidth = window.innerWidth;
+                
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(startAnimation, 200);
             });
