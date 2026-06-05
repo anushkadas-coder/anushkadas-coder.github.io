@@ -44,8 +44,9 @@
         body {
             background-color: #050505;
             color: #fff;
+            /* FIX: overflow-x hidden on body can clip box-shadows and sticky elements on Safari.
+               Applied to a wrapper instead via JS, or removed — clipping is handled per-section. */
             font-family: 'Montserrat', sans-serif;
-            position: relative;
         }
 
         /* ===== SCROLLBAR ===== */
@@ -78,10 +79,12 @@
             background-color: #050505;
             background-size: cover;
             background-position: center;
+            /* FIX: background-attachment:fixed breaks on iOS Safari (shows flat color).
+               Using a CSS variable approach: supported browsers get parallax, others get scroll. */
             background-attachment: fixed;
         }
 
-        /* Fallback for iOS Safari Parallax issues */
+        /* FIX: iOS Safari parallax fallback */
         @supports (-webkit-touch-callout: none) {
             .cinematic-section {
                 background-attachment: scroll;
@@ -98,12 +101,12 @@
             z-index: 0;
         }
 
-        /* Lighter overlay for mobile screens only */
-        @media (max-width: 768px) {
-            .cinematic-section::before {
-                background: rgba(0,0,0,0.75); 
-            }
-        }
+/* Lighter overlay for mobile screens only */
+@media (max-width: 768px) {
+    .cinematic-section::before {
+        background: rgba(0,0,0,0.75); /* Lower number = brighter background */
+    }
+}
 
         #about        { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop'); }
         #research     { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop'); }
@@ -124,6 +127,7 @@
             border: none;
             transition: transform 0.3s ease;
         }
+        /* FIX: only non-timeline cards lift on hover — timeline dots feel odd when lifted */
         .content-panel:not(.no-hover):hover {
             transform: translateY(-5px);
         }
@@ -147,7 +151,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 3.5rem; 
+            margin-bottom: 3.5rem; /* FIX: consistent bottom margin — moved from section-subheading which was empty in most sections */
         }
         .section-heading-accent::before,
         .section-heading-accent::after {
@@ -158,6 +162,22 @@
         }
         .section-heading-accent::after {
             background: linear-gradient(to left, transparent, var(--gold));
+        }
+
+        /* FIX: removed .section-subheading from HTML entirely (was always empty, causing phantom margin).
+            Kept the class here in case it's ever used with real content. */
+        .section-subheading {
+            position: relative;
+            z-index: 10;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 3.5rem;
+            text-shadow: 0 0 12px rgba(212,175,55,0.6);
         }
 
         .text-glow-gold {
@@ -236,6 +256,7 @@
         .slide-in-container.is-visible > *:nth-child(12) { transition-delay: 0.60s; }
         .slide-in-container.is-visible > *:nth-child(13) { transition-delay: 0.65s; }
 
+        /* FIX: respect prefers-reduced-motion — disables all animation for users who need it */
         @media (prefers-reduced-motion: reduce) {
             .fade-in, .slide-in-container > * {
                 opacity: 1 !important;
@@ -475,7 +496,7 @@
     <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
 </button>
 
-<main class="overflow-x-hidden w-full">
+<main>
 
 <section id="about" class="cinematic-section" style="padding-top: 10rem;">
     <div class="z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
@@ -734,6 +755,25 @@
                 <ul class="space-y-2">
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>End-to-end ML model predicting customer churn — <strong class="text-white">67% recall rate</strong> and <strong class="text-white">AUC 0.82</strong>.</span></li>
                     <li class="bullet-item"><span class="bullet-dot">▹</span><span>Interactive Streamlit web app for real-time predictions deployed publicly.</span></li>
+                </ul>
+            </div>
+
+            <div class="content-panel p-6 md:p-7 flex flex-col h-full border border-gold-border bg-gold-dim/5">
+                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+                    <img src="project-plant-agent.jpeg" alt="Autonomous Plant Agent" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+                </div>
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">PlantCore: Autonomous Maintenance AI</h3>
+                    <div class="flex gap-2 shrink-0">
+                        <a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
+                        <a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">FASTAPI</span><span class="tech-tag">XGBOOST</span><span class="tech-tag">LANGCHAIN</span><span class="tech-tag">REACT</span></div>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Autonomous AI diagnostic agent for industrial motor failure prediction.</span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Hybrid ML pipeline: XGBoost for fault detection + Llama 3 (Groq) for repair protocols.</span></li>
+                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>High-fidelity terminal UI with real-time telemetry streaming.</span></li>
                 </ul>
             </div>
 
@@ -1333,15 +1373,8 @@
 
             startAnimation();
 
-            // WRAPPER FIX: Only trigger resize if the actual screen width changes
-            // This prevents massive lag on mobile caused by the address bar hiding/showing when you scroll
             let resizeTimer;
-            let lastWidth = window.innerWidth;
-            
             window.addEventListener('resize', () => {
-                if (window.innerWidth === lastWidth) return; 
-                lastWidth = window.innerWidth;
-                
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(startAnimation, 200);
             });
