@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Anushka Das | Software & ML Engineer</title>
     <meta name="description" content="Anushka Das — Aspiring ML/DL Engineer, AIML Researcher, and Software Developer from Kolkata, India. IEEE Member, Google Women Techmakers. Explore research, projects, and more.">
     <meta property="og:title" content="Anushka Das | ML & Software Engineer">
@@ -12,15 +12,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Montserrat"', 'sans-serif'],
-                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Space+Grotesk"', 'sans-serif'],
+                        mono: ['"Space Mono"', 'monospace'],
+                        display: ['"Syne"', 'sans-serif'],
                     }
                 }
             }
@@ -28,468 +29,572 @@
     </script>
 
     <style>
-        /* ===== BASE ===== */
         :root {
-            --gold: #D4AF37;
-            --gold-dim: rgba(212,175,55,0.15);
-            --gold-border: rgba(212,175,55,0.4);
-            --text-body: #d8d8d8;
-            --text-muted: #9a9a9a;
+            /* DARK MODE (DEFAULT) */
+            --gold: #C8A951;
+            --gold-bright: #E8C96A;
+            --gold-dim: rgba(200,169,81,0.08);
+            --gold-border: rgba(200,169,81,0.25);
+            --accent: #00D4FF;
+            --accent-dim: rgba(0,212,255,0.07);
+            --accent-border: rgba(0,212,255,0.2);
+            --bg: #060609;
+            --bg2: #0c0c10;
+            --bg3: #101015;
+            --surface: #14141a;
+            --surface2: #1a1a22;
+            --border: rgba(255,255,255,0.06);
+            --border2: rgba(255,255,255,0.1);
+            --text: #e8e8f0;
+            --text2: #9898b0;
+            --text3: #5a5a72;
+            --text-main: #ffffff;
+            --green: #00FF88;
+            --header-bg: rgba(6,6,9,0.9);
+            --card-overlay: rgba(10,10,14,0.95);
+            --img-overlay: rgba(6,6,9,0.8);
+            --terminal-bg: #0a0a0e;
+            --orb-1: rgba(200,169,81,0.04);
+            --orb-2: rgba(0,212,255,0.03);
+            --ham-color: #ffffff;
         }
 
-        *, *::before, *::after { box-sizing: border-box; }
+        [data-theme="light"] {
+            /* LIGHT MODE OVERRIDES */
+            --bg: #fafafa;
+            --bg2: #f0f0f5;
+            --bg3: #e8e8ed;
+            --surface: #ffffff;
+            --surface2: #f4f4f8;
+            --border: rgba(0,0,0,0.08);
+            --border2: rgba(0,0,0,0.15);
+            --text: #1a1a24;
+            --text2: #4a4a5e;
+            --text3: #71718a;
+            --text-main: #000000;
+            --header-bg: rgba(250,250,250,0.9);
+            --card-overlay: rgba(250,250,250,0.95);
+            --img-overlay: rgba(250,250,250,0.85);
+            --terminal-bg: #1e1e24;
+            --gold: #b08f36;
+            --gold-bright: #d4aa3b;
+            --gold-dim: rgba(176,143,54,0.1);
+            --gold-border: rgba(176,143,54,0.3);
+            --accent: #0088aa;
+            --accent-dim: rgba(0,136,170,0.1);
+            --accent-border: rgba(0,136,170,0.3);
+            --green: #008f4c;
+            --orb-1: rgba(176,143,54,0.08);
+            --orb-2: rgba(0,136,170,0.06);
+            --ham-color: #000000;
+        }
 
-        html { scroll-behavior: smooth; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
 
         body {
-            background-color: #050505;
-            color: #fff;
-            /* FIX: overflow-x hidden on body can clip box-shadows and sticky elements on Safari.
-               Applied to a wrapper instead via JS, or removed — clipping is handled per-section. */
-            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 2px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-        /* ===== NOISE GRAIN OVERLAY (hero depth) ===== */
+        /* ─── GLOBAL NOISE LAYER ─── */
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* ─── SCAN LINE ─── */
         body::after {
             content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.35;
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
         }
 
-        /* ===== SECTIONS ===== */
-        .cinematic-section {
-            position: relative;
-            width: 100%;
+        /* ─── GRID BG PATTERN ─── */
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(200,169,81,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200,169,81,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        [data-theme="light"] .grid-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+        }
+
+        /* ─── GLOW ORBS ─── */
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; transition: background 0.4s;
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            position: relative; width: 100%; padding: 7rem 1.5rem;
+            overflow: hidden;
+        }
+        .section-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+
+        /* Mobile tweaks */
+        @media (max-width: 768px) {
+            .section { padding: 4rem 1.25rem; }
+            .hero-anim { transform: translateY(15px); }
+            .timeline { padding-left: 1.5rem !important; }
+            .timeline::before { left: 0 !important; }
+            .timeline-dot { left: -2.35rem !important; width: 8px; height: 8px; }
+            .stat-box { padding: 1rem; }
+            .stat-num { font-size: 1.5rem; }
+        }
+
+        /* ─── SECTION LABELS ─── */
+        .eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem; letter-spacing: 0.22em;
+            color: var(--accent); text-transform: uppercase;
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 1rem;
+        }
+        .eyebrow::before {
+            content: ''; display: inline-block; width: 32px; height: 1px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800; line-height: 1.05;
+            color: var(--text-main); letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+            transition: color 0.4s;
+        }
+        .section-title span { color: var(--gold); }
+
+        .section-sub {
+            font-size: 0.85rem; color: var(--text3);
+            letter-spacing: 0.05em; margin-bottom: 4rem;
+        }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+            margin: 0;
+        }
+
+        /* ─── CARDS ─── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s, background 0.4s;
+            position: relative; overflow: hidden;
+        }
+        .card::before {
+            content: ''; position: absolute; inset: 0; border-radius: inherit;
+            background: linear-gradient(135deg, rgba(200,169,81,0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 0 1px var(--gold-border);
+        }
+
+        .card-accent {
+            background: var(--surface);
+            border: 1px solid var(--gold-border);
+            border-radius: 16px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s, background 0.4s;
+            position: relative; overflow: hidden;
+        }
+        .card-accent::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .card-accent:hover {
+            border-color: var(--gold-bright);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 30px rgba(200,169,81,0.1);
+        }
+
+        /* ─── TERMINAL CARD ─── */
+        .terminal-card {
+            background: var(--terminal-bg);
+            border: 1px solid var(--border2);
+            border-radius: 12px; overflow: hidden;
+            transition: background 0.4s;
+        }
+        .terminal-bar {
+            display: flex; align-items: center; gap: 6px;
+            padding: 10px 14px;
+            background: var(--surface2);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.4s;
+        }
+        .terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .t-red { background: #FF5F57; }
+        .t-yellow { background: #FEBC2E; }
+        .t-green { background: #28C840; }
+        .terminal-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem; color: #71718a; margin-left: 6px;
+        }
+        .terminal-body {
+            padding: 20px; font-family: 'Space Mono', monospace;
+            font-size: 0.75rem; line-height: 1.9;
+        }
+        .t-comment { color: #71718a; }
+        .t-key { color: var(--accent); }
+        .t-val { color: var(--gold); }
+        .t-str { color: #A8FF78; }
+        .t-num { color: #FF9F43; }
+        .t-bool { color: #FD79A8; }
+
+        /* ─── TAGS & PILLS ─── */
+        .tag {
+            display: inline-flex; align-items: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em;
+            padding: 3px 8px; border-radius: 4px;
+            background: rgba(200,169,81,0.08);
+            border: 1px solid rgba(200,169,81,0.2);
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .tag-green {
+            background: rgba(0,255,136,0.06);
+            border-color: rgba(0,255,136,0.2);
+            color: var(--green);
+        }
+
+        .skill-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; font-weight: 500;
+            padding: 8px 14px; border-radius: 8px;
+            background: var(--surface2);
+            border: 1px solid var(--border2);
+            color: var(--text);
+            transition: all 0.2s;
+        }
+        
+        .skill-pill img { width: 14px; height: 14px; filter: brightness(0) invert(0.8); transition: filter 0.4s; }
+        [data-theme="light"] .skill-pill img { filter: brightness(0) invert(0.3); }
+        
+        .skill-pill:hover {
+            border-color: var(--gold-border);
+            background: var(--gold-dim);
+            color: var(--gold);
+        }
+        .skill-pill:hover img {
+            filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%) !important;
+        }
+
+        .bul { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text2); line-height: 1.7; }
+        .bul::before { content: '▸'; color: var(--gold); font-size: 0.65rem; margin-top: 5px; flex-shrink: 0; }
+
+        /* ─── STAT BOX (Fixed for mobile) ─── */
+        .stat-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 0.5rem;
+            text-align: center;
+            transition: border-color 0.3s, background 0.4s;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 8rem 1.5rem 6rem;
-            min-height: 100vh;
-            background-color: #050505;
-            background-size: cover;
-            background-position: center;
-            /* FIX: background-attachment:fixed breaks on iOS Safari (shows flat color).
-               Using a CSS variable approach: supported browsers get parallax, others get scroll. */
-            background-attachment: fixed;
-        }
-
-        /* FIX: iOS Safari parallax fallback */
-        @supports (-webkit-touch-callout: none) {
-            .cinematic-section {
-                background-attachment: scroll;
-            }
-        }
-
-        .auto-height-section { min-height: auto; padding: 6rem 1.5rem; }
-
-        .cinematic-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 0;
-        }
-
-/* Lighter overlay for mobile screens only */
-@media (max-width: 768px) {
-    .cinematic-section::before {
-        background: rgba(0,0,0,0.75); /* Lower number = brighter background */
-    }
-}
-
-        #about        { background-image: url('https://images.unsplash.com/photo-1597733336794-12d05021d510?q=80&w=2067&auto=format&fit=crop'); }
-        #research     { background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2065&auto=format&fit=crop'); }
-        #projects     { background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); }
-        #experience   { background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069&auto=format&fit=crop'); }
-        #skills       { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop'); }
-        #memberships  { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop'); }
-        #education    { background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop'); }
-        #achievements { background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop'); }
-        #resume       { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); }
-        #contact      { background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop'); }
-
-        /* ===== PANELS ===== */
-        .content-panel {
-            position: relative;
-            z-index: 10;
-            background: transparent;
-            border: none;
-            transition: transform 0.3s ease;
-        }
-        /* FIX: only non-timeline cards lift on hover — timeline dots feel odd when lifted */
-        .content-panel:not(.no-hover):hover {
-            transform: translateY(-5px);
-        }
-
-        /* ===== SECTION HEADING ===== */
-        .section-heading {
-            position: relative;
-            z-index: 10;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 600;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 0.4rem;
-            letter-spacing: -0.01em;
-        }
-        .section-heading-accent {
-            position: relative;
-            z-index: 10;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 3.5rem; /* FIX: consistent bottom margin — moved from section-subheading which was empty in most sections */
         }
-        .section-heading-accent::before,
-        .section-heading-accent::after {
-            content: '';
-            height: 1px;
-            width: 48px;
-            background: linear-gradient(to right, transparent, var(--gold));
+        .stat-box:hover { border-color: var(--gold-border); }
+        .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            font-weight: 800;
+            color: var(--gold); line-height: 1;
+            white-space: nowrap;
         }
-        .section-heading-accent::after {
-            background: linear-gradient(to left, transparent, var(--gold));
-        }
-
-        /* FIX: removed .section-subheading from HTML entirely (was always empty, causing phantom margin).
-            Kept the class here in case it's ever used with real content. */
-        .section-subheading {
-            position: relative;
-            z-index: 10;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 3.5rem;
-            text-shadow: 0 0 12px rgba(212,175,55,0.6);
+        .stat-lbl {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem; letter-spacing: 0.12em;
+            color: var(--text3); text-transform: uppercase; margin-top: 6px;
         }
 
-        .text-glow-gold {
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(212,175,55,0.7), 0 0 45px rgba(212,175,55,0.3);
+        /* ─── TIMELINE ─── */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 0; top: 0; bottom: 0; width: 1px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
         }
-
-        /* ===== ICONS ===== */
-        .social-btn img  { filter: brightness(0) invert(1); transition: filter 0.2s; }
-        .card-icon img   { filter: brightness(0) invert(1); }
-        .gold-icon img   { filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%); }
-
-        /* ===== TEXT HELPERS ===== */
-        .body-text  { color: var(--text-body); line-height: 1.8; }
-        .muted-text { color: var(--text-muted); }
-
-        .bullet-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
-            color: var(--text-body);
-            font-size: 0.875rem;
-            line-height: 1.7;
-        }
-        .bullet-dot {
-            color: var(--gold);
-            font-weight: 700;
-            margin-top: 2px;
-            flex-shrink: 0;
-            font-size: 0.8rem;
-        }
-
-        /* ===== TAGS ===== */
-        .tech-tag {
-            font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-            color: var(--gold); border: 1px solid rgba(212,175,55,0.3);
-            border-radius: 3px; padding: 2px 7px; background: #1c1c1c;
-        }
-        .tech-tag-lg {
-            font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-            color: var(--gold); border: 1px solid rgba(212,175,55,0.35);
-            border-radius: 4px; padding: 4px 9px; background: #1c1c1c;
-        }
-
-        /* ===== FADE IN ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.65s cubic-bezier(.25,.46,.45,.94), transform 0.65s cubic-bezier(.25,.46,.45,.94);
-        }
-        .fade-in.is-visible { opacity: 1; transform: translateY(0); }
-
-        /* ===== SLIDE IN FROM SIDES ===== */
-        .slide-in-container > * {
-            opacity: 0;
-            transition: opacity 0.8s cubic-bezier(.25,.46,.45,.94), transform 0.8s cubic-bezier(.25,.46,.45,.94);
-        }
-        
-        .slide-in-container > *:nth-child(odd) { transform: translate(-80px, 15px); }
-        .slide-in-container > *:nth-child(even) { transform: translate(80px, 15px); }
-        
-        .slide-in-container.is-visible > * { opacity: 1; transform: translate(0, 0); }
-
-        .slide-in-container > * { transition-delay: 0s; }
-        .slide-in-container.is-visible > *:nth-child(1)  { transition-delay: 0.05s; }
-        .slide-in-container.is-visible > *:nth-child(2)  { transition-delay: 0.10s; }
-        .slide-in-container.is-visible > *:nth-child(3)  { transition-delay: 0.15s; }
-        .slide-in-container.is-visible > *:nth-child(4)  { transition-delay: 0.20s; }
-        .slide-in-container.is-visible > *:nth-child(5)  { transition-delay: 0.25s; }
-        .slide-in-container.is-visible > *:nth-child(6)  { transition-delay: 0.30s; }
-        .slide-in-container.is-visible > *:nth-child(7)  { transition-delay: 0.35s; }
-        .slide-in-container.is-visible > *:nth-child(8)  { transition-delay: 0.40s; }
-        .slide-in-container.is-visible > *:nth-child(9)  { transition-delay: 0.45s; }
-        .slide-in-container.is-visible > *:nth-child(10) { transition-delay: 0.50s; }
-        .slide-in-container.is-visible > *:nth-child(11) { transition-delay: 0.55s; }
-        .slide-in-container.is-visible > *:nth-child(12) { transition-delay: 0.60s; }
-        .slide-in-container.is-visible > *:nth-child(13) { transition-delay: 0.65s; }
-
-        /* FIX: respect prefers-reduced-motion — disables all animation for users who need it */
-        @media (prefers-reduced-motion: reduce) {
-            .fade-in, .slide-in-container > * {
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-            }
-            .typing-cursor { animation: none !important; }
-        }
-
-        /* ===== TYPING CURSOR ===== */
-        .typing-cursor {
-            display: inline-block; width: 3px; height: 1em;
+        .timeline-dot {
+            position: absolute; left: -2.35rem; top: 1.4rem;
+            width: 8px; height: 8px; border-radius: 50%;
             background: var(--gold);
-            vertical-align: middle; margin-left: 4px;
+            box-shadow: 0 0 10px rgba(200,169,81,0.6), 0 0 20px rgba(200,169,81,0.2);
+        }
+        .timeline-item { position: relative; }
+
+        /* ─── NAV & BUTTONS ─── */
+        .nav-link {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem; letter-spacing: 0.1em;
+            color: var(--text3); text-transform: uppercase;
+            transition: color 0.2s; position: relative;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--gold); }
+        .nav-link::after {
+            content: ''; position: absolute;
+            bottom: -3px; left: 0; right: 0;
+            height: 1px; background: var(--gold);
+            transform: scaleX(0); transition: transform 0.25s;
+        }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+        .btn-primary, .btn-outline {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+            padding: 0.9rem 2rem; border-radius: 8px;
+            transition: all 0.25s;
+        }
+        .btn-primary { color: #000; background: var(--gold); border: 2px solid var(--gold); }
+        .btn-primary:hover { background: var(--gold-bright); border-color: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,169,81,0.3); }
+        
+        .btn-outline { color: var(--gold); background: transparent; border: 1px solid var(--gold-border); }
+        .btn-outline:hover { background: var(--gold-dim); border-color: var(--gold); transform: translateY(-2px); }
+
+        .social-btn, .contact-social a, .icon-link {
+            display: flex; align-items: center; justify-content: center;
+            background: var(--surface2); border: 1px solid var(--border2);
+            transition: all 0.2s, background 0.4s;
+            cursor: pointer;
+        }
+        .social-btn { width: 42px; height: 42px; border-radius: 10px; }
+        .contact-social a { width: 44px; height: 44px; border-radius: 10px; }
+        .icon-link { width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0; }
+        
+        .social-btn:hover, .contact-social a:hover, .icon-link:hover { border-color: var(--gold-border); background: var(--gold-dim); }
+        
+        /* Fixed Icon Visibility Logic */
+        .theme-icon { width: 17px; height: 17px; transition: filter 0.4s; }
+        [data-theme="light"] .theme-icon { filter: invert(1); }
+        
+        .contact-social .theme-icon { width: 18px; height: 18px; }
+        .icon-link .theme-icon { width: 14px; height: 14px; }
+
+        .social-btn:hover .theme-icon, .icon-link:hover .theme-icon, .contact-social a:hover .theme-icon { 
+            filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%) !important; 
+        }
+
+        /* ─── ANIMATIONS (FADE & SLIDE) ─── */
+        .fade-in {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(.22,.68,0,1.2), transform 0.7s cubic-bezier(.22,.68,0,1.2);
+        }
+        .fade-in.visible { opacity: 1; transform: none; }
+
+        .stagger > * {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .stagger.visible > *:nth-child(1)  { opacity:1; transform:none; transition-delay: 0.05s; }
+        .stagger.visible > *:nth-child(2)  { opacity:1; transform:none; transition-delay: 0.12s; }
+        .stagger.visible > *:nth-child(3)  { opacity:1; transform:none; transition-delay: 0.19s; }
+        .stagger.visible > *:nth-child(4)  { opacity:1; transform:none; transition-delay: 0.26s; }
+        .stagger.visible > *:nth-child(5)  { opacity:1; transform:none; transition-delay: 0.33s; }
+        .stagger.visible > *:nth-child(6)  { opacity:1; transform:none; transition-delay: 0.40s; }
+
+        /* Left/Right Slide */
+        .slide-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s cubic-bezier(.22,.68,0,1.2), transform 0.7s cubic-bezier(.22,.68,0,1.2); }
+        .slide-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s cubic-bezier(.22,.68,0,1.2), transform 0.7s cubic-bezier(.22,.68,0,1.2); }
+        .slide-left.visible, .slide-right.visible { opacity: 1; transform: translateX(0); }
+
+        /* Alternating Stagger Slide */
+        .stagger-slide > * { opacity: 0; transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
+        .stagger-slide > *:nth-child(odd) { transform: translateX(-40px); }
+        .stagger-slide > *:nth-child(even) { transform: translateX(40px); }
+        
+        .stagger-slide.visible > *:nth-child(odd), 
+        .stagger-slide.visible > *:nth-child(even) { opacity: 1; transform: translateX(0); }
+
+        .stagger-slide.visible > *:nth-child(1)  { transition-delay: 0.05s; }
+        .stagger-slide.visible > *:nth-child(2)  { transition-delay: 0.15s; }
+        .stagger-slide.visible > *:nth-child(3)  { transition-delay: 0.25s; }
+        .stagger-slide.visible > *:nth-child(4)  { transition-delay: 0.35s; }
+        .stagger-slide.visible > *:nth-child(5)  { transition-delay: 0.45s; }
+        .stagger-slide.visible > *:nth-child(6)  { transition-delay: 0.55s; }
+        .stagger-slide.visible > *:nth-child(7)  { transition-delay: 0.65s; }
+        .stagger-slide.visible > *:nth-child(8)  { transition-delay: 0.75s; }
+        .stagger-slide.visible > *:nth-child(9)  { transition-delay: 0.85s; }
+        .stagger-slide.visible > *:nth-child(10) { transition-delay: 0.95s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .stagger > *, .slide-left, .slide-right, .stagger-slide > * { opacity:1 !important; transform:none !important; transition:none !important; }
+        }
+
+        /* ─── TYPING ─── */
+        .typing-cursor {
+            display: inline-block; width: 2px; height: 0.9em;
+            background: var(--accent); vertical-align: middle; margin-left: 3px;
             animation: blink 1s step-end infinite;
         }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* ===== EXPERIENCE TIMELINE ===== */
-        .timeline-wrap { position: relative; padding-left: 2rem; }
-        .timeline-wrap::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-            border-radius: 2px;
+        /* ─── BACK TO TOP & MOBILE MENU ─── */
+        #back-to-top {
+            position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100;
+            width: 40px; height: 40px; border-radius: 8px;
+            background: var(--surface2); border: 1px solid var(--gold-border);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s; transform: translateY(8px);
         }
-        .timeline-dot {
-            position: absolute;
-            left: -2.55rem;
-            top: 1.6rem;
-            width: 12px; height: 12px;
-            border-radius: 50%;
-            background: var(--gold);
-            border: 2px solid #050505;
-            box-shadow: 0 0 8px rgba(212,175,55,0.5);
-        }
+        #back-to-top.visible { opacity: 1; pointer-events: auto; transform: none; }
+        #back-to-top:hover { background: var(--gold-dim); }
+        #back-to-top svg { width: 16px; height: 16px; fill: var(--gold); }
 
-        /* ===== NAV ACTIVE LINK ===== */
-        .nav-link { transition: color 0.2s; position: relative; }
-        .nav-link.active { color: var(--gold); }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0; right: 0;
-            height: 1.5px;
-            background: var(--gold);
-            transform: scaleX(0);
-            transition: transform 0.25s ease;
-        }
-        .nav-link.active::after,
-        .nav-link:hover::after { transform: scaleX(1); }
-
-        /* ===== MOBILE NAV (SIDEBAR) ===== */
         #mobile-overlay {
-            position: fixed;
-            top: 64px; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            z-index: 48;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+            z-index: 48; opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }
-        #mobile-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
+        #mobile-overlay.open { opacity: 1; pointer-events: auto; }
         #mobile-menu {
-            position: fixed;
-            top: 64px; 
-            right: -100%;
-            bottom: 0;
-            width: 260px;
-            max-width: 80vw;
-            background: rgba(5,5,5,0.98);
-            border-left: 1px solid rgba(255,255,255,0.08);
-            z-index: 49;
-            padding: 1.5rem 1.5rem 2rem;
-            transition: right 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+            position: fixed; top: 60px; right: -100%; bottom: 0;
+            width: 260px; max-width: 80vw;
+            background: var(--bg2); border-left: 1px solid var(--border2);
+            z-index: 49; padding: 1.5rem; transition: right 0.3s ease;
+            display: flex; flex-direction: column; overflow-y: auto;
         }
-        #mobile-menu.open { 
-            right: 0;
-        }
+        #mobile-menu.open { right: 0; }
         #mobile-menu a {
-            display: block;
-            padding: 0.85rem 0;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            color: #ccc;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: block; padding: 0.85rem 0;
+            font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em;
+            color: var(--text2); text-transform: uppercase; border-bottom: 1px solid var(--border);
             transition: color 0.2s, transform 0.2s;
         }
-        #mobile-menu a:hover { 
-            color: var(--gold); 
-            transform: translateX(5px);
-        }
-        #mobile-menu a:last-child { border-bottom: none; }
+        #mobile-menu a:hover { color: var(--gold); transform: translateX(4px); }
 
-        /* ===== BACK TO TOP ===== */
-        #back-to-top {
-            position: fixed;
-            bottom: 2rem; right: 1.5rem;
-            z-index: 100;
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            background: var(--gold);
-            border: none; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 20px rgba(212,175,55,0.4);
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s, transform 0.3s;
-            transform: translateY(12px);
-        }
-        #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-        #back-to-top:hover { background: #e8c84a; transform: translateY(-3px); }
-        #back-to-top svg { width: 18px; height: 18px; fill: #000; }
+        /* ─── MISC ELEMENTS ─── */
+        .proj-img-wrap { position: relative; overflow: hidden; border-radius: 10px; }
+        .proj-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+        .proj-img-wrap:hover img { transform: scale(1.06); }
+        .proj-img-overlay { position: absolute; inset: 0; border-radius: 10px; background: linear-gradient(to bottom, transparent 50%, var(--img-overlay)); transition: background 0.4s; }
 
-        /* ===== BUTTON STATES ===== */
-        .btn-gold {
-            display: inline-flex; align-items: center; gap: 0.75rem;
-            background: var(--gold); color: #000;
-            font-weight: 700; letter-spacing: 0.15em; font-size: 0.75rem;
-            padding: 1.1rem 2.5rem; border-radius: 6px;
-            box-shadow: 0 0 24px rgba(212,175,55,0.35);
-            transition: background 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
-            border: 2px solid var(--gold);
-        }
-        .btn-gold:hover { background: #fff; color: #000; transform: translateY(-3px); box-shadow: 0 0 32px rgba(212,175,55,0.5); }
-
-        .btn-outline-gold {
-            display: inline-flex; align-items: center; gap: 0.75rem;
-            background: transparent; color: var(--gold);
-            font-weight: 700; letter-spacing: 0.15em; font-size: 0.75rem;
-            padding: 1.1rem 3rem; border-radius: 6px;
-            border: 2px solid var(--gold);
-            box-shadow: 0 0 20px rgba(212,175,55,0.15);
-            transition: background 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
-        }
-        .btn-outline-gold:hover { background: var(--gold); color: #000; transform: translateY(-3px); box-shadow: 0 0 30px rgba(212,175,55,0.45); }
-
-        /* ===== SKILLS PILL ===== */
-        .skill-pill {
-            display: inline-flex; 
-            align-items: center; 
-            gap: 0.5rem;
-            font-size: 0.85rem; font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.18);
-            background: #1a1a1a; padding: 0.5rem 1rem;
-            border-radius: 6px; color: #f0f0f0;
-            transition: border-color 0.2s, background 0.2s, color 0.2s;
-        }
-        .skill-pill img {
-            width: 16px; 
-            height: 16px;
-            filter: brightness(0) invert(1);
-            transition: filter 0.2s;
-        }
-        .skill-pill:hover { 
-            border-color: var(--gold); 
-            background: rgba(212,175,55,0.08); 
-            color: var(--gold); 
-        }
-        .skill-pill:hover img { 
-            filter: brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%); 
+        #site-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 50;
+            background: var(--header-bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: all 0.4s ease;
         }
 
-        /* ===== CONTACT SOCIAL ICONS ===== */
-        .contact-social a {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.15);
-            transition: border-color 0.2s, background 0.2s;
+        .metric-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700;
+            color: var(--green); background: rgba(0,255,136,0.06);
+            border: 1px solid rgba(0,255,136,0.15); border-radius: 6px; padding: 4px 10px;
         }
-        .contact-social a:hover {
-            border-color: var(--gold);
-            background: rgba(212,175,55,0.1);
+        .metric-chip::before { content: '↑'; font-size: 0.6rem; }
+
+        .cert-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--text2); transition: border-color 0.4s; }
+        .cert-item:last-child { border-bottom: none; }
+        .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+        .cert-org { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--text3); margin-left: auto; text-align: right; }
+
+        .anchor-offset { scroll-margin-top: 72px; }
+
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 6px; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em;
+            color: var(--green); text-transform: uppercase; border: 1px solid rgba(0,255,136,0.2); background: rgba(0,255,136,0.05); padding: 4px 10px; border-radius: 20px;
         }
-        .contact-social img { filter: brightness(0) invert(1); width: 18px; height: 18px; }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+        .membership-card {
+            background: var(--surface); border: 1px solid var(--gold-border); border-radius: 16px; padding: 2.5rem; position: relative; overflow: hidden; transition: all 0.3s, background 0.4s;
+        }
+        .membership-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+        .membership-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(200,169,81,0.08); }
+
+        .skills-cat { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+        .skills-cat::after { content:''; flex:1; height:1px; background: var(--accent-border); }
+
+        .ach-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: all 0.3s, background 0.4s; position: relative; overflow: hidden; }
+        .ach-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background: linear-gradient(to bottom, var(--gold), transparent); }
+        .ach-card:hover { border-color: var(--gold-border); transform: translateY(-3px); }
+
+        .exp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: border-color 0.3s, background 0.4s; }
+        .exp-card:hover { border-color: var(--gold-border); }
+        .exp-date { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+
+        @keyframes fadeSlideUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: none; } }
+        .hero-anim { animation: fadeSlideUp 0.8s cubic-bezier(.22,.68,0,1.2) both; }
+        .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.2s; } .d3 { animation-delay: 0.35s; }
+        .d4 { animation-delay: 0.5s; } .d5 { animation-delay: 0.65s; } .d6 { animation-delay: 0.8s; }
+        
+        .ham-line { background: var(--ham-color); display: block; transition: all 0.3s; }
+        .card-overlay-grad { background: linear-gradient(to bottom, transparent 50%, var(--card-overlay)); transition: background 0.4s; }
     </style>
 </head>
-<body class="antialiased">
+<body data-theme="dark">
 
-<header id="site-header" class="fixed top-0 left-0 w-full z-50 border-b border-white/8 transition-all duration-300" style="background:rgba(5,5,5,0.97); backdrop-filter: blur(16px);">
-    <div class="max-w-7xl mx-auto px-4 md:px-6">
-        <div class="flex items-center justify-between h-16">
-            <a href="#about" class="text-lg md:text-xl font-sans font-light tracking-widest text-white shrink-0">
-                ANUSHKA <span style="color:var(--gold)" class="font-semibold">DAS</span>
-            </a>
+<header id="site-header">
+    <div style="max-width:1200px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:60px;">
+        <a href="#about" style="font-family:'Space Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; color:var(--text-main); text-decoration:none; transition: color 0.4s;">
+            <span style="color:var(--gold)">AD</span> / portfolio
+        </a>
 
-            <nav id="desktop-nav" class="hidden md:flex gap-5 text-[10px] font-semibold tracking-widest text-gray-400 items-center h-full ml-4">
-                <a href="#about"        class="nav-link" data-section="about">ABOUT</a>
-                <a href="#research"     class="nav-link" data-section="research">RESEARCH</a>
-                <a href="#projects"     class="nav-link" data-section="projects">PROJECTS</a>
-                <a href="#experience"   class="nav-link" data-section="experience">EXPERIENCE</a>
-                <a href="#skills"       class="nav-link" data-section="skills">SKILLS</a>
-                <a href="#memberships"  class="nav-link" data-section="memberships">MEMBERSHIPS</a>
-                <a href="#education"    class="nav-link" data-section="education">EDUCATION</a>
-                <a href="#achievements" class="nav-link" data-section="achievements">ACHIEVEMENTS</a>
-                <a href="#resume"       class="nav-link" data-section="resume">RESUME</a>
-                <a href="#contact"      class="nav-link" data-section="contact">CONTACT</a>
+        <div style="display:flex; align-items:center; gap:20px;">
+            <nav id="desktop-nav" style="display:none; gap:28px; align-items:center;" class="md:flex">
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#research" class="nav-link" data-section="research">Research</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#memberships" class="nav-link" data-section="memberships">Memberships</a>
+                <a href="#education" class="nav-link" data-section="education">Education</a>
+                <a href="#achievements" class="nav-link" data-section="achievements">Achievements</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                <a href="#resume" class="btn-primary" style="padding:6px 16px; font-size:0.6rem;">Resume ↗</a>
             </nav>
+            
+            <button id="theme-toggle" class="icon-link" aria-label="Toggle Dark/Light Mode" style="background:transparent; border:none; margin-left: 8px;">
+                <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:currentColor;color:var(--gold);" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:currentColor;color:var(--gold);display:none;" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
+            </button>
 
-            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 z-50" aria-label="Toggle menu">
-                <span class="ham-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-                <span class="ham-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
-                <span class="ham-line block w-4 h-0.5 bg-white transition-all duration-300"></span>
+            <button id="hamburger" class="md:hidden" style="display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px;" aria-label="Menu">
+                <span class="ham-line" style="width:22px;height:1.5px;"></span>
+                <span class="ham-line" style="width:22px;height:1.5px;"></span>
+                <span class="ham-line" style="width:14px;height:1.5px;"></span>
             </button>
         </div>
     </div>
 </header>
 
 <div id="mobile-overlay" onclick="closeMobileMenu()"></div>
-
 <div id="mobile-menu">
-    <a href="#about"        onclick="closeMobileMenu()">ABOUT</a>
-    <a href="#research"     onclick="closeMobileMenu()">RESEARCH</a>
-    <a href="#projects"     onclick="closeMobileMenu()">PROJECTS</a>
-    <a href="#experience"   onclick="closeMobileMenu()">EXPERIENCE</a>
-    <a href="#skills"       onclick="closeMobileMenu()">SKILLS</a>
-    <a href="#memberships"  onclick="closeMobileMenu()">MEMBERSHIPS</a>
-    <a href="#education"    onclick="closeMobileMenu()">EDUCATION</a>
-    <a href="#achievements" onclick="closeMobileMenu()">ACHIEVEMENTS</a>
-    <a href="#resume"       onclick="closeMobileMenu()">RESUME</a>
-    <a href="#contact"      onclick="closeMobileMenu()">CONTACT</a>
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#research" onclick="closeMobileMenu()">Research</a>
+    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+    <a href="#memberships" onclick="closeMobileMenu()">Memberships</a>
+    <a href="#education" onclick="closeMobileMenu()">Education</a>
+    <a href="#achievements" onclick="closeMobileMenu()">Achievements</a>
+    <a href="#resume" onclick="closeMobileMenu()">Resume</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
@@ -498,521 +603,150 @@
 
 <main>
 
-<section id="about" class="cinematic-section" style="padding-top: 10rem;">
-    <div class="z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[75vh]">
-            
-    <div class="fade-in text-left order-2 lg:order-1">
-        <p class="text-[10px] font-bold tracking-[0.2em] mb-5 uppercase" style="color: var(--text-muted);">
-            AIML Researcher &nbsp;<span style="color:var(--gold)">•</span>&nbsp; Software Developer
-        </p>
-        
-        <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-bold text-white mb-6 leading-[1.1] tracking-tight">
-            Hi, I'm<br><span style="color: var(--gold);">Anushka!</span>
-        </h1>
-        
-        <p class="font-mono text-sm tracking-widest mb-8 uppercase" style="color: var(--gold);">
-            // <span id="typing-text"></span><span class="typing-cursor"></span>
-        </p>
-        
-        <p class="body-text text-sm md:text-base mb-4 max-w-lg leading-relaxed">
-            An IT undergrad (B.Tech) student from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason, exploring how intelligent agents solve real-world challenges.
-        </p>
-        
-        <p class="body-text text-sm md:text-base mb-6 max-w-lg leading-relaxed text-gray-400">
-            Proud member of <strong class="text-white">Google's Women Techmakers</strong> and <strong class="text-white">IEEE Robotics & Automation</strong>. Alongside my passion for AI/ML, I have hands-on experience in Web Development and DSA.
-        </p>
+<section id="about" class="anchor-offset" style="min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding: 8rem 1.5rem 5rem; position:relative; overflow:hidden; background: var(--bg);">
+    <div class="grid-bg" style="position:absolute;inset:0;z-index:0;"></div>
+    <div class="orb" style="width:500px;height:500px;background:var(--orb-1);top:-100px;right:-100px;"></div>
+    <div class="orb" style="width:400px;height:400px;background:var(--orb-2);bottom:-50px;left:-100px;"></div>
 
-        <div class="flex flex-wrap gap-3 mb-8">
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">500+</span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Problems Solved</span>
-    </div>
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">25+</span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Projects Built</span>
-    </div>
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none">2</span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">Research Papers</span>
-    </div>
-    <div class="flex flex-col items-center justify-center border border-cyan-500/20 bg-[#03030a]/60 px-4 py-3 rounded min-w-[110px] sm:min-w-[130px] text-center">
-        <span class="font-serif font-bold text-xl md:text-2xl text-[--gold] leading-none flex items-center gap-1">
-            5<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[--gold] fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </span>
-        <span class="text-[9px] font-bold tracking-widest text-[#d8d8d8] mt-2 uppercase whitespace-nowrap">HackerRank</span>
-    </div>
-</div>
+    <div style="max-width:1200px; margin:0 auto; position:relative; z-index:2; width:100%;">
+        <div style="display:grid; grid-template-columns:1fr; gap:4rem; align-items:center;" class="md:grid-cols-[1fr_480px]">
 
-        
-
-        <div class="border-l-2 pl-4 py-1 mb-10" style="border-color:var(--gold);">
-            <p class="font-serif italic font-medium text-sm md:text-base" style="color:var(--gold);">
-                Currently seeking opportunities in Software Engineering, Machine Learning, and Data Science to build impactful, data-driven solutions.
-            </p>
-        </div>
-        
-        <div class="flex flex-wrap items-center gap-6">
-            <a href="mailto:anushkadas05das@gmail.com" class="btn-gold">
-                <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" class="w-5 h-5 mr-1" alt="Email">
-                SAY HI!
-            </a>
-            
-            <div class="flex gap-3">
-                <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" class="w-5 h-5" alt="LinkedIn"></a>
-                <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X / Twitter" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" class="w-5 h-5" alt="X"></a>
-                <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="Google Dev" class="social-btn w-11 h-11 flex items-center justify-center rounded-full bg-[#181818] border border-white/20 hover:border-yellow-400 hover:bg-[#1f1f1f] transition-all"><img src="https://api.iconify.design/ri/google-line.svg?color=white" class="w-5 h-5" alt="Google Dev"></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="fade-in relative flex justify-center items-center aspect-[4/5] sm:aspect-square lg:h-[600px] lg:w-[500px] w-full max-w-[450px] lg:max-w-none mx-auto lg:mt-0 overflow-hidden order-1 lg:order-2">
-        <canvas id="ascii-canvas" class="absolute inset-0 w-full h-full z-10" style="filter: drop-shadow(0 0 12px rgba(212,175,55,0.8)) drop-shadow(0 0 35px rgba(212,175,55,0.3));"></canvas>
-    </div>
-    
-</div>
-    </div>
-</section>
-
-<section id="research" class="cinematic-section auto-height-section">
-    <h2 class="section-heading">Research & Publications</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Advancing Intelligent Systems</span></div>
-
-    <div class="z-10 w-full max-w-6xl mx-auto fade-in">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-            <div class="content-panel p-8 flex flex-col h-full">
-                <div class="w-full h-48 md:h-56 mb-6 overflow-hidden rounded-lg border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="research-sovereign-ai.jpeg" alt="Architectural Paradigms for Sovereign AI" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
+            <div style="max-width:760px;">
+                <div class="hero-anim d1" style="margin-bottom:1.5rem; display:flex; align-items:center; gap:1rem;">
+                    <div class="status-badge"><span class="status-dot"></span>Available for opportunities</div>
+                    <div style="height:1px; width:48px; background:var(--border2);"></div>
+                    <span style="font-family:'Space Mono',monospace; font-size:0.62rem; color:var(--text3);">KOL, IN</span>
                 </div>
-                
-                <div class="flex justify-between items-start mb-5">
-                    <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models (Officially lived on SSRN)</h3>
-                    <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" rel="noopener noreferrer" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
-                        <img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="View">
+
+                <div class="hero-anim d2" style="font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.18em; color:var(--accent); margin-bottom:1rem;">
+                    ML · RESEARCH · ENGINEERING
+                </div>
+
+                <h1 class="hero-anim d3" style="font-family:'Syne',sans-serif; font-size:clamp(2.5rem,6vw,5.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.04em; color:var(--text-main); margin-bottom:0.5rem; transition: color 0.4s;">
+                    Hi, I'm<br><span style="color:var(--gold);">Anushka!</span>
+                </h1>
+
+                <div class="hero-anim d3" style="font-family:'Space Mono',monospace; font-size:0.85rem; color:var(--text2); margin-bottom:2rem; display:flex; align-items:center; gap:8px;">
+                    <span style="color:var(--accent)">></span>
+                    <span id="typing-text"></span><span class="typing-cursor"></span>
+                </div>
+
+                <p class="hero-anim d4" style="font-size:1rem; color:var(--text2); line-height:1.8; max-width:580px; margin-bottom:1.25rem;">
+                    IT undergrad (B.Tech) from India and an aspiring ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand, and reason — exploring how intelligent agents solve real-world challenges.
+                </p>
+                <p class="hero-anim d4" style="font-size:0.875rem; color:var(--text3); line-height:1.8; max-width:580px; margin-bottom:2rem;">
+                    Proud member of <strong style="color:var(--text-main);">Google's Women Techmakers</strong> and <strong style="color:var(--text-main);">IEEE Robotics & Automation</strong>. Hands-on experience in Web Development and DSA.
+                </p>
+
+                <div class="hero-anim d5" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:10px; margin-bottom:2.5rem; max-width:540px;">
+                    <div class="stat-box">
+                        <div class="stat-num">500+</div>
+                        <div class="stat-lbl">Problems Solved</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">25+</div>
+                        <div class="stat-lbl">Projects Built</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">2</div>
+                        <div class="stat-lbl">Papers</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num" style="display:flex;align-items:center;justify-content:center;gap:2px;">5<svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:var(--gold);flex-shrink:0;" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+                        <div class="stat-lbl">HackerRank</div>
+                    </div>
+                </div>
+
+                <div class="hero-anim d5" style="border-left:2px solid var(--gold); padding-left:1rem; margin-bottom:2.5rem;">
+                    <p style="font-size:0.85rem; color:var(--text2); font-style:italic; line-height:1.7;">
+                        Currently seeking opportunities in Software Engineering, Machine Learning, and Data Science to build impactful, data-driven solutions.
+                    </p>
+                </div>
+
+                <div class="hero-anim d6" style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem;">
+                    <a href="mailto:anushkadas05das@gmail.com" class="btn-primary">
+                        <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" style="width:16px;height:16px;" alt="">
+                        SAY HI
                     </a>
+                    <div style="display:flex; gap:8px;">
+                        <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="social-btn"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="social-btn"><img class="theme-icon" src="https://api.iconify.design/ri/linkedin-line.svg?color=white" alt="LinkedIn"></a>
+                        <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="social-btn"><img class="theme-icon" src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" alt="X"></a>
+                        <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="social-btn"><img class="theme-icon" src="https://api.iconify.design/ri/google-line.svg?color=white" alt="Google Dev"></a>
+                    </div>
                 </div>
-                <div class="flex flex-wrap gap-2 mb-5">
-                    <span class="tech-tag-lg">QLoRA</span>
-                    <span class="tech-tag-lg">BITNET 1.58-BIT</span>
-                    <span class="tech-tag-lg">SOVEREIGN AI</span>
-                    <span class="tech-tag-lg">PEFT</span>
-                </div>
-                <p class="body-text text-sm mb-6">A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NormalFloat (NF4) quantization, native 1.58-bit ternary architectures, and Low-Rank Adaptation (LoRA) for specialized domains.</p>
-                <ul class="space-y-3">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Achieved a <strong class="text-white">93% reduction</strong> in inference OpEx for 7B–14B parameter models.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Demonstrated a TCO break-even at <strong class="text-white">450 million tokens</strong> vs. proprietary APIs.</span></li>
-                </ul>
             </div>
 
-            <div class="content-panel p-8 flex flex-col h-full">
-                <div class="w-full h-48 md:h-56 mb-6 overflow-hidden rounded-lg border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="research-deepfake-fft.jpeg" alt="Isolating Synthetic Fingerprints" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-5">
-                    <h3 class="text-white font-bold text-lg leading-snug" style="width:88%">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
-                    <a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="card-icon shrink-0 opacity-70 hover:opacity-100 transition-opacity">
-                        <img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="View">
-                    </a>
-                </div>
-                <div class="flex flex-wrap gap-2 mb-5">
-                    <span class="tech-tag-lg">2D FFT</span>
-                    <span class="tech-tag-lg">RESNET-18</span>
-                    <span class="tech-tag-lg">PYTORCH</span>
-                    <span class="tech-tag-lg">DEEPFAKE DETECTION</span>
-                </div>
-                <p class="body-text text-sm mb-6">A novel, lightweight deepfake detection engine that isolates synthetic fingerprints in the frequency domain. Employs a micro-blur preprocessing pipeline to suppress superficial high-frequency spatial noise, followed by a 2D FFT to extract underlying spectral magnitude maps.</p>
-                <ul class="space-y-3">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Achieved <strong class="text-white">99.12%</strong> accuracy on FaceForensics++ and <strong class="text-white">98.45%</strong> on Celeb-DF v2.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Outperforms spatial baselines at <strong class="text-white">45 FPS</strong> real-time inference on edge devices.</span></li>
-                </ul>
+            <div style="position:relative; width:100%; max-width:480px; aspect-ratio:4/5; margin:0 auto; order:-1; @media(min-width: 768px) { order: 2; }">
+                <canvas id="ascii-canvas" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 0 20px rgba(200,169,81,0.5)) drop-shadow(0 0 60px rgba(200,169,81,0.15));"></canvas>
+                <div style="position:absolute;top:-8px;left:-8px;width:24px;height:24px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);border-radius:3px 0 0 0;"></div>
+                <div style="position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);border-radius:0 3px 0 0;"></div>
+                <div style="position:absolute;bottom:-8px;left:-8px;width:24px;height:24px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);border-radius:0 0 0 3px;"></div>
+                <div style="position:absolute;bottom:-8px;right:-8px;width:24px;height:24px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);border-radius:0 0 3px 0;"></div>
             </div>
 
         </div>
     </div>
-</section>
 
-<section id="projects" class="cinematic-section">
-    <h2 class="section-heading mt-10">Some of My Projects</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Deployed Engineering Solutions</span></div>
-
-    <div class="z-10 w-full max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 slide-in-container">
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DeepfakeDetector: Frequency-Based AI Inference Engine</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">REACT</span><span class="tech-tag">FASTAPI</span><span class="tech-tag">PYTORCH</span><span class="tech-tag">2D FFT</span><span class="tech-tag">RESNET-18</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Frequency-domain AI engine using 2D FFT and ResNet-18 to identify synthetic fingerprints invisible to standard spatial-only CNNs.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Achieved &lt;1.8s end-to-end inference latency via distributed React/FastAPI/Docker stack.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Integrated 3×3 Gaussian Micro-blur filter to neutralize sensor noise.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-deweathering.jpeg" alt="Deweathering Engine" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Deweathering Engine</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">REACT</span><span class="tech-tag">FASTAPI</span><span class="tech-tag">OPENCV</span><span class="tech-tag">RPCA</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Full-stack React + FastAPI app using Robust PCA to extract clean text from degraded documents.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span><strong class="text-white">95%</strong> automated parameter tuning via custom Adaptive Regularization heuristic.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Full document restoration in under <strong class="text-white">2.5 seconds</strong>.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">iNaturalist Clumper: Geospatial Data Engineering</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">DATA ENGINEERING</span><span class="tech-tag">SPATIAL ALGORITHMS</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Python CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Incremental sync engine tracking state via timestamps, reducing API latency.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Dynamic cluster merging logic for overlapping observation windows.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">DCO6: Polyphonic VST3 Synthesizer</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">C++</span><span class="tech-tag">JUCE FRAMEWORK</span><span class="tech-tag">AUDIO DSP</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>6-voice polyphonic VST3 synthesizer built from scratch in C++ with the JUCE framework.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>4-pole Moog-style ladder filter, BBD stereo chorus, and independent ADSR envelopes.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Real-time FFT spectrum analyzer with custom UI components.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-federated-fresh.jpeg" alt="Federated Fresh" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Federated Fresh: Hybrid AI Orchestration Terminal</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">FASTAPI</span><span class="tech-tag">GEMINI 2.5</span><span class="tech-tag">CHROMADB</span><span class="tech-tag">DUCKDUCKGO API</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Hybrid AI routing engine orchestrating local ChromaDB retrieval, live web-search, and direct LLM inference.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Reduced local memory overhead by <strong class="text-white">75%</strong> by offloading embeddings to the cloud.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Asynchronous RAG pipeline using FastAPI BackgroundTasks for zero-lag UI.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-churn-prediction.jpeg" alt="Customer Churn Prediction" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Customer Churn Prediction</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">XGBOOST</span><span class="tech-tag">STREAMLIT</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>End-to-end ML model predicting customer churn — <strong class="text-white">67% recall rate</strong> and <strong class="text-white">AUC 0.82</strong>.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Interactive Streamlit web app for real-time predictions deployed publicly.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full border border-gold-border bg-gold-dim/5">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-                    <img src="project-plant-agent.jpeg" alt="Autonomous Plant Agent" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">PlantCore: Autonomous Maintenance AI</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">FASTAPI</span><span class="tech-tag">XGBOOST</span><span class="tech-tag">LANGCHAIN</span><span class="tech-tag">REACT</span></div>
-                <ul class="space-y-2 text-sm text-gray-300">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Autonomous AI diagnostic agent for industrial motor failure prediction.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Hybrid ML pipeline: XGBoost for fault detection + Llama 3 (Groq) for repair protocols.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>High-fidelity terminal UI with real-time telemetry streaming.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis 3D Simulation" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Psilocybe Cubensis: 3D Simulation</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">JAVASCRIPT</span><span class="tech-tag">THREE.JS</span><span class="tech-tag">WEBGL</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Real-time procedural 3D mushroom lifecycle simulation using Three.js.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Space Colonization Algorithm with 3D Spatial Hash Grid handling <strong class="text-white">40,000 mycelial nodes</strong>.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Cinematic post-processing: Unreal Bloom, procedural geometry generation.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-nlp-satellite.jpeg" alt="NLP Smart Search for Satellite Data" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">NLP Smart Search for Satellite Data</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">PYTHON</span><span class="tech-tag">NLP</span><span class="tech-tag">MACHINE LEARNING</span><span class="tech-tag">ISRO</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Text and voice-based intelligent search system for satellite data ordering.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>NLP parsing of satellite-specific terminology to interface with databases.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-7 flex flex-col h-full">
-                <div class="w-full h-40 md:h-48 mb-5 overflow-hidden rounded-md border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-peonia.jpeg" alt="Peonia Generative 3D Animation" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-base leading-snug" style="width:85%">Peonia: Generative 3D Animation</h3>
-                    <div class="flex gap-2 shrink-0">
-                        <a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-5 h-5" alt="GitHub"></a>
-                        <a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-5 h-5" alt="Live"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5 mb-4"><span class="tech-tag">JAVASCRIPT</span><span class="tech-tag">P5.JS</span><span class="tech-tag">GENERATIVE ART</span><span class="tech-tag">3D MATH</span></div>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>In-browser 3D peony flower with continuous procedural blooming/wilting lifecycle.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Custom 3D pipeline using rotation matrices and Painter's Algorithm — no WebGL.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Multi-modal post-processing: solid pixels → particle dots → real-time ASCII mapping.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel p-6 md:p-8 flex flex-col h-full md:col-span-2 lg:col-span-3">
-                <div class="w-full h-56 md:h-72 mb-6 overflow-hidden rounded-lg border border-white/10 shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.05)]">
-                    <img src="project-digipramaan.png" alt="Digi-Pramaan Hackathon Project" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">
-                </div>
-                
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-white font-bold text-lg md:text-xl leading-snug">
-                        Digi-Pramaan &nbsp;<span style="color:var(--gold);">— SIH '25 Semi-Finalist</span>
-                    </h3>
-                    <div class="flex gap-2 shrink-0 ml-2">
-                        <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/github-line.svg?color=white" class="w-6 h-6" alt="GitHub"></a>
-                        <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="card-icon opacity-60 hover:opacity-100 transition-opacity"><img src="https://api.iconify.design/ri/external-link-line.svg?color=white" class="w-6 h-6" alt="View"></a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-2 mb-5">
-                    <span class="tech-tag-lg">BLOCKCHAIN</span><span class="tech-tag-lg">OCR</span><span class="tech-tag-lg">METAMASK WALLET</span><span class="tech-tag-lg">CRYPTOGRAPHY</span><span class="tech-tag-lg">GIT</span>
-                </div>
-                <ul class="space-y-2.5">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Decentralized academic authenticity platform combining OCR & AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>MetaMask wallet integration for authenticated and tamper-proof certificate issuance. Top finalist out of 250+ teams in SIH 2025 internal round.</span></li>
-                </ul>
-            </div>
-
-            <div class="z-10 w-full max-w-7xl mx-auto mt-10 flex flex-col items-center fade-in">
-    <div class="flex items-center gap-3 mb-5">
-        <div class="h-px w-16" style="background: linear-gradient(to right, transparent, var(--gold));"></div>
-        <span style="color:var(--text-muted); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">There's more</span>
-        <div class="h-px w-16" style="background: linear-gradient(to left, transparent, var(--gold));"></div>
-    </div>
-    <p class="body-text text-sm text-center mb-6 max-w-md" style="color:var(--text-muted);">
-        These are just some highlights. Explore all my repositories, experiments, and works-in-progress on GitHub.
-    </p>
-    <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-outline-gold">
-        <img src="https://api.iconify.design/ri/github-line.svg?color=%23D4AF37" class="w-5 h-5" alt="GitHub">
-        VIEW ALL PROJECTS ON GITHUB
-    </a>
-</div>
-
-        </div></div>
-</section>
-
-<section id="experience" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Experience</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Professional Journey</span></div>
-
-    <div class="z-10 w-full max-w-4xl mx-auto">
-        <div class="timeline-wrap space-y-6 slide-in-container">
-
-            <div class="content-panel no-hover p-6 md:p-8 relative">
-                <div class="timeline-dot"></div>
-                <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JAN 2025 – PRESENT</div>
-                <h3 class="text-white text-xl font-bold mt-2 mb-1">Member of Google's Women Techmakers</h3>
-                <p class="text-xs font-bold mb-4 uppercase tracking-widest" style="color:var(--text-muted)">Google &nbsp;·&nbsp; Remote</p>
-                <p class="body-text text-sm">Engage in a global community supporting women in tech through events, learning resources, and networking.</p>
-            </div>
-
-            <div class="content-panel no-hover p-6 md:p-8 relative">
-                <div class="timeline-dot"></div>
-                <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JAN 2026 – 1 MONTH</div>
-                <h3 class="text-white text-xl font-bold mt-2 mb-1">Blockchain Risk Developer</h3>
-                <p class="text-xs font-bold mb-4 uppercase tracking-widest" style="color:var(--text-muted)">Zetheta Algorithms Private Limited &nbsp;·&nbsp; Remote</p>
-                <ul class="space-y-2">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Engineered a vulnerability scanner for Solidity contracts detecting critical flaws like Reentrancy and Access Control.</span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Developed an algorithmic market-making engine using the Avellaneda-Stoikov model to optimize bid-ask spreads and manage inventory risk.</span></li>
-                </ul>
-            </div>
-
-            <div class="content-panel no-hover p-6 md:p-8 relative">
-                <div class="timeline-dot"></div>
-                <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">JULY 2025 – SEPT 2025</div>
-                <h3 class="text-white text-xl font-bold mt-2 mb-1">Open-Source Contributor</h3>
-                <p class="text-xs font-bold mb-4 uppercase tracking-widest" style="color:var(--text-muted)">GSSoc '25 &nbsp;·&nbsp; Remote</p>
-                <p class="body-text text-sm">Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</p>
-            </div>
-
-            <div class="content-panel no-hover p-6 md:p-8 relative">
-                <div class="timeline-dot"></div>
-                <div class="text-[10px] font-bold tracking-widest mb-2 inline-block border-b pb-1" style="color:var(--gold); border-color:rgba(212,175,55,0.3)">AUG 2025 – 1 MONTH</div>
-                <h3 class="text-white text-xl font-bold mt-2 mb-1">Web Development Intern</h3>
-                <p class="text-xs font-bold mb-4 uppercase tracking-widest" style="color:var(--text-muted)">CodSoft &nbsp;·&nbsp; Remote</p>
-                <p class="body-text text-sm">Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</p>
-            </div>
-
-        </div>
+    <div style="position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; opacity:0.4;">
+        <span style="font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.2em; color:var(--text3);">SCROLL</span>
+        <div style="width:1px;height:30px;background:linear-gradient(to bottom,var(--gold),transparent);"></div>
     </div>
 </section>
 
-<section id="skills" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Technical Arsenal</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Core Competencies</span></div>
+<div class="divider"></div>
 
-    <div class="z-10 w-full max-w-4xl mx-auto fade-in">
-        <div class="content-panel p-8 md:p-12">
+<section id="research" class="anchor-offset section" style="background:var(--bg2);">
+    <div class="section-inner">
+        <div class="eyebrow">Research & Publications</div>
+        <h2 class="section-title">Advancing <span>Intelligent</span> Systems</h2>
+        <p class="section-sub">Peer-reviewed research in ML efficiency, deepfake forensics, and sovereign AI</p>
 
-            <div class="mb-10">
-                <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Languages</h3>
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/python.svg" alt="Python">Python</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/fa6-brands/java.svg" alt="Java">Java</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/cplusplus.svg" alt="C++">C++</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/tabler/sql.svg" alt="SQL">SQL</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/javascript.svg" alt="JavaScript">JavaScript</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/html5.svg" alt="HTML5">HTML5</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/css3.svg" alt="CSS3">CSS3</span>
-                </div>
-            </div>
-
-            <div class="mb-10">
-                <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Libraries & Frameworks</h3>
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/scikitlearn.svg" alt="Scikit-learn">Scikit-learn</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/pytorch.svg" alt="PyTorch">PyTorch</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/pandas.svg" alt="Pandas">Pandas</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/numpy.svg" alt="NumPy">NumPy</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/carbon/machine-learning-model.svg" alt="XGBoost">XGBoost</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/flask.svg" alt="Flask">Flask</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/fastapi.svg" alt="FastAPI">FastAPI</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/react.svg" alt="React">React</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/openai.svg" alt="OpenAI">OpenAI</span>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-xs font-bold tracking-widest mb-5 uppercase border-b pb-2" style="color:var(--gold); border-color:rgba(255,255,255,0.08)">Tools & Platforms</h3>
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/amazonaws.svg" alt="Amazon AWS">Amazon AWS</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/streamlit.svg" alt="Streamlit">Streamlit</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/git.svg" alt="Git">Git</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/jupyter.svg" alt="Jupyter">Jupyter</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/powerbi.svg" alt="Power BI">Power BI</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/docker.svg" alt="Docker">Docker</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/visualstudiocode.svg" alt="VS Code">VS Code</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/googledocs.svg" alt="Google Docs">Google Docs</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/microsoftexcel.svg" alt="Excel">Excel</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/mdi/calculator-variant-outline.svg" alt="Tally">Tally</span>
-                    <span class="skill-pill"><img src="https://api.iconify.design/mdi/chip.svg" alt="VHDL">VHDL</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="memberships" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Memberships & Affiliations</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Global Communities</span></div>
-
-    <div class="z-10 w-full max-w-4xl mx-auto fade-in">
-        <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" class="block content-panel p-8 md:p-12 group cursor-pointer">
-            <div class="flex flex-col md:flex-row gap-6 items-center">
-                <div class="w-20 h-20 rounded-full flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform gold-icon"
-                     style="background:var(--gold-dim); border: 1px solid var(--gold-border);">
-                    <img src="https://api.iconify.design/ri/team-fill.svg?color=%23D4AF37" class="w-10 h-10" alt="IEEE">
-                </div>
-                <div class="text-center md:text-left">
-                    <h3 class="text-white font-bold text-xl md:text-2xl group-hover:text-yellow-400 transition-colors leading-snug mb-3">IEEE Robotics and Automation Technical Committee on Machine Learning for Automation</h3>
-                    <div class="inline-block font-sans font-bold text-xs uppercase tracking-widest pb-1 border-b" style="color:var(--gold); border-color:var(--gold)">Member</div>
-                </div>
-            </div>
-        </a>
-    </div>
-</section>
-
-<section id="education" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Education</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Academic Foundation</span></div>
-
-    <div class="z-10 w-full max-w-4xl mx-auto">
-        <div class="timeline-wrap space-y-6 slide-in-container education-container">
-            <div class="content-panel no-hover p-8 md:p-12">
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="md:w-1/4 shrink-0 mt-1">
-                        <span class="text-sm font-bold tracking-widest" style="color:var(--gold); border-bottom:1px solid var(--gold-border); padding-bottom:4px;">2023 – 2027</span>
+        <div class="stagger" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px;">
+            <div class="card-accent" style="padding:0; overflow:hidden;">
+                <div style="height:220px; overflow:hidden; position:relative;">
+                    <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="card-overlay-grad" style="position:absolute;inset:0;"></div>
+                    <div style="position:absolute;bottom:12px;left:16px;display:flex;gap:6px;flex-wrap:wrap;">
+                        <span class="tag">QLoRA</span>
+                        <span class="tag">BITNET 1.58</span>
+                        <span class="tag">PEFT</span>
+                        <span class="tag">Sovereign AI</span>
                     </div>
-                    <div class="md:w-3/4">
-                        <h3 class="text-2xl font-bold text-white mb-1">Techno Main Saltlake</h3>
-                        <p class="text-xs font-bold mb-5 uppercase tracking-widest" style="color:var(--text-muted)">Bachelor of Technology</p>
-                        <div class="bullet-item"><span class="bullet-dot">▹</span><span>Computer Sciences and Information Technologies</span></div>
+                </div>
+                <div style="padding:1.75rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:1rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:700; color:var(--text-main); line-height:1.35; transition: color 0.4s;">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models</h3>
+                        <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="View"></a>
+                    </div>
+                    <p style="font-size:0.83rem; color:var(--text2); line-height:1.75; margin-bottom:1.25rem;">A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NF4 quantization, native 1.58-bit ternary architectures, and LoRA for specialized domains. <span style="color:var(--text3); font-size:0.75rem; font-style:italic;">Officially lived on SSRN.</span></p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <span class="metric-chip">93% reduction in inference OpEx</span>
+                        <span class="metric-chip">450M token TCO break-even</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-accent" style="padding:0; overflow:hidden;">
+                <div style="height:220px; overflow:hidden; position:relative;">
+                    <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="card-overlay-grad" style="position:absolute;inset:0;"></div>
+                    <div style="position:absolute;bottom:12px;left:16px;display:flex;gap:6px;flex-wrap:wrap;">
+                        <span class="tag">2D FFT</span>
+                        <span class="tag">ResNet-18</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Deepfake</span>
+                    </div>
+                </div>
+                <div style="padding:1.75rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:1rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:700; color:var(--text-main); line-height:1.35; transition: color 0.4s;">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
+                        <a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="View"></a>
+                    </div>
+                    <p style="font-size:0.83rem; color:var(--text2); line-height:1.75; margin-bottom:1.25rem;">A novel, lightweight deepfake detection engine isolating synthetic fingerprints in the frequency domain. Employs micro-blur preprocessing to suppress superficial high-frequency noise, followed by 2D FFT to extract spectral magnitude maps.</p>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <span class="metric-chip">99.12% on FaceForensics++</span>
+                        <span class="metric-chip">45 FPS real-time inference</span>
                     </div>
                 </div>
             </div>
@@ -1020,376 +754,832 @@
     </div>
 </section>
 
-<section id="achievements" class="cinematic-section py-20">
-    <h2 class="section-heading mt-10">Achievements & Certifications</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Milestones & Continuous Learning</span></div>
+<div class="divider"></div>
 
-    <div class="z-10 w-full max-w-5xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 slide-in-container">
+<section id="projects" class="anchor-offset section" style="background:var(--bg);">
+    <div class="section-inner">
+        <div class="eyebrow">Projects</div>
+        <h2 class="section-title">Deployed <span>Engineering</span> Solutions</h2>
+        <p class="section-sub">Production systems, research prototypes, and creative explorations</p>
 
-            <div class="content-panel p-8">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Briefcase"></div>
-                    <h4 class="text-white font-bold text-xl">IndiaFirst Life (Bank of Baroda)</h4>
+        <div class="stagger-slide" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:20px;">
+
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector">
+                    <div class="proj-img-overlay"></div>
                 </div>
-                <p class="body-text text-sm">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer — respectfully declined to focus on 6th-semester studies.</p>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">DeepfakeDetector: Frequency-Based AI Inference Engine</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                            <a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="Live"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">2D FFT</span><span class="tag">ResNet-18</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.</div>
+                        <div class="bul">&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack.</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-panel p-8">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/trophy-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Trophy"></div>
-                    <h4 class="text-white font-bold text-xl">HackerRank</h4>
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-deweathering.jpeg" alt="Deweathering Engine">
+                    <div class="proj-img-overlay"></div>
                 </div>
-                <p class="body-text text-sm">Gold Level (5 Star) in Python, Silver Level (3 Star) in Java.</p>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">Deweathering Engine</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                            <a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="Live"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenCV</span><span class="tag">RPCA</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">Full-stack app using Robust PCA to extract clean text from degraded documents.</div>
+                        <div class="bul">95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s.</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-panel p-8">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/award-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Award"></div>
-                    <h4 class="text-white font-bold text-xl">SIH '25 Semi-Finalist</h4>
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-inaturalist.jpeg" alt="iNaturalist Clumper">
+                    <div class="proj-img-overlay"></div>
                 </div>
-                <p class="body-text text-sm">'Digi-Pramaan' — Top finalist out of <strong class="text-white">250+ teams</strong> in the college internal round of Smart India Hackathon 2025.</p>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">iNaturalist Clumper: Geospatial Data Engineering</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial Algorithms</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</div>
+                        <div class="bul">Incremental sync engine with timestamp state tracking. Dynamic cluster merging for overlapping windows.</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-panel p-8">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/code-box-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Code"></div>
-                    <h4 class="text-white font-bold text-xl">Problem Solving</h4>
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-dco6.jpeg" alt="DCO6 Synthesizer">
+                    <div class="proj-img-overlay"></div>
                 </div>
-                <p class="body-text text-sm">Solved <strong class="text-white">350+ problems</strong> on LeetCode and HackerRank, improving algorithmic thinking and coding efficiency.</p>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">DCO6: Polyphonic VST3 Synthesizer</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.</div>
+                        <div class="bul">4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer.</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-panel p-8">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/team-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Team"></div>
-                    <h4 class="text-white font-bold text-xl">Extracurricular Leadership</h4>
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-federated-fresh.jpeg" alt="Federated Fresh">
+                    <div class="proj-img-overlay"></div>
                 </div>
-                <p class="body-text text-sm">Active member of Samaritans social club since first year — community initiatives, collaborative events, debates, and quiz competitions.</p>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">Federated Fresh: Hybrid AI Orchestration Terminal</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                            <a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="Live"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">ChromaDB</span><span class="tag">DuckDuckGo API</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">Hybrid AI routing engine orchestrating local ChromaDB retrieval, live web-search, and LLM inference.</div>
+                        <div class="bul">75% reduction in local memory overhead. Async RAG pipeline via FastAPI BackgroundTasks for zero-lag UI.</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="content-panel p-8 md:p-12 md:col-span-2 mt-2">
-                <div class="flex items-center gap-4 mb-8 border-b pb-4" style="border-color:rgba(255,255,255,0.08)">
-                    <div class="p-3 rounded-full gold-icon" style="background:var(--gold-dim); border:1px solid var(--gold-border)"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23D4AF37" class="w-6 h-6" alt="Certs"></div>
-                    <h4 class="text-white font-bold text-2xl">Certifications</h4>
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-churn-prediction.jpeg" alt="Customer Churn">
+                    <div class="proj-img-overlay"></div>
                 </div>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-10">
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Data Analytics Job Simulation — <strong class="text-white">Deloitte Australia</strong></span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Software Engineering Job Simulation — <strong class="text-white">JPMorgan Chase & Co.</strong></span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Introduction to Agent Skills — <strong class="text-white">Anthropic Academy</strong></span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Train & Manage ML Model with Azure — <strong class="text-white">Microsoft</strong></span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Understand Data Science for ML — <strong class="text-white">Microsoft</strong></span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>Python for Data Science — <strong class="text-white">IBM</strong></span></li>
-                    <li class="bullet-item"><span class="bullet-dot">▹</span><span>GenAI Powered Data Analytics Simulation — <strong class="text-white">Tata</strong></span></li>
-                </ul>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">Customer Churn Prediction</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                            <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="Live"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">End-to-end ML model predicting customer churn — 67% recall, AUC 0.82.</div>
+                        <div class="bul">Interactive Streamlit web app for real-time predictions deployed publicly.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding:0; overflow:hidden; border-color: var(--gold-border);">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-plant-agent.jpeg" alt="PlantCore">
+                    <div class="proj-img-overlay"></div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">PlantCore: Autonomous Maintenance AI</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                            <a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="Live"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">FastAPI</span><span class="tag">XGBoost</span><span class="tag">LangChain</span><span class="tag">React</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">Autonomous AI diagnostic agent for industrial motor failure prediction.</div>
+                        <div class="bul">Hybrid pipeline: XGBoost for fault detection + Llama 3 (Groq) for repair protocols. Real-time telemetry UI.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis">
+                    <div class="proj-img-overlay"></div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">Psilocybe Cubensis: 3D Simulation</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                            <a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="Live"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">Real-time procedural 3D mushroom lifecycle simulation. Space Colonization Algorithm handling 40,000 mycelial nodes.</div>
+                        <div class="bul">Cinematic post-processing: Unreal Bloom, procedural geometry generation.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-nlp-satellite.jpeg" alt="NLP Satellite">
+                    <div class="proj-img-overlay"></div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">NLP Smart Search for Satellite Data</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">ISRO</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">Text and voice-based intelligent search for satellite data ordering.</div>
+                        <div class="bul">NLP parsing of satellite-specific terminology to interface with databases.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding:0; overflow:hidden;">
+                <div style="height:180px;" class="proj-img-wrap">
+                    <img src="project-peonia.jpeg" alt="Peonia">
+                    <div class="proj-img-overlay"></div>
+                </div>
+                <div style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:0.75rem;">
+                        <h3 style="font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; color:var(--text-main); line-height:1.3; transition: color 0.4s;">Peonia: Generative 3D Animation</h3>
+                        <div style="display:flex;gap:6px;flex-shrink:0;">
+                            <a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                            <a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="Live"></a>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.9rem;">
+                        <span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Generative Art</span><span class="tag">3D Math</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px;">
+                        <div class="bul">In-browser 3D peony with continuous blooming/wilting lifecycle. No WebGL — custom rotation matrices + Painter's Algorithm.</div>
+                        <div class="bul">Multi-modal rendering: solid pixels → particle dots → real-time ASCII mapping.</div>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </div>
-</section>
 
-<section id="resume" class="cinematic-section auto-height-section">
-    <h2 class="section-heading mt-10">Resume</h2>
-    <div class="section-heading-accent"><span style="color:var(--gold); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; text-transform:uppercase;">Complete Technical Profile</span></div>
+        <div class="card-accent slide-right" style="margin-top:20px; overflow:hidden; padding:0;">
+            <div style="height:280px;" class="proj-img-wrap">
+                <img src="project-digipramaan.png" alt="Digi-Pramaan">
+                <div class="proj-img-overlay"></div>
+                <div style="position:absolute;top:16px;left:16px;">
+                    <span class="tag-green" style="font-size:0.65rem; padding:5px 12px; border-radius:20px;">🏆 SIH '25 Semi-Finalist</span>
+                </div>
+            </div>
+            <div style="padding:2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:0.75rem;">
+                    <h3 style="font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; color:var(--text-main); transition: color 0.4s;">Digi-Pramaan — Decentralized Academic Authenticity Platform</h3>
+                    <div style="display:flex;gap:8px;flex-shrink:0;">
+                        <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                        <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="icon-link"><img class="theme-icon" src="https://api.iconify.design/ri/external-link-line.svg?color=white" alt="View"></a>
+                    </div>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;">
+                    <span class="tag">Blockchain</span><span class="tag">OCR</span><span class="tag">MetaMask Wallet</span><span class="tag">Cryptography</span><span class="tag">Git</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                    <div class="bul">Decentralized academic authenticity platform combining OCR & AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</div>
+                    <div class="bul">MetaMask wallet integration for authenticated, tamper-proof certificate issuance. Top finalist out of 250+ teams in SIH 2025 internal round.</div>
+                </div>
+            </div>
+        </div>
 
-    <div class="z-10 w-full max-w-2xl mx-auto fade-in text-center">
-        <div class="content-panel p-10 md:p-16 flex flex-col items-center">
-            <p class="body-text mb-10 text-base max-w-lg">
-                Want a detailed breakdown of my academic background, technical skills, and professional experience? View or download my complete resume below.
-            </p>
-            <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-gold">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
-                DOWNLOAD RESUME.PDF
+        <div class="slide-left" style="margin-top:3rem; text-align:center;">
+            <p style="font-size:0.85rem; color:var(--text3); margin-bottom:1.25rem;">These are just some highlights. Explore all repositories, experiments, and works-in-progress.</p>
+            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                <img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=%23C8A951" style="width:16px;height:16px;" alt="">
+                VIEW ALL ON GITHUB
             </a>
         </div>
     </div>
 </section>
 
-<section id="contact" class="cinematic-section auto-height-section text-center">
-    <div class="z-10 w-full max-w-2xl mx-auto fade-in mt-10 flex flex-col items-center">
-        <h2 class="text-4xl md:text-6xl font-serif font-semibold text-white mb-4">Initialize Connection</h2>
-        <p class="body-text text-base md:text-lg mb-10 max-w-lg">
-            Always open to discussing software engineering opportunities, ML research, and innovative ideas. Let's execute a handshake.
-        </p>
+<div class="divider"></div>
 
-        <a href="mailto:anushkadas05das@gmail.com" class="btn-outline-gold mb-12">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
-            PING ME
-        </a>
+<section id="experience" class="anchor-offset section" style="background:var(--bg2);">
+    <div class="section-inner">
+        <div class="eyebrow">Experience</div>
+        <h2 class="section-title">Professional <span>Journey</span></h2>
+        <p class="section-sub">Engineering roles, open-source contributions, and community work</p>
 
-        <div class="contact-social flex gap-3 mb-14">
-            <a href="mailto:anushkadas05das@gmail.com" title="Email"><img src="https://api.iconify.design/ri/mail-send-line.svg?color=white" alt="Email"></a>
-            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg?color=white" alt="LinkedIn"></a>
-            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub"><img src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
-            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X"><img src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" alt="X"></a>
-            <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="Google Dev"><img src="https://api.iconify.design/ri/google-line.svg?color=white" alt="Google Dev"></a>
+        <div class="timeline stagger-slide">
+
+            <div class="timeline-item exp-card" style="margin-bottom:16px;">
+                <div class="timeline-dot"></div>
+                <div class="exp-date" style="margin-bottom:6px;">JAN 2025 – PRESENT</div>
+                <h3 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:4px; transition: color 0.4s;">Member of Google's Women Techmakers</h3>
+                <p style="font-size:0.75rem; color:var(--text3); font-family:'Space Mono',monospace; margin-bottom:1rem; letter-spacing:0.06em;">GOOGLE · REMOTE</p>
+                <p style="font-size:0.85rem; color:var(--text2); line-height:1.7;">Engage in a global community supporting women in tech through events, learning resources, and networking.</p>
+            </div>
+
+            <div class="timeline-item exp-card" style="margin-bottom:16px;">
+                <div class="timeline-dot"></div>
+                <div class="exp-date" style="margin-bottom:6px;">JAN 2026 · 1 MONTH</div>
+                <h3 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:4px; transition: color 0.4s;">Blockchain Risk Developer</h3>
+                <p style="font-size:0.75rem; color:var(--text3); font-family:'Space Mono',monospace; margin-bottom:1rem; letter-spacing:0.06em;">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                    <div class="bul">Engineered a vulnerability scanner for Solidity contracts detecting critical flaws like Reentrancy and Access Control.</div>
+                    <div class="bul">Developed an algorithmic market-making engine using the Avellaneda-Stoikov model to optimize bid-ask spreads and manage inventory risk.</div>
+                </div>
+            </div>
+
+            <div class="timeline-item exp-card" style="margin-bottom:16px;">
+                <div class="timeline-dot"></div>
+                <div class="exp-date" style="margin-bottom:6px;">JULY 2025 – SEPT 2025</div>
+                <h3 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:4px; transition: color 0.4s;">Open-Source Contributor</h3>
+                <p style="font-size:0.75rem; color:var(--text3); font-family:'Space Mono',monospace; margin-bottom:1rem; letter-spacing:0.06em;">GSSoC '25 · REMOTE</p>
+                <p style="font-size:0.85rem; color:var(--text2); line-height:1.7;">Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</p>
+            </div>
+
+            <div class="timeline-item exp-card">
+                <div class="timeline-dot"></div>
+                <div class="exp-date" style="margin-bottom:6px;">AUG 2025 · 1 MONTH</div>
+                <h3 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:4px; transition: color 0.4s;">Web Development Intern</h3>
+                <p style="font-size:0.75rem; color:var(--text3); font-family:'Space Mono',monospace; margin-bottom:1rem; letter-spacing:0.06em;">CODSOFT · REMOTE</p>
+                <p style="font-size:0.85rem; color:var(--text2); line-height:1.7;">Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills" class="anchor-offset section" style="background:var(--bg);">
+    <div class="section-inner">
+        <div class="eyebrow">Technical Arsenal</div>
+        <h2 class="section-title">Core <span>Competencies</span></h2>
+        <p class="section-sub">Languages, frameworks, and tools across the full stack and ML pipeline</p>
+
+        <div>
+            <div class="terminal-card slide-left" style="margin-bottom:2rem;">
+                <div class="terminal-bar">
+                    <span class="terminal-dot t-red"></span>
+                    <span class="terminal-dot t-yellow"></span>
+                    <span class="terminal-dot t-green"></span>
+                    <span class="terminal-label">anushka@dev ~ stack.json</span>
+                </div>
+                <div class="terminal-body">
+                    <div><span class="t-comment">// Technical Stack — Anushka Das</span></div>
+                    <div><span class="t-key">"role"</span>: <span class="t-str">"ML Engineer / Full-Stack Developer"</span>,</div>
+                    <div><span class="t-key">"languages"</span>: [<span class="t-str">"Python"</span>, <span class="t-str">"Java"</span>, <span class="t-str">"C++"</span>, <span class="t-str">"SQL"</span>, <span class="t-str">"JavaScript"</span>, <span class="t-str">"HTML5"</span>, <span class="t-str">"CSS3"</span>],</div>
+                    <div><span class="t-key">"ml_frameworks"</span>: [<span class="t-str">"PyTorch"</span>, <span class="t-str">"Scikit-learn"</span>, <span class="t-str">"XGBoost"</span>, <span class="t-str">"OpenAI"</span>],</div>
+                    <div><span class="t-key">"web"</span>: [<span class="t-str">"React"</span>, <span class="t-str">"FastAPI"</span>, <span class="t-str">"Flask"</span>],</div>
+                    <div><span class="t-key">"cloud_devops"</span>: [<span class="t-str">"AWS"</span>, <span class="t-str">"Docker"</span>, <span class="t-str">"Git"</span>],</div>
+                    <div><span class="t-key">"actively_shipping"</span>: <span class="t-bool">true</span></div>
+                </div>
+            </div>
+
+            <div class="slide-right" style="display:grid; grid-template-columns:1fr; gap:2rem;">
+                <div>
+                    <div class="skills-cat">Languages</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/python.svg" alt="">Python</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/fa6-brands/java.svg" alt="">Java</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/cplusplus.svg" alt="">C++</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/tabler/sql.svg" alt="">SQL</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/javascript.svg" alt="">JavaScript</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/html5.svg" alt="">HTML5</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/css3.svg" alt="">CSS3</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="skills-cat">Libraries & Frameworks</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/scikitlearn.svg" alt="">Scikit-learn</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/pytorch.svg" alt="">PyTorch</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/pandas.svg" alt="">Pandas</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/numpy.svg" alt="">NumPy</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/carbon/machine-learning-model.svg" alt="">XGBoost</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/flask.svg" alt="">Flask</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/fastapi.svg" alt="">FastAPI</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/react.svg" alt="">React</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/openai.svg" alt="">OpenAI</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="skills-cat">Tools & Platforms</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/amazonaws.svg" alt="">Amazon AWS</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/streamlit.svg" alt="">Streamlit</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/git.svg" alt="">Git</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/jupyter.svg" alt="">Jupyter</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/powerbi.svg" alt="">Power BI</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/docker.svg" alt="">Docker</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/visualstudiocode.svg" alt="">VS Code</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/googledocs.svg" alt="">Google Docs</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/simple-icons/microsoftexcel.svg" alt="">Excel</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/mdi/calculator-variant-outline.svg" alt="">Tally</span>
+                        <span class="skill-pill"><img src="https://api.iconify.design/mdi/chip.svg" alt="">VHDL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="memberships" class="anchor-offset section" style="background:var(--bg2);">
+    <div class="section-inner">
+        <div class="eyebrow">Memberships & Affiliations</div>
+        <h2 class="section-title">Global <span>Communities</span></h2>
+        <p class="section-sub">Professional organizations driving innovation in AI and technology</p>
+
+        <div class="slide-left">
+            <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:block;">
+                <div class="membership-card">
+                    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                        <div style="display:flex; align-items:center; gap:1.25rem;">
+                            <div style="width:60px; height:60px; border-radius:12px; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <img src="https://api.iconify.design/ri/team-fill.svg?color=%23C8A951" style="width:28px;height:28px;" alt="IEEE">
+                            </div>
+                            <div>
+                                <div style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.15em; color:var(--gold); margin-bottom:4px; text-transform:uppercase;">Active Member</div>
+                                <h3 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text-main); line-height:1.35; transition: color 0.4s;">IEEE Robotics and Automation Technical Committee on Machine Learning for Automation</h3>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:8px; font-size:0.8rem; color:var(--text3);">
+                            <span style="color:var(--gold);">→</span>
+                            View IEEE Profile
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="education" class="anchor-offset section" style="background:var(--bg);">
+    <div class="section-inner">
+        <div class="eyebrow">Education</div>
+        <h2 class="section-title">Academic <span>Foundation</span></h2>
+
+        <div class="slide-right">
+            <div class="card" style="padding:2.5rem; max-width:700px;">
+                <div style="display:flex; flex-direction:column; gap:1rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:0.5rem;">
+                        <div>
+                            <h3 style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; color:var(--text-main); margin-bottom:4px; transition: color 0.4s;">Techno Main Saltlake</h3>
+                            <p style="font-size:0.8rem; color:var(--text3); font-family:'Space Mono',monospace; letter-spacing:0.08em; text-transform:uppercase;">Bachelor of Technology · Computer Sciences & IT</p>
+                        </div>
+                        <div style="font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--gold); letter-spacing:0.1em; border:1px solid var(--gold-border); padding:4px 12px; border-radius:20px; background:var(--gold-dim);">
+                            2023 – 2027
+                        </div>
+                    </div>
+                    <div style="height:1px; background:var(--border);"></div>
+                    <div class="bul">Computer Sciences and Information Technologies</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="achievements" class="anchor-offset section" style="background:var(--bg2);">
+    <div class="section-inner">
+        <div class="eyebrow">Achievements & Certifications</div>
+        <h2 class="section-title">Milestones & <span>Recognition</span></h2>
+        <p class="section-sub">Awards, accomplishments, and continuous professional development</p>
+
+        <div class="stagger-slide" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; margin-bottom:2rem;">
+
+            <div class="ach-card">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.75rem;">
+                    <div style="padding:10px; border-radius:10px; background:var(--gold-dim); border:1px solid var(--gold-border);">
+                        <img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23C8A951" style="width:20px;height:20px;display:block;" alt="">
+                    </div>
+                    <h4 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--text-main); transition: color 0.4s;">IndiaFirst Life (Bank of Baroda)</h4>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text2); line-height:1.75;">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer — respectfully declined to focus on 6th-semester studies.</p>
+            </div>
+
+            <div class="ach-card">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.75rem;">
+                    <div style="padding:10px; border-radius:10px; background:var(--gold-dim); border:1px solid var(--gold-border);">
+                        <img src="https://api.iconify.design/ri/trophy-fill.svg?color=%23C8A951" style="width:20px;height:20px;display:block;" alt="">
+                    </div>
+                    <h4 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--text-main); transition: color 0.4s;">HackerRank</h4>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text2); line-height:1.75;">Gold Level (5 Star) in Python, Silver Level (3 Star) in Java.</p>
+            </div>
+
+            <div class="ach-card">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.75rem;">
+                    <div style="padding:10px; border-radius:10px; background:var(--gold-dim); border:1px solid var(--gold-border);">
+                        <img src="https://api.iconify.design/ri/award-fill.svg?color=%23C8A951" style="width:20px;height:20px;display:block;" alt="">
+                    </div>
+                    <h4 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--text-main); transition: color 0.4s;">SIH '25 Semi-Finalist</h4>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text2); line-height:1.75;">'Digi-Pramaan' — Top finalist out of <strong style="color:var(--text-main); transition: color 0.4s;">250+ teams</strong> in the college internal round of Smart India Hackathon 2025.</p>
+            </div>
+
+            <div class="ach-card">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.75rem;">
+                    <div style="padding:10px; border-radius:10px; background:var(--gold-dim); border:1px solid var(--gold-border);">
+                        <img src="https://api.iconify.design/ri/code-box-fill.svg?color=%23C8A951" style="width:20px;height:20px;display:block;" alt="">
+                    </div>
+                    <h4 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--text-main); transition: color 0.4s;">Problem Solving</h4>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text2); line-height:1.75;">Solved <strong style="color:var(--text-main); transition: color 0.4s;">350+ problems</strong> on LeetCode and HackerRank, improving algorithmic thinking and coding efficiency.</p>
+            </div>
+
+            <div class="ach-card">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.75rem;">
+                    <div style="padding:10px; border-radius:10px; background:var(--gold-dim); border:1px solid var(--gold-border);">
+                        <img src="https://api.iconify.design/ri/team-fill.svg?color=%23C8A951" style="width:20px;height:20px;display:block;" alt="">
+                    </div>
+                    <h4 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--text-main); transition: color 0.4s;">Extracurricular Leadership</h4>
+                </div>
+                <p style="font-size:0.84rem; color:var(--text2); line-height:1.75;">Active member of Samaritans social club since first year — community initiatives, collaborative events, debates, and quiz competitions.</p>
+            </div>
+
         </div>
 
-        <p class="text-[10px] tracking-widest font-semibold uppercase" style="color:rgba(255,255,255,0.3)">© 2026 Anushka Das &nbsp;·&nbsp; End of File.</p>
+        <div class="card slide-left" style="padding:2rem 2.5rem;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid var(--border);">
+                <div style="padding:10px; border-radius:10px; background:var(--gold-dim); border:1px solid var(--gold-border);">
+                    <img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23C8A951" style="width:20px;height:20px;display:block;" alt="">
+                </div>
+                <h4 style="font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; color:var(--text-main); transition: color 0.4s;">Certifications</h4>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:0 2rem;">
+                <div class="cert-item"><span class="cert-dot"></span>Data Analytics Job Simulation<span class="cert-org">Deloitte Australia</span></div>
+                <div class="cert-item"><span class="cert-dot"></span>Software Engineering Job Simulation<span class="cert-org">JPMorgan Chase</span></div>
+                <div class="cert-item"><span class="cert-dot"></span>Introduction to Agent Skills<span class="cert-org">Anthropic Academy</span></div>
+                <div class="cert-item"><span class="cert-dot"></span>Train & Manage ML Model with Azure<span class="cert-org">Microsoft</span></div>
+                <div class="cert-item"><span class="cert-dot"></span>Understand Data Science for ML<span class="cert-org">Microsoft</span></div>
+                <div class="cert-item"><span class="cert-dot"></span>Python for Data Science<span class="cert-org">IBM</span></div>
+                <div class="cert-item" style="border-bottom:none;"><span class="cert-dot"></span>GenAI Powered Data Analytics Simulation<span class="cert-org">Tata</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="resume" class="anchor-offset section" style="background:var(--bg);">
+    <div class="section-inner" style="text-align:center;">
+        <div class="eyebrow" style="justify-content:center;">Resume</div>
+        <h2 class="section-title">Complete <span>Technical</span> Profile</h2>
+
+        <div class="fade-in" style="max-width:560px; margin:0 auto;">
+            <div class="card" style="padding:3rem; display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
+                <div style="width:64px;height:64px; border-radius:16px; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
+                </div>
+                <p style="font-size:0.9rem; color:var(--text2); line-height:1.8; text-align:center;">Want a detailed breakdown of my academic background, technical skills, and professional experience? View or download my complete resume below.</p>
+                <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
+                    DOWNLOAD RESUME.PDF
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact" class="anchor-offset section" style="background:var(--bg2); text-align:center;">
+    <div class="orb" style="width:400px;height:400px;background:var(--orb-1);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <div class="section-inner" style="position:relative; z-index:2;">
+        <div class="fade-in">
+            <div class="eyebrow" style="justify-content:center;">Contact</div>
+            <h2 style="font-family:'Syne',sans-serif; font-size:clamp(2.5rem,6vw,4.5rem); font-weight:800; line-height:1.05; letter-spacing:-0.04em; color:var(--text-main); margin-bottom:1rem; transition: color 0.4s;">Initialize<br><span style="color:var(--gold);">Connection.</span></h2>
+            <p style="font-size:0.95rem; color:var(--text2); line-height:1.8; max-width:480px; margin:0 auto 2.5rem;">Always open to discussing software engineering opportunities, ML research, and innovative ideas. Let's execute a handshake.</p>
+
+            <a href="mailto:anushkadas05das@gmail.com" class="btn-outline" style="margin-bottom:2.5rem; display:inline-flex;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+                PING ME
+            </a>
+
+            <div class="contact-social" style="display:flex; justify-content:center; gap:10px; margin-bottom:3.5rem;">
+                <a href="mailto:anushkadas05das@gmail.com" title="Email"><img class="theme-icon" src="https://api.iconify.design/ri/mail-send-line.svg?color=white" alt="Email"></a>
+                <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" title="LinkedIn"><img class="theme-icon" src="https://api.iconify.design/ri/linkedin-line.svg?color=white" alt="LinkedIn"></a>
+                <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="GitHub"><img class="theme-icon" src="https://api.iconify.design/ri/github-line.svg?color=white" alt="GitHub"></a>
+                <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" title="X"><img class="theme-icon" src="https://api.iconify.design/ri/twitter-x-line.svg?color=white" alt="X"></a>
+                <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" title="Google Dev"><img class="theme-icon" src="https://api.iconify.design/ri/google-line.svg?color=white" alt="Google Dev"></a>
+            </div>
+
+            <div style="height:1px; background:var(--border); margin-bottom:2rem; max-width:400px; margin-left:auto; margin-right:auto;"></div>
+            <p style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; color:var(--text3); text-transform:uppercase;">© 2026 Anushka Das &nbsp;·&nbsp; End of File.</p>
+        </div>
     </div>
 </section>
 
 </main>
 
 <script>
-    /* ===== TYPING EFFECT ===== */
-    const texts = ["AI · Machine Learning · Full-Stack", "Data Science · Web Dev", "Problem Solver"];
-    let count = 0, idx = 0, currentText = "", isDeleting = false;
-    const typeTarget = document.getElementById('typing-text');
-    function type() {
-        if (!typeTarget) return;
-        if (count === texts.length) count = 0;
-        currentText = texts[count];
-        typeTarget.textContent = isDeleting ? currentText.slice(0, --idx) : currentText.slice(0, ++idx);
-        let speed = isDeleting ? 38 : 78;
-        if (!isDeleting && idx === currentText.length) { speed = 2400; isDeleting = true; }
-        else if (isDeleting && idx === 0) { isDeleting = false; count++; speed = 380; }
-        setTimeout(type, speed);
+/* ── THEME TOGGLE (DARK/LIGHT MODE) ── */
+const themeToggle = document.getElementById('theme-toggle');
+const htmlEl = document.documentElement;
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+htmlEl.setAttribute('data-theme', savedTheme);
+updateIcons(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+    const curr = htmlEl.getAttribute('data-theme');
+    const next = curr === 'dark' ? 'light' : 'dark';
+    htmlEl.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateIcons(next);
+});
+
+function updateIcons(theme) {
+    if(theme === 'light') {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+    } else {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
     }
-    window.addEventListener('load', type);
+}
 
-    /* ===== INTERSECTION OBSERVER — fade + staggered slide in ===== */
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-    }, { threshold: 0.07 });
-    document.querySelectorAll('.fade-in, .slide-in-container').forEach(el => io.observe(el));
+/* ── RESPONSIVE NAV SHOW/HIDE ── */
+function setNav() {
+    const dn = document.getElementById('desktop-nav');
+    const hb = document.getElementById('hamburger');
+    if (window.innerWidth >= 768) {
+        dn.style.display = 'flex';
+        hb.style.display = 'none';
+    } else {
+        dn.style.display = 'none';
+        hb.style.display = 'flex';
+    }
+}
+setNav();
+window.addEventListener('resize', setNav);
 
-    /* ===== ACTIVE NAV HIGHLIGHT ===== */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                const active = document.querySelector(`.nav-link[data-section="${e.target.id}"]`);
-                if (active) active.classList.add('active');
-            }
-        });
-    }, { threshold: 0.35 });
-    sections.forEach(s => navObserver.observe(s));
+/* ── TYPING EFFECT ── */
+const texts = ["AI · Machine Learning · Full-Stack", "Data Science · Web Dev", "Problem Solver"];
+let count = 0, idx = 0, isDeleting = false;
+const typeTarget = document.getElementById('typing-text');
+function type() {
+    if (!typeTarget) return;
+    if (count === texts.length) count = 0;
+    const cur = texts[count];
+    typeTarget.textContent = isDeleting ? cur.slice(0, --idx) : cur.slice(0, ++idx);
+    let speed = isDeleting ? 35 : 75;
+    if (!isDeleting && idx === cur.length) { speed = 2200; isDeleting = true; }
+    else if (isDeleting && idx === 0) { isDeleting = false; count++; speed = 360; }
+    setTimeout(type, speed);
+}
+window.addEventListener('load', type);
 
-    /* ===== HAMBURGER MENU ===== */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileOverlay = document.getElementById('mobile-overlay');
+/* ── INTERSECTION OBSERVER ── */
+const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { 
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+        } 
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in, .stagger, .slide-left, .slide-right, .stagger-slide').forEach(el => io.observe(el));
 
-    hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-        mobileOverlay.classList.toggle('open');
-        const lines = hamburger.querySelectorAll('.ham-line');
-        if (mobileMenu.classList.contains('open')) {
-            lines[0].style.transform = 'translateY(7px) rotate(45deg)';
-            lines[1].style.opacity = '0';
-            lines[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-            lines[2].style.width = '24px';
-        } else {
-            lines[0].style.transform = ''; lines[1].style.opacity = ''; lines[2].style.transform = ''; lines[2].style.width = '';
+/* ── ACTIVE NAV ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const navIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            const a = document.querySelector(`.nav-link[data-section="${e.target.id}"]`);
+            if (a) a.classList.add('active');
         }
     });
+}, { threshold: 0.3 });
+sections.forEach(s => navIO.observe(s));
 
-    function closeMobileMenu() {
-        mobileMenu.classList.remove('open');
-        mobileOverlay.classList.remove('open');
-        const lines = hamburger.querySelectorAll('.ham-line');
-        lines[0].style.transform = ''; lines[1].style.opacity = ''; lines[2].style.transform = ''; lines[2].style.width = '';
+/* ── HAMBURGER ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileOverlay = document.getElementById('mobile-overlay');
+hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    mobileOverlay.classList.toggle('open', open);
+    const lines = hamburger.querySelectorAll('.ham-line');
+    if (open) {
+        lines[0].style.transform = 'translateY(6.5px) rotate(45deg)';
+        lines[1].style.opacity = '0';
+        lines[2].style.transform = 'translateY(-6.5px) rotate(-45deg)';
+        lines[2].style.width = '22px';
+    } else {
+        lines.forEach(l => { l.style.transform = ''; l.style.opacity = ''; });
+        lines[2].style.width = '14px';
     }
+});
+function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    const lines = hamburger.querySelectorAll('.ham-line');
+    lines.forEach(l => { l.style.transform = ''; l.style.opacity = ''; });
+    lines[2].style.width = '14px';
+}
 
-    /* ===== BACK TO TOP ===== */
-    const btt = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        btt.classList.toggle('visible', window.scrollY > 500);
-    }, { passive: true });
+/* ── BACK TO TOP ── */
+const btt = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
 
-    /* ===== SMOOTH SCROLL WITH HEADER OFFSET ===== */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-            const target = document.querySelector(a.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                const offset = 72;
-                window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
-            }
-        });
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' }); }
     });
+});
 
-    /* ===== GENERATIVE ASCII PARTICLE ASSEMBLY EFFECT ===== */
-    window.addEventListener('load', () => {
-        const canvas = document.getElementById('ascii-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+/* ── ASCII CANVAS ── */
+window.addEventListener('load', () => {
+    const canvas = document.getElementById('ascii-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = 'portfolio_profile.jpeg';
 
-        const img = new Image();
-        img.crossOrigin = "Anonymous";
-        img.src = 'portfolio_profile.jpeg';
+    img.onload = () => {
+        const chars = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", ".", " "];
+        let particles = [], animFrame = null;
 
-        img.onload = () => {
-            const chars = ["*", "+", "=", "-", ".", " "];
-            let particles = [];
-            let animFrame = null;
-            let currentIsMobile = window.innerWidth < 768;
-
-            function buildParticles() {
-                particles = [];
-                currentIsMobile = window.innerWidth < 768;
-                const resolution = currentIsMobile ? 8 : 9;
-
-                const container = canvas.parentElement;
-                const dpr = window.devicePixelRatio || 1;
-                const W = container.clientWidth;
-                const H = container.clientHeight;
-
-                canvas.width = W * dpr;
-                canvas.height = H * dpr;
-                ctx.setTransform(1, 0, 0, 1, 0, 0);
-                ctx.scale(dpr, dpr);
-
-                const imgAspect = img.width / img.height;
-                const canvasAspect = W / H;
-
-                const offscreen = document.createElement('canvas');
-                const offCtx = offscreen.getContext('2d');
-                const drawWidth = Math.floor(W / resolution);
-                const drawHeight = Math.floor(H / resolution);
-                offscreen.width = drawWidth;
-                offscreen.height = drawHeight;
-
-                offCtx.fillStyle = '#FFFFFF';
-                offCtx.fillRect(0, 0, drawWidth, drawHeight);
-
-                let destW, destH, destX, destY;
-                if (imgAspect > canvasAspect) {
-                    destW = drawWidth;
-                    destH = drawWidth / imgAspect;
-                    destX = 0;
-                    destY = (drawHeight - destH) / 2;
-                } else {
-                    destW = drawHeight * imgAspect;
-                    destH = drawHeight;
-                    destX = (drawWidth - destW) / 2;
-                    destY = 0;
-                }
-
-                offCtx.drawImage(img, 0, 0, img.width, img.height, destX, destY, destW, destH);
-                const imageData = offCtx.getImageData(0, 0, drawWidth, drawHeight);
-                const data = imageData.data;
-
-                for (let y = 0; y < drawHeight; y++) {
-                    for (let x = 0; x < drawWidth; x++) {
-                        const index = (y * drawWidth + x) * 4;
-                        const r = data[index];
-                        const g = data[index + 1];
-                        const b = data[index + 2];
-                        const brightness = (r + g + b) / 3;
-
-                        if (brightness < 210) {
-                            let charIndex = Math.floor((brightness / 255) * chars.length);
-                            if (charIndex >= chars.length) charIndex = chars.length - 1;
-                            const char = chars[chars.length - 1 - charIndex];
-                            const opacity = 1 - (brightness / 255) + 0.2;
-
-                            const targetX = x * resolution + resolution / 2;
-                            const targetY = y * resolution + resolution / 2;
-
-                            const edge = Math.floor(Math.random() * 4);
-                            let startX, startY;
-                            if (edge === 0)      { startX = Math.random() * W; startY = -20; }
-                            else if (edge === 1) { startX = W + 20; startY = Math.random() * H; }
-                            else if (edge === 2) { startX = Math.random() * W; startY = H + 20; }
-                            else                 { startX = -20; startY = Math.random() * H; }
-
-                            const distFromCenter = Math.sqrt(Math.pow(targetX - W/2, 2) + Math.pow(targetY - H/2, 2));
-                            const maxDist = Math.sqrt(W*W + H*H) / 2;
-                            const delay = (distFromCenter / maxDist) * 900 + Math.random() * 300;
-
-                            particles.push({
-                                char, opacity, resolution,
-                                targetX, targetY,
-                                x: startX, y: startY,
-                                startX, startY,
-                                delay,
-                                duration: 800 + Math.random() * 400,
-                                startTime: null
-                            });
-                        }
-                    }
-                }
-            }
-
-            function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-
-            function animate(timestamp) {
-                const W = canvas.width / (window.devicePixelRatio || 1);
-                const H = canvas.height / (window.devicePixelRatio || 1);
-                ctx.clearRect(0, 0, W, H);
-
-                let allDone = true;
-
-                for (let i = 0; i < particles.length; i++) {
-                    const p = particles[i];
-                    if (p.startTime === null) p.startTime = timestamp;
-                    const elapsed = timestamp - p.startTime;
-                    const fontSize = p.resolution * 1.15;
-                    ctx.font = `bold ${fontSize}px "Montserrat", monospace`;
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-
-                    if (elapsed < p.delay) {
-                        ctx.fillStyle = `rgba(212,175,55,0.06)`;
-                        ctx.fillText(p.char, p.startX, p.startY);
-                        allDone = false;
-                        continue;
-                    }
-
-                    const t = Math.min((elapsed - p.delay) / p.duration, 1);
-                    const easedT = easeOutCubic(t);
-                    p.x = p.startX + (p.targetX - p.startX) * easedT;
-                    p.y = p.startY + (p.targetY - p.startY) * easedT;
-
-                    ctx.fillStyle = `rgba(212,175,55,${p.opacity * easedT})`;
-                    ctx.fillText(p.char, p.x, p.y);
-                    if (t < 1) allDone = false;
-                }
-
-                if (!allDone) {
-                    animFrame = requestAnimationFrame(animate);
-                } else {
-                    ctx.clearRect(0, 0, W, H);
-                    for (let i = 0; i < particles.length; i++) {
-                        const p = particles[i];
-                        const fontSize = p.resolution * 1.15;
-                        ctx.font = `bold ${fontSize}px "Montserrat", monospace`;
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'middle';
-                        ctx.fillStyle = `rgba(212,175,55,${p.opacity})`;
-                        ctx.fillText(p.char, p.targetX, p.targetY);
-                    }
-                }
-            }
-
-            function startAnimation() {
-                if (animFrame) cancelAnimationFrame(animFrame);
-                buildParticles();
-                animFrame = requestAnimationFrame(animate);
-            }
-
-            startAnimation();
-
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(startAnimation, 200);
-            });
-        };
-
-        img.onerror = () => {
+        function buildParticles() {
+            particles = [];
+            const resolution = window.innerWidth < 768 ? 8 : 9;
             const container = canvas.parentElement;
-            canvas.width = container.clientWidth;
-            canvas.height = container.clientHeight;
-            ctx.font = 'bold 14px Montserrat, monospace';
-            ctx.fillStyle = 'rgba(212,175,55,0.4)';
-            ctx.textAlign = 'center';
-            ctx.fillText('[ portfolio_profile.jpeg ]', container.clientWidth / 2, container.clientHeight / 2);
-        };
-    });
+            const dpr = window.devicePixelRatio || 1;
+            const W = container.clientWidth, H = container.clientHeight;
+            canvas.width = W * dpr; canvas.height = H * dpr;
+            ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr, dpr);
+
+            const offscreen = document.createElement('canvas');
+            const offCtx = offscreen.getContext('2d');
+            const dW = Math.floor(W/resolution), dH = Math.floor(H/resolution);
+            offscreen.width = dW; offscreen.height = dH;
+            offCtx.fillStyle = '#fff'; offCtx.fillRect(0, 0, dW, dH);
+
+            const imgAR = img.width/img.height, canAR = W/H;
+            let destW, destH, destX, destY;
+            if (imgAR > canAR) { destW = dW; destH = dW/imgAR; destX = 0; destY = (dH-destH)/2; }
+            else { destH = dH; destW = dH*imgAR; destY = 0; destX = (dW-destW)/2; }
+            offCtx.drawImage(img, 0, 0, img.width, img.height, destX, destY, destW, destH);
+
+            const data = offCtx.getImageData(0, 0, dW, dH).data;
+            for (let y = 0; y < dH; y++) {
+                for (let x = 0; x < dW; x++) {
+                    const i = (y*dW+x)*4;
+                    const bright = (data[i]+data[i+1]+data[i+2])/3;
+                    if (bright < 215) {
+                        const ci = Math.floor((bright/255)*chars.length);
+                        const char = chars[Math.min(ci, chars.length-1)];
+                        const opacity = 1 - (bright/255)*0.7 + 0.15;
+                        const tX = x*resolution+resolution/2, tY = y*resolution+resolution/2;
+                        const edge = Math.floor(Math.random()*4);
+                        let sX, sY;
+                        if (edge===0){sX=Math.random()*W;sY=-20;}
+                        else if(edge===1){sX=W+20;sY=Math.random()*H;}
+                        else if(edge===2){sX=Math.random()*W;sY=H+20;}
+                        else{sX=-20;sY=Math.random()*H;}
+                        const dist = Math.sqrt((tX-W/2)**2+(tY-H/2)**2);
+                        const maxD = Math.sqrt(W*W+H*H)/2;
+                        particles.push({ char, opacity, resolution, tX, tY, x:sX, y:sY, sX, sY, delay:(dist/maxD)*800+Math.random()*250, dur:700+Math.random()*400, startTime:null });
+                    }
+                }
+            }
+        }
+
+        function easeOut(t) { return 1-Math.pow(1-t,3); }
+
+        function animate(ts) {
+            const W = canvas.width/(window.devicePixelRatio||1), H = canvas.height/(window.devicePixelRatio||1);
+            ctx.clearRect(0,0,W,H);
+            let done = true;
+            for (const p of particles) {
+                if (!p.startTime) p.startTime = ts;
+                const el = ts-p.startTime;
+                const fs = p.resolution*1.1;
+                ctx.font = `bold ${fs}px "Space Mono",monospace`;
+                ctx.textAlign='center'; ctx.textBaseline='middle';
+                if (el < p.delay) { ctx.fillStyle='rgba(200,169,81,0.05)'; ctx.fillText(p.char,p.sX,p.sY); done=false; continue; }
+                const t = Math.min((el-p.delay)/p.dur,1), et=easeOut(t);
+                p.x = p.sX+(p.tX-p.sX)*et; p.y = p.sY+(p.tY-p.sY)*et;
+                ctx.fillStyle = `rgba(200,169,81,${p.opacity*et})`;
+                ctx.fillText(p.char,p.x,p.y);
+                if (t<1) done=false;
+            }
+            if (!done) { animFrame=requestAnimationFrame(animate); }
+            else {
+                ctx.clearRect(0,0,W,H);
+                for (const p of particles) {
+                    const fs=p.resolution*1.1;
+                    ctx.font=`bold ${fs}px "Space Mono",monospace`;
+                    ctx.textAlign='center'; ctx.textBaseline='middle';
+                    ctx.fillStyle=`rgba(200,169,81,${p.opacity})`;
+                    ctx.fillText(p.char,p.tX,p.tY);
+                }
+            }
+        }
+
+        function start() {
+            if (animFrame) cancelAnimationFrame(animFrame);
+            buildParticles();
+            animFrame = requestAnimationFrame(animate);
+        }
+        start();
+        let resizeT;
+        window.addEventListener('resize', () => { clearTimeout(resizeT); resizeT=setTimeout(start,200); });
+    };
+
+    img.onerror = () => {
+        const c = canvas.parentElement;
+        canvas.width=c.clientWidth; canvas.height=c.clientHeight;
+        ctx.font='12px "Space Mono",monospace';
+        ctx.fillStyle='rgba(200,169,81,0.4)';
+        ctx.textAlign='center';
+        ctx.fillText('[portfolio_profile.jpeg]',c.clientWidth/2,c.clientHeight/2);
+    };
+});
 </script>
 </body>
 </html>
