@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,14 +9,13 @@
     <meta property="og:description" content="Aspiring ML/DL Engineer with research in Sovereign AI, Deepfake Detection, and more.">
     <meta property="og:type" content="website">
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* ═══════════════════════════════════════════════
-           DESIGN TOKENS & PRO ENHANCEMENTS
+           DESIGN TOKENS
         ═══════════════════════════════════════════════ */
         :root {
             --gold:        #C9A84C;
@@ -30,8 +29,6 @@
             --green:       #34EE8A;
             --green-lo:    rgba(52,238,138,0.08);
             --green-ring:  rgba(52,238,138,0.2);
-
-            /* Dark theme (default) */
             --bg0:    #05050a;
             --bg1:    #0b0b12;
             --bg2:    #0f0f18;
@@ -43,7 +40,7 @@
             --t1:     #d4d4e8;
             --t2:     #8888a8;
             --t3:     #454560;
-            --nav-bg: rgba(5,5,10,0.75);
+            --nav-bg: rgba(5,5,10,0.85);
             --term-bg:#09090f;
             --overlay:rgba(5,5,10,0.85);
             --orb1:   rgba(201,168,76,0.06);
@@ -92,21 +89,20 @@
             background: var(--bg0); color: var(--t1);
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.65; overflow-x: hidden;
-            transition: background .4s cubic-bezier(0.4, 0, 0.2, 1), color .4s ease;
+            transition: background .4s cubic-bezier(0.4,0,0.2,1), color .4s ease;
         }
         a { text-decoration: none; color: inherit; }
         img { display: block; }
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg0); }
-        ::-webkit-scrollbar-thumb { background: var(--gold-ring); border-radius: 4px; transition: background 0.3s;}
+        ::-webkit-scrollbar-thumb { background: var(--gold-ring); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
         /* ═══════════════════════════════════════════════
            GLOBAL NOISE + SCANLINE
         ═══════════════════════════════════════════════ */
         body::before {
-            content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
-            opacity:.025;
+            content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.025;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
         body::after {
@@ -115,32 +111,30 @@
         }
 
         /* ═══════════════════════════════════════════════
-           GRID BACKGROUND & EFFECTS
+           GRID BACKGROUND
         ═══════════════════════════════════════════════ */
         .grid-bg {
             background-image:
                 linear-gradient(var(--line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--line) 1px, transparent 1px);
             background-size: 56px 56px;
-            /* PRO UPGRADE: Fade the grid out at the bottom so it doesn't clip harshly */
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
         }
 
         /* ═══════════════════════════════════════════════
-           ORB (ambient glow with floating animation)
+           ORB
         ═══════════════════════════════════════════════ */
-        .orb { 
-            position:absolute; border-radius:50%; filter:blur(110px); pointer-events:none; 
+        .orb {
+            position:absolute; border-radius:50%; filter:blur(110px); pointer-events:none;
             transition:background .4s ease;
             animation: orbFloat 14s ease-in-out infinite alternate;
         }
-        .orb:nth-child(3) { animation-delay: -7s; animation-direction: alternate-reverse; }
-        
+        .orb:nth-child(3) { animation-delay:-7s; animation-direction:alternate-reverse; }
         @keyframes orbFloat {
-            0% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(-25px, 35px) scale(1.05); }
-            100% { transform: translate(25px, -15px) scale(0.95); }
+            0%   { transform:translate(0px,0px) scale(1); }
+            50%  { transform:translate(-25px,35px) scale(1.05); }
+            100% { transform:translate(25px,-15px) scale(0.95); }
         }
 
         /* ═══════════════════════════════════════════════
@@ -148,9 +142,7 @@
         ═══════════════════════════════════════════════ */
         .section { position:relative; width:100%; padding:8rem 1.5rem; overflow:hidden; }
         .section-inner { max-width:1200px; margin:0 auto; position:relative; z-index:2; }
-        @media(max-width:768px){
-            .section{ padding:5rem 1.25rem; }
-        }
+        @media(max-width:768px){ .section{ padding:5rem 1.25rem; } }
 
         /* ═══════════════════════════════════════════════
            TYPOGRAPHY
@@ -159,10 +151,9 @@
             display:flex; align-items:center; gap:12px;
             font-family:'Space Mono',monospace;
             font-size:.64rem; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan);
-            margin-bottom:1rem; font-weight: 700;
+            margin-bottom:1rem; font-weight:700;
         }
         .eyebrow::before { content:''; width:32px; height:1px; background:var(--cyan); display:block; }
-
         .sec-title {
             font-family:'Syne',sans-serif;
             font-size:clamp(2.2rem,4vw,3.3rem);
@@ -170,86 +161,65 @@
             color:var(--t0); margin-bottom:.5rem; transition:color .4s ease;
         }
         .sec-title em { font-style:normal; color:var(--gold); }
-
-        .sec-sub {
-            font-size:.88rem; color:var(--t3); letter-spacing:.04em;
-            margin-bottom:4rem;
-        }
-
-        /* ═══════════════════════════════════════════════
-           DIVIDER
-        ═══════════════════════════════════════════════ */
+        .sec-sub { font-size:.88rem; color:var(--t3); letter-spacing:.04em; margin-bottom:4rem; }
         .divider {
             width:100%; height:1px;
             background:linear-gradient(90deg,transparent,var(--line2) 30%,var(--line2) 70%,transparent);
         }
 
         /* ═══════════════════════════════════════════════
-           CARDS (Glassmorphism & Magnetic Hover)
+           CARDS
         ═══════════════════════════════════════════════ */
         .card {
             background:var(--sfc); border:1px solid var(--line);
             border-radius:18px; overflow:hidden;
-            transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275);
             position:relative;
-            /* PRO UPGRADE: Subtle inner shadow for depth */
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
         }
         .card::after {
             content:''; position:absolute; inset:0; border-radius:inherit;
-            background:linear-gradient(135deg, var(--gold-lo) 0%, transparent 55%);
-            pointer-events:none; opacity: 0; transition: opacity 0.4s ease;
+            background:linear-gradient(135deg,var(--gold-lo) 0%,transparent 55%);
+            pointer-events:none; opacity:0; transition:opacity .4s ease;
         }
-        .card:hover {
-            border-color:var(--gold-ring);
-            transform:translateY(-8px) scale(1.01);
-            box-shadow:0 30px 60px var(--shadow), 0 0 0 1px var(--gold-ring);
-        }
-        .card:hover::after { opacity: 1; }
+        .card:hover { border-color:var(--gold-ring); transform:translateY(-8px) scale(1.01); box-shadow:0 30px 60px var(--shadow),0 0 0 1px var(--gold-ring); }
+        .card:hover::after { opacity:1; }
 
         .card-gold {
             background:var(--sfc); border:1px solid var(--gold-ring);
             border-radius:18px; overflow:hidden;
-            transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275);
             position:relative;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
         }
         .card-gold::before {
             content:''; position:absolute; top:0; left:0; right:0; height:2px;
             background:linear-gradient(90deg,transparent,var(--gold),transparent);
         }
-        .card-gold:hover {
-            border-color:var(--gold-hi);
-            transform:translateY(-8px) scale(1.01);
-            box-shadow:0 30px 60px var(--shadow), 0 0 40px var(--gold-glow);
-        }
+        .card-gold:hover { border-color:var(--gold-hi); transform:translateY(-8px) scale(1.01); box-shadow:0 30px 60px var(--shadow),0 0 40px var(--gold-glow); }
 
         /* ═══════════════════════════════════════════════
-           TERMINAL (macOS style polish)
+           TERMINAL
         ═══════════════════════════════════════════════ */
         .term {
             background:var(--term-bg); border:1px solid var(--line2);
             border-radius:14px; overflow:hidden; transition:background .4s ease;
-            box-shadow: 0 25px 50px var(--shadow);
+            box-shadow:0 25px 50px var(--shadow);
         }
         .term-bar {
             display:flex; align-items:center; gap:8px;
             padding:10px 16px; background:var(--sfc2); border-bottom:1px solid var(--line);
             transition:background .4s ease;
         }
-        .td { width:12px; height:12px; border-radius:50%; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);}
+        .td { width:12px; height:12px; border-radius:50%; box-shadow:inset 0 1px 0 rgba(255,255,255,0.2); }
         .td-r{background:#ff5f57;} .td-y{background:#febc2e;} .td-g{background:#28c840;}
         .term-fname { font-family:'Space Mono',monospace; font-size:.65rem; color:var(--t3); margin-left:12px; }
         .term-body {
             padding:1.5rem 1.75rem; font-family:'Space Mono',monospace;
             font-size:.8rem; line-height:2; overflow-x:auto;
         }
-        .tc { color:var(--t3); }
-        .tk { color:var(--cyan); }
-        .tv { color:var(--gold); }
-        .ts { color:#a8ff78; }
-        .tn { color:#ff9f43; }
-        .tb { color:#fd79a8; }
+        .tc{color:var(--t3);} .tk{color:var(--cyan);} .tv{color:var(--gold);}
+        .ts{color:#a8ff78;} .tn{color:#ff9f43;} .tb{color:#fd79a8;}
 
         /* ═══════════════════════════════════════════════
            TAGS
@@ -260,13 +230,10 @@
             font-size:.58rem; font-weight:700; letter-spacing:.08em;
             padding:4px 10px; border-radius:6px; text-transform:uppercase;
             background:var(--gold-lo); border:1px solid var(--gold-ring); color:var(--gold);
-            transition: all 0.3s ease;
+            transition:all .3s ease;
         }
-        .tag:hover { background: var(--gold); color: #000; }
-        
-        .tag-green {
-            background:var(--green-lo); border-color:var(--green-ring); color:var(--green);
-        }
+        .tag:hover { background:var(--gold); color:#000; }
+        .tag-green { background:var(--green-lo); border-color:var(--green-ring); color:var(--green); }
 
         /* ═══════════════════════════════════════════════
            SKILL PILL
@@ -276,50 +243,35 @@
             font-size:.82rem; font-weight:500;
             padding:8px 16px; border-radius:10px;
             background:var(--sfc2); border:1px solid var(--line2);
-            color:var(--t1); transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color:var(--t1); transition:all .3s cubic-bezier(0.175,0.885,0.32,1.275);
             cursor:default;
         }
         .pill img { width:15px; height:15px; transition:filter .35s; }
         [data-theme="dark"]  .pill img { filter:brightness(0) invert(.72); }
         [data-theme="light"] .pill img { filter:brightness(0) invert(.28); }
-        .pill:hover { border-color:var(--gold-ring); background:var(--gold-lo); color:var(--gold); transform:translateY(-2px) scale(1.05); box-shadow: 0 10px 20px var(--shadow); }
+        .pill:hover { border-color:var(--gold-ring); background:var(--gold-lo); color:var(--gold); transform:translateY(-2px) scale(1.05); box-shadow:0 10px 20px var(--shadow); }
         .pill:hover img { filter:brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%) !important; }
 
         /* ═══════════════════════════════════════════════
            BULLETS
         ═══════════════════════════════════════════════ */
-        .bul {
-            display:flex; gap:10px; align-items:flex-start;
-            font-size:.845rem; color:var(--t2); line-height:1.75;
-        }
+        .bul { display:flex; gap:10px; align-items:flex-start; font-size:.845rem; color:var(--t2); line-height:1.75; }
         .bul::before { content:'▸'; color:var(--gold); font-size:.7rem; margin-top:3px; flex-shrink:0; }
 
         /* ═══════════════════════════════════════════════
            STAT BOXES
         ═══════════════════════════════════════════════ */
-        .stats-row {
-            display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
-            margin-bottom:3rem; max-width:550px;
-        }
+        .stats-row { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:3rem; max-width:550px; }
         @media(min-width:480px){ .stats-row{ grid-template-columns:repeat(4,1fr); } }
-
         .stat {
             background:var(--sfc); border:1px solid var(--line);
             border-radius:14px; padding:1.25rem .75rem; text-align:center;
-            transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition:all .3s cubic-bezier(0.175,0.885,0.32,1.275);
             display:flex; flex-direction:column; align-items:center; justify-content:center;
         }
-        .stat:hover { border-color:var(--gold-ring); transform: translateY(-4px); box-shadow: 0 15px 30px var(--shadow); }
-        .stat-n {
-            font-family:'Syne',sans-serif;
-            font-size:clamp(1.4rem,3.5vw,1.8rem); font-weight:800;
-            color:var(--gold); line-height:1; white-space:nowrap;
-        }
-        .stat-l {
-            font-family:'Space Mono',monospace;
-            font-size:.55rem; letter-spacing:.12em; color:var(--t3);
-            text-transform:uppercase; margin-top:8px; font-weight: 700;
-        }
+        .stat:hover { border-color:var(--gold-ring); transform:translateY(-4px); box-shadow:0 15px 30px var(--shadow); }
+        .stat-n { font-family:'Syne',sans-serif; font-size:clamp(1.4rem,3.5vw,1.8rem); font-weight:800; color:var(--gold); line-height:1; white-space:nowrap; }
+        .stat-l { font-family:'Space Mono',monospace; font-size:.55rem; letter-spacing:.12em; color:var(--t3); text-transform:uppercase; margin-top:8px; font-weight:700; }
 
         /* ═══════════════════════════════════════════════
            TIMELINE
@@ -327,19 +279,17 @@
         .tl { position:relative; padding-left:2.5rem; }
         .tl::before {
             content:''; position:absolute; left:0; top:0; bottom:0; width:2px;
-            background:linear-gradient(to bottom, var(--gold), transparent);
+            background:linear-gradient(to bottom,var(--gold),transparent);
         }
         .tl-dot {
             position:absolute; left:-2.45rem; top:1.45rem;
             width:10px; height:10px; border-radius:50%; background:var(--gold);
-            box-shadow:0 0 12px rgba(201,168,76,.8);
-            /* PRO UPGRADE: Radar pulse animation */
-            animation: radarPulse 2.5s infinite;
+            animation:radarPulse 2.5s infinite;
         }
         @keyframes radarPulse {
-            0% { box-shadow: 0 0 0 0 rgba(201,168,76, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(201,168,76, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(201,168,76, 0); }
+            0%   { box-shadow:0 0 0 0 rgba(201,168,76,.6); }
+            70%  { box-shadow:0 0 0 14px rgba(201,168,76,0); }
+            100% { box-shadow:0 0 0 0 rgba(201,168,76,0); }
         }
         .tl-item { position:relative; }
 
@@ -347,42 +297,43 @@
            NAV
         ═══════════════════════════════════════════════ */
         .nav-a {
-            font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700;
+            font-family:'Space Mono',monospace; font-size:.65rem; font-weight:700;
             letter-spacing:.12em; text-transform:uppercase; color:var(--t3);
             transition:color .3s; position:relative;
         }
-        .nav-a:hover, .nav-a.on { color:var(--gold); }
+        .nav-a:hover,.nav-a.on { color:var(--gold); }
         .nav-a::after {
             content:''; position:absolute; bottom:-4px; left:0; right:0;
-            height:2px; background:var(--gold); transform:scaleX(0); transition:transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-origin: right;
+            height:2px; background:var(--gold); transform:scaleX(0);
+            transition:transform .3s cubic-bezier(0.175,0.885,0.32,1.275);
+            transform-origin:right;
         }
-        .nav-a:hover::after, .nav-a.on::after { transform:scaleX(1); transform-origin: left; }
+        .nav-a:hover::after,.nav-a.on::after { transform:scaleX(1); transform-origin:left; }
 
         /* ═══════════════════════════════════════════════
            BUTTONS
         ═══════════════════════════════════════════════ */
-        .btn-g, .btn-o {
+        .btn-g,.btn-o {
             display:inline-flex; align-items:center; justify-content:center; gap:10px;
             font-family:'Space Mono',monospace; font-size:.7rem; font-weight:700;
-            letter-spacing:.1em; padding:.9rem 2rem; border-radius:10px; transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            white-space:nowrap; position: relative; overflow: hidden;
+            letter-spacing:.1em; padding:.9rem 2rem; border-radius:10px;
+            transition:all .3s cubic-bezier(0.175,0.885,0.32,1.275);
+            white-space:nowrap; position:relative; overflow:hidden; cursor:pointer;
         }
         .btn-g { background:var(--gold); color:#000; border:2px solid var(--gold); }
         .btn-g:hover { background:var(--gold-hi); border-color:var(--gold-hi); transform:translateY(-3px); box-shadow:0 10px 25px var(--gold-glow); }
-        
         .btn-o { background:transparent; color:var(--gold); border:1px solid var(--gold-ring); }
         .btn-o:hover { background:var(--gold-lo); border-color:var(--gold); transform:translateY(-3px); box-shadow:0 10px 25px var(--shadow); }
 
         /* ═══════════════════════════════════════════════
-           ICON BUTTONS (social / link)
+           ICON BUTTONS
         ═══════════════════════════════════════════════ */
         .ib {
             display:flex; align-items:center; justify-content:center;
             background:var(--sfc2); border:1px solid var(--line2);
-            border-radius:12px; transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius:12px; transition:all .3s cubic-bezier(0.175,0.885,0.32,1.275);
         }
-        .ib:hover { border-color:var(--gold-ring); background:var(--gold-lo); transform:translateY(-3px) scale(1.05); box-shadow: 0 10px 20px var(--shadow);}
+        .ib:hover { border-color:var(--gold-ring); background:var(--gold-lo); transform:translateY(-3px) scale(1.05); box-shadow:0 10px 20px var(--shadow); }
         .ib-sm  { width:40px; height:40px; }
         .ib-md  { width:46px; height:46px; }
         .ib-rnd { border-radius:50%; }
@@ -403,10 +354,10 @@
         .mchip::before { content:'↑'; font-size:.6rem; }
 
         /* ═══════════════════════════════════════════════
-           SKILL CATEGORY LABEL
+           SKILL CAT LABEL
         ═══════════════════════════════════════════════ */
         .scat {
-            font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700;
+            font-family:'Space Mono',monospace; font-size:.65rem; font-weight:700;
             letter-spacing:.16em; text-transform:uppercase; color:var(--cyan);
             display:flex; align-items:center; gap:12px; margin-bottom:1.2rem;
         }
@@ -415,26 +366,30 @@
         /* ═══════════════════════════════════════════════
            CERT LIST
         ═══════════════════════════════════════════════ */
-        .cert-row { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); font-size:.88rem; color:var(--t2); transition:all .3s ease; }
-        .cert-row:hover { color: var(--t0); transform: translateX(5px); border-color: var(--gold-ring); }
+        .cert-row {
+            display:flex; align-items:center; gap:12px;
+            padding:12px 0; border-bottom:1px solid var(--line);
+            font-size:.88rem; color:var(--t2); transition:all .3s ease;
+        }
+        .cert-row:hover { color:var(--t0); transform:translateX(5px); border-color:var(--gold-ring); }
         .cert-row:last-child { border-bottom:none; }
-        .cert-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; transition: transform 0.3s; }
-        .cert-row:hover .cert-dot { transform: scale(1.5); box-shadow: 0 0 10px var(--gold); }
-        .cert-org { font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700; color:var(--t3); margin-left:auto; text-align:right; transition: color 0.3s; }
-        .cert-row:hover .cert-org { color: var(--gold); }
+        .cert-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; transition:transform .3s; }
+        .cert-row:hover .cert-dot { transform:scale(1.5); box-shadow:0 0 10px var(--gold); }
+        .cert-org { font-family:'Space Mono',monospace; font-size:.65rem; font-weight:700; color:var(--t3); margin-left:auto; text-align:right; transition:color .3s; }
+        .cert-row:hover .cert-org { color:var(--gold); }
 
         /* ═══════════════════════════════════════════════
            STATUS BADGE
         ═══════════════════════════════════════════════ */
         .status {
             display:inline-flex; align-items:center; gap:8px;
-            font-family:'Space Mono',monospace; font-size:.6rem; font-weight: 700; letter-spacing:.1em;
+            font-family:'Space Mono',monospace; font-size:.6rem; font-weight:700; letter-spacing:.1em;
             color:var(--green); border:1px solid var(--green-ring); background:var(--green-lo);
             padding:6px 14px; border-radius:20px; text-transform:uppercase;
-            box-shadow: 0 0 15px rgba(52, 238, 138, 0.1);
+            box-shadow:0 0 15px rgba(52,238,138,.1);
         }
-        .pulse { width:8px; height:8px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; box-shadow: 0 0 8px var(--green);}
-        @keyframes pulse { 0%,100%{opacity:1; transform: scale(1);} 50%{opacity:.4; transform: scale(0.85);} }
+        .pulse { width:8px; height:8px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; box-shadow:0 0 8px var(--green); }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.85)} }
 
         /* ═══════════════════════════════════════════════
            ACHIEVEMENT CARD
@@ -442,8 +397,8 @@
         .ach {
             background:var(--sfc); border:1px solid var(--line);
             border-radius:16px; padding:1.85rem; position:relative; overflow:hidden;
-            transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+            transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
         }
         .ach::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:linear-gradient(to bottom,var(--gold),transparent); }
         .ach:hover { border-color:var(--gold-ring); transform:translateY(-5px) scale(1.01); box-shadow:0 20px 40px var(--shadow); }
@@ -453,11 +408,11 @@
         ═══════════════════════════════════════════════ */
         .exp-c {
             background:var(--sfc); border:1px solid var(--line); border-radius:16px; padding:2rem;
-            transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+            transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
         }
         .exp-c:hover { border-color:var(--gold-ring); transform:translateY(-5px) scale(1.01); box-shadow:0 20px 40px var(--shadow); }
-        .exp-dt { font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700; letter-spacing:.11em; color:var(--gold); text-transform:uppercase; }
+        .exp-dt { font-family:'Space Mono',monospace; font-size:.65rem; font-weight:700; letter-spacing:.11em; color:var(--gold); text-transform:uppercase; }
 
         /* ═══════════════════════════════════════════════
            MEMBERSHIP
@@ -465,21 +420,25 @@
         .mem-card {
             background:var(--sfc); border:1px solid var(--gold-ring);
             border-radius:18px; padding:2.5rem; position:relative; overflow:hidden;
-            transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+            transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
         }
         .mem-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
-        .mem-card:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 30px 60px var(--shadow), 0 0 50px var(--gold-glow); }
+        .mem-card:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 30px 60px var(--shadow),0 0 50px var(--gold-glow); }
 
         /* ═══════════════════════════════════════════════
-           HEADER / NAV HEADER (Pro Glassmorphism)
+           HEADER
         ═══════════════════════════════════════════════ */
         #hdr {
             position:fixed; top:0; left:0; width:100%; z-index:50;
             background:var(--nav-bg); backdrop-filter:blur(24px) saturate(200%);
             -webkit-backdrop-filter:blur(24px) saturate(200%);
             border-bottom:1px solid var(--line); transition:all .4s ease;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            box-shadow:0 4px 30px rgba(0,0,0,.1);
+        }
+        .hdr-inner {
+            max-width:1200px; margin:0 auto; padding:0 1.5rem;
+            display:flex; align-items:center; justify-content:space-between; height:60px;
         }
 
         /* ═══════════════════════════════════════════════
@@ -487,7 +446,7 @@
         ═══════════════════════════════════════════════ */
         #mob-overlay {
             position:fixed; top:60px; inset:0; background:rgba(0,0,0,.8);
-            backdrop-filter:blur(15px); -webkit-backdrop-filter:blur(15px); z-index:48;
+            backdrop-filter:blur(15px); z-index:48;
             opacity:0; pointer-events:none; transition:opacity .4s ease;
         }
         #mob-overlay.open { opacity:1; pointer-events:auto; }
@@ -495,14 +454,14 @@
             position:fixed; top:60px; right:-100%; bottom:0;
             width:300px; max-width:85vw;
             background:var(--bg1); border-left:1px solid var(--line2);
-            z-index:49; padding:2rem; transition:right .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index:49; padding:2rem; transition:right .4s cubic-bezier(0.175,0.885,0.32,1.275);
             display:flex; flex-direction:column; overflow-y:auto;
-            box-shadow: -20px 0 50px var(--shadow);
+            box-shadow:-20px 0 50px var(--shadow);
         }
         #mob-menu.open { right:0; }
         #mob-menu a {
             display:block; padding:1rem 0;
-            font-family:'Space Mono',monospace; font-size:.7rem; font-weight: 700;
+            font-family:'Space Mono',monospace; font-size:.7rem; font-weight:700;
             letter-spacing:.12em; color:var(--t2); text-transform:uppercase;
             border-bottom:1px solid var(--line); transition:color .3s, transform .3s;
         }
@@ -518,69 +477,58 @@
             background:var(--sfc2); border:1px solid var(--gold-ring);
             display:flex; align-items:center; justify-content:center;
             cursor:pointer; opacity:0; pointer-events:none;
-            transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform:translateY(15px);
-            box-shadow: 0 10px 20px var(--shadow);
+            transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275);
+            transform:translateY(15px);
+            box-shadow:0 10px 20px var(--shadow);
         }
         #btt.show { opacity:1; pointer-events:auto; transform:none; }
-        #btt:hover { background:var(--gold-lo); border-color: var(--gold); transform: translateY(-4px) scale(1.05); box-shadow: 0 15px 30px var(--shadow), 0 0 15px var(--gold-glow);}
+        #btt:hover { background:var(--gold-lo); border-color:var(--gold); transform:translateY(-4px) scale(1.05); box-shadow:0 15px 30px var(--shadow),0 0 15px var(--gold-glow); }
         #btt svg { width:18px; height:18px; fill:var(--gold); }
 
         /* ═══════════════════════════════════════════════
-           HAMBURGER LINES
+           HAMBURGER
         ═══════════════════════════════════════════════ */
-        .ham { display:block; background:var(--ham); transition:all .3s ease; border-radius: 2px;}
+        .ham { display:block; background:var(--ham); transition:all .3s ease; border-radius:2px; }
 
         /* ═══════════════════════════════════════════════
-           PROJECT IMAGE WRAP
+           PROJECT IMAGE
         ═══════════════════════════════════════════════ */
         .pimg { position:relative; overflow:hidden; }
-        .pimg img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); display:block; }
+        .pimg img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(0.165,.84,.44,1); display:block; }
         .card:hover .pimg img, .card-gold:hover .pimg img { transform:scale(1.08); }
-        .pimg-grad { position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, var(--overlay) 100%); transition:background .4s ease; }
+        .pimg-grad { position:absolute; inset:0; background:linear-gradient(to bottom,transparent 40%,var(--overlay) 100%); transition:background .4s ease; }
 
         /* ═══════════════════════════════════════════════
-           ANIMATIONS (Smoother Bezier Curves)
+           ANIMATIONS
         ═══════════════════════════════════════════════ */
         @keyframes fadeUp { from{opacity:0;transform:translateY(35px)} to{opacity:1;transform:none} }
-        .hero-a { animation:fadeUp .9s cubic-bezier(0.165, 0.84, 0.44, 1) both; }
+        .hero-a { animation:fadeUp .9s cubic-bezier(0.165,.84,.44,1) both; }
         .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.35s}
-        .d4{animation-delay:.5s} .d5{animation-delay:.65s}  .d6{animation-delay:.8s}
+        .d4{animation-delay:.5s} .d5{animation-delay:.65s} .d6{animation-delay:.8s}
 
-        .up   { opacity:0; transform:translateY(30px);  transition:opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .lft  { opacity:0; transform:translateX(-45px); transition:opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .rgt  { opacity:0; transform:translateX(45px);  transition:opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .up   { opacity:0; transform:translateY(30px);  transition:opacity .8s cubic-bezier(0.165,.84,.44,1),transform .8s cubic-bezier(0.165,.84,.44,1); }
+        .lft  { opacity:0; transform:translateX(-45px); transition:opacity .8s cubic-bezier(0.165,.84,.44,1),transform .8s cubic-bezier(0.165,.84,.44,1); }
+        .rgt  { opacity:0; transform:translateX(45px);  transition:opacity .8s cubic-bezier(0.165,.84,.44,1),transform .8s cubic-bezier(0.165,.84,.44,1); }
         .on   { opacity:1 !important; transform:none !important; }
 
-        /* stagger-grid: children animate in with delay */
-        .sgrid > * { opacity:0; transition:opacity .7s cubic-bezier(0.165, 0.84, 0.44, 1), transform .7s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .sgrid > * { opacity:0; transition:opacity .7s cubic-bezier(0.165,.84,.44,1),transform .7s cubic-bezier(0.165,.84,.44,1); }
         .sgrid > *:nth-child(odd)  { transform:translateX(-40px); }
         .sgrid > *:nth-child(even) { transform:translateX(40px); }
         .sgrid.on > * { opacity:1; transform:none; }
-        .sgrid.on > *:nth-child(1){transition-delay:.05s}
-        .sgrid.on > *:nth-child(2){transition-delay:.15s}
-        .sgrid.on > *:nth-child(3){transition-delay:.25s}
-        .sgrid.on > *:nth-child(4){transition-delay:.35s}
-        .sgrid.on > *:nth-child(5){transition-delay:.45s}
-        .sgrid.on > *:nth-child(6){transition-delay:.55s}
-        .sgrid.on > *:nth-child(7){transition-delay:.65s}
-        .sgrid.on > *:nth-child(8){transition-delay:.75s}
-        .sgrid.on > *:nth-child(9){transition-delay:.85s}
-        .sgrid.on > *:nth-child(10){transition-delay:.95s}
+        .sgrid.on > *:nth-child(1){transition-delay:.05s} .sgrid.on > *:nth-child(2){transition-delay:.15s}
+        .sgrid.on > *:nth-child(3){transition-delay:.25s} .sgrid.on > *:nth-child(4){transition-delay:.35s}
+        .sgrid.on > *:nth-child(5){transition-delay:.45s} .sgrid.on > *:nth-child(6){transition-delay:.55s}
+        .sgrid.on > *:nth-child(7){transition-delay:.65s} .sgrid.on > *:nth-child(8){transition-delay:.75s}
+        .sgrid.on > *:nth-child(9){transition-delay:.85s} .sgrid.on > *:nth-child(10){transition-delay:.95s}
         .sgrid.on > *:nth-child(11){transition-delay:1.05s}
 
-        /* stagger-fade: straight fade-up with delay */
-        .sfade > * { opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(0.165, 0.84, 0.44, 1), transform .7s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .sfade > * { opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(0.165,.84,.44,1),transform .7s cubic-bezier(0.165,.84,.44,1); }
         .sfade.on > * { opacity:1; transform:none; }
-        .sfade.on > *:nth-child(1){transition-delay:.05s}
-        .sfade.on > *:nth-child(2){transition-delay:.15s}
-        .sfade.on > *:nth-child(3){transition-delay:.25s}
-        .sfade.on > *:nth-child(4){transition-delay:.35s}
-        .sfade.on > *:nth-child(5){transition-delay:.45s}
-        .sfade.on > *:nth-child(6){transition-delay:.55s}
+        .sfade.on > *:nth-child(1){transition-delay:.05s} .sfade.on > *:nth-child(2){transition-delay:.15s}
+        .sfade.on > *:nth-child(3){transition-delay:.25s} .sfade.on > *:nth-child(4){transition-delay:.35s}
+        .sfade.on > *:nth-child(5){transition-delay:.45s} .sfade.on > *:nth-child(6){transition-delay:.55s}
 
-        @media(prefers-reduced-motion:reduce){
-            .up,.lft,.rgt,.sgrid>*,.sfade>*,.hero-a{opacity:1!important;transform:none!important;transition:none!important;}
-        }
+        @media(prefers-reduced-motion:reduce){ .up,.lft,.rgt,.sgrid>*,.sfade>*,.hero-a{opacity:1!important;transform:none!important;transition:none!important;} }
 
         /* ═══════════════════════════════════════════════
            TYPING CURSOR
@@ -589,61 +537,125 @@
             display:inline-block; width:2px; height:.88em;
             background:var(--cyan); vertical-align:middle; margin-left:3px;
             animation:blink 1s step-end infinite;
-            box-shadow: 0 0 5px var(--cyan);
+            box-shadow:0 0 5px var(--cyan);
         }
         @keyframes blink{50%{opacity:0}}
 
         /* ═══════════════════════════════════════════════
-           CORNER DECORATION (hero image)
+           CORNER FRAME
         ═══════════════════════════════════════════════ */
-        .corner-frame > span {
-            position:absolute; width:26px; height:26px;
-            border-color:var(--gold); border-style:solid;
-            transition: all 0.4s ease;
-        }
-        .corner-frame:hover > span { border-color: var(--gold-hi); width: 32px; height: 32px;}
-        .corner-frame > span:nth-child(1){top:-8px;left:-8px; border-width:2px 0 0 2px; border-radius:4px 0 0 0;}
-        .corner-frame > span:nth-child(2){top:-8px;right:-8px;border-width:2px 2px 0 0; border-radius:0 4px 0 0;}
+        .corner-frame > span { position:absolute; width:26px; height:26px; border-color:var(--gold); border-style:solid; transition:all .4s ease; }
+        .corner-frame:hover > span { border-color:var(--gold-hi); width:32px; height:32px; }
+        .corner-frame > span:nth-child(1){top:-8px;left:-8px;border-width:2px 0 0 2px;border-radius:4px 0 0 0;}
+        .corner-frame > span:nth-child(2){top:-8px;right:-8px;border-width:2px 2px 0 0;border-radius:0 4px 0 0;}
         .corner-frame > span:nth-child(3){bottom:-8px;left:-8px;border-width:0 0 2px 2px;border-radius:0 0 0 4px;}
         .corner-frame > span:nth-child(4){bottom:-8px;right:-8px;border-width:0 2px 2px 0;border-radius:0 0 4px 0;}
 
-        /* ═══════════════════════════════════════════════
-           SCROLL ANCHOR
-        ═══════════════════════════════════════════════ */
         .anch { scroll-margin-top:70px; }
 
         /* ═══════════════════════════════════════════════
-           RESPONSIVE HELPERS
+           RESPONSIVE GRIDS — pure CSS only, no Tailwind
         ═══════════════════════════════════════════════ */
         .pg { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr)); gap:22px; }
         .ag { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr)); gap:18px; }
 
         /* ═══════════════════════════════════════════════
-           THEME TOGGLE ICONS
+           HERO GRID — responsive without Tailwind
         ═══════════════════════════════════════════════ */
-        #ico-sun  { display:block; transition: transform 0.4s ease; }
-        #ico-moon { display:none;  transition: transform 0.4s ease; }
-        [data-theme="light"] #ico-sun  { display:none;  }
-        [data-theme="light"] #ico-moon { display:block; }
-        #thm:hover svg { transform: rotate(45deg); }
+        .hero-grid {
+            display:grid;
+            grid-template-columns:1fr;
+            gap:3rem;
+            align-items:center;
+        }
+        @media(min-width:1024px){
+            .hero-grid {
+                grid-template-columns:1fr 1fr;
+                gap:4rem;
+            }
+        }
+
+        /* Canvas column — shows first on mobile, second on desktop */
+        .hero-canvas-col {
+            order:-1;
+            width:100%;
+            max-width:380px;
+            aspect-ratio:4/5;
+            margin:0 auto;
+        }
+        @media(min-width:1024px){
+            .hero-canvas-col {
+                order:1;
+                max-width:480px;
+            }
+        }
+        .hero-text-col { order:1; }
+        @media(min-width:1024px){ .hero-text-col { order:0; } }
 
         /* ═══════════════════════════════════════════════
-           BLOCKQUOTE ACCENT
+           EXP LOGO ROW — stack on tiny screens
         ═══════════════════════════════════════════════ */
-        .bq { border-left:3px solid var(--gold); padding-left:1.2rem; background: linear-gradient(90deg, var(--gold-lo), transparent); border-radius: 0 8px 8px 0; padding-top: 10px; padding-bottom: 10px;}
+        .exp-row { display:flex; gap:1.25rem; align-items:flex-start; }
+        .exp-logo {
+            width:52px; height:52px; flex-shrink:0;
+            background:var(--sfc2); border:1px solid var(--line2);
+            border-radius:12px; overflow:hidden;
+            display:flex; align-items:center; justify-content:center; padding:6px;
+        }
+        @media(max-width:480px){
+            .exp-row { flex-direction:column; gap:.75rem; }
+            .exp-logo { width:44px; height:44px; }
+        }
+
+        /* ═══════════════════════════════════════════════
+           THEME TOGGLE
+        ═══════════════════════════════════════════════ */
+        #ico-sun  { display:block; transition:transform .4s ease; }
+        #ico-moon { display:none;  transition:transform .4s ease; }
+        [data-theme="light"] #ico-sun  { display:none;  }
+        [data-theme="light"] #ico-moon { display:block; }
+        #thm:hover svg { transform:rotate(45deg); }
+
+        /* ═══════════════════════════════════════════════
+           BLOCKQUOTE
+        ═══════════════════════════════════════════════ */
+        .bq {
+            border-left:3px solid var(--gold); padding:10px 1.2rem;
+            background:linear-gradient(90deg,var(--gold-lo),transparent);
+            border-radius:0 8px 8px 0;
+        }
+
+        /* ═══════════════════════════════════════════════
+           CERT GRID — responsive
+        ═══════════════════════════════════════════════ */
+        .cert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:0 2.5rem; }
+
+        /* ═══════════════════════════════════════════════
+           NAV DESKTOP — show/hide handled by JS but
+           also guard with media query for no-JS
+        ═══════════════════════════════════════════════ */
+        #dnav { display:none; }
+        @media(min-width:820px){ #dnav{ display:flex; align-items:center; gap:22px; } }
+        #hbg { display:flex; }
+        @media(min-width:820px){ #hbg{ display:none !important; } }
+
+        /* ═══════════════════════════════════════════════
+           SCROLLBAR MOBILE
+        ═══════════════════════════════════════════════ */
+        @media(max-width:768px){ ::-webkit-scrollbar{ width:3px; } }
     </style>
 </head>
 <body data-theme="dark">
 
+<!-- ════════════════════════ HEADER ════════════════════════ -->
 <header id="hdr">
-  <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;">
-
-    <a href="#about" style="font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;letter-spacing:.16em;color:var(--t0);transition:color .35s;">
+  <div class="hdr-inner">
+    <a href="#about" style="font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;letter-spacing:.16em;color:var(--t0);transition:color .35s;flex-shrink:0;">
       <span style="color:var(--gold);">Anushka Das</span><span style="color:var(--t3);"> / portfolio</span>
     </a>
 
-    <div style="display:flex;align-items:center;gap:18px;">
-      <nav id="dnav" style="display:none;align-items:center;gap:26px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <nav id="dnav">
         <a href="#about"        class="nav-a" data-s="about">About</a>
         <a href="#research"     class="nav-a" data-s="research">Research</a>
         <a href="#projects"     class="nav-a" data-s="projects">Projects</a>
@@ -653,18 +665,18 @@
         <a href="#education"    class="nav-a" data-s="education">Education</a>
         <a href="#achievements" class="nav-a" data-s="achievements">Achievements</a>
         <a href="#contact"      class="nav-a" data-s="contact">Contact</a>
-        <a href="#resume"       class="btn-g" style="padding:6px 18px;font-size:.62rem;">Resume ↗</a>
+        <a href="#resume" class="btn-g" style="padding:6px 18px;font-size:.62rem;">Resume ↗</a>
       </nav>
 
-      <button id="thm" aria-label="Toggle theme" style="width:38px;height:38px;border-radius:10px;background:var(--sfc2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+      <button id="thm" aria-label="Toggle theme" style="width:38px;height:38px;border-radius:10px;background:var(--sfc2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(0.175,0.885,0.32,1.275);flex-shrink:0;">
         <svg id="ico-sun"  xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
         <svg id="ico-moon" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
       </button>
 
-      <button id="hbg" style="display:flex;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px;" aria-label="Menu">
+      <button id="hbg" style="display:flex;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;" aria-label="Menu">
         <span class="ham" style="width:24px;height:2px;"></span>
         <span class="ham" style="width:24px;height:2px;"></span>
-        <span class="ham" style="width:16px;height:2px; align-self: flex-end;"></span>
+        <span class="ham" style="width:16px;height:2px;align-self:flex-end;"></span>
       </button>
     </div>
   </div>
@@ -690,18 +702,20 @@
 
 <main>
 
+<!-- ════ HERO / ABOUT ════ -->
 <section id="about" class="anch" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 1.5rem 5rem;position:relative;overflow:hidden;background:var(--bg0);">
   <div class="grid-bg" style="position:absolute;inset:0;z-index:0;"></div>
   <div class="orb" style="width:550px;height:550px;background:var(--orb1);top:-150px;right:-150px;"></div>
   <div class="orb" style="width:400px;height:400px;background:var(--orb2);bottom:-100px;left:-130px;"></div>
 
   <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%;">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="hero-grid">
 
-      <div style="max-width:740px;">
+      <!-- Text column -->
+      <div class="hero-text-col" style="max-width:740px;">
         <div class="hero-a d1" style="display:flex;align-items:center;flex-wrap:wrap;gap:.9rem;margin-bottom:1.5rem;">
           <div class="status"><span class="pulse"></span>Available for opportunities</div>
-          <div style="height:2px;width:40px;background:var(--line2); border-radius: 2px;"></div>
+          <div style="height:2px;width:40px;background:var(--line2);border-radius:2px;"></div>
           <span style="font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;color:var(--t3);">INDIA</span>
         </div>
 
@@ -748,17 +762,18 @@
             <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" style="width:17px;height:17px;" alt="">SAY HI
           </a>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <a href="https://github.com/anushkadas-coder"                    target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:19px;height:19px;" alt="GitHub"></a>
-            <a href="https://linkedin.com/in/anushka-das-467437316"          target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:19px;height:19px;" alt="LinkedIn"></a>
-            <a href="https://x.com/neuralbuild"                              target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:19px;height:19px;" alt="X"></a>
-            <a href="https://g.dev/anushkadas-coder"                         target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:19px;height:19px;" alt="Google Dev"></a>
-            <a href="https://discord.com/users/anushka.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:19px;height:19px;" alt="Discord"></a>
-            <a href="https://instagram.com/caffeinated.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:19px;height:19px;" alt="Instagram"></a>
+            <a href="https://github.com/anushkadas-coder"                   target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:19px;height:19px;" alt="GitHub"></a>
+            <a href="https://linkedin.com/in/anushka-das-467437316"         target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:19px;height:19px;" alt="LinkedIn"></a>
+            <a href="https://x.com/neuralbuild"                             target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:19px;height:19px;" alt="X"></a>
+            <a href="https://g.dev/anushkadas-coder"                        target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:19px;height:19px;" alt="Google Dev"></a>
+            <a href="https://discord.com/users/anushka.sys"                 target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:19px;height:19px;" alt="Discord"></a>
+            <a href="https://instagram.com/caffeinated.sys"                 target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:19px;height:19px;" alt="Instagram"></a>
           </div>
         </div>
-      </div>
-      
-      <div style="position:relative;width:100%;max-width:480px;aspect-ratio:4/5;margin:0 auto;" class="corner-frame order-first lg:order-last">
+      </div><!-- /text col -->
+
+      <!-- Canvas column -->
+      <div class="hero-canvas-col corner-frame" style="position:relative;">
         <span></span><span></span><span></span><span></span>
         <canvas id="ascii-canvas" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 0 25px rgba(201,168,76,.55)) drop-shadow(0 0 75px rgba(201,168,76,.15));"></canvas>
       </div>
@@ -766,14 +781,15 @@
     </div>
   </div>
 
-  <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4;">
+  <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4;pointer-events:none;">
     <span style="font-family:'Space Mono',monospace;font-size:.55rem;font-weight:700;letter-spacing:.22em;color:var(--t3);">SCROLL</span>
-    <div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent); border-radius: 2px;"></div>
+    <div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);border-radius:2px;"></div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- ════ RESEARCH ════ -->
 <section id="research" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Research &amp; Publications</div>
@@ -784,7 +800,7 @@
 
       <div class="card-gold" style="padding:0;overflow:hidden;">
         <div style="height:230px;overflow:hidden;position:relative;">
-          <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='none'">
+          <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.165,.84,.44,1);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='none'">
           <div class="pimg-grad" style="border-radius:0;"></div>
           <div style="position:absolute;bottom:14px;left:16px;display:flex;gap:6px;flex-wrap:wrap;">
             <span class="tag">QLoRA</span><span class="tag">BITNET 1.58</span><span class="tag">PEFT</span><span class="tag">Sovereign AI</span>
@@ -805,7 +821,7 @@
 
       <div class="card-gold" style="padding:0;overflow:hidden;">
         <div style="height:230px;overflow:hidden;position:relative;">
-          <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='none'">
+          <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" style="width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.165,.84,.44,1);" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='none'">
           <div class="pimg-grad" style="border-radius:0;"></div>
           <div style="position:absolute;bottom:14px;left:16px;display:flex;gap:6px;flex-wrap:wrap;">
             <span class="tag">2D FFT</span><span class="tag">ResNet-18</span><span class="tag">PyTorch</span><span class="tag">Deepfake</span>
@@ -830,6 +846,7 @@
 
 <div class="divider"></div>
 
+<!-- ════ PROJECTS ════ -->
 <section id="projects" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Projects</div>
@@ -837,7 +854,6 @@
     <p class="sec-sub">Production systems, research prototypes, and creative explorations</p>
 
     <div class="sgrid pg">
-
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
@@ -879,9 +895,7 @@
         <div style="padding:1.6rem;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">iNaturalist Clumper: Geospatial Data Engineering</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
-              <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
-            </div>
+            <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial Algorithms</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
@@ -896,9 +910,7 @@
         <div style="padding:1.6rem;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">DCO6: Polyphonic VST3 Synthesizer</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
-              <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
-            </div>
+            <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
@@ -985,9 +997,7 @@
         <div style="padding:1.6rem;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">NLP Smart Search for Satellite Data</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
-              <a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
-            </div>
+            <a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">ISRO</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
@@ -1014,13 +1024,15 @@
           </div>
         </div>
       </div>
+    </div>
 
-    </div><div class="card-gold rgt" style="margin-top:24px;overflow:hidden;padding:0;">
+    <!-- Featured: Digi-Pramaan -->
+    <div class="card-gold rgt" style="margin-top:24px;overflow:hidden;padding:0;">
       <div class="pimg" style="height:290px;">
         <img src="project-digipramaan.png" alt="Digi-Pramaan">
         <div class="pimg-grad"></div>
         <div style="position:absolute;top:16px;left:16px;">
-          <span class="tag-green" style="font-size:.65rem;padding:6px 14px;border-radius:20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">🏆 SIH '25 Semi-Finalist</span>
+          <span class="tag-green" style="font-size:.65rem;padding:6px 14px;border-radius:20px;box-shadow:0 4px 10px rgba(0,0,0,.3);">🏆 SIH '25 Semi-Finalist</span>
         </div>
       </div>
       <div style="padding:2.2rem;">
@@ -1053,6 +1065,7 @@
 
 <div class="divider"></div>
 
+<!-- ════ EXPERIENCE ════ -->
 <section id="experience" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Experience</div>
@@ -1063,11 +1076,11 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" style="width:100%; height:100%; object-fit:contain;">
+        <div class="exp-row">
+          <div class="exp-logo">
+            <img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" style="width:100%;height:100%;object-fit:contain;">
           </div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JAN 2025 – PRESENT</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Member of Google's Women Techmakers</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">GOOGLE FOR DEVELOPERS · REMOTE</p>
@@ -1078,11 +1091,11 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-                    <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:10px;">
-            <img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" alt="NVIDIA" style="width:100%; height:100%; object-fit:contain;">
+        <div class="exp-row">
+          <div class="exp-logo" style="padding:10px;">
+            <img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" alt="NVIDIA" style="width:100%;height:100%;object-fit:contain;">
           </div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JAN 2026 – PRESENT</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Member of Google Cloud &amp; NVIDIA Developer Community</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">GOOGLE CLOUD &amp; NVIDIA · REMOTE</p>
@@ -1093,11 +1106,11 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="zetheta.jpg" alt="Zetheta Algorithms" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
+        <div class="exp-row">
+          <div class="exp-logo">
+            <img src="zetheta.jpg" alt="Zetheta Algorithms" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
           </div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JAN 2026 · 1 MONTH</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Blockchain Risk Developer</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
@@ -1111,11 +1124,11 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="gssoc.png" alt="GSSoC" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
+        <div class="exp-row">
+          <div class="exp-logo">
+            <img src="gssoc.png" alt="GSSoC" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
           </div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JULY 2025 – SEPT 2025</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Open-Source Contributor</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">GSSoC '25 · REMOTE</p>
@@ -1126,11 +1139,11 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="codsoft.jpeg" alt="CodSoft" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
+        <div class="exp-row">
+          <div class="exp-logo">
+            <img src="codsoft.jpeg" alt="CodSoft" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
           </div>
-          <div style="flex:1;">
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">AUG 2025 · 1 MONTH</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Web Development Intern</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">CODSOFT · REMOTE</p>
@@ -1145,6 +1158,7 @@
 
 <div class="divider"></div>
 
+<!-- ════ SKILLS ════ -->
 <section id="skills" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Technical Arsenal</div>
@@ -1152,7 +1166,6 @@
     <p class="sec-sub">Languages, frameworks, and tools across the full stack and ML pipeline</p>
 
     <div style="display:grid;grid-template-columns:1fr;gap:3rem;">
-
       <div class="term lft">
         <div class="term-bar">
           <span class="td td-r"></span><span class="td td-y"></span><span class="td td-g"></span>
@@ -1213,13 +1226,13 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- ════ MEMBERSHIPS ════ -->
 <section id="memberships" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Memberships &amp; Affiliations</div>
@@ -1229,16 +1242,16 @@
     <div class="lft">
       <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" style="display:block;">
         <div class="mem-card">
-          <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;">
+          <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap;">
             <div style="width:65px;height:65px;border-radius:14px;background:var(--gold-lo);border:1px solid var(--gold-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <img src="https://api.iconify.design/ri/team-fill.svg?color=%23C9A84C" style="width:30px;height:30px;" alt="IEEE">
             </div>
-            <div>
+            <div style="flex:1;min-width:200px;">
               <div style="font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;color:var(--gold);margin-bottom:6px;text-transform:uppercase;">Active Member</div>
               <h3 style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:var(--t0);line-height:1.4;transition:color .35s;">IEEE Robotics and Automation Technical Committee on Machine Learning for Automation</h3>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--t3); font-weight: 500;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--t3);font-weight:500;">
             <span style="color:var(--gold);">→</span>View IEEE Profile
           </div>
         </div>
@@ -1249,6 +1262,7 @@
 
 <div class="divider"></div>
 
+<!-- ════ EDUCATION ════ -->
 <section id="education" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Education</div>
@@ -1264,7 +1278,7 @@
           <div style="font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:.1em;border:1px solid var(--gold-ring);padding:6px 14px;border-radius:20px;background:var(--gold-lo);white-space:nowrap;">2023 – 2027</div>
         </div>
         <div style="height:1px;background:var(--line);margin-bottom:1.25rem;"></div>
-        <div class="bul" style="font-size: .95rem;">Computer Sciences and Information Technologies</div>
+        <div class="bul" style="font-size:.95rem;">Computer Sciences and Information Technologies</div>
       </div>
     </div>
   </div>
@@ -1272,6 +1286,7 @@
 
 <div class="divider"></div>
 
+<!-- ════ ACHIEVEMENTS ════ -->
 <section id="achievements" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Achievements &amp; Certifications</div>
@@ -1279,10 +1294,9 @@
     <p class="sec-sub">Awards, accomplishments, and continuous professional development</p>
 
     <div class="sgrid ag" style="margin-bottom:2rem;">
-
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">IndiaFirst Life (Bank of Baroda)</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer but respectfully declined to focus on 6th-semester studies.</p>
@@ -1290,7 +1304,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/trophy-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/trophy-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">HackerRank</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Gold Level (5 Star) in Python, Silver Level (3 Star) in Java.</p>
@@ -1298,7 +1312,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/award-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/award-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">SIH '25 Semi-Finalist</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">'Digi-Pramaan' — Top finalist out of <strong style="color:var(--t0);font-weight:700;">250+ teams</strong> in the college internal round of Smart India Hackathon 2025.</p>
@@ -1306,7 +1320,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/code-box-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/code-box-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">Problem Solving</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Solved <strong style="color:var(--t0);font-weight:700;">500+ problems</strong> on LeetCode and HackerRank, improving algorithmic thinking and coding efficiency.</p>
@@ -1314,20 +1328,19 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/team-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/team-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">Extracurricular Leadership</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Active member of 'Samaritans' social club since first year of my undergrad degree — community initiatives, collaborative events and also in debates and quiz competitions.</p>
       </div>
-
     </div>
 
     <div class="card up" style="padding:2.5rem;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line);">
-        <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+        <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
         <h4 style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:var(--t0);transition:color .35s;">Certifications</h4>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:0 2.5rem;">
+      <div class="cert-grid">
         <div class="cert-row"><span class="cert-dot"></span>Data Analytics Job Simulation<span class="cert-org">Deloitte Australia</span></div>
         <div class="cert-row"><span class="cert-dot"></span>Software Engineering Job Simulation<span class="cert-org">JPMorgan Chase</span></div>
         <div class="cert-row"><span class="cert-dot"></span>Introduction to Agent Skills<span class="cert-org">Anthropic Academy</span></div>
@@ -1342,18 +1355,19 @@
 
 <div class="divider"></div>
 
+<!-- ════ RESUME ════ -->
 <section id="resume" class="anch section" style="background:var(--bg0);text-align:center;">
   <div class="section-inner">
     <div class="eyebrow" style="justify-content:center;">Resume</div>
     <h2 class="sec-title">Complete <em>Technical</em> Profile</h2>
 
-    <div class="up" style="max-width:550px;margin:0 auto; margin-top: 3rem;">
+    <div class="up" style="max-width:550px;margin:3rem auto 0;">
       <div class="card" style="padding:3.5rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
         <div style="width:70px;height:70px;border-radius:16px;background:var(--gold-lo);border:1px solid var(--gold-ring);display:flex;align-items:center;justify-content:center;">
           <svg xmlns="http://www.w3.org/2000/svg" style="width:30px;height:30px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
         </div>
         <p style="font-size:.92rem;color:var(--t2);line-height:1.85;text-align:center;">Want a detailed breakdown of my academic background, technical skills, and professional experience? View or download my complete resume below.</p>
-        <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-g" style="margin-top: .5rem;">
+        <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-g" style="margin-top:.5rem;">
           <svg xmlns="http://www.w3.org/2000/svg" style="width:17px;height:17px;fill:currentColor;" viewBox="0 0 24 24"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
           DOWNLOAD RESUME.PDF
         </a>
@@ -1364,6 +1378,7 @@
 
 <div class="divider"></div>
 
+<!-- ════ CONTACT ════ -->
 <section id="contact" class="anch section" style="background:var(--bg1);text-align:center;overflow:hidden;">
   <div class="orb" style="width:480px;height:480px;background:var(--orb1);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
   <div class="section-inner" style="position:relative;z-index:2;">
@@ -1380,16 +1395,16 @@
       </a>
 
       <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:4rem;">
-        <a href="mailto:anushkadas05das@gmail.com"                                     class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/mail-send-line.svg"       style="width:20px;height:20px;" alt="Email"></a>
-        <a href="https://linkedin.com/in/anushka-das-467437316"          target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:20px;height:20px;" alt="LinkedIn"></a>
-        <a href="https://github.com/anushkadas-coder"                    target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:20px;height:20px;" alt="GitHub"></a>
-        <a href="https://x.com/neuralbuild"                              target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:20px;height:20px;" alt="X"></a>
-        <a href="https://g.dev/anushkadas-coder"                         target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:20px;height:20px;" alt="Google Dev"></a>
-        <a href="https://discord.com/users/anushka.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:20px;height:20px;" alt="Discord"></a>
-        <a href="https://instagram.com/caffeinated.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:20px;height:20px;" alt="Instagram"></a>
+        <a href="mailto:anushkadas05das@gmail.com"                               class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/mail-send-line.svg"       style="width:20px;height:20px;" alt="Email"></a>
+        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:20px;height:20px;" alt="LinkedIn"></a>
+        <a href="https://github.com/anushkadas-coder"           target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:20px;height:20px;" alt="GitHub"></a>
+        <a href="https://x.com/neuralbuild"                     target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:20px;height:20px;" alt="X"></a>
+        <a href="https://g.dev/anushkadas-coder"                target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:20px;height:20px;" alt="Google Dev"></a>
+        <a href="https://discord.com/users/anushka.sys"         target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:20px;height:20px;" alt="Discord"></a>
+        <a href="https://instagram.com/caffeinated.sys"         target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:20px;height:20px;" alt="Instagram"></a>
       </div>
 
-      <div style="height:1px;background:var(--line);margin-bottom:2rem;max-width:400px;margin-left:auto;margin-right:auto;"></div>
+      <div style="height:1px;background:var(--line);margin:0 auto 2rem;max-width:400px;"></div>
       <p style="font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.22em;color:var(--t3);text-transform:uppercase;">© 2023 Anushka Das.🛸 End of File.🪼</p>
     </div>
   </div>
@@ -1398,7 +1413,7 @@
 </main>
 
 <script>
-/* ── THEME ── */
+/* ── THEME INIT ── */
 (function(){
   const saved = localStorage.getItem('theme') || 'dark';
   document.body.setAttribute('data-theme', saved);
@@ -1410,16 +1425,6 @@ document.getElementById('thm').addEventListener('click', () => {
   localStorage.setItem('theme', next);
 });
 
-/* ── RESPONSIVE NAV ── */
-function resizeNav(){
-  const dn = document.getElementById('dnav');
-  const hb = document.getElementById('hbg');
-  if(window.innerWidth >= 820){ dn.style.display='flex'; hb.style.display='none'; }
-  else { dn.style.display='none'; hb.style.display='flex'; }
-}
-resizeNav();
-window.addEventListener('resize', resizeNav);
-
 /* ── HAMBURGER ── */
 const hbg = document.getElementById('hbg');
 const mm  = document.getElementById('mob-menu');
@@ -1428,13 +1433,22 @@ hbg.addEventListener('click', () => {
   const o = mm.classList.toggle('open');
   mo.classList.toggle('open', o);
   const ls = hbg.querySelectorAll('.ham');
-  if(o){ ls[0].style.transform='translateY(8px) rotate(45deg)'; ls[1].style.opacity='0'; ls[2].style.transform='translateY(-8px) rotate(-45deg)'; ls[2].style.width='24px'; }
-  else { ls.forEach(l=>{ l.style.transform=''; l.style.opacity=''; }); ls[2].style.width='16px'; }
+  if(o){
+    ls[0].style.transform = 'translateY(8px) rotate(45deg)';
+    ls[1].style.opacity   = '0';
+    ls[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+    ls[2].style.width     = '24px';
+  } else {
+    ls.forEach(l => { l.style.transform = ''; l.style.opacity = ''; });
+    ls[2].style.width = '16px';
+  }
 });
 function closeMob(){
-  mm.classList.remove('open'); mo.classList.remove('open');
+  mm.classList.remove('open');
+  mo.classList.remove('open');
   const ls = hbg.querySelectorAll('.ham');
-  ls.forEach(l=>{ l.style.transform=''; l.style.opacity=''; }); ls[2].style.width='16px';
+  ls.forEach(l => { l.style.transform = ''; l.style.opacity = ''; });
+  ls[2].style.width = '16px';
 }
 
 /* ── BACK TO TOP ── */
@@ -1459,7 +1473,7 @@ document.querySelectorAll('.up,.lft,.rgt,.sgrid,.sfade').forEach(el => io.observ
 /* ── ACTIVE NAV ── */
 const secs = document.querySelectorAll('section[id]');
 const nls  = document.querySelectorAll('.nav-a');
-const nIO = new IntersectionObserver(entries => {
+const nIO  = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting){
       nls.forEach(l => l.classList.remove('on'));
@@ -1473,12 +1487,12 @@ secs.forEach(s => nIO.observe(s));
 /* ── TYPING ── */
 const words = ["AI · Machine Learning · Full-Stack", "Data Science · Web Dev", "Problem Solver"];
 let wi=0, ci=0, del=false;
-const el = document.getElementById('typ');
+const typEl = document.getElementById('typ');
 function tick(){
-  if(!el) return;
+  if(!typEl) return;
   if(wi >= words.length) wi=0;
   const w = words[wi];
-  el.textContent = del ? w.slice(0,--ci) : w.slice(0,++ci);
+  typEl.textContent = del ? w.slice(0,--ci) : w.slice(0,++ci);
   let sp = del ? 33 : 72;
   if(!del && ci===w.length){ sp=2100; del=true; }
   else if(del && ci===0){ del=false; wi++; sp=340; }
@@ -1504,40 +1518,40 @@ window.addEventListener('load', () => {
       const res = window.innerWidth < 768 ? 8 : 9;
       const par = cv.parentElement;
       const dpr = window.devicePixelRatio||1;
-      const W=par.clientWidth, H=par.clientHeight;
-      cv.width=W*dpr; cv.height=H*dpr;
+      const W = par.clientWidth, H = par.clientHeight;
+      cv.width  = W*dpr; cv.height = H*dpr;
       ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr,dpr);
 
-      const off=document.createElement('canvas');
-      const oc=off.getContext('2d');
-      const dW=Math.floor(W/res), dH=Math.floor(H/res);
-      off.width=dW; off.height=dH;
-      oc.fillStyle='#fff'; oc.fillRect(0,0,dW,dH);
+      const off = document.createElement('canvas');
+      const oc  = off.getContext('2d');
+      const dW  = Math.floor(W/res), dH = Math.floor(H/res);
+      off.width = dW; off.height = dH;
+      oc.fillStyle = '#fff'; oc.fillRect(0,0,dW,dH);
 
-      const iAR=img.width/img.height, cAR=W/H;
+      const iAR = img.width/img.height, cAR = W/H;
       let dw,dh,dx,dy;
       if(iAR>cAR){ dw=dW; dh=dW/iAR; dx=0; dy=(dH-dh)/2; }
-      else{ dh=dH; dw=dH*iAR; dy=0; dx=(dW-dw)/2; }
+      else        { dh=dH; dw=dH*iAR; dy=0; dx=(dW-dw)/2; }
       oc.drawImage(img,0,0,img.width,img.height,dx,dy,dw,dh);
 
-      const d=oc.getImageData(0,0,dW,dH).data;
+      const d = oc.getImageData(0,0,dW,dH).data;
       for(let y=0;y<dH;y++){
         for(let x=0;x<dW;x++){
           const i=(y*dW+x)*4;
           const br=(d[i]+d[i+1]+d[i+2])/3;
           if(br<215){
-            const ci=Math.floor((br/255)*chars.length);
-            const ch=chars[Math.min(ci,chars.length-1)];
-            const op=1-(br/255)*.7+.14;
-            const tX=x*res+res/2, tY=y*res+res/2;
-            const edge=Math.floor(Math.random()*4);
+            const ci = Math.floor((br/255)*chars.length);
+            const ch = chars[Math.min(ci,chars.length-1)];
+            const op = 1-(br/255)*.7+.14;
+            const tX = x*res+res/2, tY = y*res+res/2;
+            const edge = Math.floor(Math.random()*4);
             let sX,sY;
             if(edge===0){sX=Math.random()*W;sY=-20;}
             else if(edge===1){sX=W+20;sY=Math.random()*H;}
             else if(edge===2){sX=Math.random()*W;sY=H+20;}
             else{sX=-20;sY=Math.random()*H;}
-            const dist=Math.sqrt((tX-W/2)**2+(tY-H/2)**2);
-            const mD=Math.sqrt(W*W+H*H)/2;
+            const dist = Math.sqrt((tX-W/2)**2+(tY-H/2)**2);
+            const mD   = Math.sqrt(W*W+H*H)/2;
             pts.push({ch,op,res,tX,tY,x:sX,y:sY,sX,sY,delay:(dist/mD)*780+Math.random()*240,dur:680+Math.random()*380,st:null});
           }
         }
@@ -1547,19 +1561,19 @@ window.addEventListener('load', () => {
     function ease(t){ return 1-Math.pow(1-t,3); }
 
     function draw(ts){
-      const W=cv.width/(window.devicePixelRatio||1), H=cv.height/(window.devicePixelRatio||1);
+      const W = cv.width/(window.devicePixelRatio||1), H = cv.height/(window.devicePixelRatio||1);
       ctx.clearRect(0,0,W,H);
-      let done=true;
+      let done = true;
       for(const p of pts){
         if(!p.st) p.st=ts;
-        const el=ts-p.st;
-        const fs=p.res*1.1;
-        ctx.font=`bold ${fs}px "Space Mono",monospace`;
+        const el2 = ts-p.st;
+        const fs  = p.res*1.1;
+        ctx.font = `bold ${fs}px "Space Mono",monospace`;
         ctx.textAlign='center'; ctx.textBaseline='middle';
-        if(el<p.delay){ ctx.fillStyle='rgba(201,168,76,0.05)'; ctx.fillText(p.ch,p.sX,p.sY); done=false; continue; }
-        const t=Math.min((el-p.delay)/p.dur,1), et=ease(t);
-        p.x=p.sX+(p.tX-p.sX)*et; p.y=p.sY+(p.tY-p.sY)*et;
-        ctx.fillStyle=`rgba(201,168,76,${p.op*et})`;
+        if(el2<p.delay){ ctx.fillStyle='rgba(201,168,76,0.05)'; ctx.fillText(p.ch,p.sX,p.sY); done=false; continue; }
+        const t = Math.min((el2-p.delay)/p.dur,1), et = ease(t);
+        p.x = p.sX+(p.tX-p.sX)*et; p.y = p.sY+(p.tY-p.sY)*et;
+        ctx.fillStyle = `rgba(201,168,76,${p.op*et})`;
         ctx.fillText(p.ch,p.x,p.y);
         if(t<1) done=false;
       }
@@ -1583,7 +1597,7 @@ window.addEventListener('load', () => {
   };
 
   img.onerror = () => {
-    const p=cv.parentElement; cv.width=p.clientWidth; cv.height=p.clientHeight;
+    const p = cv.parentElement; cv.width=p.clientWidth; cv.height=p.clientHeight;
     ctx.font='12px "Space Mono",monospace'; ctx.fillStyle='rgba(201,168,76,.4)'; ctx.textAlign='center';
     ctx.fillText('[portfolio_profile.jpeg]',p.clientWidth/2,p.clientHeight/2);
   };
