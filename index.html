@@ -696,7 +696,7 @@
   <div class="orb" style="width:400px;height:400px;background:var(--orb2);bottom:-100px;left:-130px;"></div>
 
   <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%;">
-    <div style="display:grid;grid-template-columns:1fr;gap:4rem;align-items:center;">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
       <div style="max-width:740px;">
         <div class="hero-a d1" style="display:flex;align-items:center;flex-wrap:wrap;gap:.9rem;margin-bottom:1.5rem;">
@@ -748,15 +748,17 @@
             <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" style="width:17px;height:17px;" alt="">SAY HI
           </a>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <a href="https://github.com/anushkadas-coder"                     target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:19px;height:19px;" alt="GitHub"></a>
-            <a href="https://linkedin.com/in/anushka-das-467437316"           target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:19px;height:19px;" alt="LinkedIn"></a>
-            <a href="https://x.com/neuralbuild"                               target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:19px;height:19px;" alt="X"></a>
-            <a href="https://g.dev/anushkadas-coder"                          target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:19px;height:19px;" alt="Google Dev"></a>
-            <a href="https://discord.com/users/anushka.sys"                   target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:19px;height:19px;" alt="Discord"></a>
-            <a href="https://instagram.com/caffeinated.sys"                   target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:19px;height:19px;" alt="Instagram"></a>
+            <a href="https://github.com/anushkadas-coder"                    target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:19px;height:19px;" alt="GitHub"></a>
+            <a href="https://linkedin.com/in/anushka-das-467437316"          target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:19px;height:19px;" alt="LinkedIn"></a>
+            <a href="https://x.com/neuralbuild"                              target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:19px;height:19px;" alt="X"></a>
+            <a href="https://g.dev/anushkadas-coder"                         target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:19px;height:19px;" alt="Google Dev"></a>
+            <a href="https://discord.com/users/anushka.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:19px;height:19px;" alt="Discord"></a>
+            <a href="https://instagram.com/caffeinated.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:19px;height:19px;" alt="Instagram"></a>
           </div>
         </div>
-      </div><div style="position:relative;width:100%;max-width:480px;aspect-ratio:4/5;margin:0 auto;order:-1;" class="corner-frame">
+      </div>
+      
+      <div style="position:relative;width:100%;max-width:480px;aspect-ratio:4/5;margin:0 auto;" class="corner-frame order-first lg:order-last">
         <span></span><span></span><span></span><span></span>
         <canvas id="ascii-canvas" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 0 25px rgba(201,168,76,.55)) drop-shadow(0 0 75px rgba(201,168,76,.15));"></canvas>
       </div>
@@ -1051,7 +1053,6 @@
 
 <div class="divider"></div>
 
-<!-- ── EXPERIENCE ─────────────────────────────────────── -->
 <section id="experience" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Experience</div>
@@ -1060,15 +1061,12 @@
 
     <div class="tl sfade" style="gap:15px;display:flex;flex-direction:column;">
 
-      <!-- 1. Google WTM -->
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <!-- Logo -->
           <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
             <img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" style="width:100%; height:100%; object-fit:contain;">
           </div>
-          <!-- Content -->
           <div style="flex:1;">
             <div class="exp-dt" style="margin-bottom:5px;">JAN 2025 – PRESENT</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Member of Google's Women Techmakers</h3>
@@ -1078,7 +1076,6 @@
         </div>
       </div>
 
-      <!-- 2. NVIDIA -->
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div style="display:flex; gap:1.25rem; align-items:flex-start;">
@@ -1094,11 +1091,9 @@
         </div>
       </div>
 
-      <!-- 3. Zetheta Algorithms -->
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <!-- Logo -->
           <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
             <img src="zetheta.jpg" alt="Zetheta Algorithms" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
           </div>
@@ -1114,11 +1109,9 @@
         </div>
       </div>
 
-      <!-- 4. GSSoC '25 -->
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <!-- Logo -->
           <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
             <img src="gssoc.png" alt="GSSoC" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
           </div>
@@ -1131,11 +1124,9 @@
         </div>
       </div>
 
-      <!-- 5. CodSoft -->
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <!-- Logo -->
           <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
             <img src="codsoft.jpeg" alt="CodSoft" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
           </div>
@@ -1390,12 +1381,12 @@
 
       <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:4rem;">
         <a href="mailto:anushkadas05das@gmail.com"                                     class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/mail-send-line.svg"       style="width:20px;height:20px;" alt="Email"></a>
-        <a href="https://linkedin.com/in/anushka-das-467437316"           target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:20px;height:20px;" alt="LinkedIn"></a>
-        <a href="https://github.com/anushkadas-coder"                     target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:20px;height:20px;" alt="GitHub"></a>
-        <a href="https://x.com/neuralbuild"                               target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:20px;height:20px;" alt="X"></a>
-        <a href="https://g.dev/anushkadas-coder"                          target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:20px;height:20px;" alt="Google Dev"></a>
-        <a href="https://discord.com/users/anushka.sys"                   target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:20px;height:20px;" alt="Discord"></a>
-        <a href="https://instagram.com/caffeinated.sys"                   target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:20px;height:20px;" alt="Instagram"></a>
+        <a href="https://linkedin.com/in/anushka-das-467437316"          target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:20px;height:20px;" alt="LinkedIn"></a>
+        <a href="https://github.com/anushkadas-coder"                    target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:20px;height:20px;" alt="GitHub"></a>
+        <a href="https://x.com/neuralbuild"                              target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:20px;height:20px;" alt="X"></a>
+        <a href="https://g.dev/anushkadas-coder"                         target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/google-line.svg"       style="width:20px;height:20px;" alt="Google Dev"></a>
+        <a href="https://discord.com/users/anushka.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg"   style="width:20px;height:20px;" alt="Discord"></a>
+        <a href="https://instagram.com/caffeinated.sys"                  target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:20px;height:20px;" alt="Instagram"></a>
       </div>
 
       <div style="height:1px;background:var(--line);margin-bottom:2rem;max-width:400px;margin-left:auto;margin-right:auto;"></div>
