@@ -15,9 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ═══════════════════════════════════════════════
-           DESIGN TOKENS & PRO ENHANCEMENTS
-        ═══════════════════════════════════════════════ */
         :root {
             --gold:        #C9A84C;
             --gold-hi:     #E5C46A;
@@ -30,8 +27,6 @@
             --green:       #34EE8A;
             --green-lo:    rgba(52,238,138,0.08);
             --green-ring:  rgba(52,238,138,0.2);
-
-            /* Dark theme (default) */
             --bg0:    #05050a;
             --bg1:    #0b0b12;
             --bg2:    #0f0f18;
@@ -83,9 +78,6 @@
             --shadow: rgba(0,0,0,0.15);
         }
 
-        /* ═══════════════════════════════════════════════
-           RESET & BASE
-        ═══════════════════════════════════════════════ */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body {
@@ -101,9 +93,6 @@
         ::-webkit-scrollbar-thumb { background: var(--gold-ring); border-radius: 4px; transition: background 0.3s;}
         ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
-        /* ═══════════════════════════════════════════════
-           GLOBAL NOISE + SCANLINE
-        ═══════════════════════════════════════════════ */
         body::before {
             content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
             opacity:.025;
@@ -114,47 +103,31 @@
             background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);
         }
 
-        /* ═══════════════════════════════════════════════
-           GRID BACKGROUND & EFFECTS
-        ═══════════════════════════════════════════════ */
         .grid-bg {
             background-image:
                 linear-gradient(var(--line) 1px, transparent 1px),
                 linear-gradient(90deg, var(--line) 1px, transparent 1px);
             background-size: 56px 56px;
-            /* PRO UPGRADE: Fade the grid out at the bottom so it doesn't clip harshly */
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
         }
 
-        /* ═══════════════════════════════════════════════
-           ORB (ambient glow with floating animation)
-        ═══════════════════════════════════════════════ */
         .orb { 
             position:absolute; border-radius:50%; filter:blur(110px); pointer-events:none; 
             transition:background .4s ease;
             animation: orbFloat 14s ease-in-out infinite alternate;
         }
         .orb:nth-child(3) { animation-delay: -7s; animation-direction: alternate-reverse; }
-        
         @keyframes orbFloat {
             0% { transform: translate(0px, 0px) scale(1); }
             50% { transform: translate(-25px, 35px) scale(1.05); }
             100% { transform: translate(25px, -15px) scale(0.95); }
         }
 
-        /* ═══════════════════════════════════════════════
-           SECTION WRAPPER
-        ═══════════════════════════════════════════════ */
         .section { position:relative; width:100%; padding:8rem 1.5rem; overflow:hidden; }
         .section-inner { max-width:1200px; margin:0 auto; position:relative; z-index:2; }
-        @media(max-width:768px){
-            .section{ padding:5rem 1.25rem; }
-        }
+        @media(max-width:768px){ .section{ padding:5rem 1.25rem; } }
 
-        /* ═══════════════════════════════════════════════
-           TYPOGRAPHY
-        ═══════════════════════════════════════════════ */
         .eyebrow {
             display:flex; align-items:center; gap:12px;
             font-family:'Space Mono',monospace;
@@ -176,23 +149,16 @@
             margin-bottom:4rem;
         }
 
-        /* ═══════════════════════════════════════════════
-           DIVIDER
-        ═══════════════════════════════════════════════ */
         .divider {
             width:100%; height:1px;
             background:linear-gradient(90deg,transparent,var(--line2) 30%,var(--line2) 70%,transparent);
         }
 
-        /* ═══════════════════════════════════════════════
-           CARDS (Glassmorphism & Magnetic Hover)
-        ═══════════════════════════════════════════════ */
         .card {
             background:var(--sfc); border:1px solid var(--line);
             border-radius:18px; overflow:hidden;
             transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position:relative;
-            /* PRO UPGRADE: Subtle inner shadow for depth */
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
         }
         .card::after {
@@ -200,11 +166,7 @@
             background:linear-gradient(135deg, var(--gold-lo) 0%, transparent 55%);
             pointer-events:none; opacity: 0; transition: opacity 0.4s ease;
         }
-        .card:hover {
-            border-color:var(--gold-ring);
-            transform:translateY(-8px) scale(1.01);
-            box-shadow:0 30px 60px var(--shadow), 0 0 0 1px var(--gold-ring);
-        }
+        .card:hover { border-color:var(--gold-ring); transform:translateY(-8px) scale(1.01); box-shadow:0 30px 60px var(--shadow), 0 0 0 1px var(--gold-ring); }
         .card:hover::after { opacity: 1; }
 
         .card-gold {
@@ -218,15 +180,8 @@
             content:''; position:absolute; top:0; left:0; right:0; height:2px;
             background:linear-gradient(90deg,transparent,var(--gold),transparent);
         }
-        .card-gold:hover {
-            border-color:var(--gold-hi);
-            transform:translateY(-8px) scale(1.01);
-            box-shadow:0 30px 60px var(--shadow), 0 0 40px var(--gold-glow);
-        }
+        .card-gold:hover { border-color:var(--gold-hi); transform:translateY(-8px) scale(1.01); box-shadow:0 30px 60px var(--shadow), 0 0 40px var(--gold-glow); }
 
-        /* ═══════════════════════════════════════════════
-           TERMINAL (macOS style polish)
-        ═══════════════════════════════════════════════ */
         .term {
             background:var(--term-bg); border:1px solid var(--line2);
             border-radius:14px; overflow:hidden; transition:background .4s ease;
@@ -244,6 +199,8 @@
             padding:1.5rem 1.75rem; font-family:'Space Mono',monospace;
             font-size:.8rem; line-height:2; overflow-x:auto;
         }
+        /* Mobile terminal font size */
+        @media(max-width:480px){ .term-body { font-size:.68rem; padding:1rem 1rem; } }
         .tc { color:var(--t3); }
         .tk { color:var(--cyan); }
         .tv { color:var(--gold); }
@@ -251,9 +208,6 @@
         .tn { color:#ff9f43; }
         .tb { color:#fd79a8; }
 
-        /* ═══════════════════════════════════════════════
-           TAGS
-        ═══════════════════════════════════════════════ */
         .tag {
             display:inline-flex; align-items:center;
             font-family:'Space Mono',monospace;
@@ -263,14 +217,8 @@
             transition: all 0.3s ease;
         }
         .tag:hover { background: var(--gold); color: #000; }
-        
-        .tag-green {
-            background:var(--green-lo); border-color:var(--green-ring); color:var(--green);
-        }
+        .tag-green { background:var(--green-lo); border-color:var(--green-ring); color:var(--green); }
 
-        /* ═══════════════════════════════════════════════
-           SKILL PILL
-        ═══════════════════════════════════════════════ */
         .pill {
             display:inline-flex; align-items:center; gap:8px;
             font-size:.82rem; font-weight:500;
@@ -285,23 +233,18 @@
         .pill:hover { border-color:var(--gold-ring); background:var(--gold-lo); color:var(--gold); transform:translateY(-2px) scale(1.05); box-shadow: 0 10px 20px var(--shadow); }
         .pill:hover img { filter:brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%) !important; }
 
-        /* ═══════════════════════════════════════════════
-           BULLETS
-        ═══════════════════════════════════════════════ */
         .bul {
             display:flex; gap:10px; align-items:flex-start;
             font-size:.845rem; color:var(--t2); line-height:1.75;
         }
         .bul::before { content:'▸'; color:var(--gold); font-size:.7rem; margin-top:3px; flex-shrink:0; }
 
-        /* ═══════════════════════════════════════════════
-           STAT BOXES
-        ═══════════════════════════════════════════════ */
+        /* Stats row - 2 cols on mobile, 4 on larger */
         .stats-row {
             display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
-            margin-bottom:3rem; max-width:550px;
+            margin-bottom:3rem;
         }
-        @media(min-width:480px){ .stats-row{ grid-template-columns:repeat(4,1fr); } }
+        @media(min-width:480px){ .stats-row{ grid-template-columns:repeat(4,1fr); max-width:550px; } }
 
         .stat {
             background:var(--sfc); border:1px solid var(--line);
@@ -321,9 +264,6 @@
             text-transform:uppercase; margin-top:8px; font-weight: 700;
         }
 
-        /* ═══════════════════════════════════════════════
-           TIMELINE
-        ═══════════════════════════════════════════════ */
         .tl { position:relative; padding-left:2.5rem; }
         .tl::before {
             content:''; position:absolute; left:0; top:0; bottom:0; width:2px;
@@ -333,7 +273,6 @@
             position:absolute; left:-2.45rem; top:1.45rem;
             width:10px; height:10px; border-radius:50%; background:var(--gold);
             box-shadow:0 0 12px rgba(201,168,76,.8);
-            /* PRO UPGRADE: Radar pulse animation */
             animation: radarPulse 2.5s infinite;
         }
         @keyframes radarPulse {
@@ -343,9 +282,6 @@
         }
         .tl-item { position:relative; }
 
-        /* ═══════════════════════════════════════════════
-           NAV
-        ═══════════════════════════════════════════════ */
         .nav-a {
             font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700;
             letter-spacing:.12em; text-transform:uppercase; color:var(--t3);
@@ -359,9 +295,6 @@
         }
         .nav-a:hover::after, .nav-a.on::after { transform:scaleX(1); transform-origin: left; }
 
-        /* ═══════════════════════════════════════════════
-           BUTTONS
-        ═══════════════════════════════════════════════ */
         .btn-g, .btn-o {
             display:inline-flex; align-items:center; justify-content:center; gap:10px;
             font-family:'Space Mono',monospace; font-size:.7rem; font-weight:700;
@@ -370,17 +303,14 @@
         }
         .btn-g { background:var(--gold); color:#000; border:2px solid var(--gold); }
         .btn-g:hover { background:var(--gold-hi); border-color:var(--gold-hi); transform:translateY(-3px); box-shadow:0 10px 25px var(--gold-glow); }
-        
         .btn-o { background:transparent; color:var(--gold); border:1px solid var(--gold-ring); }
         .btn-o:hover { background:var(--gold-lo); border-color:var(--gold); transform:translateY(-3px); box-shadow:0 10px 25px var(--shadow); }
 
-        /* ═══════════════════════════════════════════════
-           ICON BUTTONS (social / link)
-        ═══════════════════════════════════════════════ */
         .ib {
             display:flex; align-items:center; justify-content:center;
             background:var(--sfc2); border:1px solid var(--line2);
             border-radius:12px; transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
         }
         .ib:hover { border-color:var(--gold-ring); background:var(--gold-lo); transform:translateY(-3px) scale(1.05); box-shadow: 0 10px 20px var(--shadow);}
         .ib-sm  { width:40px; height:40px; }
@@ -391,9 +321,6 @@
         [data-theme="light"] .ib img { filter:brightness(0) invert(.32); }
         .ib:hover img { filter:brightness(0) saturate(100%) invert(73%) sepia(49%) saturate(567%) hue-rotate(5deg) brightness(95%) contrast(90%) !important; }
 
-        /* ═══════════════════════════════════════════════
-           METRIC CHIP
-        ═══════════════════════════════════════════════ */
         .mchip {
             display:inline-flex; align-items:center; gap:6px;
             font-family:'Space Mono',monospace; font-size:.7rem; font-weight:700;
@@ -402,9 +329,6 @@
         }
         .mchip::before { content:'↑'; font-size:.6rem; }
 
-        /* ═══════════════════════════════════════════════
-           SKILL CATEGORY LABEL
-        ═══════════════════════════════════════════════ */
         .scat {
             font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700;
             letter-spacing:.16em; text-transform:uppercase; color:var(--cyan);
@@ -412,20 +336,14 @@
         }
         .scat::after { content:''; flex:1; height:1px; background:var(--cyan-ring); }
 
-        /* ═══════════════════════════════════════════════
-           CERT LIST
-        ═══════════════════════════════════════════════ */
-        .cert-row { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); font-size:.88rem; color:var(--t2); transition:all .3s ease; }
+        .cert-row { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); font-size:.88rem; color:var(--t2); transition:all .3s ease; flex-wrap: wrap; }
         .cert-row:hover { color: var(--t0); transform: translateX(5px); border-color: var(--gold-ring); }
         .cert-row:last-child { border-bottom:none; }
         .cert-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; transition: transform 0.3s; }
         .cert-row:hover .cert-dot { transform: scale(1.5); box-shadow: 0 0 10px var(--gold); }
-        .cert-org { font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700; color:var(--t3); margin-left:auto; text-align:right; transition: color 0.3s; }
+        .cert-org { font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700; color:var(--t3); margin-left:auto; text-align:right; transition: color 0.3s; white-space: nowrap; }
         .cert-row:hover .cert-org { color: var(--gold); }
 
-        /* ═══════════════════════════════════════════════
-           STATUS BADGE
-        ═══════════════════════════════════════════════ */
         .status {
             display:inline-flex; align-items:center; gap:8px;
             font-family:'Space Mono',monospace; font-size:.6rem; font-weight: 700; letter-spacing:.1em;
@@ -436,9 +354,6 @@
         .pulse { width:8px; height:8px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; box-shadow: 0 0 8px var(--green);}
         @keyframes pulse { 0%,100%{opacity:1; transform: scale(1);} 50%{opacity:.4; transform: scale(0.85);} }
 
-        /* ═══════════════════════════════════════════════
-           ACHIEVEMENT CARD
-        ═══════════════════════════════════════════════ */
         .ach {
             background:var(--sfc); border:1px solid var(--line);
             border-radius:16px; padding:1.85rem; position:relative; overflow:hidden;
@@ -448,9 +363,6 @@
         .ach::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:linear-gradient(to bottom,var(--gold),transparent); }
         .ach:hover { border-color:var(--gold-ring); transform:translateY(-5px) scale(1.01); box-shadow:0 20px 40px var(--shadow); }
 
-        /* ═══════════════════════════════════════════════
-           EXP CARD
-        ═══════════════════════════════════════════════ */
         .exp-c {
             background:var(--sfc); border:1px solid var(--line); border-radius:16px; padding:2rem;
             transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -459,9 +371,6 @@
         .exp-c:hover { border-color:var(--gold-ring); transform:translateY(-5px) scale(1.01); box-shadow:0 20px 40px var(--shadow); }
         .exp-dt { font-family:'Space Mono',monospace; font-size:.65rem; font-weight: 700; letter-spacing:.11em; color:var(--gold); text-transform:uppercase; }
 
-        /* ═══════════════════════════════════════════════
-           MEMBERSHIP
-        ═══════════════════════════════════════════════ */
         .mem-card {
             background:var(--sfc); border:1px solid var(--gold-ring);
             border-radius:18px; padding:2.5rem; position:relative; overflow:hidden;
@@ -471,9 +380,6 @@
         .mem-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
         .mem-card:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 30px 60px var(--shadow), 0 0 50px var(--gold-glow); }
 
-        /* ═══════════════════════════════════════════════
-           HEADER / NAV HEADER (Pro Glassmorphism)
-        ═══════════════════════════════════════════════ */
         #hdr {
             position:fixed; top:0; left:0; width:100%; z-index:50;
             background:var(--nav-bg); backdrop-filter:blur(24px) saturate(200%);
@@ -482,9 +388,6 @@
             box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
 
-        /* ═══════════════════════════════════════════════
-           MOBILE MENU
-        ═══════════════════════════════════════════════ */
         #mob-overlay {
             position:fixed; top:60px; inset:0; background:rgba(0,0,0,.8);
             backdrop-filter:blur(15px); -webkit-backdrop-filter:blur(15px); z-index:48;
@@ -509,9 +412,6 @@
         #mob-menu a:hover { color:var(--gold); transform:translateX(8px); }
         #mob-menu a:last-child { border-bottom:none; }
 
-        /* ═══════════════════════════════════════════════
-           BACK TO TOP
-        ═══════════════════════════════════════════════ */
         #btt {
             position:fixed; bottom:2rem; right:2rem; z-index:100;
             width:46px; height:46px; border-radius:12px;
@@ -525,33 +425,23 @@
         #btt:hover { background:var(--gold-lo); border-color: var(--gold); transform: translateY(-4px) scale(1.05); box-shadow: 0 15px 30px var(--shadow), 0 0 15px var(--gold-glow);}
         #btt svg { width:18px; height:18px; fill:var(--gold); }
 
-        /* ═══════════════════════════════════════════════
-           HAMBURGER LINES
-        ═══════════════════════════════════════════════ */
         .ham { display:block; background:var(--ham); transition:all .3s ease; border-radius: 2px;}
 
-        /* ═══════════════════════════════════════════════
-           PROJECT IMAGE WRAP
-        ═══════════════════════════════════════════════ */
         .pimg { position:relative; overflow:hidden; }
         .pimg img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); display:block; }
         .card:hover .pimg img, .card-gold:hover .pimg img { transform:scale(1.08); }
         .pimg-grad { position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, var(--overlay) 100%); transition:background .4s ease; }
 
-        /* ═══════════════════════════════════════════════
-           ANIMATIONS (Smoother Bezier Curves)
-        ═══════════════════════════════════════════════ */
         @keyframes fadeUp { from{opacity:0;transform:translateY(35px)} to{opacity:1;transform:none} }
         .hero-a { animation:fadeUp .9s cubic-bezier(0.165, 0.84, 0.44, 1) both; }
         .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.35s}
-        .d4{animation-delay:.5s} .d5{animation-delay:.65s}  .d6{animation-delay:.8s}
+        .d4{animation-delay:.5s} .d5{animation-delay:.65s} .d6{animation-delay:.8s}
 
         .up   { opacity:0; transform:translateY(30px);  transition:opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .lft  { opacity:0; transform:translateX(-45px); transition:opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .rgt  { opacity:0; transform:translateX(45px);  transition:opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .on   { opacity:1 !important; transform:none !important; }
 
-        /* stagger-grid: children animate in with delay */
         .sgrid > * { opacity:0; transition:opacity .7s cubic-bezier(0.165, 0.84, 0.44, 1), transform .7s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .sgrid > *:nth-child(odd)  { transform:translateX(-40px); }
         .sgrid > *:nth-child(even) { transform:translateX(40px); }
@@ -568,7 +458,6 @@
         .sgrid.on > *:nth-child(10){transition-delay:.95s}
         .sgrid.on > *:nth-child(11){transition-delay:1.05s}
 
-        /* stagger-fade: straight fade-up with delay */
         .sfade > * { opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(0.165, 0.84, 0.44, 1), transform .7s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .sfade.on > * { opacity:1; transform:none; }
         .sfade.on > *:nth-child(1){transition-delay:.05s}
@@ -582,9 +471,6 @@
             .up,.lft,.rgt,.sgrid>*,.sfade>*,.hero-a{opacity:1!important;transform:none!important;transition:none!important;}
         }
 
-        /* ═══════════════════════════════════════════════
-           TYPING CURSOR
-        ═══════════════════════════════════════════════ */
         .cur {
             display:inline-block; width:2px; height:.88em;
             background:var(--cyan); vertical-align:middle; margin-left:3px;
@@ -593,9 +479,6 @@
         }
         @keyframes blink{50%{opacity:0}}
 
-        /* ═══════════════════════════════════════════════
-           CORNER DECORATION (hero image)
-        ═══════════════════════════════════════════════ */
         .corner-frame > span {
             position:absolute; width:26px; height:26px;
             border-color:var(--gold); border-style:solid;
@@ -607,30 +490,152 @@
         .corner-frame > span:nth-child(3){bottom:-8px;left:-8px;border-width:0 0 2px 2px;border-radius:0 0 0 4px;}
         .corner-frame > span:nth-child(4){bottom:-8px;right:-8px;border-width:0 2px 2px 0;border-radius:0 0 4px 0;}
 
-        /* ═══════════════════════════════════════════════
-           SCROLL ANCHOR
-        ═══════════════════════════════════════════════ */
         .anch { scroll-margin-top:70px; }
 
-        /* ═══════════════════════════════════════════════
-           RESPONSIVE HELPERS
-        ═══════════════════════════════════════════════ */
+        /* Project & achievement grids */
         .pg { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr)); gap:22px; }
         .ag { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr)); gap:18px; }
 
-        /* ═══════════════════════════════════════════════
-           THEME TOGGLE ICONS
-        ═══════════════════════════════════════════════ */
         #ico-sun  { display:block; transition: transform 0.4s ease; }
         #ico-moon { display:none;  transition: transform 0.4s ease; }
         [data-theme="light"] #ico-sun  { display:none;  }
         [data-theme="light"] #ico-moon { display:block; }
         #thm:hover svg { transform: rotate(45deg); }
 
-        /* ═══════════════════════════════════════════════
-           BLOCKQUOTE ACCENT
-        ═══════════════════════════════════════════════ */
         .bq { border-left:3px solid var(--gold); padding-left:1.2rem; background: linear-gradient(90deg, var(--gold-lo), transparent); border-radius: 0 8px 8px 0; padding-top: 10px; padding-bottom: 10px;}
+
+        /* ── HERO SECTION RESPONSIVE ── */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media(min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+        }
+
+        /* ASCII canvas: full width on mobile, fixed aspect on desktop */
+        .hero-canvas-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 4/5;
+            margin: 0 auto;
+        }
+        @media(max-width: 1023px) {
+            .hero-canvas-wrap {
+                max-width: 320px;
+                aspect-ratio: 1/1;
+            }
+        }
+        @media(max-width: 480px) {
+            .hero-canvas-wrap {
+                max-width: 260px;
+            }
+        }
+
+        /* Hero text area */
+        .hero-text { max-width: 740px; }
+
+        /* Social icons row — wrap neatly */
+        .hero-socials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        /* Experience flex layout: icon + content */
+        .exp-inner {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+        .exp-logo {
+            width: 52px; height: 52px; flex-shrink: 0;
+            background: var(--sfc2); border: 1px solid var(--line2);
+            border-radius: 12px; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; padding: 6px;
+        }
+        @media(max-width: 480px) {
+            .exp-inner { flex-direction: column; gap: .75rem; }
+            .exp-logo { width: 44px; height: 44px; }
+        }
+
+        /* Membership card padding on mobile */
+        @media(max-width: 480px) {
+            .mem-card { padding: 1.5rem; }
+            .mem-card-inner { flex-direction: column !important; gap: 1rem !important; }
+        }
+
+        /* Cert grid: 1 col on mobile */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 0 2.5rem;
+        }
+        @media(max-width: 640px) {
+            .cert-grid { grid-template-columns: 1fr; }
+            .cert-org { margin-left: auto; }
+        }
+
+        /* Research / project card header (title + link icon) — prevent overflow */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .card-header h3 { flex: 1; min-width: 0; }
+        .card-header-links { display: flex; gap: 6px; flex-shrink: 0; }
+
+        /* Metric chips wrap */
+        .chips-wrap { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        /* Scroll indicator */
+        .scroll-hint {
+            position: absolute; bottom: 2rem; left: 50%;
+            transform: translateX(-50%);
+            display: flex; flex-direction: column;
+            align-items: center; gap: 8px; opacity: .4;
+        }
+        @media(max-width: 480px) { .scroll-hint { display: none; } }
+
+        /* Tag rows in project cards */
+        .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
+
+        /* Contact icons centered row */
+        .contact-icons {
+            display: flex; justify-content: center;
+            gap: 12px; flex-wrap: wrap; margin-bottom: 4rem;
+        }
+
+        /* Make hero h1 not overflow on tiny screens */
+        @media(max-width: 360px) {
+            h1 { font-size: clamp(2.2rem, 12vw, 3rem) !important; }
+        }
+
+        /* Digi-Pramaan featured card */
+        .featured-card-inner { padding: 2.2rem; }
+        @media(max-width: 480px) { .featured-card-inner { padding: 1.5rem; } }
+
+        /* Resume card */
+        .resume-card { padding: 3.5rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        @media(max-width: 480px) { .resume-card { padding: 2rem 1.5rem; } }
+
+        /* Education card */
+        .edu-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+
+        /* Skills grid layout */
+        .skills-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+
+        /* Achievements ach padding mobile */
+        @media(max-width: 480px) { .ach { padding: 1.4rem; } }
     </style>
 </head>
 <body data-theme="dark">
@@ -690,18 +695,20 @@
 
 <main>
 
+<!-- ═══ HERO / ABOUT ═══ -->
 <section id="about" class="anch" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 1.5rem 5rem;position:relative;overflow:hidden;background:var(--bg0);">
   <div class="grid-bg" style="position:absolute;inset:0;z-index:0;"></div>
   <div class="orb" style="width:550px;height:550px;background:var(--orb1);top:-150px;right:-150px;"></div>
   <div class="orb" style="width:400px;height:400px;background:var(--orb2);bottom:-100px;left:-130px;"></div>
 
   <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%;">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="hero-grid">
 
-      <div style="max-width:740px;">
+      <!-- Text column -->
+      <div class="hero-text">
         <div class="hero-a d1" style="display:flex;align-items:center;flex-wrap:wrap;gap:.9rem;margin-bottom:1.5rem;">
           <div class="status"><span class="pulse"></span>Available for opportunities</div>
-          <div style="height:2px;width:40px;background:var(--line2); border-radius: 2px;"></div>
+          <div style="height:2px;width:40px;background:var(--line2);border-radius:2px;"></div>
           <span style="font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;color:var(--t3);">INDIA</span>
         </div>
 
@@ -722,7 +729,7 @@
           A 20 years old IT undergrad and an ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand and love to explore how intelligent agents solve real-world challenges. Alongside, I also have 4+ years of Hands-on experience in Web Development and DSA problem solving.
         </p>
         <p class="hero-a d4" style="font-size:1rem;color:var(--t3);line-height:1.85;max-width:590px;margin-bottom:2.5rem;">
-          📍Proud member of <strong style="color:var(--t0);font-weight:700;">Google's Women Techmakers</strong> and <strong style="color:var(--t0);font-weight:700;">IEEE Robotics & Automation</strong>.
+          📍Proud member of <strong style="color:var(--t0);font-weight:700;">Google's Women Techmakers</strong> and <strong style="color:var(--t0);font-weight:700;">IEEE Robotics &amp; Automation</strong>.
         </p>
 
         <div class="hero-a d5 stats-row">
@@ -747,7 +754,7 @@
           <a href="mailto:anushkadas05das@gmail.com" class="btn-g">
             <img src="https://api.iconify.design/ri/mail-send-line.svg?color=black" style="width:17px;height:17px;" alt="">SAY HI
           </a>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <div class="hero-socials">
             <a href="https://github.com/anushkadas-coder"                    target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:19px;height:19px;" alt="GitHub"></a>
             <a href="https://linkedin.com/in/anushka-das-467437316"          target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:19px;height:19px;" alt="LinkedIn"></a>
             <a href="https://x.com/neuralbuild"                              target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/twitter-x-line.svg"   style="width:19px;height:19px;" alt="X"></a>
@@ -757,8 +764,9 @@
           </div>
         </div>
       </div>
-      
-      <div style="position:relative;width:100%;max-width:480px;aspect-ratio:4/5;margin:0 auto;" class="corner-frame order-first lg:order-last">
+
+      <!-- ASCII canvas column -->
+      <div class="hero-canvas-wrap corner-frame" style="order: -1;">
         <span></span><span></span><span></span><span></span>
         <canvas id="ascii-canvas" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 0 25px rgba(201,168,76,.55)) drop-shadow(0 0 75px rgba(201,168,76,.15));"></canvas>
       </div>
@@ -766,14 +774,15 @@
     </div>
   </div>
 
-  <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4;">
+  <div class="scroll-hint">
     <span style="font-family:'Space Mono',monospace;font-size:.55rem;font-weight:700;letter-spacing:.22em;color:var(--t3);">SCROLL</span>
-    <div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent); border-radius: 2px;"></div>
+    <div style="width:2px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);border-radius:2px;"></div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- ═══ RESEARCH ═══ -->
 <section id="research" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Research &amp; Publications</div>
@@ -791,12 +800,12 @@
           </div>
         </div>
         <div style="padding:1.85rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:1rem;">
+          <div class="card-header">
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);line-height:1.4;transition:color .35s;">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models [Officially lived on SSRN]</h3>
-            <a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt=""></a>
+            <div class="card-header-links"><a href="Architectural_Paradigms_for_Sovereign_AI__Mitigating_API_Fragility_through_Quantized_Low_Rank_Adaptation_and_1_58_bit_Ternary_Models.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt=""></a></div>
           </div>
           <p style="font-size:.85rem;color:var(--t2);line-height:1.8;margin-bottom:1.25rem;">A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NF4 quantization, native 1.58-bit ternary architectures, and LoRA for specialized domains. <span style="color:var(--t3);font-size:.76rem;font-style:italic;">Officially lived on SSRN.</span></p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="chips-wrap">
             <span class="mchip">93% reduction in inference OpEx</span>
             <span class="mchip">450M token TCO break-even</span>
           </div>
@@ -812,12 +821,12 @@
           </div>
         </div>
         <div style="padding:1.85rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:1rem;">
+          <div class="card-header">
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);line-height:1.4;transition:color .35s;">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
-            <a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt=""></a>
+            <div class="card-header-links"><a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt=""></a></div>
           </div>
           <p style="font-size:.85rem;color:var(--t2);line-height:1.8;margin-bottom:1.25rem;">A novel, lightweight deepfake detection engine isolating synthetic fingerprints in the frequency domain. Employs micro-blur preprocessing to suppress superficial high-frequency noise, followed by 2D FFT to extract spectral magnitude maps.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="chips-wrap">
             <span class="mchip">99.12% on FaceForensics++</span>
             <span class="mchip">45 FPS real-time inference</span>
           </div>
@@ -830,6 +839,7 @@
 
 <div class="divider"></div>
 
+<!-- ═══ PROJECTS ═══ -->
 <section id="projects" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Projects</div>
@@ -841,14 +851,14 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">DeepfakeDetector: Frequency-Based AI Inference Engine</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
               <a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="Live"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">2D FFT</span><span class="tag">ResNet-18</span></div>
+          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">2D FFT</span><span class="tag">ResNet-18</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.</div>
             <div class="bul">&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack.</div>
@@ -859,14 +869,14 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-deweathering.jpeg" alt="Deweathering Engine"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">Deweathering Engine</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
               <a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="Live"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenCV</span><span class="tag">RPCA</span></div>
+          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenCV</span><span class="tag">RPCA</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">Full-stack app using Robust PCA to extract clean text from degraded documents.</div>
             <div class="bul">95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s.</div>
@@ -877,13 +887,13 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-inaturalist.jpeg" alt="iNaturalist Clumper"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">iNaturalist Clumper: Geospatial Data Engineering</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial Algorithms</span></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial Algorithms</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</div>
             <div class="bul">Incremental sync engine with timestamp state tracking. Dynamic cluster merging for overlapping windows.</div>
@@ -894,13 +904,13 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-dco6.jpeg" alt="DCO6 Synthesizer"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">DCO6: Polyphonic VST3 Synthesizer</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span></div>
+          <div class="tag-row"><span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.</div>
             <div class="bul">4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer.</div>
@@ -911,14 +921,14 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-federated-fresh.jpeg" alt="Federated Fresh"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">Federated Fresh: Hybrid AI Orchestration Terminal</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
               <a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="Live"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">ChromaDB</span><span class="tag">DuckDuckGo API</span></div>
+          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">ChromaDB</span><span class="tag">DuckDuckGo API</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">Hybrid AI routing engine orchestrating local ChromaDB retrieval, live web-search, and LLM inference.</div>
             <div class="bul">75% reduction in local memory overhead. Async RAG pipeline via FastAPI BackgroundTasks for zero-lag UI.</div>
@@ -929,14 +939,14 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-churn-prediction.jpeg" alt="Customer Churn"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">Customer Churn Prediction</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
               <a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="Live"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">End-to-end ML model predicting customer churn — 67% recall, AUC 0.82.</div>
             <div class="bul">Interactive Streamlit web app for real-time predictions deployed publicly.</div>
@@ -947,14 +957,14 @@
       <div class="card" style="padding:0;overflow:hidden;border-color:var(--gold-ring);">
         <div class="pimg" style="height:190px;"><img src="project-plant-agent.jpeg" alt="PlantCore"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">PlantCore: Autonomous Maintenance AI</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
               <a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="Live"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">FastAPI</span><span class="tag">XGBoost</span><span class="tag">LangChain</span><span class="tag">React</span></div>
+          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">XGBoost</span><span class="tag">LangChain</span><span class="tag">React</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">Autonomous AI diagnostic agent for industrial motor failure prediction.</div>
             <div class="bul">Hybrid pipeline: XGBoost for fault detection + Llama 3 (Groq) for repair protocols. Real-time telemetry UI.</div>
@@ -965,14 +975,14 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">Psilocybe Cubensis: 3D Simulation</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
               <a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="Live"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span></div>
+          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">Real-time procedural 3D mushroom lifecycle simulation. Space Colonization Algorithm handling 40,000 mycelial nodes.</div>
             <div class="bul">Cinematic post-processing: Unreal Bloom, procedural geometry generation.</div>
@@ -983,13 +993,13 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-nlp-satellite.jpeg" alt="NLP Satellite"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">NLP Smart Search for Satellite Data</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">ISRO</span></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">ISRO</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">Text and voice-based intelligent search for satellite data ordering.</div>
             <div class="bul">NLP parsing of satellite-specific terminology to interface with databases.</div>
@@ -1000,14 +1010,14 @@
       <div class="card" style="padding:0;overflow:hidden;">
         <div class="pimg" style="height:190px;"><img src="project-peonia.jpeg" alt="Peonia"><div class="pimg-grad"></div></div>
         <div style="padding:1.6rem;">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem;">
+          <div class="card-header" style="margin-bottom:.85rem;">
             <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--t0);line-height:1.35;transition:color .35s;">Peonia: Generative 3D Animation</h3>
-            <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div class="card-header-links">
               <a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
               <a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="Live"></a>
             </div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;"><span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Generative Art</span><span class="tag">3D Math</span></div>
+          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Generative Art</span><span class="tag">3D Math</span></div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div class="bul">In-browser 3D peony with continuous blooming/wilting lifecycle. No WebGL — custom rotation matrices + Painter's Algorithm.</div>
             <div class="bul">Multi-modal rendering: solid pixels → particle dots → real-time ASCII mapping.</div>
@@ -1015,27 +1025,30 @@
         </div>
       </div>
 
-    </div><div class="card-gold rgt" style="margin-top:24px;overflow:hidden;padding:0;">
+    </div>
+
+    <!-- Featured: Digi-Pramaan -->
+    <div class="card-gold rgt" style="margin-top:24px;overflow:hidden;padding:0;">
       <div class="pimg" style="height:290px;">
         <img src="project-digipramaan.png" alt="Digi-Pramaan">
         <div class="pimg-grad"></div>
         <div style="position:absolute;top:16px;left:16px;">
-          <span class="tag-green" style="font-size:.65rem;padding:6px 14px;border-radius:20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">🏆 SIH '25 Semi-Finalist</span>
+          <span class="tag-green" style="font-size:.65rem;padding:6px 14px;border-radius:20px;box-shadow:0 4px 10px rgba(0,0,0,0.3);">🏆 SIH '25 Semi-Finalist</span>
         </div>
       </div>
-      <div style="padding:2.2rem;">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:.85rem;">
+      <div class="featured-card-inner">
+        <div class="card-header" style="margin-bottom:.85rem;">
           <h3 style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:var(--t0);transition:color .35s;">Digi-Pramaan — Decentralized Academic Authenticity Platform</h3>
-          <div style="display:flex;gap:8px;flex-shrink:0;">
+          <div class="card-header-links">
             <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:15px;height:15px;" alt="GitHub"></a>
             <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:15px;height:15px;" alt="View"></a>
           </div>
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.1rem;">
+        <div class="tag-row" style="margin-bottom:1.1rem;">
           <span class="tag">Blockchain</span><span class="tag">OCR</span><span class="tag">MetaMask Wallet</span><span class="tag">Cryptography</span><span class="tag">Git</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="bul">Decentralized academic authenticity platform combining OCR & AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</div>
+          <div class="bul">Decentralized academic authenticity platform combining OCR &amp; AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</div>
           <div class="bul">MetaMask wallet integration for authenticated, tamper-proof certificate issuance. Top finalist out of 250+ teams in SIH 2025 internal round.</div>
         </div>
       </div>
@@ -1053,6 +1066,7 @@
 
 <div class="divider"></div>
 
+<!-- ═══ EXPERIENCE ═══ -->
 <section id="experience" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Experience</div>
@@ -1063,11 +1077,9 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" style="width:100%; height:100%; object-fit:contain;">
-          </div>
-          <div style="flex:1;">
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" style="width:100%;height:100%;object-fit:contain;"></div>
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JAN 2025 – PRESENT</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Member of Google's Women Techmakers</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">GOOGLE FOR DEVELOPERS · REMOTE</p>
@@ -1078,11 +1090,9 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-                    <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:10px;">
-            <img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" alt="NVIDIA" style="width:100%; height:100%; object-fit:contain;">
-          </div>
-          <div style="flex:1;">
+        <div class="exp-inner">
+          <div class="exp-logo" style="padding:10px;"><img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" alt="NVIDIA" style="width:100%;height:100%;object-fit:contain;"></div>
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JAN 2026 – PRESENT</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Member of Google Cloud &amp; NVIDIA Developer Community</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">GOOGLE CLOUD &amp; NVIDIA · REMOTE</p>
@@ -1093,11 +1103,9 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="zetheta.jpg" alt="Zetheta Algorithms" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
-          </div>
-          <div style="flex:1;">
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="zetheta.jpg" alt="Zetheta Algorithms" style="width:100%;height:100%;object-fit:contain;border-radius:6px;"></div>
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JAN 2026 · 1 MONTH</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Blockchain Risk Developer</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
@@ -1111,11 +1119,9 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="gssoc.png" alt="GSSoC" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
-          </div>
-          <div style="flex:1;">
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="gssoc.png" alt="GSSoC" style="width:100%;height:100%;object-fit:contain;border-radius:6px;"></div>
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">JULY 2025 – SEPT 2025</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Open-Source Contributor</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">GSSoC '25 · REMOTE</p>
@@ -1126,11 +1132,9 @@
 
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
-        <div style="display:flex; gap:1.25rem; align-items:flex-start;">
-          <div style="width:52px; height:52px; flex-shrink:0; background:var(--sfc2); border:1px solid var(--line2); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:6px;">
-            <img src="codsoft.jpeg" alt="CodSoft" style="width:100%; height:100%; object-fit:contain; border-radius:6px;">
-          </div>
-          <div style="flex:1;">
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="codsoft.jpeg" alt="CodSoft" style="width:100%;height:100%;object-fit:contain;border-radius:6px;"></div>
+          <div style="flex:1;min-width:0;">
             <div class="exp-dt" style="margin-bottom:5px;">AUG 2025 · 1 MONTH</div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:700;color:var(--t0);margin-bottom:3px;transition:color .35s;">Web Development Intern</h3>
             <p style="font-size:.73rem;color:var(--t3);font-family:'Space Mono',monospace;margin-bottom:.9rem;letter-spacing:.06em;">CODSOFT · REMOTE</p>
@@ -1145,13 +1149,14 @@
 
 <div class="divider"></div>
 
+<!-- ═══ SKILLS ═══ -->
 <section id="skills" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Technical Arsenal</div>
     <h2 class="sec-title">Core <em>Competencies</em></h2>
     <p class="sec-sub">Languages, frameworks, and tools across the full stack and ML pipeline</p>
 
-    <div style="display:grid;grid-template-columns:1fr;gap:3rem;">
+    <div class="skills-grid">
 
       <div class="term lft">
         <div class="term-bar">
@@ -1220,6 +1225,7 @@
 
 <div class="divider"></div>
 
+<!-- ═══ MEMBERSHIPS ═══ -->
 <section id="memberships" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Memberships &amp; Affiliations</div>
@@ -1229,16 +1235,16 @@
     <div class="lft">
       <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" style="display:block;">
         <div class="mem-card">
-          <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;">
+          <div class="mem-card-inner" style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;">
             <div style="width:65px;height:65px;border-radius:14px;background:var(--gold-lo);border:1px solid var(--gold-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <img src="https://api.iconify.design/ri/team-fill.svg?color=%23C9A84C" style="width:30px;height:30px;" alt="IEEE">
             </div>
-            <div>
+            <div style="min-width:0;">
               <div style="font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.16em;color:var(--gold);margin-bottom:6px;text-transform:uppercase;">Active Member</div>
               <h3 style="font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:var(--t0);line-height:1.4;transition:color .35s;">IEEE Robotics and Automation Technical Committee on Machine Learning for Automation</h3>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--t3); font-weight: 500;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--t3);font-weight:500;">
             <span style="color:var(--gold);">→</span>View IEEE Profile
           </div>
         </div>
@@ -1249,6 +1255,7 @@
 
 <div class="divider"></div>
 
+<!-- ═══ EDUCATION ═══ -->
 <section id="education" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Education</div>
@@ -1256,15 +1263,15 @@
 
     <div class="rgt">
       <div class="card" style="padding:2.5rem;max-width:700px;">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
+        <div class="edu-header">
           <div>
             <h3 style="font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;color:var(--t0);margin-bottom:6px;transition:color .35s;">Techno Main Saltlake</h3>
             <p style="font-size:.8rem;color:var(--t3);font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Bachelor of Technology · Computer Sciences &amp; IT</p>
           </div>
-          <div style="font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:.1em;border:1px solid var(--gold-ring);padding:6px 14px;border-radius:20px;background:var(--gold-lo);white-space:nowrap;">2023 – 2027</div>
+          <div style="font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:.1em;border:1px solid var(--gold-ring);padding:6px 14px;border-radius:20px;background:var(--gold-lo);white-space:nowrap;flex-shrink:0;">2023 – 2027</div>
         </div>
         <div style="height:1px;background:var(--line);margin-bottom:1.25rem;"></div>
-        <div class="bul" style="font-size: .95rem;">Computer Sciences and Information Technologies</div>
+        <div class="bul" style="font-size:.95rem;">Computer Sciences and Information Technologies</div>
       </div>
     </div>
   </div>
@@ -1272,6 +1279,7 @@
 
 <div class="divider"></div>
 
+<!-- ═══ ACHIEVEMENTS ═══ -->
 <section id="achievements" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Achievements &amp; Certifications</div>
@@ -1282,7 +1290,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">IndiaFirst Life (Bank of Baroda)</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer but respectfully declined to focus on 6th-semester studies.</p>
@@ -1290,7 +1298,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/trophy-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/trophy-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">HackerRank</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Gold Level (5 Star) in Python, Silver Level (3 Star) in Java.</p>
@@ -1298,7 +1306,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/award-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/award-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">SIH '25 Semi-Finalist</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">'Digi-Pramaan' — Top finalist out of <strong style="color:var(--t0);font-weight:700;">250+ teams</strong> in the college internal round of Smart India Hackathon 2025.</p>
@@ -1306,7 +1314,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/code-box-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/code-box-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">Problem Solving</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Solved <strong style="color:var(--t0);font-weight:700;">500+ problems</strong> on LeetCode and HackerRank, improving algorithmic thinking and coding efficiency.</p>
@@ -1314,7 +1322,7 @@
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:.85rem;">
-          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/team-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+          <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/team-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
           <h4 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t0);transition:color .35s;">Extracurricular Leadership</h4>
         </div>
         <p style="font-size:.88rem;color:var(--t2);line-height:1.8;">Active member of 'Samaritans' social club since first year of my undergrad degree — community initiatives, collaborative events and also in debates and quiz competitions.</p>
@@ -1324,10 +1332,10 @@
 
     <div class="card up" style="padding:2.5rem;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line);">
-        <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
+        <div style="padding:10px;border-radius:12px;background:var(--gold-lo);border:1px solid var(--gold-ring);flex-shrink:0;"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%23C9A84C" style="width:20px;height:20px;display:block;" alt=""></div>
         <h4 style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:var(--t0);transition:color .35s;">Certifications</h4>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:0 2.5rem;">
+      <div class="cert-grid">
         <div class="cert-row"><span class="cert-dot"></span>Data Analytics Job Simulation<span class="cert-org">Deloitte Australia</span></div>
         <div class="cert-row"><span class="cert-dot"></span>Software Engineering Job Simulation<span class="cert-org">JPMorgan Chase</span></div>
         <div class="cert-row"><span class="cert-dot"></span>Introduction to Agent Skills<span class="cert-org">Anthropic Academy</span></div>
@@ -1342,18 +1350,19 @@
 
 <div class="divider"></div>
 
+<!-- ═══ RESUME ═══ -->
 <section id="resume" class="anch section" style="background:var(--bg0);text-align:center;">
   <div class="section-inner">
     <div class="eyebrow" style="justify-content:center;">Resume</div>
     <h2 class="sec-title">Complete <em>Technical</em> Profile</h2>
 
-    <div class="up" style="max-width:550px;margin:0 auto; margin-top: 3rem;">
-      <div class="card" style="padding:3.5rem;display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
-        <div style="width:70px;height:70px;border-radius:16px;background:var(--gold-lo);border:1px solid var(--gold-ring);display:flex;align-items:center;justify-content:center;">
+    <div class="up" style="max-width:550px;margin:3rem auto 0;">
+      <div class="card resume-card">
+        <div style="width:70px;height:70px;border-radius:16px;background:var(--gold-lo);border:1px solid var(--gold-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg xmlns="http://www.w3.org/2000/svg" style="width:30px;height:30px;fill:var(--gold);" viewBox="0 0 24 24"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
         </div>
         <p style="font-size:.92rem;color:var(--t2);line-height:1.85;text-align:center;">Want a detailed breakdown of my academic background, technical skills, and professional experience? View or download my complete resume below.</p>
-        <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-g" style="margin-top: .5rem;">
+        <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-g" style="margin-top:.5rem;">
           <svg xmlns="http://www.w3.org/2000/svg" style="width:17px;height:17px;fill:currentColor;" viewBox="0 0 24 24"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg>
           DOWNLOAD RESUME.PDF
         </a>
@@ -1364,6 +1373,7 @@
 
 <div class="divider"></div>
 
+<!-- ═══ CONTACT ═══ -->
 <section id="contact" class="anch section" style="background:var(--bg1);text-align:center;overflow:hidden;">
   <div class="orb" style="width:480px;height:480px;background:var(--orb1);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
   <div class="section-inner" style="position:relative;z-index:2;">
@@ -1379,7 +1389,7 @@
         PING ME
       </a>
 
-      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:4rem;">
+      <div class="contact-icons">
         <a href="mailto:anushkadas05das@gmail.com"                                     class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/mail-send-line.svg"       style="width:20px;height:20px;" alt="Email"></a>
         <a href="https://linkedin.com/in/anushka-das-467437316"          target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/linkedin-line.svg"     style="width:20px;height:20px;" alt="LinkedIn"></a>
         <a href="https://github.com/anushkadas-coder"                    target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/github-line.svg"       style="width:20px;height:20px;" alt="GitHub"></a>
