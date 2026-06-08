@@ -518,7 +518,7 @@
             }
         }
 
-        /* ASCII canvas: full width on mobile, fixed aspect on desktop */
+        /* GIF wrap container: full width on mobile, fixed aspect on desktop */
         .hero-canvas-wrap {
             position: relative;
             width: 100%;
@@ -695,7 +695,6 @@
 
 <main>
 
-<!-- ═══ HERO / ABOUT ═══ -->
 <section id="about" class="anch" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 1.5rem 5rem;position:relative;overflow:hidden;background:var(--bg0);">
   <div class="grid-bg" style="position:absolute;inset:0;z-index:0;"></div>
   <div class="orb" style="width:550px;height:550px;background:var(--orb1);top:-150px;right:-150px;"></div>
@@ -704,7 +703,6 @@
   <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;width:100%;">
     <div class="hero-grid">
 
-      <!-- Text column -->
       <div class="hero-text">
         <div class="hero-a d1" style="display:flex;align-items:center;flex-wrap:wrap;gap:.9rem;margin-bottom:1.5rem;">
           <div class="status"><span class="pulse"></span>Available for opportunities</div>
@@ -765,10 +763,9 @@
         </div>
       </div>
 
-      <!-- ASCII canvas column -->
       <div class="hero-canvas-wrap corner-frame" style="order: -1;">
         <span></span><span></span><span></span><span></span>
-        <canvas id="ascii-canvas" style="position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 0 25px rgba(201,168,76,.55)) drop-shadow(0 0 75px rgba(201,168,76,.15));"></canvas>
+        <img src="https://preview.redd.it/osaragi-from-sakamoto-days-v0-q1rj7kkm1e6d1.jpg?width=1080&crop=smart&auto=webp&s=83bf833cb7b500ea7c638b1e6b1463befe9e68a5" alt="Profile GIF" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:2px solid var(--gold-ring);border-radius:12px;filter:drop-shadow(0 0 25px rgba(201,168,76,.35));">
       </div>
 
     </div>
@@ -782,7 +779,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ RESEARCH ═══ -->
 <section id="research" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Research &amp; Publications</div>
@@ -839,7 +835,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ PROJECTS ═══ -->
 <section id="projects" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Projects</div>
@@ -1027,7 +1022,6 @@
 
     </div>
 
-    <!-- Featured: Digi-Pramaan -->
     <div class="card-gold rgt" style="margin-top:24px;overflow:hidden;padding:0;">
       <div class="pimg" style="height:290px;">
         <img src="project-digipramaan.png" alt="Digi-Pramaan">
@@ -1066,7 +1060,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ EXPERIENCE ═══ -->
 <section id="experience" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Experience</div>
@@ -1149,7 +1142,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ SKILLS ═══ -->
 <section id="skills" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Technical Arsenal</div>
@@ -1225,7 +1217,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ MEMBERSHIPS ═══ -->
 <section id="memberships" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Memberships &amp; Affiliations</div>
@@ -1255,7 +1246,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ EDUCATION ═══ -->
 <section id="education" class="anch section" style="background:var(--bg0);">
   <div class="section-inner">
     <div class="eyebrow">Education</div>
@@ -1279,7 +1269,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ ACHIEVEMENTS ═══ -->
 <section id="achievements" class="anch section" style="background:var(--bg1);">
   <div class="section-inner">
     <div class="eyebrow">Achievements &amp; Certifications</div>
@@ -1350,7 +1339,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ RESUME ═══ -->
 <section id="resume" class="anch section" style="background:var(--bg0);text-align:center;">
   <div class="section-inner">
     <div class="eyebrow" style="justify-content:center;">Resume</div>
@@ -1373,7 +1361,6 @@
 
 <div class="divider"></div>
 
-<!-- ═══ CONTACT ═══ -->
 <section id="contact" class="anch section" style="background:var(--bg1);text-align:center;overflow:hidden;">
   <div class="orb" style="width:480px;height:480px;background:var(--orb1);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
   <div class="section-inner" style="position:relative;z-index:2;">
@@ -1495,109 +1482,6 @@ function tick(){
   setTimeout(tick, sp);
 }
 window.addEventListener('load', tick);
-
-/* ── ASCII CANVAS ── */
-window.addEventListener('load', () => {
-  const cv = document.getElementById('ascii-canvas');
-  if(!cv) return;
-  const ctx = cv.getContext('2d', {willReadFrequently:true});
-  const img = new Image();
-  img.crossOrigin = "Anonymous";
-  img.src = 'portfolio_profile.jpeg';
-
-  img.onload = () => {
-    const chars = ["@","#","S","%","?","*","+",";",":",",.",""];
-    let pts=[], raf=null;
-
-    function build(){
-      pts=[];
-      const res = window.innerWidth < 768 ? 8 : 9;
-      const par = cv.parentElement;
-      const dpr = window.devicePixelRatio||1;
-      const W=par.clientWidth, H=par.clientHeight;
-      cv.width=W*dpr; cv.height=H*dpr;
-      ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr,dpr);
-
-      const off=document.createElement('canvas');
-      const oc=off.getContext('2d');
-      const dW=Math.floor(W/res), dH=Math.floor(H/res);
-      off.width=dW; off.height=dH;
-      oc.fillStyle='#fff'; oc.fillRect(0,0,dW,dH);
-
-      const iAR=img.width/img.height, cAR=W/H;
-      let dw,dh,dx,dy;
-      if(iAR>cAR){ dw=dW; dh=dW/iAR; dx=0; dy=(dH-dh)/2; }
-      else{ dh=dH; dw=dH*iAR; dy=0; dx=(dW-dw)/2; }
-      oc.drawImage(img,0,0,img.width,img.height,dx,dy,dw,dh);
-
-      const d=oc.getImageData(0,0,dW,dH).data;
-      for(let y=0;y<dH;y++){
-        for(let x=0;x<dW;x++){
-          const i=(y*dW+x)*4;
-          const br=(d[i]+d[i+1]+d[i+2])/3;
-          if(br<215){
-            const ci=Math.floor((br/255)*chars.length);
-            const ch=chars[Math.min(ci,chars.length-1)];
-            const op=1-(br/255)*.7+.14;
-            const tX=x*res+res/2, tY=y*res+res/2;
-            const edge=Math.floor(Math.random()*4);
-            let sX,sY;
-            if(edge===0){sX=Math.random()*W;sY=-20;}
-            else if(edge===1){sX=W+20;sY=Math.random()*H;}
-            else if(edge===2){sX=Math.random()*W;sY=H+20;}
-            else{sX=-20;sY=Math.random()*H;}
-            const dist=Math.sqrt((tX-W/2)**2+(tY-H/2)**2);
-            const mD=Math.sqrt(W*W+H*H)/2;
-            pts.push({ch,op,res,tX,tY,x:sX,y:sY,sX,sY,delay:(dist/mD)*780+Math.random()*240,dur:680+Math.random()*380,st:null});
-          }
-        }
-      }
-    }
-
-    function ease(t){ return 1-Math.pow(1-t,3); }
-
-    function draw(ts){
-      const W=cv.width/(window.devicePixelRatio||1), H=cv.height/(window.devicePixelRatio||1);
-      ctx.clearRect(0,0,W,H);
-      let done=true;
-      for(const p of pts){
-        if(!p.st) p.st=ts;
-        const el=ts-p.st;
-        const fs=p.res*1.1;
-        ctx.font=`bold ${fs}px "Space Mono",monospace`;
-        ctx.textAlign='center'; ctx.textBaseline='middle';
-        if(el<p.delay){ ctx.fillStyle='rgba(201,168,76,0.05)'; ctx.fillText(p.ch,p.sX,p.sY); done=false; continue; }
-        const t=Math.min((el-p.delay)/p.dur,1), et=ease(t);
-        p.x=p.sX+(p.tX-p.sX)*et; p.y=p.sY+(p.tY-p.sY)*et;
-        ctx.fillStyle=`rgba(201,168,76,${p.op*et})`;
-        ctx.fillText(p.ch,p.x,p.y);
-        if(t<1) done=false;
-      }
-      if(!done){ raf=requestAnimationFrame(draw); }
-      else{
-        ctx.clearRect(0,0,W,H);
-        for(const p of pts){
-          const fs=p.res*1.1;
-          ctx.font=`bold ${fs}px "Space Mono",monospace`;
-          ctx.textAlign='center'; ctx.textBaseline='middle';
-          ctx.fillStyle=`rgba(201,168,76,${p.op})`;
-          ctx.fillText(p.ch,p.tX,p.tY);
-        }
-      }
-    }
-
-    function go(){ if(raf) cancelAnimationFrame(raf); build(); raf=requestAnimationFrame(draw); }
-    go();
-    let rt;
-    window.addEventListener('resize', () => { clearTimeout(rt); rt=setTimeout(go,200); });
-  };
-
-  img.onerror = () => {
-    const p=cv.parentElement; cv.width=p.clientWidth; cv.height=p.clientHeight;
-    ctx.font='12px "Space Mono",monospace'; ctx.fillStyle='rgba(201,168,76,.4)'; ctx.textAlign='center';
-    ctx.fillText('[portfolio_profile.jpeg]',p.clientWidth/2,p.clientHeight/2);
-  };
-});
 </script>
 </body>
 </html>
