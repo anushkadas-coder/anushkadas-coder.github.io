@@ -431,23 +431,23 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 .sfade.on>*:nth-child(3){transition-delay:.2s}.sfade.on>*:nth-child(4){transition-delay:.28s}
 .sfade.on>*:nth-child(5){transition-delay:.36s}.sfade.on>*:nth-child(6){transition-delay:.44s}
 
-@media(prefers-reduced-motion:reduce){.up,.lft,.rgt,.sgrid>*,.sfade>*,.hero-a, .hero-canvas, .hero-lines{opacity:1!important;transform:none!important;transition:none!important; animation: none !important;}}
+@media(prefers-reduced-motion:reduce){.up,.lft,.rgt,.sgrid>*,.sfade>*,.hero-a, .hero-canvas, .bg-lines{opacity:1!important;transform:none!important;transition:none!important; animation: none !important;}}
 
 /* ORB */
 .orb{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;transition:background .4s}
 
-/* HERO BG LINES - Animated */
+/* BG LINES - Animated */
 @keyframes panGrid {
   0% { background-position: 0 0; }
   100% { background-position: 60px 60px; }
 }
-.hero-lines{
+.bg-lines{
 position:absolute;inset:0;z-index:0;
 background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
 background-size:60px 60px;
 animation: panGrid 4s linear infinite;
--webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
-mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
+-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
+mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 }
 </style>
 </head>
@@ -505,7 +505,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
 <main>
 
 <section id="about" class="anch" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;background:var(--bg0)">
-  <div class="hero-lines"></div>
+  <div class="bg-lines"></div>
   <div class="orb" style="width:600px;height:600px;background:rgba(94,139,149,.04);top:-180px;right:-200px"></div>
   <div class="orb" style="width:380px;height:380px;background:rgba(100,150,200,.03);bottom:-100px;left:-120px"></div>
 
@@ -531,10 +531,10 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
         </div>
 
         <p class="hero-a d4" style="font-family:var(--serif);font-size:.95rem;font-weight:300;color:var(--t2);line-height:1.9;max-width:580px;margin-bottom:1rem">
-          A 20 years old IT undergrad and an ML/DL Engineer with strong research interests in AIML. I build AI systems that see, understand and love to explore how intelligent agents solve real-world challenges. Alongside, I also have 4+ years of Hands-on experience in Web Development and DSA problem solving.
+          A 20 years old IT undergrad and an ML/DL Engineer with strong research interests in AIML. I build AI systems that can see and understand the world, and I love exploring how intelligent agents solve real-world challenges. Alongside, I also have 4+ years of Hands-on experience in Web Development and DSA problem solving.
         </p>
         <p class="hero-a d4" style="font-size:.875rem;color:var(--t3);line-height:1.85;max-width:580px;margin-bottom:2.25rem">
-          📍Proud member of <strong style="color:var(--t1);font-weight:700">Google's Women Techmakers</strong> and <strong style="color:var(--t1);font-weight:700">IEEE Robotics &amp; Automation</strong>.
+          📍Proud member of <strong style="color:var(--t1);font-weight:700">Google's Women Techmakers</strong> and <strong style="color:var(--t1);font-weight:700">IEEE Robotics &amp; Automation Society</strong>. And I am also part of the <strong style="color:var(--t1);font-weight:700">NVIDIA Developer Community, </strong>exploring advancements in AI, machine learning, and modern computing technologies.
         </p>
 
         <div class="hero-a d5 stats-row">
@@ -633,6 +633,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
 <div class="divider"></div>
 
 <section id="projects" class="anch section" style="background:var(--bg0)">
+  <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow">Projects</div>
     <h2 class="sec-title">Deployed <em>Engineering</em> Solutions</h2>
@@ -842,6 +843,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
 <div class="divider"></div>
 
 <section id="skills" class="anch section" style="background:var(--bg0)">
+  <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow">Technical Arsenal</div>
     <h2 class="sec-title">Core <em>Competencies</em></h2>
@@ -943,6 +945,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
 <div class="divider"></div>
 
 <section id="education" class="anch section" style="background:var(--bg0)">
+  <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow">Education</div>
     <h2 class="sec-title">Academic <em>Foundation</em></h2>
@@ -1035,6 +1038,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
 <div class="divider"></div>
 
 <section id="resume" class="anch section" style="background:var(--bg0);text-align:center">
+  <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow" style="justify-content:center">Resume</div>
     <h2 class="sec-title">Complete <em>Technical</em> Profile</h2>
@@ -1056,6 +1060,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%);
 <div class="divider"></div>
 
 <section id="contact" class="anch section" style="background:var(--bg1);text-align:center;overflow:hidden">
+  <div class="bg-lines"></div>
   <div class="orb" style="width:520px;height:520px;background:rgba(94,139,149,.04);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
   <div class="container">
     <div class="up">
