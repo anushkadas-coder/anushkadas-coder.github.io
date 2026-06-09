@@ -50,7 +50,7 @@ overflow-x:hidden;transition:background .35s ease,color .35s ease;
 a{text-decoration:none;color:inherit}
 img{display:block}
 
-/* ADDED: Accessibility focus outlines for keyboard navigation */
+/* Accessibility focus outlines for keyboard navigation */
 a:focus-visible, button:focus-visible { outline: 2px dashed var(--accent); outline-offset: 4px; border-radius: 4px; }
 
 ::-webkit-scrollbar{width:6px}
@@ -223,6 +223,18 @@ transition:all .25s;
 }
 .tag:hover{background:var(--accent);color:var(--bg0);box-shadow: 0 0 10px var(--accent-glow);}
 .tag-green{background:rgba(100,200,130,.07);border-color:rgba(100,200,130,.2);color:#64C882}
+
+/* Overlay tags for images */
+.tag-overlay {
+  background: rgba(12, 12, 12, 0.85);
+  backdrop-filter: blur(4px);
+  border-color: var(--accent);
+  color: var(--accent-hi);
+}
+.tag-overlay:hover {
+  background: var(--accent);
+  color: var(--bg0);
+}
 
 .pill{
 display:inline-flex;align-items:center;gap:7px;
@@ -603,7 +615,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
           <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
           <div class="pimg-grad" style="border-radius:0"></div>
           <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
-            <span class="tag">QLoRA</span><span class="tag">BITNET 1.58</span><span class="tag">PEFT</span><span class="tag">Sovereign AI</span>
+            <span class="tag tag-overlay">QLoRA</span><span class="tag tag-overlay">BITNET 1.58</span><span class="tag tag-overlay">PEFT</span><span class="tag tag-overlay">Sovereign AI</span>
           </div>
         </div>
         <div style="padding:1.75rem">
@@ -621,7 +633,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
           <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
           <div class="pimg-grad" style="border-radius:0"></div>
           <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
-            <span class="tag">2D FFT</span><span class="tag">ResNet-18</span><span class="tag">PyTorch</span><span class="tag">Deepfake</span>
+            <span class="tag tag-overlay">2D FFT</span><span class="tag tag-overlay">ResNet-18</span><span class="tag tag-overlay">PyTorch</span><span class="tag tag-overlay">Deepfake</span>
           </div>
         </div>
         <div style="padding:1.75rem">
