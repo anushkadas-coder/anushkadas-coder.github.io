@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0C0C0C" id="theme-color-meta">
 <title>Anushka Das | Software & ML Engineer</title>
 <meta name="description" content="Anushka Das — Aspiring ML/DL Engineer, AIML Researcher, and Software Developer from Kolkata, India. IEEE Member, Google Women Techmakers.">
 <meta property="og:title" content="Anushka Das | ML & Software Engineer">
 <meta property="og:description" content="Aspiring ML/DL Engineer with research in Sovereign AI, Deepfake Detection, and more.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://anushkadas-coder.github.io/osaragi.webp">
-<!-- Favicon / Website Icon -->
 <link rel="icon" type="image/webp" href="https://anushkadas-coder.github.io/osaragi.webp">
 <link rel="apple-touch-icon" href="https://anushkadas-coder.github.io/osaragi.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +49,10 @@ overflow-x:hidden;transition:background .35s ease,color .35s ease;
 }
 a{text-decoration:none;color:inherit}
 img{display:block}
+
+/* ADDED: Accessibility focus outlines for keyboard navigation */
+a:focus-visible, button:focus-visible { outline: 2px dashed var(--accent); outline-offset: 4px; border-radius: 4px; }
+
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg0)}
 ::-webkit-scrollbar-thumb{background:var(--accent-ring);border-radius:3px}
@@ -560,12 +564,12 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
             <svg xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/></svg> SAY HI
           </a>
           <div class="hero-socials">
-            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/github-line.svg" style="width:18px;height:18px" alt="GitHub"></a>
-            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/linkedin-line.svg" style="width:18px;height:18px" alt="LinkedIn"></a>
-            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/twitter-x-line.svg" style="width:18px;height:18px" alt="X"></a>
-            <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md"><img src="https://api.iconify.design/ri/google-line.svg" style="width:18px;height:18px" alt="Google Dev"></a>
-            <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg" style="width:18px;height:18px" alt="Discord"></a>
-            <a href="https://instagram.com/caffeinated.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:18px;height:18px" alt="Instagram"></a>
+            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="GitHub Profile"><img src="https://api.iconify.design/ri/github-line.svg" style="width:18px;height:18px" alt="GitHub"></a>
+            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="LinkedIn Profile"><img src="https://api.iconify.design/ri/linkedin-line.svg" style="width:18px;height:18px" alt="LinkedIn"></a>
+            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="X (Twitter) Profile"><img src="https://api.iconify.design/ri/twitter-x-line.svg" style="width:18px;height:18px" alt="X"></a>
+            <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="Google Dev Profile"><img src="https://api.iconify.design/ri/google-line.svg" style="width:18px;height:18px" alt="Google Dev"></a>
+            <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" style="width:18px;height:18px" alt="Discord"></a>
+            <a href="https://instagram.com/caffeinated.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:18px;height:18px" alt="Instagram"></a>
           </div>
         </div>
 
@@ -596,7 +600,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       <div class="card-accent" style="padding:0;overflow:hidden">
         <div style="height:220px;overflow:hidden;position:relative">
-          <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
+          <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
           <div class="pimg-grad" style="border-radius:0"></div>
           <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
             <span class="tag">QLoRA</span><span class="tag">BITNET 1.58</span><span class="tag">PEFT</span><span class="tag">Sovereign AI</span>
@@ -605,7 +609,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
         <div style="padding:1.75rem">
           <div class="card-header">
             <h3 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0);line-height:1.45">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models [Officially lived on SSRN]</h3>
-            <div class="card-header-links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6742421" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt=""></a></div>
+            <div class="card-header-links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6742421" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" loading="lazy" style="width:14px;height:14px" alt=""></a></div>
           </div>
           <p style="font-family:var(--serif);font-size:.83rem;font-weight:300;color:var(--t2);line-height:1.85;margin-bottom:1.1rem">A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NF4 quantization, native 1.58-bit ternary architectures, and LoRA for specialized domains. <em style="color:var(--t3);font-size:.76rem">Officially lived on SSRN.</em></p>
           <div class="chips-wrap"><span class="mchip">93% reduction in inference OpEx</span><span class="mchip">450M token TCO break-even</span></div>
@@ -614,7 +618,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       <div class="card-accent" style="padding:0;overflow:hidden">
         <div style="height:220px;overflow:hidden;position:relative">
-          <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
+          <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
           <div class="pimg-grad" style="border-radius:0"></div>
           <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
             <span class="tag">2D FFT</span><span class="tag">ResNet-18</span><span class="tag">PyTorch</span><span class="tag">Deepfake</span>
@@ -623,7 +627,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
         <div style="padding:1.75rem">
           <div class="card-header">
             <h3 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0);line-height:1.45">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
-            <div class="card-header-links"><a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt=""></a></div>
+            <div class="card-header-links"><a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" loading="lazy" style="width:14px;height:14px" alt=""></a></div>
           </div>
           <p style="font-family:var(--serif);font-size:.83rem;font-weight:300;color:var(--t2);line-height:1.85;margin-bottom:1.1rem">A novel, lightweight deepfake detection engine isolating synthetic fingerprints in the frequency domain. Employs micro-blur preprocessing to suppress superficial high-frequency noise, followed by 2D FFT to extract spectral magnitude maps.</p>
           <div class="chips-wrap"><span class="mchip">99.12% on FaceForensics++</span><span class="mchip">45 FPS real-time inference</span></div>
@@ -646,7 +650,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
     <div class="sgrid pg">
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">DeepfakeDetector: Frequency-Based AI Inference Engine</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a><a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt="Live"></a></div></div>
           <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">2D FFT</span><span class="tag">ResNet-18</span></div>
@@ -655,7 +659,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-deweathering.jpeg" alt="Deweathering Engine"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">Deweathering Engine</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a><a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt="Live"></a></div></div>
           <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenCV</span><span class="tag">RPCA</span></div>
@@ -664,7 +668,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-inaturalist.jpeg" alt="iNaturalist Clumper"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">iNaturalist Clumper: Geospatial Data Engineering</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a></div></div>
           <div class="tag-row"><span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial Algorithms</span></div>
@@ -673,7 +677,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-dco6.jpeg" alt="DCO6 Synthesizer"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">DCO6: Polyphonic VST3 Synthesizer</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a></div></div>
           <div class="tag-row"><span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span></div>
@@ -682,7 +686,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-federated-fresh.jpeg" alt="Federated Fresh"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-federated-fresh.jpeg" alt="Federated Fresh" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">Federated Fresh: Hybrid AI Orchestration Terminal</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a><a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt="Live"></a></div></div>
           <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">ChromaDB</span><span class="tag">DuckDuckGo API</span></div>
@@ -691,7 +695,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-churn-prediction.jpeg" alt="Customer Churn"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-churn-prediction.jpeg" alt="Customer Churn" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">Customer Churn Prediction</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a><a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt="Live"></a></div></div>
           <div class="tag-row"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span></div>
@@ -700,7 +704,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden;border-color:var(--accent-ring)">
-        <div class="pimg" style="height:180px"><img src="project-plant-agent.jpeg" alt="PlantCore"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-plant-agent.jpeg" alt="PlantCore" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">PlantCore: Autonomous Maintenance AI</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a><a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt="Live"></a></div></div>
           <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">XGBoost</span><span class="tag">LangChain</span><span class="tag">React</span></div>
@@ -709,7 +713,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">Psilocybe Cubensis: 3D Simulation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt="Live"></a></div></div>
           <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span></div>
@@ -718,7 +722,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-nlp-satellite.jpeg" alt="NLP Satellite"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-nlp-satellite.jpeg" alt="NLP Satellite" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">NLP Smart Search for Satellite Data</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a></div></div>
           <div class="tag-row"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">ISRO</span></div>
@@ -727,7 +731,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </div>
 
       <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:180px"><img src="project-peonia.jpeg" alt="Peonia"><div class="pimg-grad"></div></div>
+        <div class="pimg" style="height:180px"><img src="project-peonia.jpeg" alt="Peonia" loading="lazy"><div class="pimg-grad"></div></div>
         <div style="padding:1.5rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);line-height:1.4">Peonia: Generative 3D Animation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:14px;height:14px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:14px;height:14px" alt="Live"></a></div></div>
           <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Generative Art</span><span class="tag">3D Math</span></div>
@@ -739,9 +743,9 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
     <div class="card-accent rgt" style="margin-top:22px;overflow:hidden;padding:0">
       <div class="pimg" style="height:280px">
-        <img src="project-digipramaan.png" alt="Digi-Pramaan">
+        <img src="project-digipramaan.png" alt="Digi-Pramaan" loading="lazy">
         <div class="pimg-grad"></div>
-      
+       
       </div>
       <div class="feat-inner">
         <div class="card-header" style="margin-bottom:.85rem">
@@ -776,7 +780,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div class="exp-inner">
-          <div class="exp-logo"><img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" style="width:100%;height:100%;object-fit:contain"></div>
+          <div class="exp-logo"><img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" loading="lazy" style="width:100%;height:100%;object-fit:contain"></div>
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">JAN 2025 – PRESENT</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Member of Google's Women Techmakers</h3>
@@ -789,7 +793,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div class="exp-inner">
-          <div class="exp-logo" style="padding:10px"><img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" alt="NVIDIA" style="width:100%;height:100%;object-fit:contain"></div>
+          <div class="exp-logo" style="padding:10px"><img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" alt="NVIDIA" loading="lazy" style="width:100%;height:100%;object-fit:contain"></div>
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">JAN 2026 – PRESENT</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Member of Google Cloud &amp; NVIDIA Developer Community</h3>
@@ -802,7 +806,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div class="exp-inner">
-          <div class="exp-logo"><img src="zetheta.jpg" alt="Zetheta Algorithms" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
+          <div class="exp-logo"><img src="zetheta.jpg" alt="Zetheta Algorithms" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">JAN 2026 · 1 MONTH</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Blockchain Risk Developer</h3>
@@ -815,7 +819,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div class="exp-inner">
-          <div class="exp-logo"><img src="gssoc.png" alt="GSSoC" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
+          <div class="exp-logo"><img src="gssoc.png" alt="GSSoC" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">JULY 2025 – SEPT 2025</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Open-Source Contributor</h3>
@@ -828,7 +832,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       <div class="tl-item exp-c">
         <div class="tl-dot"></div>
         <div class="exp-inner">
-          <div class="exp-logo"><img src="codsoft.jpeg" alt="CodSoft" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
+          <div class="exp-logo"><img src="codsoft.jpeg" alt="CodSoft" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">AUG 2025 · 1 MONTH</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Web Development Intern</h3>
@@ -873,43 +877,43 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
         <div>
           <div class="scat">Languages</div>
           <div style="display:flex;flex-wrap:wrap;gap:9px">
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/python.svg" alt="">Python</span>
-            <span class="pill"><img src="https://api.iconify.design/fa6-brands/java.svg" alt="">Java</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/cplusplus.svg" alt="">C++</span>
-            <span class="pill"><img src="https://api.iconify.design/tabler/sql.svg" alt="">SQL</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/javascript.svg" alt="">JavaScript</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/html5.svg" alt="">HTML5</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/css3.svg" alt="">CSS3</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/python.svg" loading="lazy" alt="">Python</span>
+            <span class="pill"><img src="https://api.iconify.design/fa6-brands/java.svg" loading="lazy" alt="">Java</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/cplusplus.svg" loading="lazy" alt="">C++</span>
+            <span class="pill"><img src="https://api.iconify.design/tabler/sql.svg" loading="lazy" alt="">SQL</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/javascript.svg" loading="lazy" alt="">JavaScript</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/html5.svg" loading="lazy" alt="">HTML5</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/css3.svg" loading="lazy" alt="">CSS3</span>
           </div>
         </div>
         <div>
           <div class="scat">Libraries &amp; Frameworks</div>
           <div style="display:flex;flex-wrap:wrap;gap:9px">
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/scikitlearn.svg" alt="">Scikit-learn</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/pytorch.svg" alt="">PyTorch</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/pandas.svg" alt="">Pandas</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/numpy.svg" alt="">NumPy</span>
-            <span class="pill"><img src="https://api.iconify.design/carbon/machine-learning-model.svg" alt="">XGBoost</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/flask.svg" alt="">Flask</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/fastapi.svg" alt="">FastAPI</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/react.svg" alt="">React</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/openai.svg" alt="">OpenAI</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/scikitlearn.svg" loading="lazy" alt="">Scikit-learn</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/pytorch.svg" loading="lazy" alt="">PyTorch</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/pandas.svg" loading="lazy" alt="">Pandas</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/numpy.svg" loading="lazy" alt="">NumPy</span>
+            <span class="pill"><img src="https://api.iconify.design/carbon/machine-learning-model.svg" loading="lazy" alt="">XGBoost</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/flask.svg" loading="lazy" alt="">Flask</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/fastapi.svg" loading="lazy" alt="">FastAPI</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/react.svg" loading="lazy" alt="">React</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/openai.svg" loading="lazy" alt="">OpenAI</span>
           </div>
         </div>
         <div>
           <div class="scat">Tools &amp; Platforms</div>
           <div style="display:flex;flex-wrap:wrap;gap:9px">
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/amazonaws.svg" alt="">Amazon AWS</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/streamlit.svg" alt="">Streamlit</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/git.svg" alt="">Git</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/jupyter.svg" alt="">Jupyter</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/powerbi.svg" alt="">Power BI</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/docker.svg" alt="">Docker</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/visualstudiocode.svg" alt="">VS Code</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/googledocs.svg" alt="">Google Docs</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/microsoftexcel.svg" alt="">Excel</span>
-            <span class="pill"><img src="https://api.iconify.design/mdi/calculator-variant-outline.svg" alt="">Tally</span>
-            <span class="pill"><img src="https://api.iconify.design/mdi/chip.svg" alt="">VHDL</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/amazonaws.svg" loading="lazy" alt="">Amazon AWS</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/streamlit.svg" loading="lazy" alt="">Streamlit</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/git.svg" loading="lazy" alt="">Git</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/jupyter.svg" loading="lazy" alt="">Jupyter</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/powerbi.svg" loading="lazy" alt="">Power BI</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/docker.svg" loading="lazy" alt="">Docker</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/visualstudiocode.svg" loading="lazy" alt="">VS Code</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/googledocs.svg" loading="lazy" alt="">Google Docs</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/microsoftexcel.svg" loading="lazy" alt="">Excel</span>
+            <span class="pill"><img src="https://api.iconify.design/mdi/calculator-variant-outline.svg" loading="lazy" alt="">Tally</span>
+            <span class="pill"><img src="https://api.iconify.design/mdi/chip.svg" loading="lazy" alt="">VHDL</span>
           </div>
         </div>
       </div>
@@ -930,7 +934,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
         <div class="mem-card">
           <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
             <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <img src="https://api.iconify.design/ri/team-fill.svg?color=%235E8B95" style="width:26px;height:26px" alt="IEEE">
+              <img src="https://api.iconify.design/ri/team-fill.svg?color=%235E8B95" loading="lazy" style="width:26px;height:26px" alt="IEEE">
             </div>
             <div style="min-width:0">
               <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
@@ -979,7 +983,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:.8rem">
-          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%235E8B95" style="width:18px;height:18px;display:block" alt=""></div>
+          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/briefcase-4-fill.svg?color=%235E8B95" loading="lazy" style="width:18px;height:18px;display:block" alt=""></div>
           <h4 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0)">IndiaFirst Life (Bank of Baroda)</h4>
         </div>
         <p style="font-family:var(--serif);font-size:.85rem;font-weight:300;color:var(--t2);line-height:1.85">Unexpectedly shortlisted via Foundit and successfully cleared an interview for a Business Administration/Management role as a 6th-semester undergrad. Secured a 2-month training program with a stipend, leading to a full-time offer but respectfully declined to focus on 6th-semester studies.</p>
@@ -987,7 +991,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:.8rem">
-          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/trophy-fill.svg?color=%235E8B95" style="width:18px;height:18px;display:block" alt=""></div>
+          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/trophy-fill.svg?color=%235E8B95" loading="lazy" style="width:18px;height:18px;display:block" alt=""></div>
           <h4 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0)">HackerRank</h4>
         </div>
         <p style="font-family:var(--serif);font-size:.85rem;font-weight:300;color:var(--t2);line-height:1.85">Gold Level (5 Star) in Python, Silver Level (3 Star) in Java.</p>
@@ -995,7 +999,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:.8rem">
-          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/award-fill.svg?color=%235E8B95" style="width:18px;height:18px;display:block" alt=""></div>
+          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/award-fill.svg?color=%235E8B95" loading="lazy" style="width:18px;height:18px;display:block" alt=""></div>
           <h4 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0)">SIH '25 Semi-Finalist</h4>
         </div>
         <p style="font-family:var(--serif);font-size:.85rem;font-weight:300;color:var(--t2);line-height:1.85">'Digi-Pramaan' — Top finalist out of <strong style="color:var(--t1);font-weight:700">250+ teams</strong> in the college internal round of Smart India Hackathon 2025.</p>
@@ -1003,7 +1007,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:.8rem">
-          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/code-box-fill.svg?color=%235E8B95" style="width:18px;height:18px;display:block" alt=""></div>
+          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/code-box-fill.svg?color=%235E8B95" loading="lazy" style="width:18px;height:18px;display:block" alt=""></div>
           <h4 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0)">Problem Solving</h4>
         </div>
         <p style="font-family:var(--serif);font-size:.85rem;font-weight:300;color:var(--t2);line-height:1.85">Solved <strong style="color:var(--t1);font-weight:700">500+ problems</strong> on LeetCode and HackerRank, improving algorithmic thinking and coding efficiency.</p>
@@ -1011,7 +1015,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       <div class="ach">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:.8rem">
-          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/team-fill.svg?color=%235E8B95" style="width:18px;height:18px;display:block" alt=""></div>
+          <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/team-fill.svg?color=%235E8B95" loading="lazy" style="width:18px;height:18px;display:block" alt=""></div>
           <h4 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0)">Extracurricular Leadership</h4>
         </div>
         <p style="font-family:var(--serif);font-size:.85rem;font-weight:300;color:var(--t2);line-height:1.85">Active member of 'Samaritans' social club since first year of my undergrad degree — community initiatives, collaborative events and also in debates and quiz competitions.</p>
@@ -1021,7 +1025,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
     <div class="card up" style="padding:2.25rem">
       <div style="display:flex;align-items:center;gap:11px;margin-bottom:1.4rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line)">
-        <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%235E8B95" style="width:18px;height:18px;display:block" alt=""></div>
+        <div style="padding:9px;border-radius:10px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0"><img src="https://api.iconify.design/ri/file-paper-2-fill.svg?color=%235E8B95" loading="lazy" style="width:18px;height:18px;display:block" alt=""></div>
         <h4 style="font-family:var(--serif);font-size:1.2rem;font-weight:900;color:var(--t0)">Certifications</h4>
       </div>
       <div class="cert-grid">
@@ -1078,13 +1082,13 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       </a>
 
       <div class="contact-icons">
-        <a href="mailto:anushkadas05das@gmail.com" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/mail-send-line.svg" style="width:19px;height:19px" alt="Email"></a>
-        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/linkedin-line.svg" style="width:19px;height:19px" alt="LinkedIn"></a>
-        <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/github-line.svg" style="width:19px;height:19px" alt="GitHub"></a>
-        <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/twitter-x-line.svg" style="width:19px;height:19px" alt="X"></a>
-        <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd"><img src="https://api.iconify.design/ri/google-line.svg" style="width:19px;height:19px" alt="Google Dev"></a>
-        <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Discord: anushka.sys"><img src="https://api.iconify.design/fa6-brands/discord.svg" style="width:19px;height:19px" alt="Discord"></a>
-        <a href="https://instagram.com/caffeinated.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Instagram: caffeinated.sys"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:19px;height:19px" alt="Instagram"></a>
+        <a href="mailto:anushkadas05das@gmail.com" class="ib ib-md ib-rnd" aria-label="Email Me"><img src="https://api.iconify.design/ri/mail-send-line.svg" loading="lazy" style="width:19px;height:19px" alt="Email"></a>
+        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg" loading="lazy" style="width:19px;height:19px" alt="LinkedIn"></a>
+        <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" loading="lazy" style="width:19px;height:19px" alt="GitHub"></a>
+        <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="X (Twitter)"><img src="https://api.iconify.design/ri/twitter-x-line.svg" loading="lazy" style="width:19px;height:19px" alt="X"></a>
+        <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="Google Developers Profile"><img src="https://api.iconify.design/ri/google-line.svg" loading="lazy" style="width:19px;height:19px" alt="Google Dev"></a>
+        <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" loading="lazy" style="width:19px;height:19px" alt="Discord"></a>
+        <a href="https://instagram.com/caffeinated.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Instagram: caffeinated.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" loading="lazy" style="width:19px;height:19px" alt="Instagram"></a>
       </div>
 
       <div style="height:1px;background:var(--line);margin:0 auto 2rem;max-width:360px"></div>
@@ -1100,6 +1104,10 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
   const saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
   document.body.setAttribute('data-theme', saved);
+  
+  /* Set initial meta theme-color */
+  const metaTheme = document.getElementById('theme-color-meta');
+  if(metaTheme) metaTheme.setAttribute('content', saved === 'dark' ? '#0C0C0C' : '#F7F5F0');
 })();
 
 document.getElementById('thm').addEventListener('click', () => {
@@ -1108,6 +1116,10 @@ document.getElementById('thm').addEventListener('click', () => {
   document.body.setAttribute('data-theme', next);
   document.documentElement.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
+  
+  /* Sync meta theme-color with toggle */
+  const metaTheme = document.getElementById('theme-color-meta');
+  if(metaTheme) metaTheme.setAttribute('content', next === 'dark' ? '#0C0C0C' : '#F7F5F0');
 });
 
 /* Scroll Progress Tracker */
