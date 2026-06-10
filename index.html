@@ -505,62 +505,6 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 .hero-text{max-width:720px}
 .hero-socials{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 
-/* INLINE MOBILE NAV STYLES */
-.mob-inline-nav { display: none; }
-@media (max-width: 899px) {
-  .mob-inline-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  .mob-inline-nav a {
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--t2);
-    padding: 6px 14px;
-    background: var(--sfc2);
-    border: 1px solid var(--line2);
-    border-radius: 20px;
-    text-transform: lowercase;
-    transition: all 0.28s cubic-bezier(.4,0,.2,1);
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .mob-inline-nav a.mob-active,
-  .mob-inline-nav a:hover,
-  .mob-inline-nav a:active {
-    color: var(--bg0);
-    background: var(--accent);
-    border-color: var(--accent);
-    box-shadow: 0 4px 15px var(--accent-glow);
-    transform: translateY(-2px);
-  }
-  .mob-inline-nav a.mob-active .social-ico,
-  .mob-inline-nav a:hover .social-ico,
-  .mob-inline-nav a:active .social-ico {
-    opacity: 1;
-    filter: invert(0); /* Make icons dark when background becomes accent color */
-  }
-  
-  .mob-inline-nav a.mob-social {
-    padding: 8px;
-    border-radius: 50%;
-    border-color: var(--line2);
-    background: transparent;
-  }
-  .mob-inline-nav a.mob-social:hover {
-    background: var(--sfc2);
-    transform: translateY(-2px);
-  }
-}
-
 /* CARD HEADER */
 .card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem}
 .card-header h3{flex:1;min-width:0}
@@ -755,33 +699,6 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
                 <a href="https://instagram.com/caffeinated.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:18px;height:18px" alt="Instagram"></a>
               </div>
             </div>
-          </div>
-
-          <!-- INLINE MOBILE NAVIGATION (Scrollable Chips) -->
-          <div class="mob-inline-nav hero-a d1">
-            <a href="#about">about</a>
-            <a href="#research">research</a>
-            <a href="#projects">projects</a>
-            <a href="#experience">experience</a>
-            <a href="#skills">skills</a>
-            <a href="#memberships">memberships</a>
-            <a href="#education">education</a>
-            <a href="#achievements">achievements</a>
-            <a href="#resume">resume ↗</a>
-            <a href="#contact">contact</a>
-            
-            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="mob-social" aria-label="GitHub">
-              <img src="https://api.iconify.design/ri/github-fill.svg" class="social-ico" alt="GitHub">
-            </a>
-            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="mob-social" aria-label="LinkedIn">
-              <img src="https://api.iconify.design/ri/linkedin-fill.svg" class="social-ico" alt="LinkedIn">
-            </a>
-            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="mob-social" aria-label="Twitter">
-              <img src="https://api.iconify.design/ri/twitter-x-line.svg" class="social-ico" alt="Twitter">
-            </a>
-            <a href="mailto:anushkadas05das@gmail.com" class="mob-social" aria-label="Email">
-              <img src="https://api.iconify.design/ri/mail-fill.svg" class="social-ico" alt="Email">
-            </a>
           </div>
 
         </div>
