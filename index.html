@@ -50,7 +50,6 @@ overflow-x:hidden;transition:background .35s ease,color .35s ease;
 a{text-decoration:none;color:inherit}
 img{display:block}
 
-/* Accessibility focus outlines for keyboard navigation */
 a:focus-visible, button:focus-visible { outline: 2px dashed var(--accent); outline-offset: 4px; border-radius: 4px; }
 
 ::-webkit-scrollbar{width:6px}
@@ -58,7 +57,6 @@ a:focus-visible, button:focus-visible { outline: 2px dashed var(--accent); outli
 ::-webkit-scrollbar-thumb{background:var(--accent-ring);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
-/* SCROLL PROGRESS BAR */
 #scroll-progress {
   position: fixed; top: 0; left: 0; width: 0%; height: 2px;
   background: var(--accent-hi); z-index: 9999;
@@ -66,7 +64,6 @@ a:focus-visible, button:focus-visible { outline: 2px dashed var(--accent); outli
   transition: width 0.1s ease-out;
 }
 
-/* NOISE OVERLAY */
 body::before{
 content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.018;
 background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -110,22 +107,64 @@ color:var(--accent);background:var(--accent-lo);transition:all .25s;
 /* HAMBURGER */
 #hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
 .hbar{display:block;height:1.5px;background:var(--t1);border-radius:1px;transition:all .3s}
+
+/* ===== MOBILE MENU — UPDATED ===== */
 #mob-menu{
-position:fixed;top:58px;right:-100%;bottom:0;width:280px;max-width:85vw;
-background:var(--bg0);border-left:1px solid var(--line2);z-index:99;
-padding:2rem 1.5rem;display:flex;flex-direction:column;gap:6px;
-transition:right .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;
+  position:fixed;
+  top:58px;
+  right:-100%;
+  bottom:0;
+  width:300px;
+  max-width:90vw;
+  background:var(--bg0);
+  border-left:1px solid var(--line2);
+  z-index:99;
+  padding:2.25rem 1.5rem 2.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  transition:right .35s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;
 }
 #mob-menu.open{right:0}
+
+/* Subtitle at top */
+#mob-menu::before{
+  content:'cs student & ml researcher';
+  display:block;
+  font-family:var(--sans);
+  font-size:0.78rem;
+  font-weight:400;
+  color:var(--t3);
+  letter-spacing:0.02em;
+  margin-bottom:1.6rem;
+  padding:0 4px;
+}
+
 #mob-menu a{
-font-family:var(--sans);font-size:1.05rem;font-weight:400;
-letter-spacing:normal;text-transform:lowercase;color:var(--t1);
-padding:12px 18px;border-radius:8px;border-bottom:none;
-transition:background .2s ease, color .2s ease;
+  font-family:var(--sans);
+  font-size:1.3rem;
+  font-weight:400;
+  letter-spacing:-0.01em;
+  text-transform:lowercase;
+  color:var(--t2);
+  padding:14px 20px;
+  border-radius:14px;
+  border-bottom:none;
+  transition:background .2s ease, color .2s ease;
+  display:block;
 }
-#mob-menu a:hover, #mob-menu a:active{
-background:var(--sfc2);color:var(--t0);
+#mob-menu a:hover{
+  background:var(--sfc2);
+  color:var(--t0);
 }
+#mob-menu a.mob-active{
+  background:var(--sfc2);
+  color:var(--t0);
+  font-weight:500;
+}
+/* ===== END MOBILE MENU ===== */
+
 #mob-overlay{position:fixed;inset:0;top:58px;background:rgba(0,0,0,.65);backdrop-filter:blur(4px);z-index:98;opacity:0;pointer-events:none;transition:opacity .35s}
 #mob-overlay.open{opacity:1;pointer-events:auto}
 
@@ -226,8 +265,6 @@ transition:all .25s;
 }
 .tag:hover{background:var(--accent);color:var(--bg0);box-shadow: 0 0 10px var(--accent-glow);}
 .tag-green{background:rgba(100,200,130,.07);border-color:rgba(100,200,130,.2);color:#64C882}
-
-/* Overlay tags for images */
 .tag-overlay {
   background: rgba(12, 12, 12, 0.85);
   backdrop-filter: blur(4px);
@@ -459,7 +496,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 /* ORB */
 .orb{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;transition:background .4s}
 
-/* BG LINES - Animated */
+/* BG LINES */
 @keyframes panGrid {
   0% { background-position: 0 0; }
   100% { background-position: 60px 60px; }
@@ -509,16 +546,16 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
 <div id="mob-overlay" onclick="closeMob()"></div>
 <div id="mob-menu">
-  <a href="#about"        onclick="closeMob()">About</a>
-  <a href="#research"     onclick="closeMob()">Research</a>
-  <a href="#projects"     onclick="closeMob()">Projects</a>
-  <a href="#experience"   onclick="closeMob()">Experience</a>
-  <a href="#skills"       onclick="closeMob()">Skills</a>
-  <a href="#memberships"  onclick="closeMob()">Memberships</a>
-  <a href="#education"    onclick="closeMob()">Education</a>
-  <a href="#achievements" onclick="closeMob()">Achievements</a>
-  <a href="#resume"       onclick="closeMob()">Resume</a>
-  <a href="#contact"      onclick="closeMob()">Contact</a>
+  <a href="#about"        onclick="closeMob()">about</a>
+  <a href="#research"     onclick="closeMob()">research</a>
+  <a href="#projects"     onclick="closeMob()">projects</a>
+  <a href="#experience"   onclick="closeMob()">experience</a>
+  <a href="#skills"       onclick="closeMob()">skills</a>
+  <a href="#memberships"  onclick="closeMob()">memberships</a>
+  <a href="#education"    onclick="closeMob()">education</a>
+  <a href="#achievements" onclick="closeMob()">achievements</a>
+  <a href="#resume"       onclick="closeMob()">resume</a>
+  <a href="#contact"      onclick="closeMob()">contact</a>
 </div>
 
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
@@ -760,7 +797,6 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
       <div class="pimg" style="height:280px">
         <img src="project-digipramaan.png" alt="Digi-Pramaan" loading="lazy">
         <div class="pimg-grad"></div>
-       
       </div>
       <div class="feat-inner">
         <div class="card-header" style="margin-bottom:.85rem">
@@ -771,7 +807,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
         <div style="display:flex;flex-direction:column;gap:7px"><div class="bul">Decentralized academic authenticity platform combining OCR &amp; AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</div><div class="bul">MetaMask wallet integration for authenticated, tamper-proof certificate issuance. Top finalist out of 250+ teams in SIH 2025 internal round.</div></div>
       </div>
     </div>
-   
+
     <div class="lft" style="margin-top:3rem;text-align:center">
       <p style="font-family:var(--serif);font-size:.875rem;font-weight:300;font-style:italic;color:var(--t3);margin-bottom:1.5rem">These are just some highlights. Explore all repositories, experiments, and works-in-progress.</p>
       <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-o">
@@ -1119,8 +1155,6 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
   const saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
   document.body.setAttribute('data-theme', saved);
-  
-  /* Set initial meta theme-color */
   const metaTheme = document.getElementById('theme-color-meta');
   if(metaTheme) metaTheme.setAttribute('content', saved === 'dark' ? '#0C0C0C' : '#F7F5F0');
 })();
@@ -1131,20 +1165,19 @@ document.getElementById('thm').addEventListener('click', () => {
   document.body.setAttribute('data-theme', next);
   document.documentElement.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
-  
-  /* Sync meta theme-color with toggle */
   const metaTheme = document.getElementById('theme-color-meta');
   if(metaTheme) metaTheme.setAttribute('content', next === 'dark' ? '#0C0C0C' : '#F7F5F0');
 });
 
-/* Scroll Progress Tracker */
+/* Scroll Progress */
 window.addEventListener('scroll', () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const scrolled = (winScroll / height) * 100;
   document.getElementById('scroll-progress').style.width = scrolled + "%";
-});
+}, {passive:true});
 
+/* Nav resize */
 function resizeNav(){
   const dn = document.getElementById('dnav');
   const hb = document.getElementById('hbg');
@@ -1154,26 +1187,56 @@ function resizeNav(){
 resizeNav();
 window.addEventListener('resize', resizeNav);
 
+/* Hamburger */
 const hbg = document.getElementById('hbg');
 const mm  = document.getElementById('mob-menu');
 const mo  = document.getElementById('mob-overlay');
+
 hbg.addEventListener('click', () => {
   const o = mm.classList.toggle('open');
   mo.classList.toggle('open', o);
   const ls = hbg.querySelectorAll('.hbar');
-  if(o){ ls[0].style.transform='translateY(6.5px) rotate(45deg)'; ls[1].style.opacity='0'; ls[2].style.transform='translateY(-6.5px) rotate(-45deg)'; ls[2].style.width='22px'; }
-  else { ls.forEach(l=>{ l.style.transform=''; l.style.opacity=''; }); ls[2].style.width='14px'; }
+  if(o){
+    ls[0].style.transform='translateY(6.5px) rotate(45deg)';
+    ls[1].style.opacity='0';
+    ls[2].style.transform='translateY(-6.5px) rotate(-45deg)';
+    ls[2].style.width='22px';
+  } else {
+    ls.forEach(l=>{ l.style.transform=''; l.style.opacity=''; });
+    ls[2].style.width='14px';
+  }
 });
+
 function closeMob(){
-  mm.classList.remove('open'); mo.classList.remove('open');
+  mm.classList.remove('open');
+  mo.classList.remove('open');
   const ls = hbg.querySelectorAll('.hbar');
-  ls.forEach(l=>{ l.style.transform=''; l.style.opacity=''; }); ls[2].style.width='14px';
+  ls.forEach(l=>{ l.style.transform=''; l.style.opacity=''; });
+  ls[2].style.width='14px';
 }
 
+/* Mobile menu active state */
+function setMobActive(){
+  const links = document.querySelectorAll('#mob-menu a[href^="#"]');
+  const sections = [...document.querySelectorAll('section[id]')];
+  let current = sections[0] ? sections[0].id : '';
+  sections.forEach(s => {
+    if(window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  links.forEach(a => {
+    const href = a.getAttribute('href').replace('#','');
+    a.classList.toggle('mob-active', href === current);
+  });
+}
+window.addEventListener('scroll', setMobActive, {passive:true});
+window.addEventListener('load', setMobActive);
+
+/* Back to top */
 window.addEventListener('scroll', () => {
   document.getElementById('btt').classList.toggle('show', window.scrollY > 400);
 }, {passive:true});
 
+/* Smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
@@ -1181,11 +1244,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+/* Intersection observer for scroll animations */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
 }, {threshold: 0.07});
 document.querySelectorAll('.up,.lft,.rgt,.sgrid,.sfade').forEach(el => io.observe(el));
 
+/* Active nav link */
 const secs = document.querySelectorAll('section[id]');
 const nls  = document.querySelectorAll('.nav-a');
 const nIO = new IntersectionObserver(entries => {
@@ -1199,6 +1264,7 @@ const nIO = new IntersectionObserver(entries => {
 }, {threshold:.3});
 secs.forEach(s => nIO.observe(s));
 
+/* Typewriter */
 const words = ["AI · Machine Learning · Full-Stack", "Data Science · Web Dev", "Problem Solver"];
 let wi=0, ci=0, del=false;
 const el = document.getElementById('typ');
