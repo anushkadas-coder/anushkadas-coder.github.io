@@ -112,17 +112,20 @@ color:var(--accent);background:var(--accent-lo);transition:all .25s;
 .hbar{display:block;height:1.5px;background:var(--t1);border-radius:1px;transition:all .3s}
 #mob-menu{
 position:fixed;top:58px;right:-100%;bottom:0;width:280px;max-width:85vw;
-background:var(--bg1);border-left:1px solid var(--line2);z-index:99;
-padding:2rem 1.5rem;display:flex;flex-direction:column;gap:4px;
+background:var(--bg0);border-left:1px solid var(--line2);z-index:99;
+padding:2rem 1.5rem;display:flex;flex-direction:column;gap:6px;
 transition:right .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;
 }
 #mob-menu.open{right:0}
 #mob-menu a{
-font-family:var(--mono);font-size:.65rem;font-weight:500;
-letter-spacing:.12em;text-transform:uppercase;color:var(--t2);
-padding:.9rem 0;border-bottom:1px solid var(--line);transition:color .25s,transform .25s;
+font-family:var(--sans);font-size:1.05rem;font-weight:400;
+letter-spacing:normal;text-transform:lowercase;color:var(--t1);
+padding:12px 18px;border-radius:8px;border-bottom:none;
+transition:background .2s ease, color .2s ease;
 }
-#mob-menu a:hover{color:var(--accent);transform:translateX(6px)}
+#mob-menu a:hover, #mob-menu a:active{
+background:var(--sfc2);color:var(--t0);
+}
 #mob-overlay{position:fixed;inset:0;top:58px;background:rgba(0,0,0,.65);backdrop-filter:blur(4px);z-index:98;opacity:0;pointer-events:none;transition:opacity .35s}
 #mob-overlay.open{opacity:1;pointer-events:auto}
 
@@ -402,7 +405,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
   100% { transform: translateY(0px); }
 }
 @media(max-width:1023px){.hero-canvas{max-width:300px;aspect-ratio:1/1}}
-@media(max-width:480px){.hero-canvas{max-width:240px; animation: none;}}
+@media(max-width:480px){.hero-canvas{max-width:240px;}}
 .hero-text{max-width:720px}
 .hero-socials{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 
