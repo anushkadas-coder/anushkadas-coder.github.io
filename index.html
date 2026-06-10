@@ -435,14 +435,14 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 /* HERO */
 .hero-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
 @media(min-width:1024px){.hero-grid{grid-template-columns:1fr 1fr;gap:5rem}}
-.hero-canvas{position:relative;width:100%;max-width:460px;aspect-ratio:4/5;margin:0 auto; animation: float 6s ease-in-out infinite;}
+.hero-canvas{position:relative;width:100%;max-width:360px;aspect-ratio:4/5;margin:0 auto; animation: float 6s ease-in-out infinite;}
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
 }
-@media(max-width:1023px){.hero-canvas{max-width:300px;aspect-ratio:1/1}}
-@media(max-width:480px){.hero-canvas{max-width:240px;}}
+@media(max-width:1023px){.hero-canvas{max-width:240px;aspect-ratio:1/1}}
+@media(max-width:480px){.hero-canvas{max-width:180px;}}
 .hero-text{max-width:720px}
 .hero-socials{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 
