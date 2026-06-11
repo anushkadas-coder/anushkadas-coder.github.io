@@ -433,19 +433,66 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 .ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
 
 /* HERO */
-.hero-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
-@media(min-width:1024px){.hero-grid{grid-template-columns:1fr 1fr;gap:5rem}}
-.hero-canvas{position:relative;width:100%;max-width:360px;aspect-ratio:4/5;margin:0 auto; animation: float 6s ease-in-out infinite;}
+.hero-grid {
+  display: block; /* Removes grid on mobile so long text takes full width */
+  position: relative;
+}
+
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  aspect-ratio: 4/5;
+  animation: float 6s ease-in-out infinite;
+  z-index: 10;
+}
+
+/* Prevents the top headers from overlapping the image on mobile */
+.hero-text .d1, .hero-text .d2, .hero-text .d3 {
+  max-width: calc(100% - 130px);
+}
+
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
 }
-@media(max-width:1023px){.hero-canvas{max-width:240px;aspect-ratio:1/1}}
-@media(max-width:480px){.hero-canvas{max-width:180px;}}
 
-.hero-text{max-width:720px}
-.hero-socials{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+/* Small mobile tweaks */
+@media(max-width: 480px) {
+  .hero-canvas { width: 105px; }
+  .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 115px); }
+}
+
+/* Tablet tweaks */
+@media(min-width: 600px) and (max-width: 1023px) {
+  .hero-canvas { width: 160px; }
+  .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 180px); }
+}
+
+/* Restore the perfect 50/50 split for Desktops */
+@media(min-width: 1024px) {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .hero-canvas {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 360px;
+  }
+  .hero-text .d1, .hero-text .d2, .hero-text .d3 {
+    max-width: none;
+  }
+}
+
+.hero-text { max-width: 720px; }
+.hero-socials { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 
 /* CARD HEADER */
 .card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:.85rem}
@@ -627,7 +674,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       </div>
 
-      <div class="hero-canvas corner-frame" style="order:-1">
+      <div class="hero-canvas corner-frame">
         <span></span><span></span><span></span><span></span>
         <img src="osaragi.webp" alt="Profile" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:1px solid var(--accent-ring);border-radius:10px;filter:drop-shadow(0 0 20px rgba(94,139,149,.25))">
       </div>
