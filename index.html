@@ -433,16 +433,35 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 .ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
 
 /* HERO */
-.hero-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
-@media(min-width:1024px){.hero-grid{grid-template-columns:1fr 1fr;gap:5rem}}
-.hero-canvas{position:relative;width:100%;max-width:360px;aspect-ratio:4/5;margin:0 auto; animation: float 6s ease-in-out infinite;}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 110px; /* Keeps text left, limits image width on mobile */
+  gap: 1.25rem;
+  align-items: center;
+}
+@media(min-width: 600px) {
+  .hero-grid { grid-template-columns: 1.5fr 1fr; gap: 3rem; }
+}
+@media(min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
+}
+
+.hero-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4/5;
+  margin: 0 auto;
+  animation: float 6s ease-in-out infinite;
+}
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
 }
-@media(max-width:1023px){.hero-canvas{max-width:240px;aspect-ratio:1/1}}
-@media(max-width:480px){.hero-canvas{max-width:180px;}}
+@media(max-width:1023px) { .hero-canvas { max-width: 240px; aspect-ratio: 4/5; } }
+@media(max-width:480px) { .hero-canvas { max-width: 110px; } }
+
 .hero-text{max-width:720px}
 .hero-socials{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 
@@ -626,7 +645,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
       </div>
 
-      <div class="hero-canvas corner-frame" style="order:-1">
+      <div class="hero-canvas corner-frame">
         <span></span><span></span><span></span><span></span>
         <img src="osaragi.webp" alt="Profile" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:1px solid var(--accent-ring);border-radius:10px;filter:drop-shadow(0 0 20px rgba(94,139,149,.25))">
       </div>
