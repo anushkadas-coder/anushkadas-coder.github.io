@@ -316,9 +316,9 @@ padding:7px 14px;border-radius:8px;
 background:var(--sfc2);border:1px solid var(--line2);color:var(--t1);
 transition:all .28s cubic-bezier(.4,0,.2,1);cursor:default;
 }
-.pill img{width:14px;height:14px;transition:filter .3s; filter: var(--icon-filter);}
+.pill img{width:14px;height:14px;transition:opacity .3s;}
 .pill:hover{border-color:var(--accent-ring);background:var(--accent-lo);color:var(--accent);transform:translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
-.pill:hover img{filter: var(--icon-filter) opacity(0.8) !important;}
+.pill:hover img{opacity:0.8 !important;}
 
 /* BUL */
 .bul{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--t2);line-height:1.75}
@@ -642,8 +642,7 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
           A 20 year old IT undergrad and an ML/DL Engineer with strong research interests in AIML. I build AI systems that can see and understand the world, and I love exploring how intelligent agents solve real-world challenges. Additionally, I have 4+ years of hands-on experience in Web Development and DSA problem solving. 
         </p>
         <p class="hero-a d4" style="font-size:.875rem;color:var(--t3);line-height:1.85;max-width:580px;margin-bottom:2.25rem">
-  >> Proud member of 
-  <img src="https://api.iconify.design/logos/google-icon.svg" style="display:inline-block;vertical-align:-2px;width:14px;height:14px;margin-right:5px" alt="Google">
+  >> Proud member of&nbsp;<img src="https://api.iconify.design/logos/google-icon.svg" style="display:inline-block;vertical-align:-2px;width:14px;height:14px;margin-right:5px" alt="Google">
   <strong style="color:var(--t1);font-weight:700">Google's Women Techmakers</strong> and 
   <img src="https://api.iconify.design/simple-icons/ieee.svg?color=%2300629B" style="display:inline-block;vertical-align:-3px;width:18px;height:18px;margin-right:4px" alt="IEEE">
   <strong style="color:var(--t1);font-weight:700">IEEE Robotics &amp; Automation Society</strong>. And I am also part of the 
@@ -991,47 +990,46 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
         <div>
           <div class="scat">Languages</div>
           <div style="display:flex;flex-wrap:wrap;gap:9px">
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/python.svg" loading="lazy" alt="">Python</span>
-            <span class="pill"><img src="https://api.iconify.design/fa6-brands/java.svg" loading="lazy" alt="">Java</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/cplusplus.svg" loading="lazy" alt="">C++</span>
-            <span class="pill"><img src="https://api.iconify.design/tabler/sql.svg" loading="lazy" alt="">SQL</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/javascript.svg" loading="lazy" alt="">JavaScript</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/html5.svg" loading="lazy" alt="">HTML5</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/css3.svg" loading="lazy" alt="">CSS3</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/python.svg" loading="lazy" alt="">Python</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/java.svg" loading="lazy" alt="">Java</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/c-plusplus.svg" loading="lazy" alt="">C++</span>
+            <span class="pill"><img src="https://api.iconify.design/vscode-icons/file-type-sql.svg" loading="lazy" alt="">SQL</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/javascript.svg" loading="lazy" alt="">JavaScript</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/html-5.svg" loading="lazy" alt="">HTML5</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/css-3.svg" loading="lazy" alt="">CSS3</span>
           </div>
         </div>
         <div>
           <div class="scat">Libraries &amp; Frameworks</div>
           <div style="display:flex;flex-wrap:wrap;gap:9px">
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/scikitlearn.svg" loading="lazy" alt="">Scikit-learn</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/pytorch.svg" loading="lazy" alt="">PyTorch</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/pandas.svg" loading="lazy" alt="">Pandas</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/numpy.svg" loading="lazy" alt="">NumPy</span>
-            <span class="pill"><img src="https://api.iconify.design/carbon/machine-learning-model.svg" loading="lazy" alt="">XGBoost</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/flask.svg" loading="lazy" alt="">Flask</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/fastapi.svg" loading="lazy" alt="">FastAPI</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/react.svg" loading="lazy" alt="">React</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/openai.svg" loading="lazy" alt="">OpenAI</span>
+            <span class="pill"><img src="https://api.iconify.design/devicon/scikitlearn.svg" loading="lazy" alt="">Scikit-learn</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/pytorch-icon.svg" loading="lazy" alt="">PyTorch</span>
+            <span class="pill"><img src="https://api.iconify.design/devicon/pandas.svg" loading="lazy" alt="">Pandas</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/numpy.svg" loading="lazy" alt="">NumPy</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/xgboost.svg?color=%23189DE4" loading="lazy" alt="">XGBoost</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/flask.svg?color=var(--t0)" loading="lazy" alt="">Flask</span>
+            <span class="pill"><img src="https://api.iconify.design/devicon/fastapi.svg" loading="lazy" alt="">FastAPI</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/react.svg" loading="lazy" alt="">React</span>
+            <span class="pill"><img src="https://api.iconify.design/simple-icons/openai.svg?color=var(--t0)" loading="lazy" alt="">OpenAI</span>
           </div>
         </div>
         <div>
           <div class="scat">Tools &amp; Platforms</div>
           <div style="display:flex;flex-wrap:wrap;gap:9px">
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/amazonaws.svg" loading="lazy" alt="">Amazon AWS</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/streamlit.svg" loading="lazy" alt="">Streamlit</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/git.svg" loading="lazy" alt="">Git</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/jupyter.svg" loading="lazy" alt="">Jupyter</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/powerbi.svg" loading="lazy" alt="">Power BI</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/docker.svg" loading="lazy" alt="">Docker</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/visualstudiocode.svg" loading="lazy" alt="">VS Code</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/googledocs.svg" loading="lazy" alt="">Google Docs</span>
-            <span class="pill"><img src="https://api.iconify.design/simple-icons/microsoftexcel.svg" loading="lazy" alt="">Excel</span>
-            <span class="pill"><img src="https://api.iconify.design/mdi/calculator-variant-outline.svg" loading="lazy" alt="">Tally</span>
-            <span class="pill"><img src="https://api.iconify.design/mdi/chip.svg" loading="lazy" alt="">VHDL</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/aws.svg" loading="lazy" alt="">Amazon AWS</span>
+            <span class="pill"><img src="https://api.iconify.design/devicon/streamlit.svg" loading="lazy" alt="">Streamlit</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/git-icon.svg" loading="lazy" alt="">Git</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/jupyter.svg" loading="lazy" alt="">Jupyter</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/microsoft-power-bi.svg" loading="lazy" alt="">Power BI</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/docker-icon.svg" loading="lazy" alt="">Docker</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/visual-studio-code.svg" loading="lazy" alt="">VS Code</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/google-docs.svg" loading="lazy" alt="">Google Docs</span>
+            <span class="pill"><img src="https://api.iconify.design/logos/microsoft-excel.svg" loading="lazy" alt="">Excel</span>
+            <span class="pill"><img src="https://api.iconify.design/mdi/calculator-variant-outline.svg?color=%23FFB300" loading="lazy" alt="">Tally</span>
+            <span class="pill"><img src="https://api.iconify.design/mdi/chip.svg?color=%234CAF50" loading="lazy" alt="">VHDL</span>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1044,32 +1042,39 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
     <h2 class="sec-title">Global <em>Communities</em></h2>
     <p class="sec-sub">Professional organizations driving innovation in AI and technology</p>
     <div class="sgrid pg lft">
-      <div class="mem-card">
-        <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
-          <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <img src="https://api.iconify.design/logos/google-icon.svg" loading="lazy" style="width:26px;height:26px;filter:none;" alt="Google">
+      <!-- Google Card -->
+      <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
+        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
+            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <img src="https://api.iconify.design/logos/google-icon.svg" loading="lazy" style="width:26px;height:26px;filter:none;" alt="Google">
+            </div>
+            <div style="min-width:0">
+              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
+              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">Google's Women Techmakers</h3>
+            </div>
           </div>
-          <div style="min-width:0">
-            <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
-            <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">Google's Women Techmakers</h3>
-          </div>
+          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Engaging in a global community supporting women in tech through events, learning resources, and networking.</p>
+          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View Profile</div>
         </div>
-        <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8">Engaging in a global community supporting women in tech through events, learning resources, and networking.</p>
-      </div>
+      </a>
 
-      <div class="mem-card">
-        <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
-          <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" loading="lazy" style="width:30px;height:30px;filter:none;" alt="NVIDIA">
+      <!-- NVIDIA Card -->
+      <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
+        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
+            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" loading="lazy" style="width:30px;height:30px;filter:none;" alt="NVIDIA">
+            </div>
+            <div style="min-width:0">
+              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
+              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">NVIDIA Developer Community</h3>
+            </div>
           </div>
-          <div style="min-width:0">
-            <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
-            <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">NVIDIA Developer Community</h3>
-          </div>
+          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Exploring advancements in cloud computing ecosystems and AI hardware infrastructure for accelerated GPU inference.</p>
+          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View Profile</div>
         </div>
-        <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8">Exploring advancements in cloud computing ecosystems and AI hardware infrastructure for accelerated GPU inference.</p>
-      </div>
-
+      </a>
       <!-- IEEE Card -->
       <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
         <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
