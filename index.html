@@ -11,7 +11,6 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://anushkadas-coder.github.io/osaragi.webp">
 
-<!-- Preload critical assets -->
 <link rel="preload" href="osaragi.webp" as="image">
 
 <link rel="icon" type="image/webp" href="https://anushkadas-coder.github.io/osaragi.webp">
@@ -570,15 +569,15 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
     <div style="display:flex;align-items:center;gap:14px">
       <nav id="dnav" style="display:none;align-items:center;gap:1.75rem">
         <a href="#about"        class="nav-a" data-s="about">About</a>
-        <a href="#research"     class="nav-a" data-s="research">Research</a>
-        <a href="#projects"     class="nav-a" data-s="projects">Projects</a>
         <a href="#experience"   class="nav-a" data-s="experience">Experience</a>
+        <a href="#projects"     class="nav-a" data-s="projects">Projects</a>
         <a href="#skills"       class="nav-a" data-s="skills">Skills</a>
+        <a href="#research"     class="nav-a" data-s="research">Research</a>
+        <a href="#achievements" class="nav-a" data-s="achievements">Achievements</a>
         <a href="#memberships"  class="nav-a" data-s="memberships">Members</a>
         <a href="#education"    class="nav-a" data-s="education">Education</a>
-        <a href="#achievements" class="nav-a" data-s="achievements">Achievements</a>
-        <a href="#contact"      class="nav-a" data-s="contact">Contact</a>
         <a href="#resume"       class="nav-cta">Resume ↗</a>
+        <a href="#contact"      class="nav-a" data-s="contact">Contact</a>
       </nav>
       <button id="thm" aria-label="Toggle theme">
         <svg class="ico-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
@@ -596,13 +595,13 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 <div id="mob-overlay" onclick="closeMob()"></div>
 <div id="mob-menu">
   <a href="#about"        onclick="closeMob()">about</a>
-  <a href="#research"     onclick="closeMob()">research</a>
-  <a href="#projects"     onclick="closeMob()">projects</a>
   <a href="#experience"   onclick="closeMob()">experience</a>
+  <a href="#projects"     onclick="closeMob()">projects</a>
   <a href="#skills"       onclick="closeMob()">skills</a>
+  <a href="#research"     onclick="closeMob()">research</a>
+  <a href="#achievements" onclick="closeMob()">achievements</a>
   <a href="#memberships"  onclick="closeMob()">memberships</a>
   <a href="#education"    onclick="closeMob()">education</a>
-  <a href="#achievements" onclick="closeMob()">achievements</a>
   <a href="#resume"       onclick="closeMob()">resume</a>
   <a href="#contact"      onclick="closeMob()">contact</a>
 </div>
@@ -697,46 +696,75 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
 <div class="divider"></div>
 
-<section id="research" class="anch section" style="background:var(--bg1)">
+<section id="experience" class="anch section" style="background:var(--bg1)">
   <div class="container">
-    <div class="eyebrow">Research &amp; Publications</div>
-    <h2 class="sec-title">Advancing <em>Intelligent</em> Systems</h2>
-    <p class="sec-sub">Peer-reviewed research in ML efficiency, deepfake forensics, and sovereign AI</p>
-    <div class="sgrid pg">
+    <div class="eyebrow">Experience</div>
+    <h2 class="sec-title">Professional <em>Journey</em></h2>
+    <p class="sec-sub">Engineering roles, open-source contributions, and community work</p>
 
-      <div class="card-accent" style="padding:0;overflow:hidden">
-        <div style="height:220px;overflow:hidden;position:relative">
-          <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" width="600" height="338" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
-          <div class="pimg-grad" style="border-radius:0"></div>
-          <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
-            <span class="tag tag-overlay">QLoRA</span><span class="tag tag-overlay">BITNET 1.58</span><span class="tag tag-overlay">PEFT</span><span class="tag tag-overlay">Sovereign AI</span>
+    <div class="tl sfade" style="display:flex;flex-direction:column;gap:14px">
+
+      <div class="tl-item exp-c">
+        <div class="tl-dot"></div>
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="zetheta.jpg" alt="Zetheta Algorithms" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
+          <div style="flex:1;min-width:0">
+            <div class="exp-dt" style="margin-bottom:5px">JAN 2026 · 1 MONTH</div>
+            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Blockchain Risk Developer</h3>
+            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="bul">Developed core infrastructure for the WorkBridge platform, including wallet integrations for a Crypto Fiat Bridge and a Stablecoin Stress Tester tracking collateralization ratios.</div>
+              <div class="bul">Engineered a Solidity vulnerability scanner detecting Reentrancy/Access Control flaws, and built an Avellaneda-Stoikov market-making engine to optimize bid-ask spreads.</div>
+            </div>
           </div>
-        </div>
-        <div style="padding:1.75rem">
-          <div class="card-header">
-            <h3 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0);line-height:1.45">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models [Officially lived on SSRN]</h3>
-            <div class="card-header-links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6742421" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" loading="lazy" style="width:14px;height:14px" alt=""></a></div>
-          </div>
-          <p style="font-family:var(--serif);font-size:.83rem;font-weight:300;color:var(--t2);line-height:1.85;margin-bottom:1.1rem">A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NF4 quantization, native 1.58-bit ternary architectures, and LoRA for specialized domains. <em style="color:var(--t3);font-size:.76rem">Officially lived on SSRN.</em></p>
-          <div class="chips-wrap"><span class="mchip">93% reduction in inference OpEx</span><span class="mchip">450M token TCO break-even</span></div>
         </div>
       </div>
 
-      <div class="card-accent" style="padding:0;overflow:hidden">
-        <div style="height:220px;overflow:hidden;position:relative">
-          <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" width="600" height="338" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
-          <div class="pimg-grad" style="border-radius:0"></div>
-          <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
-            <span class="tag tag-overlay">2D FFT</span><span class="tag tag-overlay">ResNet-18</span><span class="tag tag-overlay">PyTorch</span><span class="tag tag-overlay">Deepfake</span>
+      <div class="tl-item exp-c">
+        <div class="tl-dot"></div>
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="gssoc.png" alt="GSSoC" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
+          <div style="flex:1;min-width:0">
+            <div class="exp-dt" style="margin-bottom:5px">JULY 2025 – SEPT 2025</div>
+            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Open-Source Contributor</h3>
+            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">GSSoC '25 · REMOTE</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="bul">Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</div>
+              <div class="bul">Collaborated with global maintainers, participating in code reviews and optimizing algorithmic efficiency for open-source tools.</div>
+            </div>
           </div>
         </div>
-        <div style="padding:1.75rem">
-          <div class="card-header">
-            <h3 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0);line-height:1.45">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
-            <div class="card-header-links"><a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" loading="lazy" style="width:14px;height:14px" alt=""></a></div>
+      </div>
+
+      <div class="tl-item exp-c">
+        <div class="tl-dot"></div>
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="codsoft.jpeg" alt="CodSoft" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
+          <div style="flex:1;min-width:0">
+            <div class="exp-dt" style="margin-bottom:5px">AUG 2025 · 1 MONTH</div>
+            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Web Development Intern</h3>
+            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">CODSOFT · REMOTE</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="bul">Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</div>
+              <div class="bul">Ensured cross-browser compatibility and optimized front-end asset performance to refine the overall user experience.</div>
+            </div>
           </div>
-          <p style="font-family:var(--serif);font-size:.83rem;font-weight:300;color:var(--t2);line-height:1.85;margin-bottom:1.1rem">A novel, lightweight deepfake detection engine isolating synthetic fingerprints in the frequency domain. Employs micro-blur preprocessing to suppress superficial high-frequency noise, followed by 2D FFT to extract spectral magnitude maps.</p>
-          <div class="chips-wrap"><span class="mchip">99.12% on FaceForensics++</span><span class="mchip">45 FPS real-time inference</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item exp-c">
+        <div class="tl-dot"></div>
+        <div class="exp-inner">
+          <div class="exp-logo"><img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" loading="lazy" style="width:100%;height:100%;object-fit:contain"></div>
+          <div style="flex:1;min-width:0">
+            <div class="exp-dt" style="margin-bottom:5px">JAN 2025 – PRESENT</div>
+            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Member of Google's Women Techmakers</h3>
+            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">GOOGLE FOR DEVELOPERS · REMOTE</p>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="bul">Engage in a global community supporting women in tech through events, learning resources, and networking.</div>
+              <div class="bul">Participate in technical workshops and leadership initiatives to foster diversity and inclusion within the tech industry.</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -883,84 +911,6 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
 <div class="divider"></div>
 
-<section id="experience" class="anch section" style="background:var(--bg1)">
-  <div class="container">
-    <div class="eyebrow">Experience</div>
-    <h2 class="sec-title">Professional <em>Journey</em></h2>
-    <p class="sec-sub">Engineering roles, open-source contributions, and community work</p>
-
-    <div class="tl sfade" style="display:flex;flex-direction:column;gap:14px">
-
-      <div class="tl-item exp-c">
-        <div class="tl-dot"></div>
-        <div class="exp-inner">
-          <div class="exp-logo"><img src="zetheta.jpg" alt="Zetheta Algorithms" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
-          <div style="flex:1;min-width:0">
-            <div class="exp-dt" style="margin-bottom:5px">JAN 2026 · 1 MONTH</div>
-            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Blockchain Risk Developer</h3>
-            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="bul">Developed core infrastructure for the WorkBridge platform, including wallet integrations for a Crypto Fiat Bridge and a Stablecoin Stress Tester tracking collateralization ratios.</div>
-              <div class="bul">Engineered a Solidity vulnerability scanner detecting Reentrancy/Access Control flaws, and built an Avellaneda-Stoikov market-making engine to optimize bid-ask spreads.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item exp-c">
-        <div class="tl-dot"></div>
-        <div class="exp-inner">
-          <div class="exp-logo"><img src="gssoc.png" alt="GSSoC" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
-          <div style="flex:1;min-width:0">
-            <div class="exp-dt" style="margin-bottom:5px">JULY 2025 – SEPT 2025</div>
-            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Open-Source Contributor</h3>
-            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">GSSoC '25 · REMOTE</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="bul">Resolved bugs and integrated new feature modules across 4 open-source repositories via GitHub.</div>
-              <div class="bul">Collaborated with global maintainers, participating in code reviews and optimizing algorithmic efficiency for open-source tools.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item exp-c">
-        <div class="tl-dot"></div>
-        <div class="exp-inner">
-          <div class="exp-logo"><img src="codsoft.jpeg" alt="CodSoft" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:5px"></div>
-          <div style="flex:1;min-width:0">
-            <div class="exp-dt" style="margin-bottom:5px">AUG 2025 · 1 MONTH</div>
-            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Web Development Intern</h3>
-            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">CODSOFT · REMOTE</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="bul">Developed and enhanced 6+ responsive web pages using HTML, CSS, and JavaScript, significantly improving UI accessibility.</div>
-              <div class="bul">Ensured cross-browser compatibility and optimized front-end asset performance to refine the overall user experience.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-item exp-c">
-        <div class="tl-dot"></div>
-        <div class="exp-inner">
-          <div class="exp-logo"><img src="https://api.iconify.design/logos/google-developers.svg" alt="Google" loading="lazy" style="width:100%;height:100%;object-fit:contain"></div>
-          <div style="flex:1;min-width:0">
-            <div class="exp-dt" style="margin-bottom:5px">JAN 2025 – PRESENT</div>
-            <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Member of Google's Women Techmakers</h3>
-            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">GOOGLE FOR DEVELOPERS · REMOTE</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="bul">Engage in a global community supporting women in tech through events, learning resources, and networking.</div>
-              <div class="bul">Participate in technical workshops and leadership initiatives to foster diversity and inclusion within the tech industry.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <section id="skills" class="anch section" style="background:var(--bg0)">
   <div class="bg-lines"></div>
   <div class="container">
@@ -1036,84 +986,49 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
 
 <div class="divider"></div>
 
-<section id="memberships" class="anch section" style="background:var(--bg1)">
+<section id="research" class="anch section" style="background:var(--bg1)">
   <div class="container">
-    <div class="eyebrow">Memberships &amp; Affiliations</div>
-    <h2 class="sec-title">Global <em>Communities</em></h2>
-    <p class="sec-sub">Professional organizations driving innovation in AI and technology</p>
-    <div class="sgrid pg lft">
-      <!-- Google Card -->
-      <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
-        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
-          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
-            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <img src="https://api.iconify.design/logos/google-icon.svg" loading="lazy" style="width:26px;height:26px;filter:none;" alt="Google">
-            </div>
-            <div style="min-width:0">
-              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
-              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">Google's Women Techmakers</h3>
-            </div>
-          </div>
-          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Engaging in a global community supporting women in tech through events, learning resources, and networking.</p>
-          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View Profile</div>
-        </div>
-      </a>
+    <div class="eyebrow">Research &amp; Publications</div>
+    <h2 class="sec-title">Advancing <em>Intelligent</em> Systems</h2>
+    <p class="sec-sub">Peer-reviewed research in ML efficiency, deepfake forensics, and sovereign AI</p>
+    <div class="sgrid pg">
 
-      <!-- NVIDIA Card -->
-      <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
-        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
-          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
-            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" loading="lazy" style="width:30px;height:30px;filter:none;" alt="NVIDIA">
-            </div>
-            <div style="min-width:0">
-              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
-              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">NVIDIA Developer Community</h3>
-            </div>
+      <div class="card-accent" style="padding:0;overflow:hidden">
+        <div style="height:220px;overflow:hidden;position:relative">
+          <img src="research-sovereign-ai.jpeg" alt="Sovereign AI Research" width="600" height="338" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
+          <div class="pimg-grad" style="border-radius:0"></div>
+          <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
+            <span class="tag tag-overlay">QLoRA</span><span class="tag tag-overlay">BITNET 1.58</span><span class="tag tag-overlay">PEFT</span><span class="tag tag-overlay">Sovereign AI</span>
           </div>
-          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Exploring advancements in cloud computing ecosystems and AI hardware infrastructure for accelerated GPU inference.</p>
-          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View Profile</div>
         </div>
-      </a>
-      <!-- IEEE Card -->
-      <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
-        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
-          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
-            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <img src="https://api.iconify.design/simple-icons/ieee.svg?color=%2300629B" loading="lazy" style="width:34px;height:34px;filter:none;" alt="IEEE">
-            </div>
-            <div style="min-width:0">
-              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
-              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">IEEE Robotics &amp; Automation Society</h3>
-            </div>
+        <div style="padding:1.75rem">
+          <div class="card-header">
+            <h3 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0);line-height:1.45">Architectural Paradigms for Sovereign AI: Mitigating API Fragility through Quantized Low-Rank Adaptation and 1.58-bit Ternary Models [Officially lived on SSRN]</h3>
+            <div class="card-header-links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6742421" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" loading="lazy" style="width:14px;height:14px" alt=""></a></div>
           </div>
-          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Participating in the Technical Committee on Machine Learning for Automation, focusing on the intersection of AI, robotics, and intelligent systems.</p>
-          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View IEEE Profile</div>
+          <p style="font-family:var(--serif);font-size:.83rem;font-weight:300;color:var(--t2);line-height:1.85;margin-bottom:1.1rem">A rigorous methodology for deploying Sovereign AI through Small Language Models (SLMs) to mitigate API fragility. Investigates the synergy between 4-bit NF4 quantization, native 1.58-bit ternary architectures, and LoRA for specialized domains. <em style="color:var(--t3);font-size:.76rem">Officially lived on SSRN.</em></p>
+          <div class="chips-wrap"><span class="mchip">93% reduction in inference OpEx</span><span class="mchip">450M token TCO break-even</span></div>
         </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="education" class="anch section" style="background:var(--bg0)">
-  <div class="bg-lines"></div>
-  <div class="container">
-    <div class="eyebrow">Education</div>
-    <h2 class="sec-title">Academic <em>Foundation</em></h2>
-    <div class="rgt">
-      <div class="card" style="padding:2.25rem;max-width:680px">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.1rem">
-          <div>
-            <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:900;color:var(--t0);margin-bottom:5px">Techno Main Saltlake</h3>
-            <p style="font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--t3);letter-spacing:.08em;text-transform:uppercase">Bachelor of Technology · Computer Sciences &amp; IT</p>
-          </div>
-          <div style="font-family:var(--mono);font-size:.62rem;font-weight:600;color:var(--accent);letter-spacing:.1em;border:1px solid var(--accent-ring);padding:5px 12px;border-radius:20px;background:var(--accent-lo);white-space:nowrap;flex-shrink:0">2023 – 2027</div>
-        </div>
-        <div style="height:1px;background:var(--line);margin-bottom:1.1rem"></div>
-        <div class="bul" style="font-size:.92rem">Computer Sciences and Information Technologies</div>
       </div>
+
+      <div class="card-accent" style="padding:0;overflow:hidden">
+        <div style="height:220px;overflow:hidden;position:relative">
+          <img src="research-deepfake-fft.jpeg" alt="Deepfake Detection" width="600" height="338" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='none'">
+          <div class="pimg-grad" style="border-radius:0"></div>
+          <div style="position:absolute;bottom:12px;left:14px;display:flex;gap:5px;flex-wrap:wrap">
+            <span class="tag tag-overlay">2D FFT</span><span class="tag tag-overlay">ResNet-18</span><span class="tag tag-overlay">PyTorch</span><span class="tag tag-overlay">Deepfake</span>
+          </div>
+        </div>
+        <div style="padding:1.75rem">
+          <div class="card-header">
+            <h3 style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--t0);line-height:1.45">Isolating Synthetic Fingerprints: A Frequency-Domain Approach to Robust Deepfake Detection using 2D FFT and Lightweight CNNs</h3>
+            <div class="card-header-links"><a href="Deepfake_FFT_Submission.pdf" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" loading="lazy" style="width:14px;height:14px" alt=""></a></div>
+          </div>
+          <p style="font-family:var(--serif);font-size:.83rem;font-weight:300;color:var(--t2);line-height:1.85;margin-bottom:1.1rem">A novel, lightweight deepfake detection engine isolating synthetic fingerprints in the frequency domain. Employs micro-blur preprocessing to suppress superficial high-frequency noise, followed by 2D FFT to extract spectral magnitude maps.</p>
+          <div class="chips-wrap"><span class="mchip">99.12% on FaceForensics++</span><span class="mchip">45 FPS real-time inference</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1183,6 +1098,87 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
         <div class="cert-row"><span class="cert-dot"></span>Understand Data Science for ML<span class="cert-org">Microsoft</span></div>
         <div class="cert-row"><span class="cert-dot"></span>Python for Data Science<span class="cert-org">IBM</span></div>
         <div class="cert-row" style="border-bottom:none"><span class="cert-dot"></span>GenAI Powered Data Analytics Simulation<span class="cert-org">Tata</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="memberships" class="anch section" style="background:var(--bg1)">
+  <div class="container">
+    <div class="eyebrow">Memberships &amp; Affiliations</div>
+    <h2 class="sec-title">Global <em>Communities</em></h2>
+    <p class="sec-sub">Professional organizations driving innovation in AI and technology</p>
+    <div class="sgrid pg lft">
+      <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
+        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
+            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <img src="https://api.iconify.design/logos/google-icon.svg" loading="lazy" style="width:26px;height:26px;filter:none;" alt="Google">
+            </div>
+            <div style="min-width:0">
+              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
+              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">Google's Women Techmakers</h3>
+            </div>
+          </div>
+          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Engaging in a global community supporting women in tech through events, learning resources, and networking.</p>
+          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View Profile</div>
+        </div>
+      </a>
+
+      <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
+        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
+            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <img src="https://api.iconify.design/simple-icons/nvidia.svg?color=%2376B900" loading="lazy" style="width:30px;height:30px;filter:none;" alt="NVIDIA">
+            </div>
+            <div style="min-width:0">
+              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
+              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">NVIDIA Developer Community</h3>
+            </div>
+          </div>
+          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Exploring advancements in cloud computing ecosystems and AI hardware infrastructure for accelerated GPU inference.</p>
+          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View Profile</div>
+        </div>
+      </a>
+      <a href="https://ieee-collabratec.ieee.org/app/p/anushka_tech" target="_blank" rel="noopener noreferrer" style="display:block; height:100%">
+        <div class="mem-card" style="height:100%; display:flex; flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:1.35rem;margin-bottom:1.35rem;flex-wrap:wrap">
+            <div style="width:58px;height:58px;border-radius:12px;background:var(--accent-lo);border:1px solid var(--accent-ring);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <img src="https://api.iconify.design/simple-icons/ieee.svg?color=%2300629B" loading="lazy" style="width:34px;height:34px;filter:none;" alt="IEEE">
+            </div>
+            <div style="min-width:0">
+              <div style="font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.14em;color:var(--accent);margin-bottom:5px;text-transform:uppercase">Active Member</div>
+              <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);line-height:1.4">IEEE Robotics &amp; Automation Society</h3>
+            </div>
+          </div>
+          <p style="font-family:var(--sans);font-size:.85rem;color:var(--t2);line-height:1.8;flex:1">Participating in the Technical Committee on Machine Learning for Automation, focusing on the intersection of AI, robotics, and intelligent systems.</p>
+          <div style="display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.85rem;color:var(--t3);margin-top:15px;"><span style="color:var(--accent)">→</span>View IEEE Profile</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="education" class="anch section" style="background:var(--bg0)">
+  <div class="bg-lines"></div>
+  <div class="container">
+    <div class="eyebrow">Education</div>
+    <h2 class="sec-title">Academic <em>Foundation</em></h2>
+    <div class="rgt">
+      <div class="card" style="padding:2.25rem;max-width:680px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.1rem">
+          <div>
+            <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:900;color:var(--t0);margin-bottom:5px">Techno Main Saltlake</h3>
+            <p style="font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--t3);letter-spacing:.08em;text-transform:uppercase">Bachelor of Technology · Computer Sciences &amp; IT</p>
+          </div>
+          <div style="font-family:var(--mono);font-size:.62rem;font-weight:600;color:var(--accent);letter-spacing:.1em;border:1px solid var(--accent-ring);padding:5px 12px;border-radius:20px;background:var(--accent-lo);white-space:nowrap;flex-shrink:0">2023 – 2027</div>
+        </div>
+        <div style="height:1px;background:var(--line);margin-bottom:1.1rem"></div>
+        <div class="bul" style="font-size:.92rem">Computer Sciences and Information Technologies</div>
       </div>
     </div>
   </div>
