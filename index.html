@@ -351,6 +351,48 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 /* No grayscale/invert filters applied here so they remain colorful */
 @media(max-width:480px){.exp-inner{flex-direction:column;gap:.75rem}.exp-logo{width:42px;height:42px}}
 
+/* EXPERIENCE TOGGLE */
+.exp-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+.exp-toggle-btn:hover {
+  color: var(--t0);
+}
+.exp-toggle-btn .arr {
+  transition: transform 0.3s;
+  font-size: 0.75rem;
+}
+.exp-toggle-btn.active .arr {
+  transform: rotate(180deg);
+}
+
+/* SMOOTH HEIGHT ANIMATION USING GRID */
+.exp-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s ease;
+}
+.exp-details-inner {
+  overflow: hidden;
+}
+.exp-details.open {
+  grid-template-rows: 1fr;
+  margin-top: 15px;
+}
+
 /* ACHIEVEMENT */
 .ach{
 background:var(--sfc);border:1px solid var(--line);
@@ -711,13 +753,21 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">JAN 2026  – FEB 2026</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Blockchain Risk Developer</h3>
-            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="bul"><span>Engineered core decentralized infrastructure for the WorkBridge platform, integrating Web3 wallets to facilitate a secure, low-latency Crypto-Fiat Bridge.</span></div>
-              <div class="bul"><span>Architected a Stablecoin Stress Tester that continuously monitors on-chain telemetry, tracking collateralization ratios across <strong style="color:var(--t0);font-weight:700">4+ major liquidity pools</strong> to improve systemic risk assessment.</span></div>
-              <div class="bul"><span>Developed an automated Solidity vulnerability scanner utilizing static analysis to analyze <strong style="color:var(--t0);font-weight:700">10,000+</strong> lines of smart contract code, capable of detecting common Reentrancy and Access Control vulnerabilities prior to deployment.</span></div>
-              <div class="bul"><span>Implemented an Avellaneda-Stoikov market-making engine to programmatically manage inventory risk, optimizing bid-ask spreads and enhancing high-frequency liquidity provision.</span></div>
+            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.4rem;letter-spacing:.07em;text-transform:uppercase">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
+            
+            <button class="exp-toggle-btn" onclick="toggleExp(this)">Click Here to Know More <span class="arr">↓</span></button>
+            
+            <div class="exp-details">
+              <div class="exp-details-inner">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div class="bul"><span>Engineered core decentralized infrastructure for the WorkBridge platform, integrating Web3 wallets to facilitate a secure, low-latency Crypto-Fiat Bridge.</span></div>
+                  <div class="bul"><span>Architected a Stablecoin Stress Tester that continuously monitors on-chain telemetry, tracking collateralization ratios across <strong style="color:var(--t0);font-weight:700">4+ major liquidity pools</strong> to improve systemic risk assessment.</span></div>
+                  <div class="bul"><span>Developed an automated Solidity vulnerability scanner utilizing static analysis to analyze <strong style="color:var(--t0);font-weight:700">10,000+</strong> lines of smart contract code, capable of detecting common Reentrancy and Access Control vulnerabilities prior to deployment.</span></div>
+                  <div class="bul"><span>Implemented an Avellaneda-Stoikov market-making engine to programmatically manage inventory risk, optimizing bid-ask spreads and enhancing high-frequency liquidity provision.</span></div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -729,12 +779,20 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">JULY 2025 – SEPT 2025</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Open-Source Contributor</h3>
-            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">GSSoC '25 · REMOTE</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="bul"><span>Contributed to <strong style="color:var(--t0);font-weight:700">4 major open-source repositories</strong>, successfully merging <strong style="color:var(--t0);font-weight:700">15+ Pull Requests (PRs)</strong> focused on core feature additions, dependency upgrades, and critical bug resolutions.</span></div>
-              <div class="bul"><span>Improved algorithmic efficiency through code refactoring, memory optimization, and complexity reduction across multiple modules.</span></div>
-              <div class="bul"><span>Collaborated asynchronously with a global network of maintainers, conducting strict peer code reviews, resolving merge conflicts, and ensuring adherence to CI/CD testing pipelines and semantic versioning.</span></div>
+            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.4rem;letter-spacing:.07em;text-transform:uppercase">GSSoC '25 · REMOTE</p>
+            
+            <button class="exp-toggle-btn" onclick="toggleExp(this)">Click Here to Know More <span class="arr">↓</span></button>
+            
+            <div class="exp-details">
+              <div class="exp-details-inner">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div class="bul"><span>Contributed to <strong style="color:var(--t0);font-weight:700">4 major open-source repositories</strong>, successfully merging <strong style="color:var(--t0);font-weight:700">15+ Pull Requests (PRs)</strong> focused on core feature additions, dependency upgrades, and critical bug resolutions.</span></div>
+                  <div class="bul"><span>Improved algorithmic efficiency through code refactoring, memory optimization, and complexity reduction across multiple modules.</span></div>
+                  <div class="bul"><span>Collaborated asynchronously with a global network of maintainers, conducting strict peer code reviews, resolving merge conflicts, and ensuring adherence to CI/CD testing pipelines and semantic versioning.</span></div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -746,21 +804,27 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 100%);
           <div style="flex:1;min-width:0">
             <div class="exp-dt" style="margin-bottom:5px">AUG 2025 · 1 MONTH</div>
             <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--t0);margin-bottom:3px">Web Development Intern</h3>
-            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.85rem;letter-spacing:.07em;text-transform:uppercase">CODSOFT · REMOTE</p>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="bul"><span>Architected and deployed <strong style="color:var(--t0);font-weight:700">6+ mobile-first web applications</strong> utilizing semantic HTML5, modern CSS3 (Flexbox/Grid), and Vanilla JavaScript (ES6+).</span></div>
-              <div class="bul"><span>Optimized frontend performance through asset minification, lazy loading, and efficient DOM manipulation techniques.</span></div>
-              <div class="bul"><span>Improved accessibility using semantic HTML and WCAG-aligned design practices while ensuring robust cross-browser compatibility.</span></div>
+            <p style="font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--t3);margin-bottom:.4rem;letter-spacing:.07em;text-transform:uppercase">CODSOFT · REMOTE</p>
+            
+            <button class="exp-toggle-btn" onclick="toggleExp(this)">Click Here to Know More <span class="arr">↓</span></button>
+            
+            <div class="exp-details">
+              <div class="exp-details-inner">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div class="bul"><span>Architected and deployed <strong style="color:var(--t0);font-weight:700">6+ mobile-first web applications</strong> utilizing semantic HTML5, modern CSS3 (Flexbox/Grid), and Vanilla JavaScript (ES6+).</span></div>
+                  <div class="bul"><span>Optimized frontend performance through asset minification, lazy loading, and efficient DOM manipulation techniques.</span></div>
+                  <div class="bul"><span>Improved accessibility using semantic HTML and WCAG-aligned design practices while ensuring robust cross-browser compatibility.</span></div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
 
-
     </div>
   </div>
 </section>
-
 
 <div class="divider"></div>
 
@@ -1361,6 +1425,23 @@ function tick(){
   setTimeout(tick, sp);
 }
 window.addEventListener('load', tick);
+
+/* Experience Dropdown Toggle */
+window.toggleExp = function(btn) {
+  const details = btn.nextElementSibling;
+  const isOpen = details.classList.contains('open');
+
+  if (isOpen) {
+    details.classList.remove('open');
+    btn.classList.remove('active');
+    btn.innerHTML = 'Click Here to Know More <span class="arr">↓</span>';
+  } else {
+    details.classList.add('open');
+    btn.classList.add('active');
+    btn.innerHTML = 'Show Less <span class="arr">↑</span>';
+  }
+};
+
 document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
 </body>
