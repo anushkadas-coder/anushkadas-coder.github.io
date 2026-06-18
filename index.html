@@ -84,7 +84,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 
 body{
 background:var(--bg0);color:var(--t1);
-font-family:var(--sans);font-size:14px;line-height:1.55; 
+font-family:var(--sans);font-size:14px;line-height:1.55; /* Reduced base font and tightened line height */
 overflow-x:hidden;transition:background .35s ease,color .35s ease;
 }
 a{text-decoration:none;color:inherit}
@@ -118,7 +118,7 @@ border-bottom:1px solid var(--line);transition:all .35s ease;
 }
 .nav-inner{
 max-width:1280px;margin:0 auto;padding:0 2rem;
-display:flex;align-items:center;justify-content:space-between;height:54px; 
+display:flex;align-items:center;justify-content:space-between;height:54px; /* Slightly shorter */
 }
 .nav-logo{
 font-family:var(--serif);font-size:.75rem;font-weight:700;
@@ -246,25 +246,25 @@ color:var(--t0);margin-bottom:.4rem;
 .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--line2) 30%,var(--line2) 70%,transparent)}
 
 /* CARDS */
-.card, .card-accent {
-  background:var(--sfc);
-  border-radius:10px;
-  overflow:hidden;
-  transition:all .4s cubic-bezier(.165,.84,.44,1);
-  position:relative;
-  display: flex;
-  flex-direction: column;
-}
-.card { border:1px solid var(--line); }
-.card-accent { border:1px solid var(--accent-ring); }
-.card-accent::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--accent) 60%,transparent);
+.card{
+background:var(--sfc);border:1px solid var(--line);
+border-radius:10px;overflow:hidden;
+transition:all .4s cubic-bezier(.165,.84,.44,1);
+position:relative;
 }
 .card:hover{border-color:var(--accent-ring);transform:translateY(-5px);box-shadow:0 25px 50px var(--shadow), 0 0 20px var(--accent-glow);}
+.card-accent{
+background:var(--sfc);border:1px solid var(--accent-ring);
+border-radius:10px;overflow:hidden;position:relative;
+transition:all .4s cubic-bezier(.165,.84,.44,1);
+}
+.card-accent::before{
+content:'';position:absolute;top:0;left:0;right:0;height:1px;
+background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--accent) 60%,transparent);
+}
 .card-accent:hover{border-color:var(--accent-hi);transform:translateY(-5px);box-shadow:0 25px 50px var(--shadow),0 0 30px var(--accent-glow)}
 
-/* TERMINAL */
+/* TERMINAL - RESTORED ORIGINAL COLORS */
 .term{
 background:#0A0A0A;border:1px solid var(--accent-ring);
 border-radius:8px;overflow:hidden;
@@ -282,6 +282,10 @@ border-bottom:1px solid var(--line);
 .td-g{background:#28C840; box-shadow: 0 0 4px #28C840;}
 .term-fname{font-family:var(--mono);font-size:.55rem;color:var(--t3);margin-left:8px}
 .term-body{padding:1.25rem 1.5rem;font-family:var(--mono);font-size:.7rem;line-height:1.7;overflow-x:auto}
+@media(max-width:480px){.term-body{font-size:.6rem;padding:.85rem}}
+
+/* TERMINAL SYNTAX COLORS (Restored to colorful) */
+.tc{color:#555}.tk{color:#7EC8E3}.tv{color:#D4A843}.ts{color:#A8E6A3}.tn{color:#F0A05A}.tb{color:#E8A0C0}
 
 /* TAGS & PILLS */
 .tag{
@@ -292,6 +296,17 @@ background:var(--accent-lo);border:1px solid var(--accent-ring);color:var(--acce
 transition:all .25s;
 }
 .tag:hover{background:var(--accent);color:var(--bg0);box-shadow: 0 0 8px var(--accent-glow);}
+.tag-green{background:var(--accent-lo);border-color:var(--accent-ring);color:var(--accent)}
+.tag-overlay {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  border-color: var(--accent);
+  color: var(--accent-hi);
+}
+.tag-overlay:hover {
+  background: var(--accent);
+  color: var(--bg0);
+}
 
 .pill{
 display:inline-flex;align-items:center;gap:6px;
@@ -302,6 +317,7 @@ transition:all .28s cubic-bezier(.4,0,.2,1);cursor:default;
 }
 .pill img{width:12px;height:12px;transition:opacity .3s;}
 .pill:hover{border-color:var(--accent-ring);background:var(--accent-lo);color:var(--accent);transform:translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2);}
+.pill:hover img{opacity:0.8 !important;}
 
 /* BUL */
 .bul{display:flex;gap:8px;align-items:flex-start;font-size:.78rem;color:var(--t2);line-height:1.6}
@@ -336,23 +352,58 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 
 /* EXPERIENCE TOGGLE */
 .exp-toggle-btn {
-  background: transparent; border: none; color: var(--accent);
-  font-family: var(--mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.05em;
-  cursor: pointer; padding: 0; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px; transition: color 0.3s;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s;
 }
-.exp-toggle-btn:hover { color: var(--t0); }
-.exp-toggle-btn .arr { transition: transform 0.3s; font-size: 0.7rem; }
-.exp-toggle-btn.active .arr { transform: rotate(180deg); }
-.exp-details { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s ease; }
-.exp-details-inner { overflow: hidden; }
-.exp-details.open { grid-template-rows: 1fr; margin-top: 12px; }
+.exp-toggle-btn:hover {
+  color: var(--t0);
+}
+.exp-toggle-btn .arr {
+  transition: transform 0.3s;
+  font-size: 0.7rem;
+}
+.exp-toggle-btn.active .arr {
+  transform: rotate(180deg);
+}
 
-/* ACHIEVEMENT & CERT */
-.ach{ background:var(--sfc);border:1px solid var(--line);border-radius:8px;padding:1.4rem;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.4,0,.2,1); }
+/* SMOOTH HEIGHT ANIMATION USING GRID */
+.exp-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s ease;
+}
+.exp-details-inner {
+  overflow: hidden;
+}
+.exp-details.open {
+  grid-template-rows: 1fr;
+  margin-top: 12px;
+}
+
+/* ACHIEVEMENT */
+.ach{
+background:var(--sfc);border:1px solid var(--line);
+border-radius:8px;padding:1.4rem;position:relative;overflow:hidden;
+transition:all .35s cubic-bezier(.4,0,.2,1);
+}
 .ach::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(to bottom,var(--accent),transparent)}
 .ach:hover{border-color:var(--accent-ring);transform:translateY(-3px);box-shadow:0 12px 30px var(--shadow)}
 .ach-icon-container { padding:7px;border-radius:8px;background:var(--accent-lo);border:1px solid var(--accent-ring);flex-shrink:0; }
 .ach-icon-container img { filter: var(--icon-filter); }
+
+/* CERT */
 .cert-row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.78rem;color:var(--t2);transition:all .25s;flex-wrap:wrap}
 .cert-row:hover{color:var(--t0);transform:translateX(3px);border-color:var(--accent-ring)}
 .cert-row:last-child{border-bottom:none}
@@ -363,10 +414,40 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:0 2rem}
 @media(max-width:640px){.cert-grid{grid-template-columns:1fr}}
 
-/* SCAT & ICON BTNS */
-.scat{ font-family:var(--mono);font-size:.55rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--t2);display:flex;align-items:center;gap:8px;margin-bottom:.9rem; }
+/* STATUS */
+.status{
+display:inline-flex;align-items:center;gap:6px;
+font-family:var(--mono);font-size:.52rem;font-weight:600;letter-spacing:.09em;
+color:var(--accent);border:1px solid var(--accent-ring);background:var(--accent-lo);
+padding:4px 11px;border-radius:16px;text-transform:uppercase;
+box-shadow: 0 0 8px var(--accent-glow);
+}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite; box-shadow: 0 0 6px var(--accent);}
+@keyframes pulse{0%,100%{opacity:1; transform: scale(1);}50%{opacity:.4; transform: scale(0.8);}}
+
+/* MCHIP */
+.mchip{
+display:inline-flex;align-items:center;gap:4px;
+font-family:var(--mono);font-size:.55rem;font-weight:600;
+color:var(--accent);background:var(--accent-lo);
+border:1px solid var(--accent-ring);border-radius:4px;padding:3px 8px;
+}
+.mchip::before{content:'↑';font-size:.5rem}
+
+/* SCAT */
+.scat{
+font-family:var(--mono);font-size:.55rem;font-weight:600;
+letter-spacing:.15em;text-transform:uppercase;color:var(--t2);
+display:flex;align-items:center;gap:8px;margin-bottom:.9rem;
+}
 .scat::after{content:'';flex:1;height:1px;background:var(--line2)}
-.ib{ display:flex;align-items:center;justify-content:center;background:var(--sfc2);border:1px solid var(--line2);border-radius:6px;transition:all .28s cubic-bezier(.4,0,.2,1);flex-shrink:0; }
+
+/* ICON BUTTON */
+.ib{
+display:flex;align-items:center;justify-content:center;
+background:var(--sfc2);border:1px solid var(--line2);border-radius:6px;
+transition:all .28s cubic-bezier(.4,0,.2,1);flex-shrink:0;
+}
 .ib:hover{border-color:var(--accent-ring);background:var(--accent-lo);transform:translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.3);}
 .ib-sm{width:34px;height:34px}
 .ib-md{width:40px;height:40px}
@@ -375,20 +456,35 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 .ib:hover img{filter: var(--icon-filter) opacity(0.7) !important;}
 
 /* BTNS */
-.btn-g,.btn-o{ display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.1em;padding:.7rem 1.6rem;border-radius:6px;transition:all .28s cubic-bezier(.4,0,.2,1);white-space:nowrap; }
+.btn-g,.btn-o{
+display:inline-flex;align-items:center;justify-content:center;gap:6px;
+font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.1em;
+padding:.7rem 1.6rem;border-radius:6px;transition:all .28s cubic-bezier(.4,0,.2,1);
+white-space:nowrap;
+}
 .btn-g{background:var(--accent);color:var(--bg0);border:1px solid var(--accent)}
 .btn-g:hover{background:var(--accent-hi);border-color:var(--accent-hi);transform:translateY(-2px);box-shadow:0 6px 16px var(--accent-glow)}
 .btn-o{background:transparent;color:var(--accent);border:1px solid var(--accent-ring)}
 .btn-o:hover{background:var(--accent-lo);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 16px var(--shadow)}
 
+/* QUOTE */
+.bq{
+border-left:2px solid var(--accent);padding:.8rem 1.1rem;
+background:linear-gradient(90deg,var(--accent-lo),transparent);border-radius:0 6px 6px 0;
+}
+
 /* MEM CARD */
-.mem-card{ background:var(--sfc);border:1px solid var(--accent-ring);border-radius:10px;padding:1.8rem;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.4,0,.2,1); }
+.mem-card{
+background:var(--sfc);border:1px solid var(--accent-ring);
+border-radius:10px;padding:1.8rem;position:relative;overflow:hidden;
+transition:all .35s cubic-bezier(.4,0,.2,1);
+}
 .mem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--accent) 60%,transparent)}
 .mem-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px var(--shadow),0 0 20px var(--accent-glow)}
 .mem-card img { filter: var(--icon-filter); }
 
 /* PIMG */
-.pimg{position:relative;overflow:hidden; flex-shrink: 0; height: 160px; min-height: 160px;}
+.pimg{position:relative;overflow:hidden}
 .pimg img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1);display:block}
 .card:hover .pimg img,.card-accent:hover .pimg img{transform:scale(1.05)}
 .pimg-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.85) 100%)}
@@ -409,92 +505,6 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));gap:16px}
 .ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:14px}
 
-/* PERFECT MOBILE/DESKTOP 2-ROW SWIPE CONTAINER */
-.hz-scroll-2row {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-auto-flow: column;
-  grid-auto-columns: min(85vw, 320px); 
-  gap: 24px; 
-  overflow-x: auto;
-  overflow-y: hidden; 
-  padding-bottom: 24px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  
-  /* Standard Scrollbar */
-  scrollbar-width: auto;
-  scrollbar-color: var(--accent) var(--sfc2);
-
-  /* BOLDER LINE IN THE MIDDLE */
-  background-image: linear-gradient(
-    to bottom, 
-    transparent calc(50% - 13px), 
-    var(--t3) calc(50% - 13px), 
-    var(--t3) calc(50% - 11px), 
-    transparent calc(50% - 11px)
-  );
-  background-attachment: local; 
-}
-
-/* Custom Highlighted Scrollbar for Chrome/Safari/Edge */
-.hz-scroll-2row::-webkit-scrollbar { 
-  height: 12px; 
-}
-.hz-scroll-2row::-webkit-scrollbar-track { 
-  background: var(--sfc2); 
-  border-radius: 6px; 
-  border: 1px solid var(--line); 
-}
-.hz-scroll-2row::-webkit-scrollbar-thumb { 
-  background: var(--accent); 
-  border-radius: 6px; 
-}
-.hz-scroll-2row::-webkit-scrollbar-thumb:hover { 
-  background: var(--t2); 
-}
-
-/* OUTLINE FOR ALL CARDS IN SLIDER */
-/* REMOVED THICK OUTLINES FROM CARDS */
-.hz-scroll-2row > .card, .hz-scroll-2row > .card-accent {
-  scroll-snap-align: start;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line); 
-}
-
-/* FULLY FUNCTIONAL SWIPE BUTTONS */
-.swipe-indicator {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--accent); 
-  color: var(--bg0); 
-  padding: 8px 16px; 
-  border-radius: 30px;
-  border: none;
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  box-shadow: 0 0 15px var(--accent-glow);
-  animation: swipe-pulse 2s infinite;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.swipe-indicator:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px var(--accent-ring);
-}
-@keyframes swipe-pulse {
-  0%, 100% { box-shadow: 0 0 10px var(--accent-glow); }
-  50% { box-shadow: 0 0 20px var(--accent-ring); }
-}
-
 /* HERO */
 .hero-grid { display: block; position: relative; }
 .hero-canvas { position: absolute; top: 0; right: 0; width: 110px; aspect-ratio: 4/5; animation: float 6s ease-in-out infinite; z-index: 10; }
@@ -510,15 +520,18 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
   .hero-canvas { width: 95px; }
   .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 105px); }
 }
+
 @media(min-width: 600px) and (max-width: 1023px) {
   .hero-canvas { width: 140px; }
   .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 160px); }
 }
+
 @media(min-width: 1024px) {
   .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   .hero-canvas { position: relative; top: auto; right: auto; width: 100%; max-width: 320px; }
   .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: none; }
 }
+
 .hero-text { max-width: 680px; }
 .hero-socials { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 
@@ -815,196 +828,133 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
   <div class="container">
     <div class="eyebrow">Projects</div>
     <h2 class="sec-title">Deployed <em>Engineering</em> Solutions</h2>
-    
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem; flex-wrap:wrap; gap:15px;">
-      <p class="sec-sub" style="margin-bottom:0;">Production systems, research prototypes, and creative explorations</p>
-      
-      <div style="display:flex; gap:12px;">
-        <button type="button" class="swipe-indicator" onclick="document.querySelector('.hz-scroll-2row').scrollBy({left: -Math.min(window.innerWidth * 0.85, 340), behavior: 'smooth'})" aria-label="Scroll projects left">
-          <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor;transform:scaleX(-1);" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
-          PREV
-        </button>
-        <button type="button" class="swipe-indicator" onclick="document.querySelector('.hz-scroll-2row').scrollBy({left: Math.min(window.innerWidth * 0.85, 340), behavior: 'smooth'})" aria-label="Scroll projects right">
-          NEXT 
-          <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
-        </button>
+    <p class="sec-sub">Production systems, research prototypes, and creative explorations</p>
+
+    <div class="sgrid pg">
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">DeepfakeDetector: Frequency-Based AI Inference Engine</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
+          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">2D FFT</span><span class="tag">ResNet-18</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.</div><div class="bul">&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack.</div></div>
+        </div>
       </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Deweathering Engine</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
+          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenCV</span><span class="tag">RPCA</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Full-stack app using Robust PCA to extract clean text from degraded documents.</div><div class="bul">95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">iNaturalist Clumper: Geospatial Data Engineering</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial Algorithms</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</div><div class="bul">Incremental sync engine with timestamp state tracking. Dynamic cluster merging for overlapping windows.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">DCO6: Polyphonic VST3 Synthesizer</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
+          <div class="tag-row"><span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.</div><div class="bul">4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-federated-fresh.jpeg" alt="Federated Fresh" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Federated Fresh: Hybrid AI Orchestration Terminal</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
+          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">ChromaDB</span><span class="tag">DuckDuckGo API</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Hybrid AI routing engine orchestrating local ChromaDB retrieval, live web-search, and LLM inference.</div><div class="bul">75% reduction in local memory overhead. Async RAG pipeline via FastAPI BackgroundTasks for zero-lag UI.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-churn-prediction.jpeg" alt="Customer Churn" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Customer Churn Prediction</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">End-to-end ML model predicting customer churn — 67% recall, AUC 0.82.</div><div class="bul">Interactive Streamlit web app for real-time predictions deployed publicly.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden;border-color:var(--accent-ring)">
+        <div class="pimg" style="height:160px"><img src="project-plant-agent.jpeg" alt="PlantCore" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">PlantCore: Autonomous Maintenance AI</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
+          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">XGBoost</span><span class="tag">LangChain</span><span class="tag">React</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Autonomous AI diagnostic agent for industrial motor failure prediction.</div><div class="bul">Hybrid pipeline: XGBoost for fault detection + Llama 3 (Groq) for repair protocols. Real-time telemetry UI.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Psilocybe Cubensis: 3D Simulation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
+          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Real-time procedural 3D mushroom lifecycle simulation. Space Colonization Algorithm handling 40,000 mycelial nodes.</div><div class="bul">Cinematic post-processing: Unreal Bloom, procedural geometry generation.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-mabe.jpeg" alt="MABE Social Action Recognition" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">MABE: Social Action Recognition</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/MABE-Mouse-Behavior-Recognition" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">LightGBM</span><span class="tag">Kaggle</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Kaggle competition project engineered to classify social behaviors in mice from pose-tracking data.</div><div class="bul">Built a robust feature engineering pipeline and trained a LightGBM classifier specifically optimized to handle severe class imbalance.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-nlp-satellite.jpeg" alt="NLP Satellite" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">NLP Smart Search for Satellite Data</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">ISRO</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Text and voice-based intelligent search for satellite data ordering.</div><div class="bul">NLP parsing of satellite-specific terminology to interface with databases.</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="pimg" style="height:160px"><img src="project-peonia.jpeg" alt="Peonia" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
+        <div style="padding:1.25rem">
+          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Peonia: Generative 3D Animation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
+          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Generative Art</span><span class="tag">3D Math</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">In-browser 3D peony with continuous blooming/wilting lifecycle. No WebGL — custom rotation matrices + Painter's Algorithm.</div><div class="bul">Multi-modal rendering: solid pixels → particle dots → real-time ASCII mapping.</div></div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="sgrid hz-scroll-2row">
-
-      <div class="card">
-        <div class="pimg"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 style="font-family:var(--serif);font-size:.9rem;font-weight:900;color:var(--t0)">DeepfakeDetector: Frequency-Based Engine</h3>
-            <div class="card-header-links">
-              <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a>
-              <a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a>
-            </div>
-          </div>
-          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">2D FFT</span></div>
-          <div style="display:flex;flex-direction:column;gap:6px;margin-top:auto;">
-            <div class="bul">Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.</div>
-            <div class="bul">&lt;1.8s latency via distributed stack.</div>
-          </div>
-        </div>
+    <div class="card-accent rgt" style="margin-top:1.5rem;overflow:hidden;padding:0">
+      <div class="pimg" style="height:240px">
+        <img src="project-digipramaan.png" alt="Digi-Pramaan" loading="lazy" width="800" height="450">
+        <div class="pimg-grad"></div>
       </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 style="font-family:var(--serif);font-size:.9rem;font-weight:900;color:var(--t0)">Deweathering Engine</h3>
-            <div class="card-header-links">
-              <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a>
-              <a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a>
-            </div>
-          </div>
-          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenCV</span><span class="tag">RPCA</span></div>
-          <div style="display:flex;flex-direction:column;gap:6px;margin-top:auto;">
-            <div class="bul">Full-stack app using Robust PCA to extract clean text from degraded documents.</div>
-            <div class="bul">95% automated parameter tuning. Full restoration in &lt;2.5s.</div>
-          </div>
+      <div class="feat-inner">
+        <div class="card-header" style="margin-bottom:.75rem">
+          <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:900;color:var(--t0)">Digi-Pramaan — Decentralized Academic Authenticity Platform (SIH'25 Semi-Finalist)</h3>
+          <div class="card-header-links"><a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="View"></a></div>
         </div>
+        <div class="tag-row" style="margin-bottom:.85rem"><span class="tag">Blockchain</span><span class="tag">OCR</span><span class="tag">MetaMask Wallet</span><span class="tag">Cryptography</span><span class="tag">Git</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><div class="bul">Decentralized academic authenticity platform combining OCR &amp; AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</div><div class="bul">MetaMask wallet integration for authenticated, tamper-proof certificate issuance. Top finalist out of 250+ teams in SIH 2025 internal round.</div></div>
       </div>
-
-      <div class="card-accent">
-        <div class="pimg"><img src="project-digipramaan.png" alt="Digi-Pramaan" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 style="font-family:var(--serif);font-size:.9rem;font-weight:900;color:var(--t0)">Digi-Pramaan (SIH'25 Semi-Finalist)</h3>
-            <div class="card-header-links">
-              <a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a>
-              <a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="View"></a>
-            </div>
-          </div>
-          <div class="tag-row"><span class="tag">Blockchain</span><span class="tag">OCR</span><span class="tag">MetaMask Wallet</span></div>
-          <div style="display:flex;flex-direction:column;gap:6px;margin-top:auto;">
-            <div class="bul">Decentralized platform combining OCR &amp; AI for automated data extraction with Ethereum Blockchain.</div>
-            <div class="bul">Top finalist out of 250+ teams.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">iNaturalist Clumper</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</div>
-            <div class="bul">Incremental sync engine with timestamp state tracking.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">DCO6: VST3 Synthesizer</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
-          <div class="tag-row"><span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.</div>
-            <div class="bul">4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-federated-fresh.jpeg" alt="Federated Fresh" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">Federated Fresh AI</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
-          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">ChromaDB</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">Hybrid AI routing engine orchestrating local ChromaDB retrieval, live web-search, and LLM inference.</div>
-            <div class="bul">75% reduction in local memory overhead.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-churn-prediction.jpeg" alt="Customer Churn" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">Customer Churn Prediction</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">End-to-end ML model predicting customer churn — 67% recall, AUC 0.82.</div>
-            <div class="bul">Interactive Streamlit web app for real-time predictions deployed publicly.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="border-color:var(--accent-ring);">
-        <div class="pimg"><img src="project-plant-agent.jpeg" alt="PlantCore" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">PlantCore: Autonomous AI</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
-          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">XGBoost</span><span class="tag">LangChain</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">Autonomous AI diagnostic agent for industrial motor failure prediction.</div>
-            <div class="bul">Hybrid pipeline: XGBoost for fault detection + Llama 3 (Groq) for repair protocols.</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="pimg"><img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">Psilocybe Cubensis</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
-          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">Real-time procedural 3D mushroom lifecycle simulation. Space Colonization Algorithm handling 40,000 mycelial nodes.</div>
-            <div class="bul">Cinematic post-processing: Unreal Bloom, procedural geometry generation.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-mabe.jpeg" alt="MABE Social Action Recognition" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">MABE: Social Action</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/MABE-Mouse-Behavior-Recognition" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">LightGBM</span><span class="tag">Kaggle</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">Kaggle competition project engineered to classify social behaviors in mice from pose-tracking data.</div>
-            <div class="bul">Built a robust feature engineering pipeline and trained a LightGBM classifier specifically optimized to handle severe class imbalance.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-nlp-satellite.jpeg" alt="NLP Satellite" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">NLP Smart Search</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">ISRO</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">Text and voice-based intelligent search for satellite data ordering.</div>
-            <div class="bul">NLP parsing of satellite-specific terminology to interface with databases.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="pimg"><img src="project-peonia.jpeg" alt="Peonia" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div class="card-content">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--t0)">Peonia: Generative 3D</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
-          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Generative Art</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div class="bul">In-browser 3D peony with continuous blooming/wilting lifecycle. No WebGL — custom rotation matrices.</div>
-            <div class="bul">Multi-modal rendering: solid pixels → particle dots → real-time ASCII mapping.</div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="lft" style="margin-top:2.5rem;text-align:center">
       <p style="font-family:var(--serif);font-size:.8rem;font-weight:300;font-style:italic;color:var(--t3);margin-bottom:1.25rem">These are just some highlights. Explore all repositories, experiments, and works-in-progress.</p>
-      <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-g">
+      <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-o">
         <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"/></svg>
         VIEW ALL ON GITHUB
       </a>
     </div>
-
   </div>
 </section>
 
