@@ -52,6 +52,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 --r:6px;
 
 --icon-filter: brightness(0) invert(1);
+--icon-filter-inv: brightness(0);
 }
 
 [data-theme="light"]{
@@ -80,6 +81,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 --shadow:rgba(0,0,0,0.12);
 
 --icon-filter: brightness(0);
+--icon-filter-inv: brightness(0) invert(1);
 }
 
 body{
@@ -455,6 +457,24 @@ transition:all .28s cubic-bezier(.4,0,.2,1);flex-shrink:0;
 .ib img{transition:filter .3s; filter: var(--icon-filter);}
 .ib:hover img{filter: var(--icon-filter) opacity(0.7) !important;}
 
+/* SOLID ICON BUTTON (Matches SAY HI) */
+.ib-solid {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.ib-solid:hover {
+  background: var(--accent-hi);
+  border-color: var(--accent-hi);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--accent-glow);
+}
+.ib-solid img {
+  filter: var(--icon-filter-inv) !important;
+}
+.ib-solid:hover img {
+  filter: var(--icon-filter-inv) opacity(0.7) !important;
+}
+
 /* BTNS */
 .btn-g,.btn-o{
 display:inline-flex;align-items:center;justify-content:center;gap:6px;
@@ -706,12 +726,12 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/></svg> SAY HI
           </a>
           <div class="hero-socials">
-            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="GitHub Profile"><img src="https://api.iconify.design/ri/github-line.svg" style="width:16px;height:16px" alt="GitHub"></a>
-            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="LinkedIn Profile"><img src="https://api.iconify.design/ri/linkedin-line.svg" style="width:16px;height:16px" alt="LinkedIn"></a>
-            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="X (Twitter) Profile"><img src="https://api.iconify.design/ri/twitter-x-line.svg" style="width:16px;height:16px" alt="X"></a>
-            <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="Google Dev Profile"><img src="https://api.iconify.design/ri/google-line.svg" style="width:16px;height:16px" alt="Google Dev"></a>
-            <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" style="width:16px;height:16px" alt="Discord"></a>
-            <a href="https://instagram.com/caffeinated.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md" title="Instagram: caffeinated.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:16px;height:16px" alt="Instagram"></a>
+            <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="GitHub Profile"><img src="https://api.iconify.design/ri/github-line.svg" style="width:16px;height:16px" alt="GitHub"></a>
+            <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="LinkedIn Profile"><img src="https://api.iconify.design/ri/linkedin-line.svg" style="width:16px;height:16px" alt="LinkedIn"></a>
+            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="X (Twitter) Profile"><img src="https://api.iconify.design/ri/twitter-x-line.svg" style="width:16px;height:16px" alt="X"></a>
+            <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="Google Dev Profile"><img src="https://api.iconify.design/ri/google-line.svg" style="width:16px;height:16px" alt="Google Dev"></a>
+            <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" style="width:16px;height:16px" alt="Discord"></a>
+            <a href="https://instagram.com/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" title="Instagram: anushka.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:16px;height:16px" alt="Instagram"></a>
           </div>
         </div>
 
@@ -1268,13 +1288,13 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
       </a>
 
       <div class="contact-icons">
-        <a href="mailto:anushkadas05das@gmail.com" class="ib ib-md ib-rnd" aria-label="Email Me"><img src="https://api.iconify.design/ri/mail-send-line.svg" loading="lazy" style="width:16px;height:16px" alt="Email"></a>
-        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg" loading="lazy" style="width:16px;height:16px" alt="LinkedIn"></a>
-        <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" loading="lazy" style="width:16px;height:16px" alt="GitHub"></a>
-        <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="X (Twitter)"><img src="https://api.iconify.design/ri/twitter-x-line.svg" loading="lazy" style="width:16px;height:16px" alt="X"></a>
-        <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" aria-label="Google Developers Profile"><img src="https://api.iconify.design/ri/google-line.svg" loading="lazy" style="width:16px;height:16px" alt="Google Dev"></a>
-        <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" loading="lazy" style="width:16px;height:16px" alt="Discord"></a>
-        <a href="https://instagram.com/caffeinated.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd" title="Instagram: caffeinated.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" loading="lazy" style="width:16px;height:16px" alt="Instagram"></a>
+        <a href="mailto:anushkadas05das@gmail.com" class="ib ib-md ib-rnd ib-solid" aria-label="Email Me"><img src="https://api.iconify.design/ri/mail-send-line.svg" loading="lazy" style="width:16px;height:16px" alt="Email"></a>
+        <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg" loading="lazy" style="width:16px;height:16px" alt="LinkedIn"></a>
+        <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" loading="lazy" style="width:16px;height:16px" alt="GitHub"></a>
+        <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="X (Twitter)"><img src="https://api.iconify.design/ri/twitter-x-line.svg" loading="lazy" style="width:16px;height:16px" alt="X"></a>
+        <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="Google Developers Profile"><img src="https://api.iconify.design/ri/google-line.svg" loading="lazy" style="width:16px;height:16px" alt="Google Dev"></a>
+        <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" loading="lazy" style="width:16px;height:16px" alt="Discord"></a>
+        <a href="https://instagram.com/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" title="Instagram: anushka.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" loading="lazy" style="width:16px;height:16px" alt="Instagram"></a>
       </div>
 
       <div style="height:1px;background:var(--line);margin:0 auto 1.5rem;max-width:320px"></div>
