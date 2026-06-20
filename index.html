@@ -344,8 +344,8 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 .tl-dot{position:absolute;left:-1.95rem;top:1.15rem;width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}
 .tl-item{position:relative}
 
-/* EXP CARDS */
-.exp-c{background:var(--sfc);border:1px solid var(--line);border-radius:8px;padding:1.4rem;transition:all .35s cubic-bezier(.4,0,.2,1)}
+/* EXP CARDS (Updated with cursor:pointer) */
+.exp-c{background:var(--sfc);border:1px solid var(--line);border-radius:8px;padding:1.4rem;transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;}
 .exp-c:hover{border-color:var(--accent-ring);transform:translateY(-3px);box-shadow:0 12px 30px var(--shadow)}
 .exp-dt{font-family:var(--mono);font-size:.52rem;font-weight:600;letter-spacing:.1em;color:var(--accent);text-transform:uppercase}
 .exp-inner{display:flex;gap:1.1rem;align-items:flex-start}
@@ -368,6 +368,7 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
   align-items: center;
   gap: 4px;
   transition: color 0.3s;
+  pointer-events: none; /* Prevents button from interfering with card click */
 }
 .exp-toggle-btn:hover {
   color: var(--t0);
@@ -733,7 +734,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <div class="hero-socials">
             <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="GitHub Profile"><img src="https://api.iconify.design/ri/github-line.svg" style="width:16px;height:16px" alt="GitHub"></a>
             <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="LinkedIn Profile"><img src="https://api.iconify.design/ri/linkedin-line.svg" style="width:16px;height:16px" alt="LinkedIn"></a>
-            <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="X (Twitter) Profile"><img src="https://api.iconify.design/ri/twitter-x-line.svg" style="width:16px;height:16px" alt="X"></a>
+            <a href="https://x.com/anushkadevs" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="X (Twitter) Profile"><img src="https://api.iconify.design/ri/twitter-x-line.svg" style="width:16px;height:16px" alt="X"></a>
             <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" aria-label="Google Dev Profile"><img src="https://api.iconify.design/ri/google-line.svg" style="width:16px;height:16px" alt="Google Dev"></a>
             <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" style="width:16px;height:16px" alt="Discord"></a>
             <a href="https://instagram.com/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-solid" title="Instagram: anushka.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" style="width:16px;height:16px" alt="Instagram"></a>
@@ -766,7 +767,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
     <div class="tl sfade" style="display:flex;flex-direction:column;gap:12px">
 
-      <div class="tl-item exp-c">
+      <div class="tl-item exp-c" onclick="toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
           <div class="exp-logo"><img src="zetheta.jpg" alt="Zetheta Algorithms" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:4px"></div>
@@ -775,7 +776,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);margin-bottom:2px">Blockchain Risk Developer</h3>
             <p style="font-family:var(--mono);font-size:.52rem;font-weight:600;color:var(--t3);margin-bottom:.3rem;letter-spacing:.07em;text-transform:uppercase">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
             
-            <button class="exp-toggle-btn" onclick="toggleExp(this)">View Details <span class="arr">↓</span></button>
+            <button class="exp-toggle-btn">View Details <span class="arr">↓</span></button>
             
             <div class="exp-details">
               <div class="exp-details-inner">
@@ -792,7 +793,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="tl-item exp-c">
+      <div class="tl-item exp-c" onclick="toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
           <div class="exp-logo"><img src="gssoc.png" alt="GSSoC" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:4px"></div>
@@ -801,7 +802,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);margin-bottom:2px">Open-Source Contributor</h3>
             <p style="font-family:var(--mono);font-size:.52rem;font-weight:600;color:var(--t3);margin-bottom:.3rem;letter-spacing:.07em;text-transform:uppercase">GSSoC '25 · REMOTE</p>
             
-            <button class="exp-toggle-btn" onclick="toggleExp(this)">View Details <span class="arr">↓</span></button>
+            <button class="exp-toggle-btn">View Details <span class="arr">↓</span></button>
             
             <div class="exp-details">
               <div class="exp-details-inner">
@@ -817,7 +818,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="tl-item exp-c">
+      <div class="tl-item exp-c" onclick="toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
           <div class="exp-logo"><img src="codsoft.jpeg" alt="CodSoft" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:4px"></div>
@@ -826,7 +827,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);margin-bottom:2px">Web Development Intern</h3>
             <p style="font-family:var(--mono);font-size:.52rem;font-weight:600;color:var(--t3);margin-bottom:.3rem;letter-spacing:.07em;text-transform:uppercase">CODSOFT · REMOTE</p>
             
-            <button class="exp-toggle-btn" onclick="toggleExp(this)">View Details <span class="arr">↓</span></button>
+            <button class="exp-toggle-btn">View Details <span class="arr">↓</span></button>
             
             <div class="exp-details">
               <div class="exp-details-inner">
@@ -1296,7 +1297,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         <a href="mailto:anushkadas05das@gmail.com" class="ib ib-md ib-rnd ib-solid" aria-label="Email Me"><img src="https://api.iconify.design/ri/mail-send-line.svg" loading="lazy" style="width:16px;height:16px" alt="Email"></a>
         <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="LinkedIn"><img src="https://api.iconify.design/ri/linkedin-line.svg" loading="lazy" style="width:16px;height:16px" alt="LinkedIn"></a>
         <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" loading="lazy" style="width:16px;height:16px" alt="GitHub"></a>
-        <a href="https://x.com/neuralbuild" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="X (Twitter)"><img src="https://api.iconify.design/ri/twitter-x-line.svg" loading="lazy" style="width:16px;height:16px" alt="X"></a>
+        <a href="https://x.com/anushkadevs" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="X (Twitter)"><img src="https://api.iconify.design/ri/twitter-x-line.svg" loading="lazy" style="width:16px;height:16px" alt="X"></a>
         <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" aria-label="Google Developers Profile"><img src="https://api.iconify.design/ri/google-line.svg" loading="lazy" style="width:16px;height:16px" alt="Google Dev"></a>
         <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" title="Discord: anushka.sys" aria-label="Discord Profile"><img src="https://api.iconify.design/fa6-brands/discord.svg" loading="lazy" style="width:16px;height:16px" alt="Discord"></a>
         <a href="https://instagram.com/anushka.sys" target="_blank" rel="noopener noreferrer" class="ib ib-md ib-rnd ib-solid" title="Instagram: anushka.sys" aria-label="Instagram Profile"><img src="https://api.iconify.design/fa6-brands/instagram.svg" loading="lazy" style="width:16px;height:16px" alt="Instagram"></a>
@@ -1440,9 +1441,10 @@ function tick(){
 }
 window.addEventListener('load', tick);
 
-/* Experience Dropdown Toggle */
-window.toggleExp = function(btn) {
-  const details = btn.nextElementSibling;
+/* Experience Dropdown Toggle (Updated) */
+window.toggleExpCard = function(card) {
+  const details = card.querySelector('.exp-details');
+  const btn = card.querySelector('.exp-toggle-btn');
   const isOpen = details.classList.contains('open');
 
   if (isOpen) {
