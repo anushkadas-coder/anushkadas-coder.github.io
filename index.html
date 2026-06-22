@@ -617,14 +617,18 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 @media(prefers-reduced-motion:reduce){.up,.lft,.rgt,.sgrid>*,.sfade>*,.hero-a, .hero-canvas, .bg-lines{opacity:1!important;transform:none!important;transition:none!important; animation: none !important;}}
 
 /* ORB */
-.orb{
-  position:absolute;
-  border-radius:50%;
-  pointer-events:none;
-  transition:background .4s; 
-  background:transparent !important;
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: background 0.4s, box-shadow 0.4s;
   will-change: transform; 
-  box-shadow: 0 0 200px 100px var(--accent-glow);
+  
+  /* Restores the visible core of the circle */
+  background: var(--accent-glow) !important; 
+  
+  /* Creates a much brighter, more pronounced glow */
+  box-shadow: 0 0 150px 80px var(--accent-ring); 
 }
 
 /* BG LINES */
