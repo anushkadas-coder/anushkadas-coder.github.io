@@ -344,7 +344,7 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
 .tl-dot{position:absolute;left:-1.95rem;top:1.15rem;width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent-glow)}
 .tl-item{position:relative}
 
-/* EXP CARDS (Updated with cursor:pointer) */
+/* EXP CARDS */
 .exp-c{background:var(--sfc);border:1px solid var(--line);border-radius:8px;padding:1.4rem;transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;}
 .exp-c:hover{border-color:var(--accent-ring);transform:translateY(-3px);box-shadow:0 12px 30px var(--shadow)}
 .exp-dt{font-family:var(--mono);font-size:.52rem;font-weight:600;letter-spacing:.1em;color:var(--accent);text-transform:uppercase}
@@ -368,7 +368,7 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;
   align-items: center;
   gap: 4px;
   transition: color 0.3s;
-  pointer-events: none; /* Prevents button from interfering with card click */
+  pointer-events: none;
 }
 .exp-toggle-btn:hover {
   color: var(--t0);
@@ -458,7 +458,7 @@ transition:all .28s cubic-bezier(.4,0,.2,1);flex-shrink:0;
 .ib img{transition:filter .3s; filter: var(--icon-filter);}
 .ib:hover img{filter: var(--icon-filter) opacity(0.7) !important;}
 
-/* SOLID ICON BUTTON (Matches SAY HI) */
+/* SOLID ICON BUTTON */
 .ib-solid {
   background: var(--accent);
   border-color: var(--accent);
@@ -618,6 +618,11 @@ background-size:60px 60px;
 animation: panGrid 4s linear infinite;
 -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+/* HIDDEN PROJECT UTILITY */
+.hidden-project {
+  display: none !important;
 }
 </style>
 </head>
@@ -894,7 +899,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden">
+      <div class="card hidden-project" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-federated-fresh.jpeg" alt="Federated Fresh" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Federated Fresh: Hybrid AI Orchestration Terminal</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
@@ -903,7 +908,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden">
+      <div class="card hidden-project" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-churn-prediction.jpeg" alt="Customer Churn" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Customer Churn Prediction</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
@@ -912,7 +917,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden;border-color:var(--accent-ring)">
+      <div class="card hidden-project" style="padding:0;overflow:hidden;border-color:var(--accent-ring)">
         <div class="pimg" style="height:160px"><img src="project-plant-agent.jpeg" alt="PlantCore" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">PlantCore: Autonomous Maintenance AI</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
@@ -921,7 +926,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden">
+      <div class="card hidden-project" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Psilocybe Cubensis: 3D Simulation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
@@ -930,7 +935,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden">
+      <div class="card hidden-project" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-mabe.jpeg" alt="MABE Social Action Recognition" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">MABE: Social Action Recognition</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/MABE-Mouse-Behavior-Recognition" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
@@ -939,7 +944,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden">
+      <div class="card hidden-project" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-nlp-satellite.jpeg" alt="NLP Satellite" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">NLP Smart Search for Satellite Data</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a></div></div>
@@ -948,7 +953,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card" style="padding:0;overflow:hidden">
+      <div class="card hidden-project" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-peonia.jpeg" alt="Peonia" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
           <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Peonia: Generative 3D Animation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt="GitHub"></a><a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="ib ib-sm"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt="Live"></a></div></div>
@@ -959,7 +964,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
     </div>
 
-    <div class="card-accent rgt" style="margin-top:1.5rem;overflow:hidden;padding:0">
+    <div class="card-accent rgt hidden-project" style="margin-top:1.5rem;overflow:hidden;padding:0">
       <div class="pimg" style="height:240px">
         <img src="project-digipramaan.png" alt="Digi-Pramaan" loading="lazy" width="800" height="450">
         <div class="pimg-grad"></div>
@@ -974,7 +979,13 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
       </div>
     </div>
 
-    <div class="lft" style="margin-top:2.5rem;text-align:center">
+    <div style="text-align:center; margin-top: 2rem; margin-bottom: 2.5rem;">
+      <button id="toggle-projects-btn" class="btn-o" style="cursor:pointer; font-size: 0.65rem;">
+        SEE OTHER PROJECTS ↓
+      </button>
+    </div>
+
+    <div class="lft" style="margin-top:1.5rem;text-align:center">
       <p style="font-family:var(--serif);font-size:.8rem;font-weight:300;font-style:italic;color:var(--t3);margin-bottom:1.25rem">These are just some highlights. Explore all repositories, experiments, and works-in-progress.</p>
       <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-o">
         <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"/></svg>
@@ -1441,7 +1452,7 @@ function tick(){
 }
 window.addEventListener('load', tick);
 
-/* Experience Dropdown Toggle (Updated) */
+/* Experience Dropdown Toggle */
 window.toggleExpCard = function(card) {
   const details = card.querySelector('.exp-details');
   const btn = card.querySelector('.exp-toggle-btn');
@@ -1457,6 +1468,33 @@ window.toggleExpCard = function(card) {
     btn.innerHTML = 'Show Less <span class="arr">↑</span>';
   }
 };
+
+/* Projects Toggle Logic */
+const toggleProjectsBtn = document.getElementById('toggle-projects-btn');
+const hiddenProjects = document.querySelectorAll('.hidden-project');
+let isProjectsExpanded = false;
+
+if (toggleProjectsBtn) {
+  toggleProjectsBtn.addEventListener('click', () => {
+    isProjectsExpanded = !isProjectsExpanded;
+    
+    hiddenProjects.forEach(card => {
+      if (isProjectsExpanded) {
+        card.classList.remove('hidden-project');
+        setTimeout(() => {
+          card.classList.add('on');
+        }, 50);
+      } else {
+        card.classList.add('hidden-project');
+        card.classList.remove('on');
+      }
+    });
+
+    toggleProjectsBtn.innerHTML = isProjectsExpanded 
+      ? 'SHOW LESS ↑' 
+      : 'SEE OTHER PROJECTS ↓';
+  });
+}
 
 document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
