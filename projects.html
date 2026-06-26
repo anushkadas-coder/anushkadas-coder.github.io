@@ -107,6 +107,15 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='htt
 .sgrid>*:nth-child(even){transform:translateX(24px)}
 .sgrid.on>*{opacity:1;transform:none}
 .sgrid.on>*:nth-child(1){transition-delay:.05s}.sgrid.on>*:nth-child(2){transition-delay:.12s}.sgrid.on>*:nth-child(3){transition-delay:.2s}.sgrid.on>*:nth-child(4){transition-delay:.28s}.sgrid.on>*:nth-child(5){transition-delay:.36s}.sgrid.on>*:nth-child(6){transition-delay:.44s}
+
+
+@keyframes archiveFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+.stagger-1 { animation: archiveFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards 0.1s; opacity: 0; }
+.stagger-2 { animation: archiveFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards 0.2s; opacity: 0; }
+.stagger-3 { animation: archiveFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards 0.35s; opacity: 0; }
 </style>
 </head>
 <body>
@@ -125,9 +134,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='htt
 <main>
 <section class="section" style="padding-top: 1rem;">
   <div class="container">
-    <div class="eyebrow">Project Archive</div>
-    <h2 class="sec-title">More <em>Explorations</em></h2>
-    <p class="sec-sub">Bridging applied machine learning, decentralized systems, and full-stack engineering. This archive is a living ledger of my technical explorations. From architecting autonomous AI agents and NLP pipelines to building immutable Web3 platforms and coding procedural 3D simulations from scratch, these projects reflect my drive to solve complex problems across the entire modern tech stack.</p>
+    
+    <div class="eyebrow stagger-1">Project Archive</div>
+    <h2 class="sec-title stagger-2">More <em>Explorations</em></h2>
+    <p class="sec-sub stagger-3" style="max-width: 680px; line-height: 1.7;">
+      Bridging applied machine learning, decentralized systems, and full-stack engineering. This archive is a living ledger of my technical explorations. From architecting autonomous AI agents and NLP pipelines to building immutable Web3 platforms and coding procedural 3D simulations from scratch, these projects reflect my drive to solve complex problems across the entire modern tech stack.
+    </p>
 
     <div class="sgrid pg">
       
