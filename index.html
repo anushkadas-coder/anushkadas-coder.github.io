@@ -12,7 +12,6 @@
 <meta property="og:image" content="https://anushkadas-coder.github.io/tomoko.jpeg">
 
 <link rel="preload" href="tomoko.jpeg" as="image">
-
 <link rel="icon" type="image/jpeg" href="https://anushkadas-coder.github.io/tomoko.jpeg">
 <link rel="apple-touch-icon" href="https://anushkadas-coder.github.io/tomoko.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,29 +22,28 @@
 html{scroll-behavior:smooth;overflow-x:hidden}
 
 :root{
-/* STRICT GRAYSCALE - DARK MODE - DEEPENED */
 --accent:#FFFFFF;
 --accent-hi:#E0E0E0;
 --accent-lo:rgba(255,255,255,0.04);
 --accent-ring:rgba(255,255,255,0.12);
 --accent-glow:rgba(255,255,255,0.06);
 
---bg0:#000000; /* Pure Black */
---bg1:#050505; /* Very Dark Gray */
+--bg0:#000000;
+--bg1:#050505;
 --bg2:#0A0A0A;
 --sfc:#080808;
 --sfc2:#111111;
 
---line:rgba(255,255,255,0.05); /* Subtler lines for pure black */
+--line:rgba(255,255,255,0.05);
 --line2:rgba(255,255,255,0.09);
 
 --t0:#FFFFFF;
 --t1:#C4C4C4;
 --t2:#999999;
---t3:#8f8f8f; /* Improved Contrast */
+--t3:#8f8f8f;
 
 --nav-bg:rgba(0,0,0,0.88);
---nav-h: 54px; /* Dynamic Nav Height */
+--nav-h: 54px;
 --serif:'Merriweather',Georgia,serif;
 --sans:'Merriweather Sans',sans-serif;
 --mono:'JetBrains Mono',monospace;
@@ -57,7 +55,6 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 }
 
 [data-theme="light"]{
-/* STRICT GRAYSCALE - LIGHT MODE */
 --bg0:#FFFFFF;
 --bg1:#F5F5F5;
 --bg2:#EBEBEB;
@@ -70,7 +67,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 --t0:#000000;
 --t1:#333333;
 --t2:#666666;
---t3:#555555; /* Improved Contrast */
+--t3:#555555;
 
 --nav-bg:rgba(255,255,255,0.85);
 
@@ -87,7 +84,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 
 body{
 background:var(--bg0);color:var(--t1);
-font-family:var(--sans);font-size:14px;line-height:1.55; /* Reduced base font and tightened line height */
+font-family:var(--sans);font-size:14px;line-height:1.55;
 overflow-x:hidden;transition:background .35s ease,color .35s ease;
 }
 a{text-decoration:none;color:inherit}
@@ -121,7 +118,7 @@ border-bottom:1px solid var(--line);transition:all .35s ease;
 }
 .nav-inner{
 max-width:1280px;margin:0 auto;padding:0 2rem;
-display:flex;align-items:center;justify-content:space-between;height:54px; /* Slightly shorter */
+display:flex;align-items:center;justify-content:space-between;height:54px;
 }
 .nav-logo{
 font-family:var(--serif);font-size:.75rem;font-weight:700;
@@ -279,7 +276,7 @@ background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--accent) 60%
 }
 .card-accent:hover{border-color:var(--accent-hi);transform:translateY(-5px);box-shadow:0 25px 50px var(--shadow),0 0 30px var(--accent-glow)}
 
-/* TERMINAL - RESTORED ORIGINAL COLORS */
+/* TERMINAL */
 .term{
 background:#0A0A0A;border:1px solid var(--accent-ring);
 border-radius:8px;overflow:hidden;
@@ -299,7 +296,7 @@ border-bottom:1px solid var(--line);
 .term-body{padding:1.25rem 1.5rem;font-family:var(--mono);font-size:.75rem;line-height:1.7;overflow-x:auto}
 @media(max-width:480px){.term-body{font-size:.65rem;padding:.85rem}}
 
-/* TERMINAL SYNTAX COLORS (Restored to colorful) */
+/* TERMINAL SYNTAX COLORS */
 .tc{color:#555}.tk{color:#7EC8E3}.tv{color:#D4A843}.ts{color:#A8E6A3}.tn{color:#F0A05A}.tb{color:#E8A0C0}
 
 /* TAGS & PILLS */
@@ -623,11 +620,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
   pointer-events: none;
   transition: background 0.4s, box-shadow 0.4s;
   will-change: transform; 
-  
-  /* Restores the visible core of the circle */
   background: var(--accent-glow) !important; 
-  
-  /* Creates a much brighter, more pronounced glow */
   box-shadow: 0 0 150px 80px var(--accent-ring); 
 }
 
@@ -643,11 +636,6 @@ background-size:60px 60px;
 animation: panGrid 4s linear infinite;
 -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
-}
-
-/* HIDDEN PROJECT UTILITY */
-.hidden-project {
-  display: none !important;
 }
 </style>
 </head>
@@ -924,90 +912,12 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="card hidden-project" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-federated-fresh.jpeg" alt="Federated Fresh" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Federated Fresh: Hybrid AI Orchestration Terminal</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Federated_Fresh" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://federated-fresh-core.onrender.com" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="Live Demo"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span><span class="tag">ChromaDB</span><span class="tag">DuckDuckGo API</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Hybrid AI routing engine orchestrating local ChromaDB retrieval, live web-search, and LLM inference.</div><div class="bul">75% reduction in local memory overhead. Async RAG pipeline via FastAPI BackgroundTasks for zero-lag UI.</div></div>
-        </div>
-      </div>
-
-      <div class="card hidden-project" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-churn-prediction.jpeg" alt="Customer Churn" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Customer Churn Prediction</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/Customer-Churn-Prediction" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://customer-churn-prediction-gxtodszh8pjk58rvawbfzg.streamlit.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="Live Demo"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Streamlit</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">End-to-end ML model predicting customer churn — 67% recall, AUC 0.82.</div><div class="bul">Interactive Streamlit web app for real-time predictions deployed publicly.</div></div>
-        </div>
-      </div>
-
-      <div class="card hidden-project" style="padding:0;overflow:hidden;border-color:var(--accent-ring)">
-        <div class="pimg" style="height:160px"><img src="project-plant-agent.jpeg" alt="PlantCore" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">PlantCore: Autonomous Maintenance AI</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/autonomous-plant-agent" target="_blank" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://autonomous-plant-agent.vercel.app" target="_blank" class="ib ib-sm" aria-label="Live Demo"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">FastAPI</span><span class="tag">XGBoost</span><span class="tag">LangChain</span><span class="tag">React</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Autonomous AI diagnostic agent for industrial motor failure prediction.</div><div class="bul">Hybrid pipeline: XGBoost for fault detection + Llama 3 (Groq) for repair protocols. Real-time telemetry UI.</div></div>
-        </div>
-      </div>
-
-      <div class="card hidden-project" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-psilocybe.jpeg" alt="Psilocybe Cubensis" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Psilocybe Cubensis: 3D Simulation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/psilocybe_cubensis" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://anushkadas-coder.github.io/psilocybe_cubensis/" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="Live Demo"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Three.js</span><span class="tag">WebGL</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Real-time procedural 3D mushroom lifecycle simulation. Space Colonization Algorithm handling 40,000 mycelial nodes.</div><div class="bul">Cinematic post-processing: Unreal Bloom, procedural geometry generation.</div></div>
-        </div>
-      </div>
-
-      <div class="card hidden-project" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-mabe.jpeg" alt="MABE Social Action Recognition" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">MABE: Social Action Recognition</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/MABE-Mouse-Behavior-Recognition" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">LightGBM</span><span class="tag">Kaggle</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Kaggle competition project engineered to classify social behaviors in mice from pose-tracking data.</div><div class="bul">Built a robust feature engineering pipeline and trained a LightGBM classifier specifically optimized to handle severe class imbalance.</div></div>
-        </div>
-      </div>
-
-      <div class="card hidden-project" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-nlp-satellite.jpeg" alt="NLP Satellite" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">NLP Smart Search for Satellite Data</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/NLP-based-Smart-Search-for-Satellite-Data-Ordering" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">ISRO</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Text and voice-based intelligent search for satellite data ordering.</div><div class="bul">NLP parsing of satellite-specific terminology to interface with databases.</div></div>
-        </div>
-      </div>
-
-      <div class="card hidden-project" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-peonia.jpeg" alt="Peonia" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Peonia: Generative 3D Animation</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/paeoniaceae" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://anushkadas-coder.github.io/paeoniaceae/" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="Live Demo"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">p5.js</span><span class="tag">Generative Art</span><span class="tag">3D Math</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">In-browser 3D peony with continuous blooming/wilting lifecycle. No WebGL — custom rotation matrices + Painter's Algorithm.</div><div class="bul">Multi-modal rendering: solid pixels → particle dots → real-time ASCII mapping.</div></div>
-        </div>
-      </div>
-
     </div>
 
-    <div class="card-accent rgt hidden-project" style="margin-top:1.5rem;overflow:hidden;padding:0">
-      <div class="pimg" style="height:240px">
-        <img src="project-digipramaan.png" alt="Digi-Pramaan" loading="lazy" width="800" height="450">
-        <div class="pimg-grad"></div>
-      </div>
-      <div class="feat-inner">
-        <div class="card-header" style="margin-bottom:.75rem">
-          <h3 style="font-family:var(--serif);font-size:1.05rem;font-weight:900;color:var(--t0)">Digi-Pramaan — Decentralized Academic Authenticity Platform (SIH'25 Semi-Finalist)</h3>
-          <div class="card-header-links"><a href="https://github.com/Shahabaz322/cert-check-chain-main" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://drive.google.com/file/d/1YNFAIdtzoYnIWdD4DPYvm-2GMBY5duD9/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="View Document"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div>
-        </div>
-        <div class="tag-row" style="margin-bottom:.85rem"><span class="tag">Blockchain</span><span class="tag">OCR</span><span class="tag">MetaMask Wallet</span><span class="tag">Cryptography</span><span class="tag">Git</span></div>
-        <div style="display:flex;flex-direction:column;gap:6px"><div class="bul">Decentralized academic authenticity platform combining OCR &amp; AI for automated data extraction with Ethereum Blockchain for immutable record-keeping.</div><div class="bul">MetaMask wallet integration for authenticated, tamper-proof certificate issuance. Top finalist out of 250+ teams in SIH 2025 internal round.</div></div>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top: 2rem; margin-bottom: 2.5rem;">
-      <button id="toggle-projects-btn" class="btn-g" style="cursor:pointer; font-size: 0.65rem;">
-        SEE OTHER PROJECTS ↓
-      </button>
+    <div style="text-align:center; margin-top: 2.5rem; margin-bottom: 2.5rem;">
+      <a href="projects.html" class="btn-g" style="cursor:pointer; font-size: 0.65rem;">
+        SEE OTHER PROJECTS →
+      </a>
     </div>
 
     <div class="lft" style="margin-top:1.5rem;text-align:center">
@@ -1083,7 +993,8 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <span class="pill"><img src="https://api.iconify.design/logos/jupyter.svg" loading="lazy" alt="">Jupyter</span>
             <span class="pill"><img src="https://api.iconify.design/logos/microsoft-power-bi.svg" loading="lazy" alt="">Power BI</span>
             <span class="pill"><img src="https://api.iconify.design/logos/docker-icon.svg" loading="lazy" alt="">Docker</span>
-          </div> </div>
+          </div> 
+        </div>
       </div>
     </div>
   </div>
@@ -1380,7 +1291,6 @@ function resizeNav(){
   const hb = document.getElementById('hbg');
   const navElement = document.getElementById('nav');
   
-  // Set dynamic CSS variable for nav height to fix scroll-margin issue
   if(navElement) {
     document.documentElement.style.setProperty('--nav-h', navElement.offsetHeight + 'px');
   }
@@ -1485,7 +1395,6 @@ function tick(){
   setTimeout(tick, sp);
 }
 
-// Safer fallback for font loading before typewriter starts
 if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(tick);
 } else {
@@ -1508,44 +1417,6 @@ window.toggleExpCard = function(card) {
     btn.innerHTML = 'Show Less <span class="arr">↑</span>';
   }
 };
-
-/* Projects Toggle Logic - FIXED */
-const toggleProjectsBtn = document.getElementById('toggle-projects-btn');
-const hiddenProjects = document.querySelectorAll('.hidden-project');
-let isProjectsExpanded = false;
-
-if (toggleProjectsBtn) {
-  toggleProjectsBtn.addEventListener('click', () => {
-    isProjectsExpanded = !isProjectsExpanded;
-    
-    hiddenProjects.forEach(card => {
-      if (isProjectsExpanded) {
-        card.classList.remove('hidden-project');
-        setTimeout(() => {
-          card.classList.add('on');
-        }, 50);
-      } else {
-        // Fix: remove 'on' before re-adding 'hidden-project' so it hides smoothly
-        card.classList.remove('on');
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-          card.classList.add('hidden-project');
-          // Clean up inline styles so IntersectionObserver can take over again next time
-          card.style.opacity = '';
-          card.style.transform = '';
-        }, 300);
-      }
-    });
-
-    toggleProjectsBtn.innerHTML = isProjectsExpanded 
-      ? 'SHOW LESS ↑' 
-      : 'SEE OTHER PROJECTS ↓';
-  });
-}
-
-// Fallback logic for year is removed as it's hardcoded into the HTML element fallback text now.
 </script>
 </body>
 </html>
