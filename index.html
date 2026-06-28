@@ -553,7 +553,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 }
 
 .hero-text { max-width: 680px; }
-.hero-socials { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.hero-socials { display: flex; flex-wrap: nowrap; gap: 10px; align-items: center; justify-content: flex-start; }
 
 /* CARD HEADER */
 .card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.75rem}
@@ -568,7 +568,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 @media(max-width:480px){.scroll-hint{display:none}}
 
 /* CONTACT */
-.contact-icons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem}
+.contact-icons{display:flex;justify-content:center;gap:10px;flex-wrap:nowrap;margin-bottom:2.5rem}
 
 /* SKILLS GRID */
 .skills-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
@@ -705,32 +705,33 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <span style="color:var(--accent)">›_</span>
           <span id="typ"></span><span class="cur"></span>
         </div>
-        
-        <!-- UPDATED COLORFUL ICONS -->
-        <div class="hero-a d3 hero-socials" style="gap: 12px; margin-bottom: 1.8rem;">
+
+        <!-- NEW SOCIAL ICONS ORDERED -->
+        <div class="hero-a d4 hero-socials" style="margin-bottom:1.8rem;">
             <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile">
-              <img src="https://api.iconify.design/skill-icons/github-dark.svg" alt="GitHub">
+              <img src="https://api.iconify.design/skill-icons/github-dark.svg" style="width:22px;height:22px;" alt="GitHub">
             </a>
             <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn Profile">
-              <img src="https://api.iconify.design/devicon/linkedin.svg" alt="LinkedIn">
+              <img src="https://api.iconify.design/devicon/linkedin.svg" style="width:22px;height:22px;" alt="LinkedIn">
             </a>
             <a href="mailto:anushkadas05das@gmail.com" class="hero-social-link" aria-label="Email Me">
-              <img src="https://api.iconify.design/logos/google-gmail.svg" alt="Gmail">
+              <img src="https://api.iconify.design/logos/google-gmail.svg" style="width:22px;height:22px;" alt="Gmail">
             </a>
             <a href="https://x.com/anushkasys" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="X (Twitter) Profile">
-              <img src="https://api.iconify.design/ri/twitter-x-fill.svg?color=white" class="inv-light" alt="X (Twitter)">
+              <img src="https://api.iconify.design/ri/twitter-x-fill.svg?color=white" class="inv-light" style="width:22px;height:22px;" alt="X (Twitter)">
             </a>
             <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="Google Dev Profile">
-              <img src="https://api.iconify.design/logos/google-developers.svg" alt="Google Dev">
+              <img src="https://api.iconify.design/logos/google-developers.svg" style="width:22px;height:22px;" alt="Google Dev">
             </a>
             <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="Discord: anushka.sys" aria-label="Discord Profile">
-              <img src="https://api.iconify.design/logos/discord-icon.svg" alt="Discord">
+              <img src="https://api.iconify.design/logos/discord-icon.svg" style="width:22px;height:22px;" alt="Discord">
             </a>
         </div>
 
         <p class="hero-a d4" style="font-family:var(--serif);font-size:.85rem;font-weight:300;color:var(--t2);line-height:1.7;max-width:540px;margin-bottom:.85rem">
-          I'm a 20-year-old IT undergrad and an ML/DL Engineer with strong research interests in AIML. I build intelligent systems and full-stack AI applications that can see, understand, and solve real-world challenges. Alongside my work in AIML, I have 4+ years of hands-on experience in web development and DSA problem-solving. 
+          I'm a 20-year-old IT undergrad and an ML/DL Engineer with strong research interests in AIML. I build intelligent systems and full-stack AI applications that can see, understand, and solve real-world challenges. Alongside my work in ML, I have 4+ years of hands-on experience in web development and DSA problem-solving. 
         </p>
+
         <p class="hero-a d4" style="font-size:.8rem;color:var(--t3);line-height:1.65;max-width:540px;margin-bottom:1.8rem">
   ➤ Active member of
   <img src="https://api.iconify.design/logos/google-icon.svg" style="display:inline-block;vertical-align:-2px;width:12px;height:12px;margin-left:5px;margin-right:4px" alt="Google">
@@ -741,6 +742,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
   <strong style="color:var(--t1);font-weight:700">NVIDIA Developer Community, </strong>
   exploring advancements in AI, machine learning, and modern computing technologies.
 </p>
+
         <div class="hero-a d5 stats-row">
           <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Problems Solved</div></div>
           <div class="stat"><div class="stat-n">25+</div><div class="stat-l">Projects Built</div></div>
@@ -782,7 +784,8 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
     <p class="sec-sub">Engineering roles, open-source contributions, and community work</p>
 
     <div class="tl sfade" style="display:flex;flex-direction:column;gap:12px">
-      <!-- Google WTM -->
+
+      <!-- Google WTM Experience -->
       <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
@@ -803,7 +806,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           </div>
         </div>
       </div>
-      <!-- Zetheta -->
+      
       <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
@@ -826,7 +829,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           </div>
         </div>
       </div>
-      <!-- GSSoC -->
+
       <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
@@ -922,6 +925,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
     <p class="sec-sub">Languages, frameworks, and tools across the full stack and ML pipeline</p>
 
     <div class="skills-grid">
+
       <div class="term lft">
         <div class="term-bar">
           <span class="td td-r"></span><span class="td td-y"></span><span class="td td-g"></span>
@@ -1216,24 +1220,24 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
       </h2>
       <p style="font-family:var(--serif);font-size:.82rem;font-weight:300;color:var(--t2);line-height:1.7;max-width:400px;margin:0 auto 2rem">Always open to discussing software engineering opportunities, ML research, and innovative ideas. Let's execute a handshake.</p>
 
-      <div class="contact-icons" style="gap: 16px; justify-content: center; display: flex; flex-wrap: wrap;">
+      <div class="contact-icons" style="display:flex; flex-wrap:nowrap; gap:10px; justify-content:center;">
         <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub">
-          <img src="https://api.iconify.design/skill-icons/github-dark.svg" alt="GitHub">
+          <img src="https://api.iconify.design/skill-icons/github-dark.svg" style="width:22px; height:22px;" alt="GitHub">
         </a>
         <a href="https://linkedin.com/in/anushka-das-467437316" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn">
-          <img src="https://api.iconify.design/devicon/linkedin.svg" alt="LinkedIn">
+          <img src="https://api.iconify.design/devicon/linkedin.svg" style="width:22px; height:22px;" alt="LinkedIn">
         </a>
         <a href="mailto:anushkadas05das@gmail.com" class="hero-social-link" aria-label="Email Me">
-          <img src="https://api.iconify.design/logos/google-gmail.svg" alt="Gmail">
+          <img src="https://api.iconify.design/logos/google-gmail.svg" style="width:22px; height:22px;" alt="Gmail">
         </a>
         <a href="https://x.com/anushkasys" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="X (Twitter)">
-          <img src="https://api.iconify.design/ri/twitter-x-fill.svg?color=white" class="inv-light" alt="X (Twitter)">
+          <img src="https://api.iconify.design/ri/twitter-x-fill.svg?color=white" class="inv-light" style="width:22px; height:22px;" alt="X (Twitter)">
         </a>
         <a href="https://g.dev/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="Google Dev Profile">
-          <img src="https://api.iconify.design/logos/google-developers.svg" alt="Google Dev">
+          <img src="https://api.iconify.design/logos/google-developers.svg" style="width:22px; height:22px;" alt="Google Dev">
         </a>
         <a href="https://discord.com/users/anushka.sys" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="Discord: anushka.sys" aria-label="Discord">
-          <img src="https://api.iconify.design/logos/discord-icon.svg" alt="Discord">
+          <img src="https://api.iconify.design/logos/discord-icon.svg" style="width:22px; height:22px;" alt="Discord">
         </a>
       </div>
 
