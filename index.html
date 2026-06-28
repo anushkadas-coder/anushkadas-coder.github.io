@@ -466,8 +466,8 @@ display:flex;align-items:center;gap:8px;margin-bottom:.9rem;
   transform: translateY(-4px) scale(1.15);
 }
 .hero-social-link img {
-  width: 24px; 
-  height: 24px;
+  width: 22px; 
+  height: 22px;
   object-fit: contain;
   filter: none !important; 
 }
@@ -553,7 +553,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 }
 
 .hero-text { max-width: 680px; }
-.hero-socials { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.hero-socials { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 
 /* CARD HEADER */
 .card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.75rem}
@@ -568,7 +568,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 @media(max-width:480px){.scroll-hint{display:none}}
 
 /* CONTACT */
-.contact-icons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem}
+.contact-icons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem}
 
 /* SKILLS GRID */
 .skills-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
@@ -705,9 +705,9 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <span style="color:var(--accent)">›_</span>
           <span id="typ"></span><span class="cur"></span>
         </div>
-
-        <!-- NEW COLORFUL SOCIAL ICONS in About Section -->
-        <div class="hero-a d3 hero-socials" style="gap: 14px; margin-bottom: 1.8rem;">
+        
+        <!-- UPDATED COLORFUL ICONS -->
+        <div class="hero-a d3 hero-socials" style="gap: 12px; margin-bottom: 1.8rem;">
             <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile">
               <img src="https://api.iconify.design/skill-icons/github-dark.svg" alt="GitHub">
             </a>
@@ -752,11 +752,9 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
 
         <div class="hero-a d6" style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem">
-
           <a href="ANUSHKA's Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-g">
             <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M13 10h5l-6 6-6-6h5V3h2v7zm-9 9h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7z"/></svg> RESUME
           </a>
-
         </div>
 
       </div>
@@ -784,8 +782,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
     <p class="sec-sub">Engineering roles, open-source contributions, and community work</p>
 
     <div class="tl sfade" style="display:flex;flex-direction:column;gap:12px">
-
-      <!-- Google WTM Experience added at the TOP -->
+      <!-- Google WTM -->
       <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
@@ -794,9 +791,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <div class="exp-dt" style="margin-bottom:4px">JAN 2025 – PRESENT</div>
             <h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);margin-bottom:2px">Active Member</h3>
             <p style="font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--t3);margin-bottom:.3rem;letter-spacing:.07em;text-transform:uppercase">GOOGLE'S WOMEN TECHMAKERS · GLOBAL</p>
-            
             <button class="exp-toggle-btn">View Details <span class="arr">↓</span></button>
-            
             <div class="exp-details">
               <div class="exp-details-inner">
                 <div style="display:flex;flex-direction:column;gap:5px">
@@ -805,11 +800,10 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
+      <!-- Zetheta -->
       <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
@@ -818,9 +812,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <div class="exp-dt" style="margin-bottom:4px">JAN 2026  – FEB 2026</div>
             <h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);margin-bottom:2px">Blockchain Risk Developer</h3>
             <p style="font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--t3);margin-bottom:.3rem;letter-spacing:.07em;text-transform:uppercase">ZETHETA ALGORITHMS PRIVATE LIMITED · REMOTE</p>
-            
             <button class="exp-toggle-btn">View Details <span class="arr">↓</span></button>
-            
             <div class="exp-details">
               <div class="exp-details-inner">
                 <div style="display:flex;flex-direction:column;gap:5px">
@@ -831,11 +823,10 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
+      <!-- GSSoC -->
       <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
@@ -844,9 +835,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
             <div class="exp-dt" style="margin-bottom:4px">JULY 2025 – SEPT 2025</div>
             <h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);margin-bottom:2px">Open-Source Contributor</h3>
             <p style="font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--t3);margin-bottom:.3rem;letter-spacing:.07em;text-transform:uppercase">GSSoC '25 · REMOTE</p>
-            
             <button class="exp-toggle-btn">View Details <span class="arr">↓</span></button>
-            
             <div class="exp-details">
               <div class="exp-details-inner">
                 <div style="display:flex;flex-direction:column;gap:5px">
@@ -856,36 +845,9 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
-      <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
-        <div class="tl-dot"></div>
-        <div class="exp-inner">
-          <div class="exp-logo"><img src="codsoft.jpeg" alt="CodSoft" loading="lazy" style="width:100%;height:100%;object-fit:contain;border-radius:4px"></div>
-          <div style="flex:1;min-width:0">
-            <div class="exp-dt" style="margin-bottom:4px">AUG 2025 · 1 MONTH</div>
-            <h3 style="font-family:var(--serif);font-size:.95rem;font-weight:700;color:var(--t0);margin-bottom:2px">Web Development Intern</h3>
-            <p style="font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--t3);margin-bottom:.3rem;letter-spacing:.07em;text-transform:uppercase">CODSOFT · REMOTE</p>
-            
-            <button class="exp-toggle-btn">View Details <span class="arr">↓</span></button>
-            
-            <div class="exp-details">
-              <div class="exp-details-inner">
-                <div style="display:flex;flex-direction:column;gap:5px">
-                  <div class="bul"><span>Architected and deployed <strong style="color:var(--t0);font-weight:700">6+ mobile-first web applications</strong> utilizing semantic HTML5, modern CSS3 (Flexbox/Grid), and Vanilla JavaScript (ES6+).</span></div>
-                  <div class="bul"><span>Optimized frontend performance through asset minification, lazy loading, and efficient DOM manipulation techniques.</span></div>
-                  <div class="bul"><span>Improved accessibility using semantic HTML and WCAG-aligned design practices while ensuring robust cross-browser compatibility.</span></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -900,7 +862,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
     <p class="sec-sub">Production systems, research prototypes, and creative explorations</p>
 
     <div class="sgrid pg">
-
       <div class="card" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
@@ -909,7 +870,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.</div><div class="bul">&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack.</div></div>
         </div>
       </div>
-
       <div class="card" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
@@ -918,7 +878,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Full-stack app using Robust PCA to extract clean text from degraded documents.</div><div class="bul">95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s.</div></div>
         </div>
       </div>
-
       <div class="card" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
@@ -927,7 +886,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</div><div class="bul">Incremental sync engine with timestamp state tracking. Dynamic cluster merging for overlapping windows.</div></div>
         </div>
       </div>
-
       <div class="card" style="padding:0;overflow:hidden">
         <div class="pimg" style="height:160px"><img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
         <div style="padding:1.25rem">
@@ -936,10 +894,8 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.</div><div class="bul">4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer.</div></div>
         </div>
       </div>
-
     </div>
 
-    <!-- Redirect to projects.html -->
     <div style="text-align:center; margin-top: 2.5rem; margin-bottom: 2.5rem;">
       <a href="projects.html" class="btn-g" style="cursor:pointer; font-size: 0.65rem;">
         SEE OTHER PROJECTS →
@@ -966,7 +922,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
     <p class="sec-sub">Languages, frameworks, and tools across the full stack and ML pipeline</p>
 
     <div class="skills-grid">
-
       <div class="term lft">
         <div class="term-bar">
           <span class="td td-r"></span><span class="td td-y"></span><span class="td td-g"></span>
@@ -1261,8 +1216,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
       </h2>
       <p style="font-family:var(--serif);font-size:.82rem;font-weight:300;color:var(--t2);line-height:1.7;max-width:400px;margin:0 auto 2rem">Always open to discussing software engineering opportunities, ML research, and innovative ideas. Let's execute a handshake.</p>
 
-      <!-- UPDATED COLORFUL ICONS -->
-      <div class="contact-icons" style="gap: 16px;">
+      <div class="contact-icons" style="gap: 16px; justify-content: center; display: flex; flex-wrap: wrap;">
         <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub">
           <img src="https://api.iconify.design/skill-icons/github-dark.svg" alt="GitHub">
         </a>
