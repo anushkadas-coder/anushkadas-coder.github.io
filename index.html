@@ -587,6 +587,16 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 
 .hero-socials { display: flex; flex-wrap: nowrap; gap: 10px; align-items: center; }
 
+@media (max-width: 480px) {
+  .hero-social-link img {
+    width: 18px; 
+    height: 18px;
+  }
+  .hero-socials {
+    gap: 8px;
+  }
+}
+
 /* CARD HEADER */
 .card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.75rem}
 .card-header h3{flex:1;min-width:0}
