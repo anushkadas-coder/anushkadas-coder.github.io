@@ -538,8 +538,8 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 
 /* HERO */
 .hero-grid { display: block; position: relative; }
-.hero-canvas { position: absolute; top: 0; right: 0; width: 110px; aspect-ratio: 1/1; animation: float 6s ease-in-out infinite; z-index: 10; }
-.hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 120px); }
+.hero-canvas { position: absolute; top: 0; right: 0; width: 120px; aspect-ratio: 1/1; animation: float 6s ease-in-out infinite; z-index: 10; }
+.hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 160px); }
 
 @keyframes float {
   0% { transform: translateY(0px); }
@@ -548,18 +548,18 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 }
 
 @media(max-width: 480px) {
-  .hero-canvas { width: 95px; }
-  .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 105px); }
+  .hero-canvas { width: 105px; }
+  .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 145px); }
 }
 
 @media(min-width: 600px) and (max-width: 1023px) {
-  .hero-canvas { width: 140px; }
-  .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 160px); }
+  .hero-canvas { width: 160px; }
+  .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 210px); }
 }
 
 @media(min-width: 1024px) {
   .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .hero-canvas { position: relative; top: auto; right: auto; width: 100%; max-width: 320px; }
+  .hero-canvas { position: relative; top: auto; right: auto; width: 100%; max-width: 340px; }
   .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: none; }
 }
 
