@@ -538,7 +538,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 
 /* HERO */
 .hero-grid { display: block; position: relative; }
-.hero-canvas { position: absolute; top: 0; right: 0; width: 110px; aspect-ratio: 4/5; animation: float 6s ease-in-out infinite; z-index: 10; }
+.hero-canvas { position: absolute; top: 0; right: 0; width: 110px; aspect-ratio: 1/1; animation: float 6s ease-in-out infinite; z-index: 10; }
 .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 120px); }
 
 @keyframes float {
@@ -791,9 +791,8 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
       </div>
 
-      <div class="hero-canvas corner-frame">
-        <span></span><span></span><span></span><span></span>
-        <img src="rukia.jpeg" alt="Profile" width="400" height="500" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:1px solid var(--accent-ring);border-radius:8px;filter:drop-shadow(0 0 15px var(--accent-glow))">
+      <div class="hero-canvas">
+        <img src="rukia.jpeg" alt="Profile" width="400" height="400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:1px solid var(--accent-ring);border-radius:50%;filter:drop-shadow(0 0 15px var(--accent-glow))">
       </div>
 
     </div>
