@@ -520,14 +520,6 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 .card:hover .pimg img,.card-accent:hover .pimg img{transform:scale(1.05)}
 .pimg-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.85) 100%)}
 
-/* CORNER FRAME */
-.corner-frame>span{position:absolute;width:18px;height:18px;border-color:var(--accent);border-style:solid;transition:all .35s}
-.corner-frame:hover>span{width:24px;height:24px; box-shadow: 0 0 8px var(--accent-glow);}
-.corner-frame>span:nth-child(1){top:-5px;left:-5px;border-width:1.5px 0 0 1.5px;border-radius:2px 0 0 0}
-.corner-frame>span:nth-child(2){top:-5px;right:-5px;border-width:1.5px 1.5px 0 0;border-radius:0 2px 0 0}
-.corner-frame>span:nth-child(3){bottom:-5px;left:-5px;border-width:0 0 1.5px 1.5px;border-radius:0 0 0 2px}
-.corner-frame>span:nth-child(4){bottom:-5px;right:-5px;border-width:0 1.5px 1.5px 0;border-radius:0 0 2px 0}
-
 /* CURSOR */
 .cur{display:inline-block;width:2px;height:.85em;background:var(--accent);vertical-align:middle;margin-left:2px;animation:blink 1s step-end infinite; box-shadow: 0 0 4px var(--accent);}
 @keyframes blink{50%{opacity:0}}
@@ -538,7 +530,7 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 
 /* HERO */
 .hero-grid { display: block; position: relative; }
-.hero-canvas { position: absolute; top: 0; right: 0; width: 110px; aspect-ratio: 4/5; animation: float 6s ease-in-out infinite; z-index: 10; }
+.hero-canvas { position: absolute; top: 0; right: 0; width: 110px; aspect-ratio: 1/1; animation: float 6s ease-in-out infinite; z-index: 10; }
 .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: calc(100% - 120px); }
 
 @keyframes float {
@@ -786,9 +778,8 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
       </div>
 
-      <div class="hero-canvas corner-frame">
-        <span></span><span></span><span></span><span></span>
-        <img src="bocchi.jpeg" alt="Profile" width="400" height="500" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:1px solid var(--accent-ring);border-radius:8px;filter:drop-shadow(0 0 15px var(--accent-glow))">
+      <div class="hero-canvas">
+        <img src="bocchi.jpeg" alt="Profile" width="400" height="400" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:1px solid var(--accent-ring);border-radius:50%;filter:drop-shadow(0 0 15px var(--accent-glow))">
       </div>
 
     </div>
