@@ -260,21 +260,25 @@ color:var(--t0);margin-bottom:.4rem;
 /* CARDS */
 .card{
 background:var(--sfc);border:1px solid var(--line);
-border-radius:10px;overflow:hidden;
+border-radius:12px;overflow:hidden;
 transition:all .4s cubic-bezier(.165,.84,.44,1);
 position:relative;
+display: flex;
+flex-direction: column;
 }
-.card:hover{border-color:var(--accent-ring);transform:translateY(-5px);box-shadow:0 25px 50px var(--shadow), 0 0 20px var(--accent-glow);}
+.card:hover{border-color:var(--accent-ring);transform:translateY(-6px);box-shadow:0 20px 40px var(--shadow), 0 0 20px var(--accent-glow);}
 .card-accent{
 background:var(--sfc);border:1px solid var(--accent-ring);
-border-radius:10px;overflow:hidden;position:relative;
+border-radius:12px;overflow:hidden;position:relative;
 transition:all .4s cubic-bezier(.165,.84,.44,1);
+display: flex;
+flex-direction: column;
 }
 .card-accent::before{
 content:'';position:absolute;top:0;left:0;right:0;height:1px;
 background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--accent) 60%,transparent);
 }
-.card-accent:hover{border-color:var(--accent-hi);transform:translateY(-5px);box-shadow:0 25px 50px var(--shadow),0 0 30px var(--accent-glow)}
+.card-accent:hover{border-color:var(--accent-hi);transform:translateY(-6px);box-shadow:0 20px 40px var(--shadow),0 0 30px var(--accent-glow)}
 
 /* TERMINAL */
 .term{
@@ -302,13 +306,12 @@ border-bottom:1px solid var(--line);
 /* TAGS & PILLS */
 .tag{
 display:inline-flex;align-items:center;
-font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.07em;
-padding:3px 7px;border-radius:4px;text-transform:uppercase;
+font-family:var(--mono);font-size:.65rem;font-weight:600;letter-spacing:.05em;
+padding:4px 9px;border-radius:6px;text-transform:uppercase;
 background:var(--accent-lo);border:1px solid var(--accent-ring);color:var(--accent);
 transition:all .25s;
 }
 .tag:hover{background:var(--accent);color:var(--bg0);box-shadow: 0 0 8px var(--accent-glow);}
-.tag-green{background:var(--accent-lo);border-color:var(--accent-ring);color:var(--accent)}
 .tag-overlay {
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(4px);
@@ -332,8 +335,8 @@ transition:all .28s cubic-bezier(.4,0,.2,1);cursor:default;
 .pill:hover img{opacity:0.8 !important;}
 
 /* BUL */
-.bul{display:flex;gap:8px;align-items:flex-start;font-size:.78rem;color:var(--t2);line-height:1.6}
-.bul::before{content:'›';color:var(--accent);font-size:.7rem;margin-top:2px;flex-shrink:0;font-weight:700}
+.bul{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--t2);line-height:1.65}
+.bul::before{content:'›';color:var(--accent);font-size:.85rem;margin-top:1px;flex-shrink:0;font-weight:700}
 
 /* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:2rem}
@@ -509,23 +512,25 @@ background:linear-gradient(90deg,var(--accent-lo),transparent);border-radius:0 6
 background:var(--sfc);border:1px solid var(--accent-ring);
 border-radius:10px;padding:1.8rem;position:relative;overflow:hidden;
 transition:all .35s cubic-bezier(.4,0,.2,1);
+display: flex;
+flex-direction: column;
 }
 .mem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent) 40%,var(--accent) 60%,transparent)}
 .mem-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px var(--shadow),0 0 20px var(--accent-glow)}
 .mem-card img { filter: var(--icon-filter); }
 
 /* PIMG */
-.pimg{position:relative;overflow:hidden}
+.pimg{position:relative;overflow:hidden;height:180px;border-bottom:1px solid var(--line);}
 .pimg img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.165,.84,.44,1);display:block}
 .card:hover .pimg img,.card-accent:hover .pimg img{transform:scale(1.05)}
-.pimg-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.85) 100%)}
+.pimg-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.75) 100%)}
 
 /* CURSOR */
 .cur{display:inline-block;width:2px;height:.85em;background:var(--accent);vertical-align:middle;margin-left:2px;animation:blink 1s step-end infinite; box-shadow: 0 0 4px var(--accent);}
 @keyframes blink{50%{opacity:0}}
 
 /* GRIDS */
-.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));gap:16px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:20px}
 .ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:14px}
 
 /* HERO */
@@ -590,10 +595,10 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 }
 
 /* CARD HEADER */
-.card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.75rem}
-.card-header h3{flex:1;min-width:0}
-.card-header-links{display:flex;gap:4px;flex-shrink:0}
-.tag-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.75rem}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:1rem}
+.card-header h3{flex:1;min-width:0;font-size:1.05rem;line-height:1.4}
+.card-header-links{display:flex;gap:6px;flex-shrink:0}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
 .chips-wrap{display:flex;gap:6px;flex-wrap:wrap}
 
 /* SCROLL HINT */
@@ -606,6 +611,94 @@ transition:all .35s cubic-bezier(.4,0,.2,1);
 
 /* SKILLS GRID */
 .skills-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
+
+/* NEW: ENHANCED PROJECTS FAN COLLAGE */
+.proj-fan{
+  position:relative;
+  max-width:900px;
+  margin:0 auto 4rem;
+  height:360px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.proj-fan-card{
+  position:absolute;
+  width:220px;
+  height:300px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line2);
+  background:var(--sfc2);
+  box-shadow:0 25px 50px var(--shadow);
+  transition:transform .5s cubic-bezier(.165,.84,.44,1), box-shadow .5s ease, border-color .3s ease, z-index 0s;
+  cursor:pointer;
+  display:block;
+}
+.proj-fan-card img{width:100%;height:100%;object-fit:cover;display:block; transition:transform 0.5s ease;}
+.proj-fan-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, transparent 70%);
+}
+.proj-fan-label{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:15px;
+  display:flex; flex-direction:column; gap:4px;
+}
+.proj-fan-title {
+  font-family:var(--serif);font-size:0.95rem;font-weight:700;
+  color:#fff;line-height:1.3;
+  text-shadow:0 2px 4px rgba(0,0,0,.8);
+}
+.proj-fan-tech {
+  font-family:var(--mono);font-size:0.55rem;font-weight:600;letter-spacing:0.08em;
+  color:var(--t2); text-transform:uppercase;
+}
+.proj-fan-card:hover{
+  border-color: var(--accent);
+  transform:translateY(-24px) scale(1.08) rotate(0deg) !important;
+  box-shadow:0 40px 80px var(--shadow), 0 0 40px var(--accent-glow);
+  z-index:50 !important;
+}
+.proj-fan-card:hover img { transform:scale(1.1); }
+
+.proj-fan-card.pf-1{ transform: translateX(-240px) rotate(-12deg); z-index:1; }
+.proj-fan-card.pf-2{ transform: translateX(-80px) rotate(-4deg) translateY(-15px); z-index:3; }
+.proj-fan-card.pf-3{ transform: translateX(80px) rotate(4deg) translateY(-15px); z-index:2; }
+.proj-fan-card.pf-4{ transform: translateX(240px) rotate(12deg); z-index:1; }
+
+@media(max-width:900px){
+  .proj-fan{height:280px; max-width:100%;}
+  .proj-fan-card{width:170px;height:230px}
+  .proj-fan-card.pf-1{ transform: translateX(-180px) rotate(-12deg); }
+  .proj-fan-card.pf-2{ transform: translateX(-60px) rotate(-4deg) translateY(-10px); }
+  .proj-fan-card.pf-3{ transform: translateX(60px) rotate(4deg) translateY(-10px); }
+  .proj-fan-card.pf-4{ transform: translateX(180px) rotate(12deg); }
+}
+
+@media(max-width:640px){
+  .proj-fan{height:240px;margin-bottom:3rem}
+  .proj-fan-card{width:140px;height:190px;border-radius:10px}
+  .proj-fan-label{padding:10px;}
+  .proj-fan-title{font-size:0.75rem;}
+  .proj-fan-tech{font-size:0.45rem;}
+  .proj-fan-card.pf-1{ transform: translateX(-110px) rotate(-12deg); }
+  .proj-fan-card.pf-2{ transform: translateX(-35px) rotate(-4deg) translateY(-8px); }
+  .proj-fan-card.pf-3{ transform: translateX(35px) rotate(4deg) translateY(-8px); }
+  .proj-fan-card.pf-4{ transform: translateX(110px) rotate(12deg); }
+}
+
+@media(max-width:420px){
+  .proj-fan{height:200px}
+  .proj-fan-card{width:110px;height:150px}
+  .proj-fan-label{padding:8px;}
+  .proj-fan-title{font-size:0.65rem;}
+  .proj-fan-tech{display:none;}
+  .proj-fan-card.pf-1{ transform: translateX(-85px) rotate(-12deg); }
+  .proj-fan-card.pf-2{ transform: translateX(-28px) rotate(-4deg) translateY(-6px); }
+  .proj-fan-card.pf-3{ transform: translateX(28px) rotate(4deg) translateY(-6px); }
+  .proj-fan-card.pf-4{ transform: translateX(85px) rotate(12deg); }
+}
 
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -736,7 +829,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
           <span id="typ"></span><span class="cur"></span>
         </div>
 
-        <!-- NEW SOCIAL ICONS ORDERED -->
         <div class="hero-a d4 hero-socials" style="margin-bottom:1.8rem;">
             <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile">
               <img src="https://api.iconify.design/skill-icons/github-dark.svg" alt="GitHub">
@@ -801,7 +893,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
     <div class="tl sfade" style="display:flex;flex-direction:column;gap:12px">
 
-
       <div class="tl-item exp-c" role="button" tabindex="0" onclick="toggleExpCard(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleExpCard(this)">
         <div class="tl-dot"></div>
         <div class="exp-inner">
@@ -823,7 +914,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -850,7 +940,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -878,7 +967,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -904,7 +992,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -929,7 +1016,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -947,55 +1033,47 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
     <h2 class="sec-title">Deployed <em>Engineering</em> Solutions</h2>
     <p class="sec-sub">Production systems, research prototypes, and creative explorations</p>
 
-    <div class="sgrid pg">
-
-      <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">DeepfakeDetector: Frequency-Based AI Inference Engine</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://deepfake-detection-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="Live Demo"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">PyTorch</span><span class="tag">2D FFT</span><span class="tag">ResNet-18</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.</div><div class="bul">&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack.</div></div>
+    <!-- ENHANCED FAN COLLAGE -->
+    <div class="proj-fan up">
+      <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-1">
+        <img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">DeepfakeDetector</div>
+          <div class="proj-fan-tech">React · FastAPI · PyTorch</div>
         </div>
-      </div>
-
-      <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">Deweathering Engine</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a><a href="https://deweathering-engine.vercel.app" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="Live Demo"><img src="https://api.iconify.design/ri/external-link-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OpenCV</span><span class="tag">RPCA</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">Full-stack app using Robust PCA to extract clean text from degraded documents.</div><div class="bul">95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s.</div></div>
+      </a>
+      <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-2">
+        <img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">Deweathering Engine</div>
+          <div class="proj-fan-tech">React · OpenCV · RPCA</div>
         </div>
-      </div>
-
-      <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">iNaturalist Clumper: Geospatial Data Engineering</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">Data Engineering</span><span class="tag">Spatial Algorithms</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.</div><div class="bul">Incremental sync engine with timestamp state tracking. Dynamic cluster merging for overlapping windows.</div></div>
+      </a>
+      <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-3">
+        <img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">iNaturalist Clumper</div>
+          <div class="proj-fan-tech">Python · Spatial Data</div>
         </div>
-      </div>
-
-      <div class="card" style="padding:0;overflow:hidden">
-        <div class="pimg" style="height:160px"><img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy" width="800" height="450"><div class="pimg-grad"></div></div>
-        <div style="padding:1.25rem">
-          <div class="card-header"><h3 style="font-family:var(--serif);font-size:.85rem;font-weight:700;color:var(--t0);line-height:1.4">DCO6: Polyphonic VST3 Synthesizer</h3><div class="card-header-links"><a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="ib ib-sm" aria-label="GitHub"><img src="https://api.iconify.design/ri/github-line.svg" style="width:12px;height:12px" alt=""></a></div></div>
-          <div class="tag-row"><span class="tag">C++</span><span class="tag">JUCE Framework</span><span class="tag">Audio DSP</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"><div class="bul">6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.</div><div class="bul">4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer.</div></div>
+      </a>
+      <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-4">
+        <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">DCO6 Synthesizer</div>
+          <div class="proj-fan-tech">C++ · JUCE · DSP</div>
         </div>
-      </div>
-
+      </a>
     </div>
 
     <!-- Redirect to projects.html -->
-    <div style="text-align:center; margin-top: 2.5rem; margin-bottom: 2.5rem;">
-      <a href="projects.html" class="btn-g" style="cursor:pointer; font-size: 0.65rem;">
+    <div style="text-align:center; margin-top: 3rem; margin-bottom: 2.5rem;">
+      <a href="projects.html" class="btn-g" style="cursor:pointer; font-size: 0.7rem;">
         SEE OTHER PROJECTS →
       </a>
     </div>
 
     <div class="lft" style="margin-top:1.5rem;text-align:center">
-      <p style="font-family:var(--serif);font-size:.8rem;font-weight:300;font-style:italic;color:var(--t3);margin-bottom:1.25rem">These are just some highlights. Explore all repositories, experiments, and works-in-progress.</p>
+      <p style="font-family:var(--serif);font-size:.85rem;font-weight:300;font-style:italic;color:var(--t3);margin-bottom:1.25rem">These are just some highlights. Explore all repositories, experiments, and works-in-progress.</p>
       <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="btn-g">
         <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"/></svg>
         VIEW ALL ON GITHUB
@@ -1320,7 +1398,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
       </h2>
       <p style="font-family:var(--serif);font-size:.82rem;font-weight:300;color:var(--t2);line-height:1.7;max-width:400px;margin:0 auto 2rem">Always open to discussing software engineering opportunities, ML research, and innovative ideas. Let's execute a handshake.</p>
 
-      <!-- UPDATED COLORFUL ICONS -->
       <div class="contact-icons">
         <a href="https://github.com/anushkadas-coder" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub">
           <img src="https://api.iconify.design/skill-icons/github-dark.svg" alt="GitHub">
