@@ -1488,17 +1488,27 @@ document.getElementById('thm').addEventListener('click', (e) => {
     return;
   }
 
-  // Get click coordinates to start the circle. Fallback to center if triggered by keyboard.
+  // Safely get coordinates, using touch/mouse event first, falling back to bounding rect.
   const btn = document.getElementById('thm');
   const rect = btn.getBoundingClientRect();
-  const x = rect.left + rect.width / 2;
-  const y = rect.top + rect.height / 2;
   
-  // Calculate the distance to the furthest corner to know how big the circle needs to be
-  const endRadius = Math.hypot(
+  // Some mobile browsers return 0 for clientX on synthetic clicks.
+  let x = e.clientX;
+  let y = e.clientY;
+  
+  if (x === undefined || y === undefined || (x === 0 && y === 0)) {
+      x = rect.left + rect.width / 2;
+      y = rect.top + rect.height / 2;
+  }
+  
+  // Prevent CSS parse errors by rounding to integers
+  x = Math.round(x);
+  y = Math.round(y);
+
+  const endRadius = Math.round(Math.hypot(
     Math.max(x, window.innerWidth - x),
     Math.max(y, window.innerHeight - y)
-  );
+  ));
 
   const transition = document.startViewTransition(() => {
     updateTheme();
@@ -1513,7 +1523,7 @@ document.getElementById('thm').addEventListener('click', (e) => {
         ]
       },
       {
-        duration: 600,
+        duration: 500,
         easing: 'ease-in-out',
         pseudoElement: '::view-transition-new(root)'
       }
