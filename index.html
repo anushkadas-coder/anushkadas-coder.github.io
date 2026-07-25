@@ -612,92 +612,77 @@ flex-direction: column;
 /* SKILLS GRID */
 .skills-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
 
-/* NEW: ENHANCED PROJECTS FAN COLLAGE */
-.proj-fan{
-  position:relative;
-  max-width:900px;
-  margin:0 auto 4rem;
-  height:360px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* ENHANCED INTERACTIVE PROJECTS FAN */
+.proj-fan {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.proj-fan-card{
-  position:absolute;
-  width:220px;
-  height:300px;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid var(--line2);
-  background:var(--sfc2);
-  box-shadow:0 25px 50px var(--shadow);
-  transition:transform .5s cubic-bezier(.165,.84,.44,1), box-shadow .5s ease, border-color .3s ease, z-index 0s;
-  cursor:pointer;
-  display:block;
+.proj-fan-card {
+  position: absolute;
+  width: 220px;
+  height: 300px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line2);
+  background: var(--sfc2);
+  box-shadow: 0 25px 50px var(--shadow);
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s ease, border-color 0.4s ease, filter 0.4s ease, z-index 0s;
+  display: block;
 }
-.proj-fan-card img{width:100%;height:100%;object-fit:cover;display:block; transition:transform 0.5s ease;}
-.proj-fan-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, transparent 70%);
+.proj-fan:not(.has-active) .proj-fan-card { cursor: pointer; }
+.proj-fan-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.proj-fan-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, transparent 70%);
 }
-.proj-fan-label{
-  position:absolute;left:0;right:0;bottom:0;z-index:2;
-  padding:15px;
-  display:flex; flex-direction:column; gap:4px;
+.proj-fan-label {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 15px; display: flex; flex-direction: column; gap: 4px;
 }
 .proj-fan-title {
-  font-family:var(--serif);font-size:0.95rem;font-weight:700;
-  color:#fff;line-height:1.3;
-  text-shadow:0 2px 4px rgba(0,0,0,.8);
+  font-family: var(--serif); font-size: 0.95rem; font-weight: 700;
+  color: #fff; line-height: 1.3; text-shadow: 0 2px 4px rgba(0,0,0,.8);
 }
 .proj-fan-tech {
-  font-family:var(--mono);font-size:0.55rem;font-weight:600;letter-spacing:0.08em;
-  color:var(--t2); text-transform:uppercase;
+  font-family: var(--mono); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--t2); text-transform: uppercase;
 }
-.proj-fan-card:hover{
+
+/* Hover effects when NO card is active */
+.proj-fan:not(.has-active) .proj-fan-card:hover {
   border-color: var(--accent);
-  transform:translateY(-24px) scale(1.08) rotate(0deg) !important;
-  box-shadow:0 40px 80px var(--shadow), 0 0 40px var(--accent-glow);
-  z-index:50 !important;
+  transform: translateY(-24px) scale(1.08) rotate(0deg) !important;
+  box-shadow: 0 40px 80px var(--shadow), 0 0 40px var(--accent-glow);
+  z-index: 50 !important;
 }
-.proj-fan-card:hover img { transform:scale(1.1); }
+.proj-fan:not(.has-active) .proj-fan-card:hover img { transform: scale(1.1); }
 
-.proj-fan-card.pf-1{ transform: translateX(-240px) rotate(-12deg); z-index:1; }
-.proj-fan-card.pf-2{ transform: translateX(-80px) rotate(-4deg) translateY(-15px); z-index:3; }
-.proj-fan-card.pf-3{ transform: translateX(80px) rotate(4deg) translateY(-15px); z-index:2; }
-.proj-fan-card.pf-4{ transform: translateX(240px) rotate(12deg); z-index:1; }
+/* When A Card Is Active */
+.proj-fan.has-active .proj-fan-card { cursor: pointer; }
+.proj-fan.has-active .proj-fan-card:not(.active):hover { filter: brightness(0.7) !important; }
 
-@media(max-width:900px){
-  .proj-fan{height:280px; max-width:100%;}
-  .proj-fan-card{width:170px;height:230px}
-  .proj-fan-card.pf-1{ transform: translateX(-180px) rotate(-12deg); }
-  .proj-fan-card.pf-2{ transform: translateX(-60px) rotate(-4deg) translateY(-10px); }
-  .proj-fan-card.pf-3{ transform: translateX(60px) rotate(4deg) translateY(-10px); }
-  .proj-fan-card.pf-4{ transform: translateX(180px) rotate(12deg); }
+@media(max-width: 900px) {
+  .proj-fan { height: 280px; max-width: 100%; }
+  .proj-fan-card { width: 170px; height: 230px; }
 }
-
-@media(max-width:640px){
-  .proj-fan{height:240px;margin-bottom:3rem}
-  .proj-fan-card{width:140px;height:190px;border-radius:10px}
-  .proj-fan-label{padding:10px;}
-  .proj-fan-title{font-size:0.75rem;}
-  .proj-fan-tech{font-size:0.45rem;}
-  .proj-fan-card.pf-1{ transform: translateX(-110px) rotate(-12deg); }
-  .proj-fan-card.pf-2{ transform: translateX(-35px) rotate(-4deg) translateY(-8px); }
-  .proj-fan-card.pf-3{ transform: translateX(35px) rotate(4deg) translateY(-8px); }
-  .proj-fan-card.pf-4{ transform: translateX(110px) rotate(12deg); }
+@media(max-width: 640px) {
+  .proj-fan { height: 240px; margin-bottom: 2rem; }
+  .proj-fan-card { width: 140px; height: 190px; border-radius: 10px; }
+  .proj-fan-label { padding: 10px; }
+  .proj-fan-title { font-size: 0.75rem; }
+  .proj-fan-tech { font-size: 0.45rem; }
 }
-
-@media(max-width:420px){
-  .proj-fan{height:200px}
-  .proj-fan-card{width:110px;height:150px}
-  .proj-fan-label{padding:8px;}
-  .proj-fan-title{font-size:0.65rem;}
-  .proj-fan-tech{display:none;}
-  .proj-fan-card.pf-1{ transform: translateX(-85px) rotate(-12deg); }
-  .proj-fan-card.pf-2{ transform: translateX(-28px) rotate(-4deg) translateY(-6px); }
-  .proj-fan-card.pf-3{ transform: translateX(28px) rotate(4deg) translateY(-6px); }
-  .proj-fan-card.pf-4{ transform: translateX(85px) rotate(12deg); }
+@media(max-width: 420px) {
+  .proj-fan { height: 200px; }
+  .proj-fan-card { width: 110px; height: 150px; }
+  .proj-fan-label { padding: 8px; }
+  .proj-fan-title { font-size: 0.65rem; }
+  .proj-fan-tech { display: none; }
 }
 
 /* ANIMATIONS */
@@ -1031,42 +1016,65 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
   <div class="container">
     <div class="eyebrow">Projects</div>
     <h2 class="sec-title">Deployed <em>Engineering</em> Solutions</h2>
-    <p class="sec-sub">Production systems, research prototypes, and creative explorations</p>
+    <p class="sec-sub">Select a project below to explore the architecture and technologies used.</p>
 
-    <!-- ENHANCED FAN COLLAGE -->
-    <div class="proj-fan up">
-      <a href="https://github.com/anushkadas-coder/deepfake-detection-engine" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-1">
+    <!-- INTERACTIVE FAN COLLAGE -->
+    <div class="proj-fan up" id="fan-container">
+      
+      <div class="proj-fan-card" data-index="0" role="button" tabindex="0">
         <img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy">
         <div class="proj-fan-label">
           <div class="proj-fan-title">DeepfakeDetector</div>
           <div class="proj-fan-tech">React · FastAPI · PyTorch</div>
         </div>
-      </a>
-      <a href="https://github.com/anushkadas-coder/deweathering-engine" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-2">
+      </div>
+
+      <div class="proj-fan-card" data-index="1" role="button" tabindex="0">
         <img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy">
         <div class="proj-fan-label">
           <div class="proj-fan-title">Deweathering Engine</div>
           <div class="proj-fan-tech">React · OpenCV · RPCA</div>
         </div>
-      </a>
-      <a href="https://github.com/anushkadas-coder/inaturalist_clumps" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-3">
+      </div>
+
+      <div class="proj-fan-card" data-index="2" role="button" tabindex="0">
         <img src="project-inaturalist.jpeg" alt="iNaturalist Clumper" loading="lazy">
         <div class="proj-fan-label">
           <div class="proj-fan-title">iNaturalist Clumper</div>
           <div class="proj-fan-tech">Python · Spatial Data</div>
         </div>
-      </a>
-      <a href="https://github.com/anushkadas-coder/DCO6_synthesizer" target="_blank" rel="noopener noreferrer" class="proj-fan-card pf-4">
+      </div>
+
+      <div class="proj-fan-card" data-index="3" role="button" tabindex="0">
         <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy">
         <div class="proj-fan-label">
           <div class="proj-fan-title">DCO6 Synthesizer</div>
           <div class="proj-fan-tech">C++ · JUCE · DSP</div>
         </div>
-      </a>
+      </div>
+
+    </div>
+
+    <!-- DYNAMIC DETAILS CONTAINER -->
+    <div id="fan-details-container" style="display: none; opacity: 0; transition: opacity 0.25s ease;">
+       <div class="card" style="padding:1.8rem; max-width: 820px; margin: 0 auto; border-color: var(--accent-ring); box-shadow: 0 20px 40px var(--shadow);">
+           <div class="card-header">
+               <h3 id="fan-det-title" style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--t0);">Project Title</h3>
+               <div class="card-header-links" id="fan-det-links">
+                   <!-- links injected via js -->
+               </div>
+           </div>
+           <div class="tag-row" id="fan-det-tags">
+               <!-- tags injected via js -->
+           </div>
+           <div style="display:flex;flex-direction:column;gap:10px; margin-top:1rem;" id="fan-det-desc">
+               <!-- descriptions injected via js -->
+           </div>
+       </div>
     </div>
 
     <!-- Redirect to projects.html -->
-    <div style="text-align:center; margin-top: 3rem; margin-bottom: 2.5rem;">
+    <div style="text-align:center; margin-top: 3.5rem; margin-bottom: 2.5rem;">
       <a href="projects.html" class="btn-g" style="cursor:pointer; font-size: 0.7rem;">
         SEE OTHER PROJECTS →
       </a>
@@ -1589,6 +1597,192 @@ window.toggleExpCard = function(card) {
     btn.innerHTML = 'Show Less <span class="arr">↑</span>';
   }
 };
+
+/* INTERACTIVE PROJECTS FAN COLLAGE LOGIC */
+document.addEventListener('DOMContentLoaded', () => {
+    const fanContainer = document.getElementById('fan-container');
+    if (!fanContainer) return;
+    
+    const cards = Array.from(fanContainer.querySelectorAll('.proj-fan-card'));
+    let activeCardIndex = -1;
+
+    // Project Data definitions
+    const projectData = [
+      {
+        title: "DeepfakeDetector: Frequency-Based AI Inference Engine",
+        tech: ["React", "FastAPI", "PyTorch", "2D FFT", "ResNet-18"],
+        desc: [
+          "Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.",
+          "&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack."
+        ],
+        links: [
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/deepfake-detection-engine" },
+            { icon: "external-link-line", label: "Live Demo", url: "https://deepfake-detection-engine.vercel.app" }
+        ]
+      },
+      {
+        title: "Deweathering Engine",
+        tech: ["React", "FastAPI", "OpenCV", "RPCA"],
+        desc: [
+          "Full-stack app using Robust PCA to extract clean text from degraded documents.",
+          "95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s."
+        ],
+        links: [
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/deweathering-engine" },
+            { icon: "external-link-line", label: "Live Demo", url: "https://deweathering-engine.vercel.app" }
+        ]
+      },
+      {
+        title: "iNaturalist Clumper: Geospatial Data Engineering",
+        tech: ["Python", "Data Engineering", "Spatial Algorithms"],
+        desc: [
+          "CLI grouping biodiversity observations into clusters on 5km/3hr spatio-temporal thresholds.",
+          "Incremental sync engine with timestamp state tracking. Dynamic cluster merging for overlapping windows."
+        ],
+        links: [
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/inaturalist_clumps" }
+        ]
+      },
+      {
+        title: "DCO6: Polyphonic VST3 Synthesizer",
+        tech: ["C++", "JUCE Framework", "Audio DSP"],
+        desc: [
+          "6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.",
+          "4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer."
+        ],
+        links: [
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/DCO6_synthesizer" }
+        ]
+      }
+    ];
+
+    // Position cards dynamically
+    function renderFan() {
+        const isMobile = window.innerWidth <= 640;
+        const isSmall = window.innerWidth <= 420;
+        const isTablet = window.innerWidth <= 900 && window.innerWidth > 640;
+
+        let spread = 160;
+        let rotFactor = 8;
+        let yDrop = 15;
+
+        if (isTablet) { spread = 120; }
+        if (isMobile) { spread = 70; rotFactor = 6; yDrop = 8; }
+        if (isSmall) { spread = 55; rotFactor = 6; yDrop = 6; }
+
+        if (activeCardIndex !== -1) {
+            fanContainer.classList.add('has-active');
+        } else {
+            fanContainer.classList.remove('has-active');
+        }
+
+        cards.forEach((card, i) => {
+            let offset = i - 1.5; 
+            let tx = offset * spread;
+            let rot = offset * rotFactor;
+            let ty = Math.abs(offset) * yDrop;
+            let scale = 1;
+            let z = 10 - Math.abs(offset);
+
+            if (activeCardIndex !== -1) {
+                if (i === activeCardIndex) {
+                    ty = -30; // Pop up
+                    rot = 0; // Straighten
+                    scale = 1.15; // Enlarge
+                    z = 50; 
+                    card.classList.add('active');
+                } else {
+                    ty += 20; // Push down slightly
+                    scale = 0.92;
+                    card.classList.remove('active');
+                }
+            } else {
+                 card.classList.remove('active');
+            }
+
+            card.style.transform = `translateX(${tx}px) translateY(${ty}px) rotate(${rot}deg) scale(${scale})`;
+            card.style.zIndex = z;
+        });
+    }
+
+    // Toggle details visibility and content
+    function toggleDetails(index) {
+        const container = document.getElementById('fan-details-container');
+        
+        if (activeCardIndex === -1) {
+            // Hide details completely
+            container.style.opacity = 0;
+            setTimeout(() => { container.style.display = 'none'; }, 250);
+            return;
+        }
+
+        const data = projectData[index];
+        
+        const updateContent = () => {
+            document.getElementById('fan-det-title').innerHTML = data.title;
+            
+            const linksHtml = data.links.map(l => 
+                `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="ib ib-md" aria-label="${l.label}">
+                    <img src="https://api.iconify.design/ri/${l.icon}.svg" style="width:18px;height:18px" alt="">
+                 </a>`
+            ).join('');
+            document.getElementById('fan-det-links').innerHTML = linksHtml;
+
+            const tagsHtml = data.tech.map(t => `<span class="tag">${t}</span>`).join('');
+            document.getElementById('fan-det-tags').innerHTML = tagsHtml;
+
+            const descHtml = data.desc.map(d => `<div class="bul">${d}</div>`).join('');
+            document.getElementById('fan-det-desc').innerHTML = descHtml;
+
+            container.style.display = 'block';
+            void container.offsetWidth; // force reflow for animation
+            container.style.opacity = 1;
+            
+            // Smoothly scroll down a tiny bit to show the panel if needed on mobile
+            if (window.innerWidth <= 640) {
+               setTimeout(() => {
+                   const yOffset = -70; 
+                   const y = container.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                   window.scrollTo({top: y, behavior: 'smooth'});
+               }, 300);
+            }
+        };
+
+        if (container.style.display === 'block') {
+            container.style.opacity = 0; // Cross-fade effect
+            setTimeout(updateContent, 250);
+        } else {
+            updateContent();
+        }
+    }
+
+    // Attach click listeners to cards
+    cards.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (activeCardIndex === index) {
+                activeCardIndex = -1; // Deselect if already active
+            } else {
+                activeCardIndex = index; // Select new card
+            }
+            renderFan();
+            toggleDetails(activeCardIndex);
+        });
+        
+        // Enter key support for accessibility
+        card.addEventListener('keydown', (e) => {
+             if (e.key === 'Enter' || e.key === ' ') {
+                 e.preventDefault();
+                 card.click();
+             }
+        });
+    });
+
+    // Initialize layout
+    renderFan();
+    window.addEventListener('resize', renderFan);
+});
+
 </script>
 </body>
 </html>
