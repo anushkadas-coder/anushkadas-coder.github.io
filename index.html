@@ -1488,23 +1488,16 @@ document.getElementById('thm').addEventListener('click', (e) => {
     return;
   }
 
-  // Safely get coordinates, using touch/mouse event first, falling back to bounding rect.
+  // COMPLETELY IGNORE mouse/touch coordinates!
+  // Force the animation to always calculate from the exact center of the theme toggle button.
   const btn = document.getElementById('thm');
   const rect = btn.getBoundingClientRect();
   
-  // Some mobile browsers return 0 for clientX on synthetic clicks.
-  let x = e.clientX;
-  let y = e.clientY;
-  
-  if (x === undefined || y === undefined || (x === 0 && y === 0)) {
-      x = rect.left + rect.width / 2;
-      y = rect.top + rect.height / 2;
-  }
-  
-  // Prevent CSS parse errors by rounding to integers
-  x = Math.round(x);
-  y = Math.round(y);
+  // Math.round ensures clean CSS pixel values, preventing mobile rendering glitches.
+  const x = Math.round(rect.left + (rect.width / 2));
+  const y = Math.round(rect.top + (rect.height / 2));
 
+  // Calculate the distance to the furthest corner to know how big the circle needs to be
   const endRadius = Math.round(Math.hypot(
     Math.max(x, window.innerWidth - x),
     Math.max(y, window.innerHeight - y)
