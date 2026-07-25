@@ -1492,15 +1492,26 @@ document.getElementById('thm').addEventListener('click', (e) => {
   // Force the animation to always calculate from the exact center of the theme toggle button.
   const btn = document.getElementById('thm');
   const rect = btn.getBoundingClientRect();
-  
+
+  // On mobile browsers, the layout viewport used by getBoundingClientRect() can be
+  // offset from (and a different size than) the visual viewport that the
+  // view-transition overlay actually paints into. That mismatch was pulling the
+  // circle's origin toward the top-left instead of the button's real position.
+  // Correcting with window.visualViewport keeps it anchored to the button on mobile too.
+  const vv = window.visualViewport;
+  const vvOffsetX = vv ? vv.offsetLeft : 0;
+  const vvOffsetY = vv ? vv.offsetTop : 0;
+  const vw = vv ? vv.width : window.innerWidth;
+  const vh = vv ? vv.height : window.innerHeight;
+
   // Math.round ensures clean CSS pixel values, preventing mobile rendering glitches.
-  const x = Math.round(rect.left + (rect.width / 2));
-  const y = Math.round(rect.top + (rect.height / 2));
+  const x = Math.round(rect.left + (rect.width / 2) - vvOffsetX);
+  const y = Math.round(rect.top + (rect.height / 2) - vvOffsetY);
 
   // Calculate the distance to the furthest corner to know how big the circle needs to be
   const endRadius = Math.round(Math.hypot(
-    Math.max(x, window.innerWidth - x),
-    Math.max(y, window.innerHeight - y)
+    Math.max(x, vw - x),
+    Math.max(y, vh - y)
   ));
 
   const transition = document.startViewTransition(() => {
