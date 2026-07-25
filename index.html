@@ -82,23 +82,10 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 --icon-filter-inv: brightness(0) invert(1);
 }
 
-/* VIEW TRANSITIONS CSS FOR THEME SPREAD EFFECT */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::view-transition-old(root) {
-  z-index: 1;
-}
-::view-transition-new(root) {
-  z-index: 2;
-}
-
 body{
 background:var(--bg0);color:var(--t1);
 font-family:var(--sans);font-size:14px;line-height:1.55;
-overflow-x:hidden;
+overflow-x:hidden;transition:background .35s ease,color .35s ease;
 }
 a{text-decoration:none;color:inherit}
 img{display:block}
@@ -1470,53 +1457,14 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
   if(metaTheme) metaTheme.setAttribute('content', saved === 'dark' ? '#000000' : '#FFFFFF');
 })();
 
-document.getElementById('thm').addEventListener('click', (e) => {
+document.getElementById('thm').addEventListener('click', () => {
   const curr = document.body.getAttribute('data-theme');
   const next = curr === 'dark' ? 'light' : 'dark';
-  
-  function updateTheme() {
-    document.body.setAttribute('data-theme', next);
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    const metaTheme = document.getElementById('theme-color-meta');
-    if(metaTheme) metaTheme.setAttribute('content', next === 'dark' ? '#000000' : '#FFFFFF');
-  }
-
-  // Fallback for browsers that don't support View Transitions API
-  if (!document.startViewTransition) {
-    updateTheme();
-    return;
-  }
-
-  // Get click coordinates to start the circle. Fallback to center if triggered by keyboard.
-  const x = e?.clientX ?? window.innerWidth / 2;
-  const y = e?.clientY ?? window.innerHeight / 2;
-  
-  // Calculate the distance to the furthest corner to know how big the circle needs to be
-  const endRadius = Math.hypot(
-    Math.max(x, window.innerWidth - x),
-    Math.max(y, window.innerHeight - y)
-  );
-
-  const transition = document.startViewTransition(() => {
-    updateTheme();
-  });
-
-  transition.ready.then(() => {
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`
-        ]
-      },
-      {
-        duration: 600,
-        easing: 'ease-in-out',
-        pseudoElement: '::view-transition-new(root)'
-      }
-    );
-  });
+  document.body.setAttribute('data-theme', next);
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  const metaTheme = document.getElementById('theme-color-meta');
+  if(metaTheme) metaTheme.setAttribute('content', next === 'dark' ? '#000000' : '#FFFFFF');
 });
 
 /* Scroll Progress */
