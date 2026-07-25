@@ -631,8 +631,11 @@ flex-direction: column;
   border: 1px solid var(--line2);
   background: var(--sfc2);
   box-shadow: 0 25px 50px var(--shadow);
+  /* CSS Variables handle dynamic positioning, ensuring hover overrides smoothly */
+  transform: translateX(var(--tx, 0)) translateY(var(--ty, 0)) rotate(var(--rot, 0)) scale(var(--scale, 1));
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s ease, border-color 0.4s ease, filter 0.4s ease, z-index 0s;
   display: block;
+  will-change: transform;
 }
 .proj-fan:not(.has-active) .proj-fan-card { cursor: pointer; }
 .proj-fan-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
@@ -653,10 +656,10 @@ flex-direction: column;
   color: var(--t2); text-transform: uppercase;
 }
 
-/* Hover effects when NO card is active */
+/* Hover effects when NO card is active - using var(--tx) prevents the shake glitch! */
 .proj-fan:not(.has-active) .proj-fan-card:hover {
   border-color: var(--accent);
-  transform: translateY(-24px) scale(1.08) rotate(0deg) !important;
+  transform: translateX(var(--tx, 0)) translateY(-24px) scale(1.08) rotate(0deg);
   box-shadow: 0 40px 80px var(--shadow), 0 0 40px var(--accent-glow);
   z-index: 50 !important;
 }
@@ -1017,6 +1020,14 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
     <div class="eyebrow">Projects</div>
     <h2 class="sec-title">Deployed <em>Engineering</em> Solutions</h2>
     <p class="sec-sub">Select a project below to explore the architecture and technologies used.</p>
+    
+    <!-- CLICK HINT UI -->
+    <div style="text-align: center; margin-bottom: 2rem;" class="up">
+      <span style="font-family: var(--mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.15em; color: var(--t3); display: inline-flex; align-items: center; gap: 8px;">
+        <img src="https://api.iconify.design/ri/cursor-line.svg" style="width:14px; height:14px; filter: var(--icon-filter); opacity: 0.7;" alt="">
+        CLICK CARDS TO EXPLORE
+      </span>
+    </div>
 
     <!-- INTERACTIVE FAN COLLAGE -->
     <div class="proj-fan up" id="fan-container">
@@ -1029,11 +1040,11 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="proj-fan-card" data-index="1" role="button" tabindex="0">
-        <img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy">
+       <div class="proj-fan-card" data-index="3" role="button" tabindex="0">
+        <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy">
         <div class="proj-fan-label">
-          <div class="proj-fan-title">Deweathering Engine</div>
-          <div class="proj-fan-tech">React · OpenCV · RPCA</div>
+          <div class="proj-fan-title">DCO6 Synthesizer</div>
+          <div class="proj-fan-tech">C++ · JUCE · DSP</div>
         </div>
       </div>
 
@@ -1045,11 +1056,11 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
-      <div class="proj-fan-card" data-index="3" role="button" tabindex="0">
-        <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy">
+      <div class="proj-fan-card" data-index="1" role="button" tabindex="0">
+        <img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy">
         <div class="proj-fan-label">
-          <div class="proj-fan-title">DCO6 Synthesizer</div>
-          <div class="proj-fan-tech">C++ · JUCE · DSP</div>
+          <div class="proj-fan-title">Deweathering Engine</div>
+          <div class="proj-fan-tech">React · OpenCV · RPCA</div>
         </div>
       </div>
 
@@ -1621,15 +1632,14 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
       },
       {
-        title: "Deweathering Engine",
-        tech: ["React", "FastAPI", "OpenCV", "RPCA"],
+        title: "DCO6: Polyphonic VST3 Synthesizer",
+        tech: ["C++", "JUCE Framework", "Audio DSP"],
         desc: [
-          "Full-stack app using Robust PCA to extract clean text from degraded documents.",
-          "95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s."
+          "6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.",
+          "4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer."
         ],
         links: [
-            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/deweathering-engine" },
-            { icon: "external-link-line", label: "Live Demo", url: "https://deweathering-engine.vercel.app" }
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/DCO6_synthesizer" }
         ]
       },
       {
@@ -1644,14 +1654,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
       },
       {
-        title: "DCO6: Polyphonic VST3 Synthesizer",
-        tech: ["C++", "JUCE Framework", "Audio DSP"],
+        title: "Deweathering Engine",
+        tech: ["React", "FastAPI", "OpenCV", "RPCA"],
         desc: [
-          "6-voice polyphonic VST3 synthesizer built from scratch in C++ with JUCE.",
-          "4-pole Moog-style ladder filter, BBD stereo chorus, independent ADSR envelopes, real-time FFT analyzer."
+          "Full-stack app using Robust PCA to extract clean text from degraded documents.",
+          "95% automated parameter tuning via custom Adaptive Regularization heuristic. Full restoration in &lt;2.5s."
         ],
         links: [
-            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/DCO6_synthesizer" }
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/deweathering-engine" },
+            { icon: "external-link-line", label: "Live Demo", url: "https://deweathering-engine.vercel.app" }
         ]
       }
     ];
@@ -1700,7 +1711,11 @@ document.addEventListener('DOMContentLoaded', () => {
                  card.classList.remove('active');
             }
 
-            card.style.transform = `translateX(${tx}px) translateY(${ty}px) rotate(${rot}deg) scale(${scale})`;
+            // Fix the CSS conflict by mapping dynamic values to CSS variables
+            card.style.setProperty('--tx', `${tx}px`);
+            card.style.setProperty('--ty', `${ty}px`);
+            card.style.setProperty('--rot', `${rot}deg`);
+            card.style.setProperty('--scale', scale);
             card.style.zIndex = z;
         });
     }
