@@ -28,11 +28,15 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 --accent-ring:rgba(255,255,255,0.12);
 --accent-glow:rgba(255,255,255,0.06);
 
---bg0:#000000;
---bg1:#050505;
---bg2:#0A0A0A;
---sfc:#080808;
---sfc2:#111111;
+/* Updated for Dark Mode Reference */
+--bg0:#09090b;
+--bg1:#0f0f11;
+--bg2:#141417;
+--sfc:#0f0f11;
+--sfc2:#18181b;
+
+--glow-left: rgba(46, 52, 140, 0.45);
+--glow-right: rgba(165, 65, 35, 0.4);
 
 --line:rgba(255,255,255,0.05);
 --line2:rgba(255,255,255,0.09);
@@ -42,7 +46,7 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 --t2:#999999;
 --t3:#8f8f8f;
 
---nav-bg:rgba(0,0,0,0.88);
+--nav-bg:rgba(9,9,11,0.88);
 --nav-h: 54px;
 --serif:'Merriweather',Georgia,serif;
 --sans:'Merriweather Sans',sans-serif;
@@ -55,11 +59,15 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 }
 
 [data-theme="light"]{
---bg0:#FFFFFF;
---bg1:#F5F5F5;
---bg2:#EBEBEB;
---sfc:#FFFFFF;
---sfc2:#F8F8F8;
+/* Updated for Light Mode Reference */
+--bg0:#ffffff;
+--bg1:#f8fafc;
+--bg2:#f1f5f9;
+--sfc:#ffffff;
+--sfc2:#f8fafc;
+
+--glow-left: rgba(220, 225, 255, 0.95);
+--glow-right: rgba(255, 225, 210, 0.95);
 
 --line:rgba(0,0,0,0.08);
 --line2:rgba(0,0,0,0.15);
@@ -107,6 +115,19 @@ a:focus-visible, button:focus-visible { outline: 2px dashed var(--accent); outli
 body::before{
 content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.018;
 background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ambient Background Glow */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 25% -10%, var(--glow-left) 0%, transparent 60%),
+    radial-gradient(circle at 75% -10%, var(--glow-right) 0%, transparent 60%);
+  transition: background .35s ease;
 }
 
 /* NAV */
@@ -234,7 +255,7 @@ cursor:pointer;transition:all .3s;
 [data-theme="light"] .ico-sun{display:none}
 
 /* LAYOUT */
-.section{position:relative;padding:6rem 2rem;overflow:hidden}
+.section{position:relative;padding:6rem 2rem;overflow:hidden; background: transparent !important;} /* Force transparent to show body glow */
 .container{max-width:1100px;margin:0 auto;position:relative;z-index:2}
 .anch{scroll-margin-top: var(--nav-h, 54px)}
 @media(max-width:768px){.section{padding:4.5rem 1.25rem}}
@@ -796,7 +817,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
 <main>
 
-<section id="about" class="anch" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 2rem 4rem;position:relative;overflow:hidden;background:var(--bg0)">
+<section id="about" class="anch" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 2rem 4rem;position:relative;overflow:hidden;">
   <div class="bg-lines"></div>
   <div class="orb" style="width:500px;height:500px;top:-150px;right:-180px"></div>
   <div class="orb" style="width:320px;height:320px;bottom:-80px;left:-100px"></div>
@@ -1014,7 +1035,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
 <div class="divider"></div>
 
-<section id="projects" class="anch section" style="background:var(--bg0)">
+<section id="projects" class="anch section">
   <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow">Projects</div>
@@ -1102,7 +1123,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
 <div class="divider"></div>
 
-<section id="skills" class="anch section" style="background:var(--bg0)">
+<section id="skills" class="anch section">
   <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow">Technical Arsenal</div>
@@ -1360,7 +1381,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
 <div class="divider"></div>
 
-<section id="education" class="anch section" style="background:var(--bg0)">
+<section id="education" class="anch section">
   <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow">Education</div>
@@ -1383,7 +1404,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
 <div class="divider"></div>
 
-<section id="resume" class="anch section" style="background:var(--bg0);text-align:center">
+<section id="resume" class="anch section" style="text-align:center">
   <div class="bg-lines"></div>
   <div class="container">
     <div class="eyebrow" style="justify-content:center">Resume</div>
@@ -1405,7 +1426,7 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
 <div class="divider"></div>
 
-<section id="contact" class="anch section" style="background:var(--bg1);text-align:center;overflow:hidden">
+<section id="contact" class="anch section" style="text-align:center;overflow:hidden">
   <div class="bg-lines"></div>
   <div class="orb" style="width:420px;height:420px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
   <div class="container">
