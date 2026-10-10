@@ -82,6 +82,23 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 --icon-filter-inv: brightness(0) invert(1);
 }
 
+@media(min-width:1024px){
+  .hero-text p.d4,
+  .hero-text p.d5{
+    font-size:1.05rem !important;
+    line-height:1.8 !important;
+    max-width:none !important;
+  }
+}
+
+@media(min-width:1024px){
+  .hero-text p.d4,
+  .hero-text p.d5{
+    font-size:1.0rem !important;
+    line-height:1.65 !important;
+  }
+}
+
 body{
 background:var(--bg0);color:var(--t1);
 font-family:var(--sans);font-size:14px;line-height:1.55;
@@ -555,7 +572,7 @@ flex-direction: column;
 }
 
 @media(min-width: 1024px) {
-  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 4rem; align-items: center; }
   .hero-canvas { position: relative; top: auto; right: auto; width: 100%; max-width: 340px; }
   .hero-text .d1, .hero-text .d2, .hero-text .d3 { max-width: none; }
 }
