@@ -1095,22 +1095,6 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
 
     <!-- INTERACTIVE FAN COLLAGE -->
     <div class="proj-fan up" id="fan-container">
-      
-      <div class="proj-fan-card" data-index="0" role="button" tabindex="0">
-        <img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy">
-        <div class="proj-fan-label">
-          <div class="proj-fan-title">DeepfakeDetector</div>
-          <div class="proj-fan-tech">React · FastAPI · PyTorch</div>
-        </div>
-      </div>
-
-      <div class="proj-fan-card" data-index="5" role="button" tabindex="0">
-        <img src="project-realtime-dashboard.jpeg" onerror="this.onerror=null;this.src='https://api.iconify.design/ri/dashboard-3-line.svg?color=%23FFFFFF'" alt="Real-Time Analytics Dashboard" loading="lazy">
-        <div class="proj-fan-label">
-          <div class="proj-fan-title">Event Stream Dashboard</div>
-          <div class="proj-fan-tech">Real-Time · Analytics</div>
-        </div>
-      </div>
 
        <div class="proj-fan-card" data-index="3" role="button" tabindex="0">
         <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy">
@@ -1128,6 +1112,14 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
+      <div class="proj-fan-card" data-index="0" role="button" tabindex="0">
+        <img src="project-deepfake-engine.jpeg" alt="DeepfakeDetector" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">DeepfakeDetector</div>
+          <div class="proj-fan-tech">React · FastAPI · PyTorch</div>
+        </div>
+      </div>
+
       <div class="proj-fan-card" data-index="1" role="button" tabindex="0">
         <img src="project-deweathering.jpeg" alt="Deweathering Engine" loading="lazy">
         <div class="proj-fan-label">
@@ -1141,6 +1133,14 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         <div class="proj-fan-label">
           <div class="proj-fan-title">Cassava Hybrid Vision</div>
           <div class="proj-fan-tech">PyTorch · CV · FFT/DWT</div>
+        </div>
+      </div>
+
+       <div class="proj-fan-card" data-index="5" role="button" tabindex="0">
+        <img src="project-realtime-dashboard.jpeg" onerror="this.onerror=null;this.src='https://api.iconify.design/ri/dashboard-3-line.svg?color=%23FFFFFF'" alt="Real-Time Analytics Dashboard" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">Event Stream Dashboard</div>
+          <div class="proj-fan-tech">Real-Time · Analytics</div>
         </div>
       </div>
 
@@ -1714,30 +1714,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Project Data definitions
     const projectData = [
       {
-        title: "DeepfakeDetector: Frequency-Based AI Inference Engine",
-        tech: ["React", "FastAPI", "PyTorch", "2D FFT", "ResNet-18"],
-        desc: [
-          "Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.",
-          "&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack."
-        ],
-        links: [
-            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/deepfake-detection-engine" },
-            { icon: "external-link-line", label: "Live Demo", url: "https://deepfake-detection-engine.vercel.app" }
-        ]
-      },
-      {
-        title: "Event Stream: Real-Time Analytics Dashboard",
-        tech: ["Real-Time Data", "Dashboard", "Analytics"],
-        desc: [
-          "Live analytics dashboard that visualizes an incoming event stream in real time.",
-          "Deployed on Vercel."
-        ],
-        links: [
-            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/realtime-analytics-dashboard" },
-            { icon: "external-link-line", label: "Live Demo", url: "https://realtime-analytics-dashboard-lime.vercel.app" }
-        ]
-      },
-      {
         title: "DCO6: Polyphonic VST3 Synthesizer",
         tech: ["C++", "JUCE Framework", "Audio DSP"],
         desc: [
@@ -1757,6 +1733,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         links: [
             { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/inaturalist_clumps" }
+        ]
+      },
+      {
+        title: "DeepfakeDetector: Frequency-Based AI Inference Engine",
+        tech: ["React", "FastAPI", "PyTorch", "2D FFT", "ResNet-18"],
+        desc: [
+          "Frequency-domain engine using 2D FFT + ResNet-18 to identify synthetic fingerprints invisible to spatial-only CNNs.",
+          "&lt;1.8s end-to-end latency via distributed React/FastAPI/Docker stack."
+        ],
+        links: [
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/deepfake-detection-engine" },
+            { icon: "external-link-line", label: "Live Demo", url: "https://deepfake-detection-engine.vercel.app" }
         ]
       },
       {
@@ -1780,6 +1768,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         links: [
             { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/cassava-leaf-hybrid-vision" }
+        ]
+      },
+      {
+        title: "Event Stream: Real-Time Analytics Dashboard",
+        tech: ["Real-Time Data", "Dashboard", "Analytics"],
+        desc: [
+          "Live analytics dashboard that visualizes an incoming event stream in real time.",
+          "Deployed on Vercel."
+        ],
+        links: [
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/realtime-analytics-dashboard" },
+            { icon: "external-link-line", label: "Live Demo", url: "https://realtime-analytics-dashboard-lime.vercel.app" }
         ]
       }
     ];
