@@ -1104,6 +1104,14 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
+      <div class="proj-fan-card" data-index="5" role="button" tabindex="0">
+        <img src="project-realtime-dashboard.jpeg" onerror="this.onerror=null;this.src='https://api.iconify.design/ri/dashboard-3-line.svg?color=%23FFFFFF'" alt="Real-Time Analytics Dashboard" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">Event Stream Dashboard</div>
+          <div class="proj-fan-tech">Real-Time · Analytics</div>
+        </div>
+      </div>
+
        <div class="proj-fan-card" data-index="3" role="button" tabindex="0">
         <img src="project-dco6.jpeg" alt="DCO6 Synthesizer" loading="lazy">
         <div class="proj-fan-label">
@@ -1718,6 +1726,17 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
       },
       {
+        title: "Event Stream: Real-Time Analytics Dashboard",
+        tech: ["Real-Time Data", "Dashboard", "Analytics"],
+        desc: [
+          "Live analytics dashboard that visualizes an incoming event stream in real time.",
+          "Deployed on Vercel."
+        ],
+        links: [
+            { icon: "external-link-line", label: "Live Demo", url: "https://realtime-analytics-dashboard-lime.vercel.app" }
+        ]
+      },
+      {
         title: "DCO6: Polyphonic VST3 Synthesizer",
         tech: ["C++", "JUCE Framework", "Audio DSP"],
         desc: [
@@ -1774,9 +1793,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let rotFactor = 8;
         let yDrop = 15;
 
-        if (isTablet) { spread = 110; }
-        if (isMobile) { spread = 52; rotFactor = 6; yDrop = 8; }
-        if (isSmall) { spread = 42; rotFactor = 6; yDrop = 6; }
+        if (cards.length > 5) spread = 135;
+        if (isTablet) { spread = 95; }
+        if (isMobile) { spread = 36; rotFactor = 5; yDrop = 8; }
+        if (isSmall) { spread = 30; rotFactor = 5; yDrop = 6; }
 
         if (activeCardIndex !== -1) {
             fanContainer.classList.add('has-active');
