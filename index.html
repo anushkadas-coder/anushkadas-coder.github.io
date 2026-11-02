@@ -1128,6 +1128,14 @@ mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.05) 100%);
         </div>
       </div>
 
+      <div class="proj-fan-card" data-index="4" role="button" tabindex="0">
+        <img src="project-cassava.jpeg" onerror="this.onerror=null;this.src='https://opengraph.githubassets.com/881d02446e4e4003ef6131fed9cbd89b41b175f69785224ca24bbc730e8f95c4/anushkadas-coder/cassava-leaf-hybrid-vision'" alt="Cassava Leaf Hybrid Vision" loading="lazy">
+        <div class="proj-fan-label">
+          <div class="proj-fan-title">Cassava Hybrid Vision</div>
+          <div class="proj-fan-tech">PyTorch · CV · FFT/DWT</div>
+        </div>
+      </div>
+
     </div>
 
     <!-- DYNAMIC DETAILS CONTAINER -->
@@ -1742,6 +1750,17 @@ document.addEventListener('DOMContentLoaded', () => {
             { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/deweathering-engine" },
             { icon: "external-link-line", label: "Live Demo", url: "https://deweathering-engine.vercel.app" }
         ]
+      },
+      {
+        title: "Cassava Leaf Hybrid Vision: Classical CV × CNN Ablations",
+        tech: ["PyTorch", "OpenCV", "FFT / DWT", "Grad-CAM", "ResNet-18"],
+        desc: [
+          "Reproducible research framework testing whether classical CV (HSV/CIELAB color spaces, FFT/DWT features, background localization) adds value to a CNN for cassava leaf disease classification.",
+          "Leak-free pipeline (dHash near-duplicate grouping, stratified group splits), multi-seed resumable sweeps, Grad-CAM shortcut tests, robustness suite, and 83 passing tests."
+        ],
+        links: [
+            { icon: "github-line", label: "GitHub", url: "https://github.com/anushkadas-coder/cassava-leaf-hybrid-vision" }
+        ]
       }
     ];
 
@@ -1755,9 +1774,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let rotFactor = 8;
         let yDrop = 15;
 
-        if (isTablet) { spread = 120; }
-        if (isMobile) { spread = 70; rotFactor = 6; yDrop = 8; }
-        if (isSmall) { spread = 55; rotFactor = 6; yDrop = 6; }
+        if (isTablet) { spread = 110; }
+        if (isMobile) { spread = 52; rotFactor = 6; yDrop = 8; }
+        if (isSmall) { spread = 42; rotFactor = 6; yDrop = 6; }
 
         if (activeCardIndex !== -1) {
             fanContainer.classList.add('has-active');
@@ -1766,7 +1785,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         cards.forEach((card, i) => {
-            let offset = i - 1.5; 
+            let offset = i - (cards.length - 1) / 2; 
             let tx = offset * spread;
             let rot = offset * rotFactor;
             let ty = Math.abs(offset) * yDrop;
